@@ -1,25 +1,26 @@
 <?php require_once "data_access.php";?>
 <?php
 
-    function logindb($key){
-	$name=$key['name'];
-	$password=$key['password'];
-	
-	//$name=$key->name;
-	//$pass=$key->password;
-	$password=(int)$password;
+    function logindb($key)
+	{
+		$name=$key['name'];
+		$password=$key['password'];
 		
-	$sql = "SELECT * FROM users WHERE uName LIKE '$name' and password LIKE $password";
-    $result = executeSQL($sql);
-	
-	$persons = array();
-        for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
-            $persons[$i] = $row;
-        }
-	return $persons;  
+		//$name=$key->name;
+		//$pass=$key->password;
+		$password=(int)$password;
+			
+		$sql = "SELECT * FROM users WHERE uName LIKE '$name' and password LIKE $password";
+		$result = executeSQL($sql);
+		
+		$persons = array();
+			for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+				$persons[$i] = $row;
+			}
+		return $persons;  
     }
 	
-	function getUserByEmailFromDb($key){
+	function getUserEmailFromDb($key){
 		
 		$email=$key['email'];
         $sql = "SELECT * FROM users WHERE email LIKE '$email'";
@@ -38,6 +39,22 @@
         
         return $persons;
     }
+	
+	 function getuserNameFromDb($key)
+	 {
+		$name=$key['name'];
+        $sql = "SELECT * FROM users WHERE uName LIKE '$name'";        
+        $result = executeSQL($sql);
+        
+        $person = mysqli_fetch_assoc($result);
+        
+        return $person;
+    } 
+	
+	
+	
+	
+	
 	
     function addPersonToDb($person){
         $sql = "INSERT INTO person(id, name, email) VALUES(NULL, '$person[name]', '$person[email]')";

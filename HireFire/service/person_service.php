@@ -4,6 +4,15 @@
 	function login($user){
         return logindb($user);
     }
+	function getuserName($personId){
+        return getuserNameFromDb($personId);
+    }
+	function getUserEmail($key){
+        return getUserEmailFromDb($key);
+    }
+	
+	
+	
 	
 	
 	

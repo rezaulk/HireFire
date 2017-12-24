@@ -10,7 +10,7 @@
         //$parts = explode(" ", $userName);
         $isValid = false;
 		
-        if(strlen($userName)>1){
+        if(strlen($userName)>2){
             if(preg_match("/^[a-zA-Z ]*$/",$userName)){
                 $isValid = true;
             }
