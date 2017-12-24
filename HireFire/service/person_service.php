@@ -10,7 +10,9 @@
 	function getUserEmail($key){
         return getUserEmailFromDb($key);
     }
-	
+	function addPersonAsBuyer($person){
+        return addPersonBuyerToDb($person);
+    }
 	
 	
 	
