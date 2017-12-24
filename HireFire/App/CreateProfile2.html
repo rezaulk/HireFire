@@ -1,141 +1,3 @@
-<script>
-	//isFormValid=true;
-	function validate()
-	{
-		var isValid=true;
-		if(!schoolValidate())
-		{
-			isValid=false;
-		}
-		
-		if(!fromValidate())
-		{
-			isValid=false;
-		}
-		
-		if(!toValidate())
-		{
-			isValid=false;
-		}
-		
-		if(!degreeValidate())
-		{
-			isValid=false;
-		}
-		degreeValidate
-		return isValid;
-	}
-	
-	
-	function schoolValidate()
-	{	
-		var isValid=true;
-		var school = document.getElementById("school").value;
-		
-		var schoolErrorMassage=document.getElementById("schoolErrorMassage");
-		schoolErrorMassage.style.color="red";
-		if(school=="")
-		{
-			schoolErrorMassage.innerHTML="*School name can not be empty";
-			isValid=false;
-		}
-		else
-		{
-			var i=0;
-			for(i;i<school.length;i++)
-			{	
-				if(!isNaN(school[i]))
-				{
-					schoolErrorMassage.innerHTML="*School name only contain characters";
-					isValid=false;
-					break;
-				}
-			}
-			if(i==school.length)
-			{
-				schoolErrorMassage.innerHTML="";
-			}
-		}
-		return isValid;
-		
-	}
-	
-	
-	function fromValidate()
-	{	
-		var isValid=true;
-		var fromErrorMassage=document.getElementById("fromErrorMassage");
-		fromErrorMassage.style.color="red";
-		if(document.getElementById("from").value == "")
-		{
-			fromErrorMassage.innerHTML="*Must be select Date";
-			isValid=false;
-		}
-		
-		return isValid;
-		
-	}
-	
-	function toValidate()
-	{	
-		var isValid=true;
-		var toErrorMassage=document.getElementById("toErrorMassage");
-		toErrorMassage.style.color="red";
-		if(document.getElementById("from").value == "")
-		{
-			toErrorMassage.innerHTML="*Must be select Date";
-			isValid=false;
-		}
-		
-		return isValid;
-		
-	}	
-	
-	function emptyFromErrorMassage()
-	{
-		var fromErrorMassage= document.getElementById("fromErrorMassage");
-		if(document.getElementById("from").value != "")
-		{
-			fromErrorMassage.innerHTML="";
-		}
-		else
-		{
-			fromErrorMassage.innerHTML="*Must be select Date";
-		}
-	}
-	
-	function emptyToErrorMassage()
-	{
-		var toErrorMassage= document.getElementById("toErrorMassage");
-		if(document.getElementById("to").value != "")
-		{
-			toErrorMassage.innerHTML="";
-		}
-		else
-		{
-			toErrorMassage.innerHTML="*Must be select Date";
-		}
-	}
-	
-	function degreeValidate()
-	{
-		var isValid=true;
-		var degreeErrorMassage= document.getElementById("degreeErrorMassage");
-		degreeErrorMassage.style.color="red";
-		if(document.getElementById("degree").value == "")
-		{
-			isValid=false;
-			degreeErrorMassage.innerHTML="*Degree can not be empty";
-		}
-		else
-		{
-			degreeErrorMassage.innerHTML="";
-		}
-		
-		return isValid;
-	}
-</script>
-
 <table  width="100%" border="0">
 	<tr>
 
@@ -149,7 +11,7 @@
 	</tr>		
 </table>
 
-<form action="CreateProfile3.html" onsubmit="return validate()">
+<form action="CreateProfile3.html">
 <table width="100%" >
 	<tr>
 		<td width="30%"></td>
@@ -159,17 +21,17 @@
 					
 					<legend><h2>Add Education</h2></legend>
 					<b>school</b><br/>
-					<input title="School Name" name="schoolName" size="50" id="school" onchange="schoolValidate()"/> &nbsp;&nbsp;<span id="schoolErrorMassage"></span>
+					<input title="Name" name="uname" size="50"/>
 					</br></br>
 					<b>Date Attended</b></br></br>
 					From
-					<input type="date" placeholder="From" name="from" id="from" onchange="emptyFromErrorMassage()"/>&nbsp;&nbsp;<span id="fromErrorMassage"></span>
+					<input type="date" placeholder="From" name="from"/>
 					<br/><br/>
-					To&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="date" placeholder="To" name="to" id="to" onchange="emptyToErrorMassage()"/>&nbsp;&nbsp;<span id="toErrorMassage"></span>
+					To&nbsp&nbsp&nbsp&nbsp
+					<input type="date" placeholder="From" name="from"/>
 					</br></br>
 					<b>Degree</b><br/><br/>
-					<input name="degree" size="50"/ onchange="degreeValidate()" id="degree"><br/>&nbsp;&nbsp;<span id="degreeErrorMassage"></span>
+					<input name="degree" size="50"/><br/>
 					</br>
 					<b>Area of Study(optional)</b><br/><br/>
 					<input name="AoS" size="50"/><br/>

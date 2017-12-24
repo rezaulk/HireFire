@@ -1,3 +1,16 @@
+<?php 
+     session_start();
+     $name = $_SESSION['username'];
+     //var_dump( $_SESSION['username']);
+?>
+
+
+
+
+
+
+
+
 <table border="0">
 	<tr>
 		<td colspan="4">
@@ -24,7 +37,7 @@
 		<td width="1%"></td>
 		<td valign="top" align="center" width="20%">
 			<img src="../image/b.png" width="30%" alt="TANIM"/>
-			<br/>Ibrahim Khalil
+			<br/><?php echo $name?>
 			<br/>Seller<hr/>
 			
 			<table width="100%">

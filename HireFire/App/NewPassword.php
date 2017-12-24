@@ -4,25 +4,25 @@
 <?php
     $error= $error1="";
     if($_SERVER['REQUEST_METHOD']=="POST"){
-        $name=trim($_POST['uName']);
+        $email=trim($_POST['email']);
         
         $isValid = true;
-        if(empty($name)){
+        if(empty($email)){
             $isValid = false;
-            $error1 = "*Empty Username box";
+            $error1 = "*Empty email box";
         }
-        else if(isValidUserName($name)==false)
+        else if(isValidEmail($email)==false)
 		{
             $isValid = false;
-            $error1 = "*Invalid name";
+            $error1 = "*Invalid email";
         }
         if($isValid==true){
-            $person['name'] = $name;
+            $person['email'] = $email;
     
-            if(getuserName($person)==true){
+            if(getUserEmail($person)==true){
                 echo "<script>
                         //alert('Record Added');
-						document.location='NewPassword.php';
+						document.location='User/main.html';
                      </script>";
 					 
                 die();
@@ -51,7 +51,9 @@
 			<form method="post">
 				<fieldset >
 					<legend>Forgot Password</legend>
-					<b>Enter UserName: </b><input name="uName" /><?=$error1?>
+					<b>Enter Email: </b><input name="email" id="email"/><?=$error1?><br/><br/>
+					<b>Enter Password: </b><input name="password" /><?=$error1?><br/><br/>
+					<b>Enter Retype-Password: </b><input name="password1" /><?=$error1?><br/><br/>
 					<hr>
 					<input type="submit"/>
 				</fieldset>

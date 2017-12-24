@@ -1,7 +1,12 @@
-<?php require_once "../service/validation_service.php"; ?>
+<?php   session_start(); require_once "../service/validation_service.php"; ?>
 <?php require_once "../service/person_service.php"; ?>
 
 <?php
+
+
+	//$username = $_REQUEST['name'];
+	
+	
     $name = $password = $error="";
     $nameErr = $passwordErr = "";
     if($_SERVER['REQUEST_METHOD']=="POST"){
@@ -26,9 +31,11 @@
             $person['password'] = $password;
             
             if(login($person)==true){
-                echo "<script>
+				
+                $_SESSION['username']=$name;
+				echo "<script>
                         //alert('Record Added');
-						document.location='User/main.html';
+						document.location='User/profile.php';
                      </script>";
 					 
                 die();
