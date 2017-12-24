@@ -1,13 +1,43 @@
+<?php require_once "../service/validation_service.php"; ?>
+<?php require_once "../service/person_service.php"; ?>
+
+<?php
+    $error= $error1="";
+    if($_SERVER['REQUEST_METHOD']=="POST"){
+        $email=trim($_POST['email']);
+        
+        $isValid = true;
+        if(empty($email)){
+            $isValid = false;
+            $error1 = "*Empty email box";
+        }
+        else if(isValidEmail($email)==false){
+            $isValid = false;
+            $error1 = "*Invalid Email";
+        }
+        if($isValid==true){
+            $person['email'] = $email;
+    
+            if(getUserByEmailFromDb($person)==true){
+                echo "<script>
+                        //alert('Record Added');
+						document.location='User/main.html';
+                     </script>";
+					 
+                die();
+            }
+            else{
+               $error ="Wrong Email";
+            }
+        }
+    }
+?>
 <table  height="10%" width="100%" border="0">
 	<tr>
 
 		<td><a href="PublicHome.html"><img src="image/image.png" width="150"/></a></td>
-		<td>
-			
-		</td>
-		<td align="right">
-			
-		</td>
+		<td></td>
+		<td align="right">	</td>
 		<td></td>
 	</tr>		
 </table>
@@ -16,18 +46,15 @@
 	<tr>
 		<td width="33%"></td>
 		<td width="34%">
-			<form action="PublicHome.html">
+		   <h3 align="center"><font color="red"><?=$error?></font></h3>
+			<form method="post">
 				<fieldset >
-					
 					<legend>Forgot Password</legend>
-					<b>Enter Email: </b><input name="email"/>
+					<b>Enter Email: </b><input name="email" /><?=$error1?>
 					<hr>
 					<input type="submit"/>
-					
 				</fieldset>
-
 			</form>
-
 		</td>
 		<td width="33%"></td>
 	</tr>
