@@ -1,3 +1,89 @@
+<script>
+	//isFormValid=true;
+	function validate()
+	{
+		var isValid=true;
+		var bankName1 = document.getElementById("bank1");
+		var bankName2 = document.getElementById("bank2");
+		
+		if((bankName1.checked||bankName2.checked)==false)
+		{
+			var bankErrorMassage=document.getElementById("bankErrorMassage");
+			bankErrorMassage.innerHTML="*Select your Bank";
+			bankErrorMassage.style.color="red";
+			isValid=false;
+		}
+		
+		if(!validateAccountNo())
+		{
+			isValid=false;
+		}
+		
+		
+		//var isChecked = $("input[type=checkbox]"):is(":checked");
+		var skills=document.getElementsByTagName("input");
+		var checked=false;
+		for(var i=0; i < skills.length; i++)
+		{
+			if(skills[i].type=="checkbox")
+			{
+				if(skills[i].checked)
+				checked = true;
+			}	
+			
+		}
+		if(!checked)
+		{
+			isValid=false;
+			var skillsErrorMassage=document.getElementById("skillsErrorMassage");
+			skillsErrorMassage.innerHTML="*Select minimum one";
+			skillsErrorMassage.style.color="red";
+		}
+		return isValid;
+	}
+	
+	
+	function validateAccountNo()
+	{	
+		var isValid=true;
+		var accountNo = document.getElementById("accountNo").value;
+		
+		var accountErrorMassage=document.getElementById("accountErrorMassage");
+		accountErrorMassage.style.color="red";
+		if(accountNo=="")
+		{
+			accountErrorMassage.innerHTML="*Account Number Cannot be empty";
+			isValid=false;
+		}
+		else if(isNaN(accountNo))
+		{
+			accountErrorMassage.innerHTML="*Account Number only contains digit";
+			isValid=false;
+		}
+		else
+		{
+			accountErrorMassage.innerHTML="";
+		}
+		return isValid;
+		
+	}
+	
+	function emptyBankErrorMassage()
+	{
+		var bankErrorMassage= document.getElementById("bankErrorMassage");
+		bankErrorMassage.innerHTML="";
+	}
+	
+	function emptySkillsErrorMassage()
+	{
+		var skillsErrorMassage= document.getElementById("skillsErrorMassage");
+		skillsErrorMassage.innerHTML="";
+	}
+	
+	
+</script>
+
+
 <table  width="100%" border="0">
 	<tr>
 
@@ -11,7 +97,7 @@
 	</tr>		
 </table>
 
-<form action="CreateProfile2.html"><center>
+<form action="CreateProfile2.html" onsubmit="return validate()"><center>
 <table width="100%" >
 	<tr>
 		<td width="15%"></td>
@@ -21,60 +107,39 @@
 					<tr height="40">
 					<td>Select Your Bank</td>
 						<td>
-							<input type="radio" name="bank" value="bkash"/>Bkash
-							<input type="radio" name="bank" value="rocket"/>Rocket
+							<input type="radio" name="bank" value="bkash" id="bank1" onclick="emptyBankErrorMassage()"/>Bkash
+							<input type="radio" name="bank" value="rocket" id="bank2" onclick="emptyBankErrorMassage()"/>Rocket&nbsp;&nbsp;<span id="bankErrorMassage"></span>
 						</td>
 						
 					</tr>
 					
 					<tr height="40">
 						<td>Account number</td>
-						<td><input placeholder="Enter Account number" name="fbLink"/></td>
+						<td><input placeholder="Enter Account number" name="accountNo" id="accountNo" onchange="validateAccountNo()"/>&nbsp;&nbsp;<span id="accountErrorMassage"></span></td>
 					</tr>
-					<tr height="40">
 					
-						<td>Languages</td>
-						<td>
-							<input type="checkbox" name="bangla"/>Bangla
-							<input type="checkbox" name="english"/>English
-							<input type="checkbox" name="french"/>French
-							<input type="checkbox" name="hindi"/>Hindi
-							<input type="checkbox" name="spanish"/>Spanish
-							<input type="checkbox" name="urdo"/>Urdo			
-						</td>
-					</tr>
 					<tr height="40">
 						<td>Skills</td>
 						<td>
-							<input type="checkbox" name="DSD"/>Desktop Softwere Development
-							<input type="checkbox" name="ED"/>Ecommerce Development
-							<input type="checkbox" name="GD"/>Game Development
+							<input type="checkbox" name="DSD" onclick="emptySkillsErrorMassage()"/>Desktop Softwere Development
+							<input type="checkbox" name="ED" onclick="emptySkillsErrorMassage()"/>Ecommerce Development
+							<input type="checkbox" name="GD" onclick="emptySkillsErrorMassage()"/>Game Development
 							</br>
-							<input type="checkbox" name="MD"/>Mobile Development	
-							<input type="checkbox" name="PM"/>Product Management
-							<input type="checkbox" name="QA&T"/>QA & Testing
+							<input type="checkbox" name="MD" onclick="emptySkillsErrorMassage()"/>Mobile Development	
+							<input type="checkbox" name="PM" onclick="emptySkillsErrorMassage()"/>Product Management
+							<input type="checkbox" name="QA&T" onclick="emptySkillsErrorMassage()"/>QA & Testing
 							</br>
-							<input type="checkbox" name="S&U"/>Script and Utilities
-							<input type="checkbox" name="WD"/>Web Development
-							<input type="checkbox" name="OSD"/>Other-Softwere Development				
+							<input type="checkbox" name="S&U" onclick="emptySkillsErrorMassage()"/>Script and Utilities
+							<input type="checkbox" name="WD" onclick="emptySkillsErrorMassage()"/>Web Development
+							<input type="checkbox" name="OSD" onclick="emptySkillsErrorMassage()"/>Other-Softwere Development &nbsp;&nbsp;<span id="skillsErrorMassage"></span>			
 						</td>
 					</tr >
 					
+					
 					<tr height="40">
-						<td>Profile photo</td>
-						<td><input type="file"></td>
-					</tr>
-					<tr height="40">
-						<td>Description</td>
+						<td>Description(optional)</td>
 						<td><input name="description"/></td>
-					</tr>
-						<td>What is your experience level?</td>
-						<td>
-							<input type="radio" name="EL" value="EL"/>Entry Level
-							<input type="radio" name="EL" value="IL"/>Intermediate Level
-							<input type="radio" name="EL" value="ExL"/>Expert Level
-						</td>
-					</tr>
+					
 					<tr height="40">
 					<td></td>
 						<td>
