@@ -1,58 +1,84 @@
-<!--<?php
-    if($_SERVER['REQUEST_METHOD']=="POST")
-	{
-	    $username = $_REQUEST['uname'];
-		if($username=="admin"){		
-			header("location: admin.html");
-		}
-		else if($username=="user"){
-			header("location: main.html");
-		}
-	}
-?>-->
+<?php require_once "../service/validation_service.php"; ?>
+<?php require_once "../service/person_service.php"; ?>
 
-<table  height="10%" width="100%" border="0" >
+<?php
+    $name = $password = $error="";
+    $nameErr = $passwordErr = "";
+    if($_SERVER['REQUEST_METHOD']=="POST"){
+        $name=trim($_POST['uname']);
+        $password=trim($_POST['pass']);
+        
+        $isValid = true;
+        if(empty($password)){
+            $isValid = false;
+            $passwordErr = "*";
+        }
+        if(empty($name)){
+            $isValid = false;
+            $nameErr = "*";
+        }
+        else if(isValidUserName($name)==false){
+            $isValid = false;
+            $nameErr = "At least two words required, Only letters and white space allowed";
+        }
+        if($isValid==true){
+            $person['name'] = $name;
+            $person['password'] = $password;
+            
+            if(login($person)==true){
+                echo "<script>
+                        //alert('Record Added');
+						document.location='User/main.html';
+                     </script>";
+					 
+                die();
+            }
+            else{
+               $error ="Wrong User name Password";
+			   /*echo "<script>
+                        alert('Wrong User name Password');
+						//document.location='User/main.html';
+               </script>";*/
+            }
+        }
+    }
+?>
+
+<table  height="10%" width="100%" border="1" >
 	<tr>
-
 		<td><a href="PublicHome.html"><img src="image/image.png" width="150"/></a></td>
-		<td>
-		</td>
-		<td align="right">
-			
-		</td>
+		<td></td>
+		<td align="right"></td>
 		<td></td>
 	</tr>		
 </table>
-<form  action="User/buyer.html">
-<table height="70%" width="100%" >
+<form  method="post">
+<table height="70%" width="100%" border="0" >
 	<tr>
 		<td width="33%"></td>
 		<td width="34%">
 			<form >
+			    <h3 align="center"><font color="red"><?=$error?></font></h3>
 				<fieldset >
-					
 					<legend><h3>Login</h3></legend>
 					<b>User Name</b>
-					<input title="Name" name="uname"/>
+					<input title="Name" name="uname" value="<?=$name?>"/><?=$nameErr?>
 					</br></br>
 					<b>Password</b>
 					&nbsp;
-					<input type="password" title="password" name="pass"/>
+					<input  title="password" name="pass" value="<?=$password?>"/> <?=$passwordErr?>
 					<hr>
 					<input type="checkbox" name="check">Remember Me</input>
 					</br></br>
 					<input type="submit"/> <a href="ForgotPassword.html">Forgot Password</a><br/><br/>
-					You don't have any account? <a href="ForgotPassword.html">Create an account</a>
-					
+					You don't have any account? <a href="ForgotPassword.html">Create an account</a>	
 				</fieldset>
-
 			</form>
 		</td>
 		<td width="33%"></td>
 	</tr>
 </table>
 </form>
-
 
 <table height="20%" border="0" width="100%">
 	<hr>

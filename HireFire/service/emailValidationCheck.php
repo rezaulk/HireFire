@@ -6,12 +6,11 @@
         return false;
     }
     
-    function isValidUserName($userName){
-        //$parts = explode(" ", $userName);
+    function isValidPersonName($personName){
+        $parts = explode(" ", $personName);
         $isValid = false;
-		
-        if(strlen($userName)>2){
-            if(preg_match("/^[a-zA-Z ]*$/",$userName)){
+        if(count($parts)>1){
+            if(preg_match("/^[a-zA-Z ]*$/",$personName)){
                 $isValid = true;
             }
         }

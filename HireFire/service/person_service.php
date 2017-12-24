@@ -1,5 +1,21 @@
 <?php require_once "../data/person_data_access.php"; ?>
 <?php
+    
+	function login($user){
+        return logindb($user);
+    }
+	function getuserName($personId){
+        return getuserNameFromDb($personId);
+    }
+	function getUserEmail($key){
+        return getUserEmailFromDb($key);
+    }
+	
+	
+	
+	
+	
+	
     function addPerson($person){
         return addPersonToDb($person);
     }
@@ -12,8 +28,8 @@
         return removePersonFromDb($personId);
     }
     
-    function getAllPersons(){
-        return getAllPersonsFromDb();
+    function getAllUsers(){
+        return getAllUsersFromDb();
     }
     
     function getPersonById($personId){
