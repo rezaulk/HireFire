@@ -1,3 +1,41 @@
+<?php require_once "service/validation_service.php"; ?>
+
+<script>
+	var valid=false;
+	function validate(){
+		var emailTextBox = document.getElementById("email");
+		var emailErrorBox = document.getElementById("emailError");
+		emailErrorBox.style.color = "RED";
+		var email = emailTextBox.value;
+		
+		if(email==""){
+			emailErrorBox.innerHTML="*Email Required";
+			
+			return valid;
+		}
+		else{
+			valid="<?php 
+			if($_SERVER['REQUEST_METHOD']=="POST"){
+				$email=trim($_POST['email']);
+				if(isValidEmail($email)==false){
+					echo 'false';
+				}
+				else{
+					echo 'true';
+				}
+			}
+			?>";
+			return valid;
+		}
+		
+		
+		
+		
+		
+		
+	}
+</script>
+<form action="SignUp2.php" onsubmit="return validate()" method="POST">
 <table  height="10%" width="100%" border="0">
 	<tr>
 
@@ -21,7 +59,7 @@
 				<fieldset>
 					<legend>Join HireFire</legend>
 					<br/>
-					<input type="text" placeholder="Enter you email" name="email"/>
+					<input type="text" placeholder="Enter your email" name="email" id="email"/><span id="emailError"></span>
 					<br/><br/>
 					<input type="submit" value="Continue"/>
 					<br/><br/>
@@ -103,3 +141,4 @@
 	   
 	 </tr> 
 	</table>
+</form>
