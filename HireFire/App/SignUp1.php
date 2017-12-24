@@ -34,6 +34,9 @@
 		}	
 	}
 </script>
+<?php 
+	
+?>
 <form action="SignUp2.php" onsubmit="return validate()" method="POST">
 <table  height="10%" width="100%" border="0">
 	<tr>
