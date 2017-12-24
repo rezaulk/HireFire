@@ -1,3 +1,7 @@
+<?php
+session_start();
+	var_dump($GLOBALS);
+?>
 <script>
 	
 	function userNameCheck(){
@@ -167,7 +171,8 @@
 		languageErrorMassage.innerHTML="";
 	}
 </script>
-<form action="Buyer/buyer_only.html" onsubmit="return validate()"><center>
+
+<form action="#" onsubmit="return validate()"><center>
 <table  height="10%"  width="100%" border="0">
 	<tr>
 
@@ -200,12 +205,12 @@
 					<br/><br/>
 					<fieldset>
 						<legend>Language</legend>
-							<input type="checkbox" name="bangla" onclick="emptylanguageErrorShowSolved()"/>Bangla
-							<input type="checkbox" name="english" onclick="emptylanguageErrorShowSolved()"/>English
-							<input type="checkbox" name="french" onclick="emptylanguageErrorShowSolved()"/>French
-							<input type="checkbox" name="hindi" onclick="emptylanguageErrorShowSolved()"/>Hindi
-							<input type="checkbox" name="spanish" onclick="emptylanguageErrorShowSolved()"/>Spanish
-							<input type="checkbox" name="urdo" onclick="emptylanguageErrorShowSolved()"/>Urdo
+							<input type="checkbox" name="language[]" value="bangla" onclick="emptylanguageErrorShowSolved()"/>Bangla
+							<input type="checkbox" name="language[]" value="english" onclick="emptylanguageErrorShowSolved()"/>English
+							<input type="checkbox" name="language[]" value="french" onclick="emptylanguageErrorShowSolved()"/>French
+							<input type="checkbox" name="language[]" value="hindi" onclick="emptylanguageErrorShowSolved()"/>Hindi
+							<input type="checkbox" name="language[]" value="spanish" onclick="emptylanguageErrorShowSolved()"/>Spanish
+							<input type="checkbox" name="language[]" value="urdo" onclick="emptylanguageErrorShowSolved()"/>Urdo
 					</fieldset><span id="languageErrorMassage"></span>	<br/><br/>
 					<input type="submit" value="Join"/>
 					<br/><br/>
