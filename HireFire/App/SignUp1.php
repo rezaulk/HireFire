@@ -1,38 +1,37 @@
-<?php require_once "service/validation_service.php"; ?>
+<?php require_once "../service/validation_service.php"; ?>
 
 <script>
-	var valid=false;
+	var validemail=true;
 	function validate(){
 		var emailTextBox = document.getElementById("email");
 		var emailErrorBox = document.getElementById("emailError");
 		emailErrorBox.style.color = "RED";
 		var email = emailTextBox.value;
-		
+		//alert(email);
 		if(email==""){
 			emailErrorBox.innerHTML="*Email Required";
-			
-			return valid;
+			validity=false;
+			return false;
 		}
 		else{
-			valid="<?php 
-			if($_SERVER['REQUEST_METHOD']=="POST"){
-				$email=trim($_POST['email']);
-				if(isValidEmail($email)==false){
-					echo 'false';
-				}
-				else{
-					echo 'true';
-				}
+			var pos1=email.indexOf("@");
+			var pos2=email.indexOf(".");
+			var afterdot=email.substr(pos2+1,10);
+			//echo strlen($afterdot)."<br/>";
+			//echo $pos1."   ".$pos2;
+			
+			 if(pos1==""|| pos2==""||pos1<3||pos2<6)
+			{
+				emailErrorBox.innerHTML="Invalid email address";
+				return false;
 			}
-			?>";
-			return valid;
-		}
-		
-		
-		
-		
-		
-		
+			else if(afterdot==""||afterdot.length<2)
+			{
+				emailErrorBox.innerHTML= "Invalid email address";
+				return false;
+			}
+	
+		}	
 	}
 </script>
 <form action="SignUp2.php" onsubmit="return validate()" method="POST">
