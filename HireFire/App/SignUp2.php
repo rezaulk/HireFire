@@ -1,6 +1,40 @@
+<?php session_start();require_once "../service/validation_service.php"; ?>
+<?php require_once "../service/person_service.php"; ?>
 <?php
-session_start();
-	var_dump($GLOBALS);
+	
+	
+	if($_SERVER['REQUEST_METHOD']=="POST"){
+		$email=$_REQUEST['email'];
+		$_SESSION['email']=$email;
+		$userName=$_REQUEST['userName'];
+		$password=$_REQUEST['password'];
+		$retypePassword=$_REQUEST['retypePassword'];
+		$type=3;
+		$isValid=true;
+		 if($isValid==true){
+			$person['userName'] = $userName;
+			$person['email'] = $email;
+			$person['password']=$password;
+			$person['type']=2;
+			$person['imageExt']=$userName.".jpg";
+			$person['joiningDate']=date("Y-m-d");
+			
+			
+			
+			if(addPersonAsBuyer($person)==true){
+				echo "<script>
+						alert('Record Added');
+						document.location='Buyer/buyer_only.html';
+					 </script>";
+				die();
+			}
+			else{
+				echo "Internal Error<hr/>";
+			}
+		}
+	}
+	
+	//var_dump($GLOBALS);
 ?>
 <script>
 	
@@ -171,8 +205,7 @@ session_start();
 		languageErrorMassage.innerHTML="";
 	}
 </script>
-
-<form action="#" onsubmit="return validate()"><center>
+<form action="#" onsubmit="return validate()" method="POST"><center>
 <table  height="10%"  width="100%" border="0">
 	<tr>
 

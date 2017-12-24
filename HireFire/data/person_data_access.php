@@ -55,7 +55,13 @@
 	
 	
 	
-	
+	function addPersonBuyerToDb($person)
+	{
+		$sql = "INSERT INTO users(uName, password, email,type,joiningDate,imageExt) VALUES('$person[userName]', 
+		'$person[password]','$person[email]',$person[type],'$person[joiningDate]','$person[imageExt]')";
+		$result = executeSQL($sql);
+		return $result;
+	}
     function addPersonToDb($person){
         $sql = "INSERT INTO person(id, name, email) VALUES(NULL, '$person[name]', '$person[email]')";
         $result = executeSQL($sql);

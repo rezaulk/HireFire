@@ -37,7 +37,7 @@
 <?php 
 	
 ?>
-<form action="SignUp2.php" onsubmit="return validate()" method="POST">
+<form action="SignUp2.php" onsubmit="return validate()">
 <table  height="10%" width="100%" border="0">
 	<tr>
 
