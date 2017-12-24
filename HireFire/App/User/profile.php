@@ -1,14 +1,15 @@
+<?php   session_start(); 
+        require_once "../../service/validation_service.php";
+        require_once "../../service/person_service.php"; ?>
 <?php 
-     session_start();
+     
      $name = $_SESSION['username'];
-     //var_dump( $_SESSION['username']);
+	 
+     
+	 $day=getJoiningDate($name);
+	 var_dump($day);
+	 
 ?>
-
-
-
-
-
-
 
 
 <table border="0">
@@ -49,26 +50,26 @@
 			</tr>
 			
 			<tr>
-				<td width="5%"><img src="../image/location.png"/></td>
-				<td width="60%">Form</td>
-				<td align="right">Bangladesh</td>
+				<td width="5%"></td>
+				<td width="60%"></td>
+				<td align="right"></td>
 			</tr>
 			<tr>
 				<td width="5%"><img src="../image/member1.png"/></td>
 				<td>Member since</td>
-				<td align="right">April 2017</td>
+				<td align="right"><?php echo "$day"?></td>
 			</tr>
 			
 			<tr>
-				<td width="5%"><img src="../image/time.png"/></td>
-				<td>Average Response Time</td>
-				<td align="right">1Hrs.</td>
+				<td width="5%"></td>
+				<td></td>
+				<td align="right"></td>
 			</tr>
 			
 			<tr>
-				<td width="5%"><img src="../image/delivery.png"/></td>
-				<td>Last Delivery</td>
-				<td align="right">about 4 months</td>
+				<td width="5%"></td>
+				<td></td>
+				<td align="right"></td>
 			</tr>
 			
 			<tr height="40">
@@ -76,8 +77,8 @@
 			</tr>
 			
 			<tr>
-				<td colspan="2"><font size="4"><b>Description</b></font></td>
-				<td align="right">Edit Description</td>
+				<td colspan="2"><font size="4"><b></b></font></td>
+				<td align="right"></td>
 			</tr>
 			<tr height="10">
 				<td colspan="3"><hr/></td>
@@ -88,11 +89,11 @@
 				<td valign="top" align="right">Add new</td>
 			</tr>
 			<tr height="10">
-				<td colspan="3"><hr/></td>
+				<td colspan="3"><</td>
 			</tr>
 			<tr>
-				<td colspan="2"><font size="4"><b>Skill</b></font></td>
-				<td align="right">Add new skill</td>
+				<td colspan="2"><font size="4"><b></b></font></td>
+				<td align="right"></td>
 			</tr>
 			<tr height="10">
 				<td colspan="3"><hr/></td>

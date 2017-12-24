@@ -2,8 +2,6 @@
 <?php require_once "../service/person_service.php"; ?>
 
 <?php
-
-
 	//$username = $_REQUEST['name'];
 	
 	

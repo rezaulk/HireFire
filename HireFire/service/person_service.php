@@ -1,4 +1,4 @@
-<?php require_once "../data/person_data_access.php"; ?>
+<?php require_once "../../data/person_data_access.php"; ?>
 <?php
     
 	function login($user){
@@ -10,8 +10,9 @@
 	function getUserEmail($key){
         return getUserEmailFromDb($key);
     }
-	
-	
+	function getJoiningDate($key){
+        return getJoiningDateFromDb($key);
+    }
 	
 	
 	
