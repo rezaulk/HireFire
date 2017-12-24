@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 24, 2017 at 09:38 AM
+-- Generation Time: Dec 24, 2017 at 08:00 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -30,17 +30,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `buyers` (
   `uName` varchar(20) NOT NULL,
-  `language` varchar(10) NOT NULL
+  `language` varchar(10) NOT NULL,
+  `Name` varchar(20) NOT NULL,
+  `buyerId` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `buyers`
 --
 
-INSERT INTO `buyers` (`uName`, `language`) VALUES
-('admin', 'English'),
-('robi', 'english'),
-('reza', 'english');
+INSERT INTO `buyers` (`uName`, `language`, `Name`, `buyerId`) VALUES
+('admin', 'English', '', 1),
+('reza', 'english', 'reza ul', 2),
+('robi', 'english', 'robi ullah', 3),
+('tamin', 'english', 'tanim ullah', 6);
 
 -- --------------------------------------------------------
 
@@ -53,15 +56,16 @@ CREATE TABLE `education` (
   `attendFrom` date NOT NULL,
   `attendTo` date NOT NULL,
   `degree` varchar(20) NOT NULL,
-  `area` varchar(20) NOT NULL
+  `area` varchar(20) NOT NULL,
+  `educationId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `education`
 --
 
-INSERT INTO `education` (`uName`, `attendFrom`, `attendTo`, `degree`, `area`) VALUES
-('reza', '2017-12-03', '2017-12-12', 'Bsc', 'Cse');
+INSERT INTO `education` (`uName`, `attendFrom`, `attendTo`, `degree`, `area`, `educationId`) VALUES
+('reza', '2017-12-03', '2017-12-12', 'Bsc', 'Cse', 1);
 
 -- --------------------------------------------------------
 
@@ -71,15 +75,16 @@ INSERT INTO `education` (`uName`, `attendFrom`, `attendTo`, `degree`, `area`) VA
 
 CREATE TABLE `gigrequirements` (
   `gigId` int(11) NOT NULL,
-  `requirement` varchar(200) NOT NULL
+  `requirement` varchar(200) NOT NULL,
+  `requirementId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `gigrequirements`
 --
 
-INSERT INTO `gigrequirements` (`gigId`, `requirement`) VALUES
-(2, 'i want to take your master card :P ');
+INSERT INTO `gigrequirements` (`gigId`, `requirement`, `requirementId`) VALUES
+(1, 'i want to take your master card :P ', 1);
 
 -- --------------------------------------------------------
 
@@ -164,7 +169,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`orderId`, `bId`, `sId`, `gId`, `date`, `accountNumber`) VALUES
-(1, 2, 2, 1, '2017-12-11', 1675428256);
+(1, 2, 1, 1, '2017-12-11', 1675428256);
 
 -- --------------------------------------------------------
 
@@ -178,15 +183,16 @@ CREATE TABLE `sellers` (
   `joiningDate` date NOT NULL,
   `description` varchar(500) NOT NULL,
   `expertLevel` int(2) NOT NULL,
-  `address` varchar(20) NOT NULL
+  `address` varchar(20) NOT NULL,
+  `sellerId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sellers`
 --
 
-INSERT INTO `sellers` (`uName`, `accountNo`, `joiningDate`, `description`, `expertLevel`, `address`) VALUES
-('reza', 1674086295, '2017-12-08', 'hi i am reza ul karim .', 0, 'khilgaon');
+INSERT INTO `sellers` (`uName`, `accountNo`, `joiningDate`, `description`, `expertLevel`, `address`, `sellerId`) VALUES
+('reza', 1674086295, '2017-12-08', 'hi i am reza ul karim .', 0, 'khilgaon', 1);
 
 -- --------------------------------------------------------
 
@@ -196,15 +202,16 @@ INSERT INTO `sellers` (`uName`, `accountNo`, `joiningDate`, `description`, `expe
 
 CREATE TABLE `skills` (
   `uName` varchar(20) NOT NULL,
-  `skill` varchar(20) NOT NULL
+  `skill` varchar(20) NOT NULL,
+  `skillId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `skills`
 --
 
-INSERT INTO `skills` (`uName`, `skill`) VALUES
-('reza', 'wordpress');
+INSERT INTO `skills` (`uName`, `skill`, `skillId`) VALUES
+('reza', 'wordpress', 0);
 
 -- --------------------------------------------------------
 
@@ -245,29 +252,147 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`uName`, `password`, `email`, `type`, `joiningDate`, `imageExt`) VALUES
-('admin', '1', 'admin@gmail.com', 1, '2017-12-24', 'admin.jpg');
+('admin', '1', 'admin@gmail.com', 1, '2017-12-24', 'admin.jpg'),
+('reza', '1', 'reza@gmail.com', 1, '2017-12-05', 'reza.jpg'),
+('robi', '2', 'robi@gmail.com', 1, '2017-12-05', 'robi.jpg'),
+('tamin', '2', 'tanim@gmail.com', 1, '2017-12-04', 'tanim.jpg');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `buyers`
+--
+ALTER TABLE `buyers`
+  ADD PRIMARY KEY (`buyerId`),
+  ADD KEY `uName` (`uName`);
+
+--
+-- Indexes for table `education`
+--
+ALTER TABLE `education`
+  ADD PRIMARY KEY (`educationId`),
+  ADD KEY `uName` (`uName`);
+
+--
+-- Indexes for table `gigrequirements`
+--
+ALTER TABLE `gigrequirements`
+  ADD PRIMARY KEY (`requirementId`),
+  ADD KEY `gigId` (`gigId`);
+
+--
 -- Indexes for table `gigs`
 --
 ALTER TABLE `gigs`
-  ADD PRIMARY KEY (`gigId`);
+  ADD PRIMARY KEY (`gigId`),
+  ADD KEY `uName` (`uName`);
 
 --
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`orderId`);
+  ADD PRIMARY KEY (`orderId`),
+  ADD KEY `bId` (`bId`),
+  ADD KEY `orders_ibfk_2` (`sId`),
+  ADD KEY `gId` (`gId`);
+
+--
+-- Indexes for table `sellers`
+--
+ALTER TABLE `sellers`
+  ADD PRIMARY KEY (`sellerId`),
+  ADD KEY `uName` (`uName`);
+
+--
+-- Indexes for table `skills`
+--
+ALTER TABLE `skills`
+  ADD PRIMARY KEY (`skillId`),
+  ADD KEY `uName` (`uName`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`uName`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `buyers`
+--
+ALTER TABLE `buyers`
+  MODIFY `buyerId` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `education`
+--
+ALTER TABLE `education`
+  MODIFY `educationId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `gigrequirements`
+--
+ALTER TABLE `gigrequirements`
+  MODIFY `requirementId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `sellers`
+--
+ALTER TABLE `sellers`
+  MODIFY `sellerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `buyers`
+--
+ALTER TABLE `buyers`
+  ADD CONSTRAINT `buyers_ibfk_1` FOREIGN KEY (`uName`) REFERENCES `users` (`uName`);
+
+--
+-- Constraints for table `education`
+--
+ALTER TABLE `education`
+  ADD CONSTRAINT `education_ibfk_1` FOREIGN KEY (`uName`) REFERENCES `users` (`uName`);
+
+--
+-- Constraints for table `gigrequirements`
+--
+ALTER TABLE `gigrequirements`
+  ADD CONSTRAINT `gigrequirements_ibfk_1` FOREIGN KEY (`gigId`) REFERENCES `gigs` (`gigId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `gigs`
+--
+ALTER TABLE `gigs`
+  ADD CONSTRAINT `gigs_ibfk_1` FOREIGN KEY (`uName`) REFERENCES `users` (`uName`);
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`bId`) REFERENCES `buyers` (`buyerId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`sId`) REFERENCES `sellers` (`sellerId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`gId`) REFERENCES `gigs` (`gigId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `sellers`
+--
+ALTER TABLE `sellers`
+  ADD CONSTRAINT `sellers_ibfk_1` FOREIGN KEY (`uName`) REFERENCES `users` (`uName`);
+
+--
+-- Constraints for table `skills`
+--
+ALTER TABLE `skills`
+  ADD CONSTRAINT `skills_ibfk_1` FOREIGN KEY (`uName`) REFERENCES `users` (`uName`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
