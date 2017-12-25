@@ -112,7 +112,7 @@
 		if(validUser){
 			var allUser = <?php echo json_encode($allUser); ?>;
 			for(var i=0;i<allUser.length;i++){
-				if((allUser[i]['uName'])==userName)
+				if((allUser[i]['uName']).toUpperCase() ==userName.toUpperCase() )
 				{
 					//alert("TANIM");
 					userNameErrorBox.innerHTML= "UserName already exist";
