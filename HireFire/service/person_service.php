@@ -70,7 +70,7 @@
     
     function isUniquePersonEmailForUpdate($personId, $personEmail){
         $persons  = getAllPersons();
-        $isUnique = true;
+        $is	Unique = true;
         foreach($persons as $person){
             if($person['id']!=$personId && $person['email']==$personEmail){
                 $isUnique = false;
