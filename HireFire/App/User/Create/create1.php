@@ -7,14 +7,18 @@
 	
 	if($_SERVER['REQUEST_METHOD']=="POST")
 	{
-		if(!isValid==true)
-		{
+		$gigtitle=$_POST['gigtitle'];
+		$gigprice=$_POST['gigprice'];
+		$gigdescription=$_POST['gigdescription'];
+		$category=$_POST['category'];
+		
+		
+			$person['gigtitle']=$gigtitle;
+			$person['gigprice']=$gigprice;
+			$person['gigdescription']=$gigdescription;
+			$person['category']=$category;
+			addGig($person);
 			
-		}
-		else
-		{
-			
-		}
 		
 	}
 		
@@ -218,7 +222,7 @@ function validateGigTitle()
 			<tr height="65%">
 				<td width="25%"></td>
 				<td>
-				<form action="../profile.php">
+				<form method="POST" onsubmit="return validate()">
 					<table width="100%" cellspacing="15" border="0">
 						<tr>
 							<td width="10%">Gig Title: </td>

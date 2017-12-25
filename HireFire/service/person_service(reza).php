@@ -19,6 +19,10 @@
 	{
 		return accessGigToDb($key);
 	}
+	function addGig($key)
+	{
+		return addGigToDb($key);
+	}
 	
 	
 	

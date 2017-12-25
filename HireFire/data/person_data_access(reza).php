@@ -7,6 +7,23 @@
             <?php } ?>
 	
 	*/
+	function addGigToDb($person)
+	{
+		$gigtitle=$person["gigtitle"];
+		$gigprice=$person["gigprice"];
+		$gigdescription=$person["gigdescription"];
+		$category=$person["category"];
+		$date= date("Y-m-d");
+		
+		$sql = "INSERT INTO gigs VALUES('$uName''$gigTitle','null','$category', '$price', '$gDescription' ,'null', ,'$date', '0')";
+		
+		
+        //var_dump($sql);
+	    $result = executeSQL($sql);
+        return $result;
+	}
+	
+	
 	function accessGigToDb($key)
 	{
 		$name=$key;
