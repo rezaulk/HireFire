@@ -155,6 +155,21 @@
         
         return $persons;
     }
+	
+	 function getAllUserEmailFromDb(){
+        $sql = "SELECT email FROM users";        
+        $result = executeSQL($sql);
+		var_dump($result);
+        
+        $persons = array();
+        for($i=0; $row=mysqli_fetch_assoc($result); ++$i){
+			
+            $persons[$i] = $row;
+			echo $person[$i];
+        }
+        
+        return $persons;
+    }
     
     function getPersonByIdFromDb($personId){
         $sql = "SELECT * FROM person WHERE id=$personId";        
