@@ -1,5 +1,5 @@
-<?php session_start();require_once "../service/validation_service.php"; ?>
-<?php require_once "../service/person_service.php"; ?>
+<?php session_start();//require_once "../service/validation_service.php"; ?>
+<?php require_once "../service/TANIM_service.php"; ?>
 <?php
 	$allUser=getAllUsers();
 	//var_dump($allUser);
@@ -21,37 +21,19 @@
 			$person['password']=$password;
 			$person['type']=2;
 			$person['imageExt']=$userName.".jpg";
-			$person['joiningdate']=date("Y-m-d");
+			$person['joiningDate']=date("Y-m-d");
 			
 			
-	//var_dump($GLOBALS);		
-			$validEntry=true;
+			
 			if(addPersonAsBuyer($person)==true){
-				
-				foreach($_REQUEST['languages'] as $language){
-					$person['language']=$language;
-					if(addLanguage($person)==false){
-						echo "<script>
-						alert('InternalError');
-					 </script>";
-						$validEntry=false;
-						break;
-					}
-				}
-				if($validEntry=true && count(($_REQUEST['languages']))!=0){
-					//session_unset();
-					 echo "<script>
+				echo "<script>
 						alert('Record Added');
-						document.location='Buyer/buyer_only.html';
+						document.location='Buyer/buyer_only.php';
 					 </script>";
 				die();
-				}
-				
 			}
 			else{
-				 echo "<script>
-						alert('InternalError');
-					 </script>";
+				echo "Internal Error<hr/>";
 			}
 		}
 	}
@@ -273,12 +255,12 @@
 					<br/><br/>
 					<fieldset>
 						<legend>Language</legend>
-							<input type="checkbox" name="languages[]" value="bangla" onclick="emptylanguageErrorShowSolved()"/>Bangla
-							<input type="checkbox" name="languages[]" value="english" onclick="emptylanguageErrorShowSolved()"/>English
-							<input type="checkbox" name="languages[]" value="french" onclick="emptylanguageErrorShowSolved()"/>French
-							<input type="checkbox" name="languages[]" value="hindi" onclick="emptylanguageErrorShowSolved()"/>Hindi
-							<input type="checkbox" name="languages[]" value="spanish" onclick="emptylanguageErrorShowSolved()"/>Spanish
-							<input type="checkbox" name="languages[]" value="urdo" onclick="emptylanguageErrorShowSolved()"/>Urdo
+							<input type="checkbox" name="language[]" value="bangla" onclick="emptylanguageErrorShowSolved()"/>Bangla
+							<input type="checkbox" name="language[]" value="english" onclick="emptylanguageErrorShowSolved()"/>English
+							<input type="checkbox" name="language[]" value="french" onclick="emptylanguageErrorShowSolved()"/>French
+							<input type="checkbox" name="language[]" value="hindi" onclick="emptylanguageErrorShowSolved()"/>Hindi
+							<input type="checkbox" name="language[]" value="spanish" onclick="emptylanguageErrorShowSolved()"/>Spanish
+							<input type="checkbox" name="language[]" value="urdo" onclick="emptylanguageErrorShowSolved()"/>Urdo
 					</fieldset><span id="languageErrorMassage"></span>	<br/><br/>
 					<input type="submit" value="Join"/>
 					<br/><br/>
