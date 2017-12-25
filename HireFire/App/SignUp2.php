@@ -1,6 +1,10 @@
 <?php session_start();require_once "../service/validation_service.php"; ?>
 <?php require_once "../service/person_service.php"; ?>
 <?php
+	$allUser=getAllUsers();
+	//var_dump($allUser);
+?>
+<?php
 	
 	
 	if($_SERVER['REQUEST_METHOD']=="POST"){
@@ -83,6 +87,19 @@
 				}
 			}
 			
+		}
+		if(validUser){
+			var allUser = <?php echo json_encode($allUser); ?>;
+			for(var i=0;i<allUser.length;i++){
+				if((allUser[i]['uName'])==userName)
+				{
+					//alert("TANIM");
+					userNameErrorBox.innerHTML= "UserName already exist";
+					validUser= false;
+					break;
+				}
+				
+			}
 		}
 		return validUser;
 		
