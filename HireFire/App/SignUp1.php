@@ -78,7 +78,7 @@
 				<fieldset>
 					<legend>Join HireFire</legend>
 					<br/>
-					<input type="text" placeholder="Enter your email" name="email" id="email"/><span id="emailError"></span>
+					<input type="text" placeholder="Enter your email" name="email" size="30" id="email"/><span id="emailError"></span>
 					<br/><br/>
 					<input type="submit" value="Continue"/>
 					<br/><br/>
