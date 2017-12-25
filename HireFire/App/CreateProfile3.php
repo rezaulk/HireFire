@@ -152,6 +152,76 @@
 </script>
 
 
+
+
+
+<?php require_once "../service/validation_service.php"; ?>
+
+<?php
+	
+	if($_SERVER['REQUEST_METHOD']=="POST")
+	{
+		$isValid=true;
+		$workingHour=$_POST['workingHour'];
+		$country=$_POST['country'];
+		$address=$_POST['address'];
+		$postalCode=$_POST['postalCode'];
+		$number=$_POST['number'];
+		//var_dump($_REQUEST['skill']);
+		
+		if($workingHour=="Please select")
+		{
+		echo "<script>alert('work');</script>"; 
+			$isValid=false;
+		}
+		else if($country=="Please select")
+		{
+			echo "<script>alert('country');</script>"; 
+			$isValid=false;
+		}
+        else if(empty($address))
+		{
+			echo "<script>alert('address');</script>"; 
+            $isValid = false;
+        }
+		else if(empty($postalCode))
+		{
+			echo "<script>alert('postalCode');</script>"; 
+            $isValid = false;
+        }
+        else if(isValidPostalCode($postalCode)==false){
+			echo "<script>alert('acc1');</script>"; 
+            $isValid = false;
+        }
+		else if(empty($number))
+		{
+			echo "<script>alert('postalCode');</script>"; 
+            $isValid = false;
+        }
+		else if(isValidNumber($number)==false){
+			echo "<script>alert('acc1');</script>"; 
+            $isValid = false;
+        }
+		
+		if($isValid==false)
+		{
+			echo "<script>alert('Maybe javascript file has been changed. Please reload you browser');</script>"; 
+		}
+		else
+		{
+			header('Location: User/profile.php');
+		}
+		
+	}
+		
+
+?>
+
+
+
+
+
+
 <table  width="100%" border="0">
 	<tr>
 
@@ -165,7 +235,7 @@
 	</tr>		
 </table>
 
-<form action="User/profile.html" onsubmit="return validate()">
+<form method="POST" onsubmit="return validate()">
 <table width="100%" >
 	<tr>
 		<td width="30%"></td>
