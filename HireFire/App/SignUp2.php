@@ -21,7 +21,7 @@
 			$person['password']=$password;
 			$person['type']=2;
 			$person['imageExt']=$userName.".jpg";
-			$person['joiningDate']=date("Y-m-d");
+			$person['joiningdate']=date("Y-m-d");
 			
 			
 	//var_dump($GLOBALS);		
@@ -39,14 +39,14 @@
 					}
 				}
 				if($validEntry=true && count(($_REQUEST['languages']))!=0){
-					session_unset();
+					//session_unset();
 					 echo "<script>
 						alert('Record Added');
 						document.location='Buyer/buyer_only.html';
 					 </script>";
-				}
-				echo "";
 				die();
+				}
+				
 			}
 			else{
 				 echo "<script>

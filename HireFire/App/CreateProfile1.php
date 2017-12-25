@@ -83,6 +83,51 @@
 	
 </script>
 
+<?php require_once "../service/validation_service.php"; ?>
+
+<?php
+	
+	if($_SERVER['REQUEST_METHOD']=="POST")
+	{
+		
+		
+		$bankName=$_POST['bankName'];
+		$accountNo=$_POST['accountNo'];
+		//var_dump($_REQUEST['skill']);
+		
+		$isValid = true;
+		if(!(isset($_REQUEST['bankName'])))
+		{
+
+			$isValid=false;
+		}
+        else if(empty($accountNo)){
+
+            $isValid = false;
+        }
+        else if(isValidAccountNo($accountNo)==false){
+
+            $isValid = false;
+        }
+		else if(isset($_REQUEST['skill'])==false){
+            $isValid = false;
+        }
+        
+		if($isValid==false)
+		{
+			echo "<script>alert('Maybe javascript file has been changed. Please reload you browser');</script>"; 
+		}
+		else
+		{
+			header('Location: CreateProfile2.php');
+		}
+		
+	}
+		
+
+?>
+
+
 
 <table  width="100%" border="0">
 	<tr>
@@ -97,7 +142,7 @@
 	</tr>		
 </table>
 
-<form action="CreateProfile2.html" onsubmit="return validate()"><center>
+<form onsubmit="return validate()" method="POST"><center>
 <table width="100%" >
 	<tr>
 		<td width="15%"></td>
@@ -107,8 +152,8 @@
 					<tr height="40">
 					<td>Select Your Bank</td>
 						<td>
-							<input type="radio" name="bank" value="bkash" id="bank1" onclick="emptyBankErrorMassage()"/>Bkash
-							<input type="radio" name="bank" value="rocket" id="bank2" onclick="emptyBankErrorMassage()"/>Rocket&nbsp;&nbsp;<span id="bankErrorMassage"></span>
+							<input type="radio" name="bankName" value="bkash" id="bank1" onclick="emptyBankErrorMassage()"/>Bkash
+							<input type="radio" name="bankName" value="rocket" id="bank2" onclick="emptyBankErrorMassage()"/>Rocket&nbsp;&nbsp;<span id="bankErrorMassage"></span>
 						</td>
 						
 					</tr>
@@ -121,17 +166,17 @@
 					<tr height="40">
 						<td>Skills</td>
 						<td>
-							<input type="checkbox" name="DSD" onclick="emptySkillsErrorMassage()"/>Desktop Softwere Development
-							<input type="checkbox" name="ED" onclick="emptySkillsErrorMassage()"/>Ecommerce Development
-							<input type="checkbox" name="GD" onclick="emptySkillsErrorMassage()"/>Game Development
+							<input type="checkbox" name="skill[]" value="Desktop Softwere Development" onclick="emptySkillsErrorMassage()"/>Desktop Softwere Development
+							<input type="checkbox" name="skill[]" value="Ecommerce Development" onclick="emptySkillsErrorMassage()"/>Ecommerce Development
+							<input type="checkbox" name="skill[]" value="Game Development" onclick="emptySkillsErrorMassage()"/>Game Development
 							</br>
-							<input type="checkbox" name="MD" onclick="emptySkillsErrorMassage()"/>Mobile Development	
-							<input type="checkbox" name="PM" onclick="emptySkillsErrorMassage()"/>Product Management
-							<input type="checkbox" name="QA&T" onclick="emptySkillsErrorMassage()"/>QA & Testing
+							<input type="checkbox" name="skill[]" value="Mobile Development" onclick="emptySkillsErrorMassage()"/>Mobile Development	
+							<input type="checkbox" name="skill[]" value="Product Management" onclick="emptySkillsErrorMassage()"/>Product Management
+							<input type="checkbox" name="skill[]" value="QA & Testing" onclick="emptySkillsErrorMassage()"/>QA & Testing
 							</br>
-							<input type="checkbox" name="S&U" onclick="emptySkillsErrorMassage()"/>Script and Utilities
-							<input type="checkbox" name="WD" onclick="emptySkillsErrorMassage()"/>Web Development
-							<input type="checkbox" name="OSD" onclick="emptySkillsErrorMassage()"/>Other-Softwere Development &nbsp;&nbsp;<span id="skillsErrorMassage"></span>			
+							<input type="checkbox" name="skill[]" value="Script and Utilities" onclick="emptySkillsErrorMassage()"/>Script and Utilities
+							<input type="checkbox" name="skill[]" value="Web Development" onclick="emptySkillsErrorMassage()"/>Web Development
+							<input type="checkbox" name="skill[]" value="Other-Softwere Development" onclick="emptySkillsErrorMassage()"/>Other-Softwere Development &nbsp;&nbsp;<span id="skillsErrorMassage"></span>			
 						</td>
 					</tr >
 					

@@ -2,9 +2,6 @@
 <?php require_once "../service/person_service.php"; ?>
 
 <?php
-	//$username = $_REQUEST['name'];
-	
-	
     $name = $password = $error="";
     $nameErr = $passwordErr = "";
     if($_SERVER['REQUEST_METHOD']=="POST"){
@@ -28,17 +25,38 @@
             $person['name'] = $name;
             $person['password'] = $password;
             
-            if(login($person)==true){
+            if(($persons=(login($person)))==true){
 				
                 $_SESSION['username']=$name;
-				echo "<script>
+			   if($persons[0]['type']==1)
+			   {
+				    echo "<script>
                         //alert('Record Added');
-						document.location='User/profile.php';
+						document.location='Admin/profile.php';
                      </script>";
 					 
+                    die();
+			   }
+			   else if($persons[0]['type']==3)
+			   {
+				    echo "<script>
+                        //alert('Record Added');
+						document.location='Buyer/buyer.php';
+                    </script>"; 
+                    die();
+			   }  
+			   else
+			   {
+				echo "<script>
+					 //alert('Record Added');
+					 document.location='Buyer/buyer_only.php';
+				     </script>";
+					 
                 die();
-            }
-            else{
+                 }
+			}
+            else
+			{
                $error ="Wrong User name Password";
 			   /*echo "<script>
                         alert('Wrong User name Password');
