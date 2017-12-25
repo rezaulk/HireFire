@@ -23,9 +23,7 @@
 	function addPersonAsBuyer($person){
         return addPersonBuyerToDb($person);
     }
-	function getJoiningDate($key){
-        return getJoiningDateFromDb($key);
-    }
+	
 //=======
 	
 	
