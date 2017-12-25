@@ -1,3 +1,45 @@
+<?php require_once "../service/validation_service(robi).php"; ?>
+<?php
+	
+	if($_SERVER['REQUEST_METHOD']=="POST")
+	{
+		
+		
+		$bankName=$_POST['bankName'];
+		$accountNo=$_POST['accountNo'];
+		//var_dump($_REQUEST['skill']);
+		
+		$isValid = true;
+		if(!(isset($_REQUEST['bankName'])))
+		{
+
+			$isValid=false;
+		}
+        else if(empty($accountNo)){
+
+            $isValid = false;
+        }
+        else if(isValidAccountNo($accountNo)==false){
+
+            $isValid = false;
+        }
+		else if(isset($_REQUEST['skill'])==false){
+            $isValid = false;
+        }
+        
+		if($isValid==false)
+		{
+			echo "<script>alert('Maybe javascript file has been changed. Please reload you browser');</script>"; 
+		}
+		else
+		{
+			header('Location: CreateProfile2.php');
+			
+		}
+		
+	}
+?>
+
 <script>
 	//isFormValid=true;
 	function validate()
@@ -83,49 +125,12 @@
 	
 </script>
 
-<?php require_once "../service/validation_service(robi).php"; ?>
 
-<?php
-	
-	if($_SERVER['REQUEST_METHOD']=="POST")
-	{
-		
-		
-		$bankName=$_POST['bankName'];
-		$accountNo=$_POST['accountNo'];
-		//var_dump($_REQUEST['skill']);
-		
-		$isValid = true;
-		if(!(isset($_REQUEST['bankName'])))
-		{
 
-			$isValid=false;
-		}
-        else if(empty($accountNo)){
 
-            $isValid = false;
-        }
-        else if(isValidAccountNo($accountNo)==false){
-
-            $isValid = false;
-        }
-		else if(isset($_REQUEST['skill'])==false){
-            $isValid = false;
-        }
-        
-		if($isValid==false)
-		{
-			echo "<script>alert('Maybe javascript file has been changed. Please reload you browser');</script>"; 
-		}
-		else
-		{
-			header('Location: CreateProfile2.php');
-		}
-		
-	}
 		
 
-?>
+
 
 
 
