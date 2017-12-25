@@ -1,5 +1,5 @@
-<?php session_start();require_once "../service/validation_service.php"; ?>
-<?php require_once "../service/person_service.php"; ?>
+<?php session_start();//require_once "../service/validation_service.php"; ?>
+<?php require_once "../service/TANIM_service.php"; ?>
 <?php
 	$allUser=getAllUsers();
 	//var_dump($allUser);
@@ -28,7 +28,7 @@
 			if(addPersonAsBuyer($person)==true){
 				echo "<script>
 						alert('Record Added');
-						document.location='Buyer/buyer_only.html';
+						document.location='Buyer/buyer_only.php';
 					 </script>";
 				die();
 			}
