@@ -36,18 +36,6 @@
 		}
 		else
 		{
-			      $isValid = false;
-        }
-		else if(isset($_REQUEST['skill'])==false){
-            $isValid = false;
-        }
-        
-		if($isValid==false)
-		{
-			echo "<script>alert('Maybe javascript file has been changed. Please reload you browser');</script>"; 
-		}
-		else
-		{
 			$_SESSION['bankName']=$bankName;
 			$_SESSION['accountNo']=$accountNo;
 			$_SESSION['skill']=$_REQUEST['skill'];
@@ -57,7 +45,6 @@
 		}
 		
 	}
-		
 		
 	
 ?>
