@@ -89,7 +89,7 @@
 			$isValid=false;
 		}
 			
-		
+		$R=0;
 		return $isValid;
 	}
 	
