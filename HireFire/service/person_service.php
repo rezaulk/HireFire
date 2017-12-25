@@ -12,9 +12,7 @@
         return getUserEmailFromDb($key);
     }
 //<<<<<<< HEAD
-	function getJoiningDate($key){
-        return getJoiningDateFromDb($key);
-    }
+	
 //=======
 	function addPersonAsBuyer($person){
         return addPersonBuyerToDb($person);
