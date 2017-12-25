@@ -13,6 +13,9 @@
 	function addPersonAsBuyer($person){
         return addPersonBuyerToDb($person);
     }
+	function addLanguage($person){
+		return addLanguageToBuyersDB($person);
+	}
 	function getJoiningDate($key){
         return getJoiningDateFromDb($key);
     }

@@ -72,6 +72,16 @@
 		$result = executeSQL($sql);
 		return $result;
 	}
+	function addLanguageToBuyersDB($person){
+		$sql = "INSERT INTO buyers(uName, language) VALUES('$person[userName]','$person[language]')";
+		
+		$result = executeSQL($sql);
+		"<script>
+						alert('$result')
+					 </script>";
+		
+		return $result;
+	}
     function addPersonToDb($person){
         $sql = "INSERT INTO person(id, name, email) VALUES(NULL, '$person[name]', '$person[email]')";
         $result = executeSQL($sql);
