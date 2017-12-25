@@ -1,4 +1,5 @@
 <?php require_once "../data/person_data_access.php"; ?>
+    
 
 <?php
     
@@ -11,12 +12,9 @@
 	function getUserEmail($key){
         return getUserEmailFromDb($key);
     }
-	function addPersonAsBuyer($person){
-        return addPersonBuyerToDb($person);
+	function getJoiningDate($key){
+        return getJoiningDateFromDb($key);
     }
-	function addLanguage($person){
-		return addLanguageToBuyersDB($person);
-	}
 	
 	
 	
@@ -36,9 +34,6 @@
     function getAllUsers(){
         return getAllUsersFromDb();
     }
-	function getAllUserEmail(){
-		getAllUserEmailFromDb();
-	}
     
     function getPersonById($personId){
         return getPersonByIdFromDb($personId);
@@ -70,7 +65,7 @@
     
     function isUniquePersonEmailForUpdate($personId, $personEmail){
         $persons  = getAllPersons();
-        $is	Unique = true;
+        $isUnique = true;
         foreach($persons as $person){
             if($person['id']!=$personId && $person['email']==$personEmail){
                 $isUnique = false;
