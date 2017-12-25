@@ -1,5 +1,5 @@
-<?php   session_start(); require_once "../service/validation_service.php"; ?>
-<?php require_once "../service/person_service.php"; ?>
+<?php   session_start(); require_once "../service/validation_service(reza).php"; ?>
+<?php require_once "../service/person_service(reza).php"; ?>
 
 <?php
     $name = $password = $error="";
@@ -93,7 +93,7 @@
 					<hr>
 					<input type="checkbox" name="check">Remember Me</input>
 					</br></br>
-					<input type="submit"/> <a href="ForgotPassword.html">Forgot Password</a><br/><br/>
+					<input type="submit"/> <a href="ForgotPassword.php">Forgot Password</a><br/><br/>
 					You don't have any account? <a href="ForgotPassword.html">Create an account</a>	
 				</fieldset>
 			</form>

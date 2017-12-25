@@ -1,5 +1,5 @@
-<?php require_once "../service/validation_service.php"; ?>
-<?php require_once "../service/person_service.php"; ?>
+<?php require_once "../service/validation_service(reza).php"; ?>
+<?php require_once "../service/person_service(reza).php"; ?>
 
 <?php
     $error= $error1="";
@@ -28,7 +28,7 @@
                 die();
             }
             else{
-               $error ="Wrong Email";
+               $error ="Wrong UserName";
             }
         }
     }
