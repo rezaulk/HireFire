@@ -1,5 +1,9 @@
 <?php require_once "../service/validation_service.php"; ?>
-
+<?php require_once "../service/person_service.php"; ?>
+<?php
+	$allUser=getAllUsers();
+	//var_dump($allUser);
+?>
 <script>
 	var validemail=true;
 	function validate(){
@@ -29,6 +33,19 @@
 			{
 				emailErrorBox.innerHTML= "Invalid email address";
 				return false;
+			}
+			else{
+				var allUser = <?php echo json_encode($allUser); ?>;
+				for(var i=0;i<allUser.length;i++){
+					if((allUser[i]['email'])==email)
+					{
+						//alert("TANIM");
+						emailErrorBox.innerHTML= "email already exist";
+						return false;
+						break;
+					}
+					
+				}
 			}
 	
 		}	
