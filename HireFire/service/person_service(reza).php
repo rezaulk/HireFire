@@ -1,6 +1,6 @@
-<?php require_once "../data/person_data_access(reza).php"; ?>
-    
-
+<?php 
+	$path=__DIR__."/../data/person_data_access(reza).php";
+	include($path); ?>
 <?php
     
 	function login($user){
@@ -15,6 +15,10 @@
 	function getJoiningDate($key){
         return getJoiningDateFromDb($key);
     }
+	function accessGig($key)
+	{
+		return accessGigToDb($key);
+	}
 	
 	
 	

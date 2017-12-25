@@ -1,3 +1,14 @@
+<?php   session_start(); 
+        //require_once "../../../data/person_data_access(reza).php";
+        include("../../../service/person_service(reza).php");
+?>
+<?php 
+     
+     $name = $_SESSION['username'];
+	 $persons=accessGig($name);
+	 //var_dump($persons[0]['price']);
+?>
+
 <html>
     <head>
 	    <title>HireFire</title>
@@ -12,12 +23,12 @@
 							<td><input type="text" name="search" placeholder="Search.." size="70" height="20">
 							<button>Search</button></td>
 							<td align="right">
-							<font size="4"><a href="../inbox.html">Messages&nbsp;</a>
-								<a href="../Orders.html">Orders&nbsp</a>
-								<a href="../Postrequest.html">Postrequest&nbsp;</a>
-								<a href="../dashboard.html">Dashboard&nbsp;</a>
-								<a href="../../PublicHome.html">LogOut</a>
-							</font>
+								<font size="4"><a href="../inbox.html">Messages&nbsp;</a>
+									<a href="../Orders.html">Orders&nbsp</a>
+									<a href="../Postrequest.html">Postrequest&nbsp;</a>
+									<a href="../dashboard.html">Dashboard&nbsp;</a>
+									<a href="../../PublicHome.html">LogOut</a>
+								</font>
 							</td>
 							<td><a href="../profile.html"><img src="../../image/b.png" width="50"></a></td>
 						</tr>
@@ -37,35 +48,16 @@
 								Gig Title: 
 							</td>
 							<td width="90%">
-								<input size="50"/>
-							</td>
-						<tr>
-							<td>
-								Category:
-							</td>
-							<td>
-								<select name="hourAvailable">
-									<option value="notSelected">Please select</option>
-									<option value="Graphics & Design">Graphics & Design</option>
-									<option value="Digital Marketing">Digital Marketing</option>
-									<option value="Writing & Translation">Writing & Translation</option>
-									<option value="Music & Audio">Music & Audio</option>
-									<option value=" Programming & Tech"> Programming & Tech</option>
-									<option value="Business">Business</option>
-									<option value="Video & Animation">Video & Animation</option>
-								</select>
+								<input size="50" value="<?php echo $persons[0]['gigTitle'] ?>"/>
 							</td>
 						</tr>
 						<tr>
 							<td>Price:</td>	
-							<td><input/></td>	
-						<tr>	
-							<td>Requirement:</td>	
-							<td><textarea rows="10" cols="35" ></textarea> &nbsp; <img src="../../image/hint.png" height="13" title="Separate by comma"/> Separate by comma</td>
+							<td><input value="<?php echo $persons[0]['price'] ?>"/></td>	
 						</tr>
 						<tr>
 							<td>Description:</td>
-							<td><textarea rows="10" cols="35" ></textarea> &nbsp; <img src="../../image/hint.png" height="13" title="Separate by comma"/> Separate by comma</td>
+							<td><textarea rows="10" cols="35" ><?php echo $persons[0]['gDescription'] ?></textarea> &nbsp; <img src="../../image/hint.png" height="15" title="Separate by comma"/></td>
 						</tr>
 						<tr>
 							<td>Image:</td> 
@@ -76,9 +68,7 @@
 							<td><input type="submit"/></td>
 						</tr>
 					</table>
-				</form>
-					
-					
+				</form>	
 				</td>
 			</tr >
 			

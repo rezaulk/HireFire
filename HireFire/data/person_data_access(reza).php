@@ -7,6 +7,22 @@
             <?php } ?>
 	
 	*/
+	function accessGigToDb($key)
+	{
+		$name=$key;
+		$sql = "SELECT * FROM gigs WHERE uName LIKE '$name' ";
+		$result = executeSQL($sql);
+		//var_dump($result);
+		$persons = array();
+			for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+				$persons[$i] = $row;
+				//var_dump($persons[$i]['type']);
+			}
+			//var_dump($persons);
+		return $persons;  
+    }
+	
+	
 	function accessProfileBuyer($key)
 	{
 		$name=$key;
