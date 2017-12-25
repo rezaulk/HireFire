@@ -62,7 +62,7 @@
 			$_SESSION['address']=$address;
 			$_SESSION['postalCode']=$postalCode;
 			$_SESSION['number']=$number;
-			if(addSeller()&&addSkills())
+			if(addSeller()&&addSkills()&&addEducation())
 			{
 				//var_dump($_SESSION);
 				header('Location: User/profile.php');

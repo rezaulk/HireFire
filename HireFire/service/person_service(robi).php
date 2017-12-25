@@ -94,6 +94,11 @@
 	{
 		return addSkillsToDb();
 	}
+	function addEducation()
+	{
+		return addEducationToDb();
+	}
+	
 
 	
 ?>

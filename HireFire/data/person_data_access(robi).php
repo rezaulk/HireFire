@@ -247,7 +247,7 @@
 		$to=$_SESSION['to'];
 		$degree=$_SESSION['degree'];
 		$areaOfStudy=$_SESSION['areaOfStudy'];
-		$workingHou=$_SESSION['workingHour'];
+		$workingHour=$_SESSION['workingHour'];
 		$country=$_SESSION['country'];
 		$address=$_SESSION['address'];
 		$postalCode=$_SESSION['postalCode'];
@@ -256,7 +256,7 @@
 		$expertLevel=0;
 		
 		
-		$sql = "INSERT INTO sellers VALUES('$uName', '$accountNo', '$joiningDate', '$description' , '$expertLevel', '$address' ,'null', '$country' , '$bankName', '$postalCode', '$number')";
+		$sql = "INSERT INTO sellers VALUES('$uName', '$accountNo', '$joiningDate', '$description' , '$expertLevel', '$address' ,'null', '$country' , '$bankName', '$postalCode', '$number', '$workingHour')";
         //var_dump($sql);
 	    $result = executeSQL($sql);
         return $result;
@@ -264,7 +264,7 @@
 	
 	function addSkillsToDb()
 	{
-		$uName="robi";
+		$uName=$_SESSION['username'];
 		$skills=$_SESSION['skill'];
 		$i=0;
 		foreach($skills as $skill)
@@ -272,7 +272,7 @@
 			$sql = "INSERT INTO skills VALUES('$uName', '$skill')";
 			$result = executeSQL($sql);
 			$i++;
-			var_dump($sql);
+			//var_dump($sql);
 		}
 		if($i==count($skills))
 		{
@@ -284,22 +284,14 @@
 	
 	function addEducationToDb()
 	{
-		$uName="robi";
+		$uName=$_SESSION['username'];
 		$school=$_SESSION['school'];
 		$from=$_SESSION['from'];
 		$to=$_SESSION['to'];
 		$degree=$_SESSION['degree'];
 		$areaOfStudy=$_SESSION['areaOfStudy'];
-		$workingHou=$_SESSION['workingHour'];
-		$country=$_SESSION['country'];
-		$address=$_SESSION['address'];
-		$postalCode=$_SESSION['postalCode'];
-		$number=$_SESSION['number'];
-		$joiningDate=Date("Y-m-d");
-		$expertLevel=0;
-		
-		alert("sdfg");
-		$sql = "INSERT INTO sellers VALUES('$uName', '$accountNo', '$joiningDate', '$description' , '$expertLevel', '$address' ,'null', '$country' , '$bankName', '$postalCode', '$number')";
+
+		$sql = "INSERT INTO education VALUES('$uName', '$from', '$to' , '$degree', '$areaOfStudy', 'null')";
         var_dump($sql);
 	    $result = executeSQL($sql);
         return $result;
