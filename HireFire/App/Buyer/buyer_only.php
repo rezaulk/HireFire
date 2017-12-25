@@ -34,7 +34,7 @@
 				if($filename!=""){
 					$fileExt=explode(".",$filename);
 					if(count($fileExt>=2)){
-						if(($fileExt[1]=='jpg')||($fileExt[1]=='png')||($fileExt[1]=='jpeg')){
+						if(($fileExt[1]=='jpg')||($fileExt[1]=='png')||($fileExt[1]=='jpeg')||($fileExt[1]=='JPG')||($fileExt[1]=='PNG')||($fileExt[1]=='JPEG')){
 							$location="../uploads/";
 							if(move_uploaded_file($tmp_name,$location.$username.".jpg")){
 								$imageLocationWithImageName="../uploads/".$username.".jpg";
@@ -54,16 +54,6 @@
 			}
 			
 		}
-		//===
-		/*if(isset($filename))
-		{
-			//$name="TANIM.jpg";
-			if(!empty($filename))
-			{
-				//echo $userName;
-				
-			}
-		}*/
 		
 	}
 ?>
@@ -92,7 +82,7 @@
 	<tr height="600">
 		<td width="1%"></td>
 		<td valign="top" align="center" width="20%">
-			<img src="<?=$imageLocationWithImageName?>" width="30%" alt="TANIM"/>
+			<img src="<?=$imageLocationWithImageName?>" width="30%" alt="profilepic"/>
 			<br/><?php echo $username;?>
 			<br/>Buyer<br/>
 			
