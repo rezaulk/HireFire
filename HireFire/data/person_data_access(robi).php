@@ -236,4 +236,72 @@
         return $persons;
     }
     
+	function addSellerToDb()
+	{
+		$uName=$_SESSION['username'];
+		$bankName=$_SESSION['bankName'];
+		$accountNo=$_SESSION['accountNo'];
+		$description=$_SESSION['description'];
+		$school=$_SESSION['school'];
+		$from=$_SESSION['from'];
+		$to=$_SESSION['to'];
+		$degree=$_SESSION['degree'];
+		$areaOfStudy=$_SESSION['areaOfStudy'];
+		$workingHou=$_SESSION['workingHour'];
+		$country=$_SESSION['country'];
+		$address=$_SESSION['address'];
+		$postalCode=$_SESSION['postalCode'];
+		$number=$_SESSION['number'];
+		$joiningDate=Date("Y-m-d");
+		$expertLevel=0;
+		
+		
+		$sql = "INSERT INTO sellers VALUES('$uName', '$accountNo', '$joiningDate', '$description' , '$expertLevel', '$address' ,'null', '$country' , '$bankName', '$postalCode', '$number')";
+        //var_dump($sql);
+	    $result = executeSQL($sql);
+        return $result;
+	}
+	
+	function addSkillsToDb()
+	{
+		$uName="robi";
+		$skills=$_SESSION['skill'];
+		$i=0;
+		foreach($skills as $skill)
+		{
+			$sql = "INSERT INTO skills VALUES('$uName', '$skill')";
+			$result = executeSQL($sql);
+			$i++;
+			var_dump($sql);
+		}
+		if($i==count($skills))
+		{
+			return true;
+		}
+		else
+			return false;
+	}
+	
+	function addEducationToDb()
+	{
+		$uName="robi";
+		$school=$_SESSION['school'];
+		$from=$_SESSION['from'];
+		$to=$_SESSION['to'];
+		$degree=$_SESSION['degree'];
+		$areaOfStudy=$_SESSION['areaOfStudy'];
+		$workingHou=$_SESSION['workingHour'];
+		$country=$_SESSION['country'];
+		$address=$_SESSION['address'];
+		$postalCode=$_SESSION['postalCode'];
+		$number=$_SESSION['number'];
+		$joiningDate=Date("Y-m-d");
+		$expertLevel=0;
+		
+		alert("sdfg");
+		$sql = "INSERT INTO sellers VALUES('$uName', '$accountNo', '$joiningDate', '$description' , '$expertLevel', '$address' ,'null', '$country' , '$bankName', '$postalCode', '$number')";
+        var_dump($sql);
+	    $result = executeSQL($sql);
+        return $result;
+	}
 ?>

@@ -105,7 +105,7 @@
 			
 			<tr align="center">
 				<td colspan="3">
-					<button><font size="3"><a href="../CreateProfile1.html">Create Profile As Seller</a></font></button>
+					<button><font size="3"><a href="../CreateProfile1.php">Create Profile As Seller</a></font></button>
 				</td>
 			</tr>
 			
