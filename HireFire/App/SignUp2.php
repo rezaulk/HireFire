@@ -21,19 +21,37 @@
 			$person['password']=$password;
 			$person['type']=2;
 			$person['imageExt']=$userName.".jpg";
-			$person['joiningDate']=date("Y-m-d");
+			$person['joiningdate']=date("Y-m-d");
 			
 			
-			
+	//var_dump($GLOBALS);		
+			$validEntry=true;
 			if(addPersonAsBuyer($person)==true){
-				echo "<script>
+				
+				foreach($_REQUEST['languages'] as $language){
+					$person['language']=$language;
+					if(addLanguage($person)==false){
+						echo "<script>
+						alert('InternalError');
+					 </script>";
+						$validEntry=false;
+						break;
+					}
+				}
+				if($validEntry=true && count(($_REQUEST['languages']))!=0){
+					//session_unset();
+					 echo "<script>
 						alert('Record Added');
 						document.location='Buyer/buyer_only.html';
 					 </script>";
 				die();
+				}
+				
 			}
 			else{
-				echo "Internal Error<hr/>";
+				 echo "<script>
+						alert('InternalError');
+					 </script>";
 			}
 		}
 	}
@@ -255,12 +273,12 @@
 					<br/><br/>
 					<fieldset>
 						<legend>Language</legend>
-							<input type="checkbox" name="language[]" value="bangla" onclick="emptylanguageErrorShowSolved()"/>Bangla
-							<input type="checkbox" name="language[]" value="english" onclick="emptylanguageErrorShowSolved()"/>English
-							<input type="checkbox" name="language[]" value="french" onclick="emptylanguageErrorShowSolved()"/>French
-							<input type="checkbox" name="language[]" value="hindi" onclick="emptylanguageErrorShowSolved()"/>Hindi
-							<input type="checkbox" name="language[]" value="spanish" onclick="emptylanguageErrorShowSolved()"/>Spanish
-							<input type="checkbox" name="language[]" value="urdo" onclick="emptylanguageErrorShowSolved()"/>Urdo
+							<input type="checkbox" name="languages[]" value="bangla" onclick="emptylanguageErrorShowSolved()"/>Bangla
+							<input type="checkbox" name="languages[]" value="english" onclick="emptylanguageErrorShowSolved()"/>English
+							<input type="checkbox" name="languages[]" value="french" onclick="emptylanguageErrorShowSolved()"/>French
+							<input type="checkbox" name="languages[]" value="hindi" onclick="emptylanguageErrorShowSolved()"/>Hindi
+							<input type="checkbox" name="languages[]" value="spanish" onclick="emptylanguageErrorShowSolved()"/>Spanish
+							<input type="checkbox" name="languages[]" value="urdo" onclick="emptylanguageErrorShowSolved()"/>Urdo
 					</fieldset><span id="languageErrorMassage"></span>	<br/><br/>
 					<input type="submit" value="Join"/>
 					<br/><br/>

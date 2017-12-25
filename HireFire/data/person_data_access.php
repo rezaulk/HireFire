@@ -101,6 +101,25 @@
     } 
 	
 	
+//<<<<<<< HEAD
+	function addPersonBuyerToDb($person)
+	{
+		$sql = "INSERT INTO users(uName, password, email,type,joiningDate,imageExt) VALUES('$person[userName]', 
+		'$person[password]','$person[email]',$person[type],'$person[joiningdate]','$person[imageExt]')";
+		$result = executeSQL($sql);
+		return $result;
+	}
+	function addLanguageToBuyersDB($person){
+		$sql = "INSERT INTO buyers(uName, language) VALUES('$person[userName]','$person[language]')";
+		
+		$result = executeSQL($sql);
+		"<script>
+						alert('$result')
+					 </script>";
+		
+		return $result;
+	}
+//=======
 	function getLanguageByBuyerFromDb($uName){
         $sql = "SELECT * FROM buyers WHERE uName LIKE '$uName'";        
         $result = executeSQL($sql);
@@ -126,6 +145,7 @@
 	
 	
 	
+//>>>>>>> f5f6e3ec0cb9356dee0b00d30b5cd85c53436ce9
     function addPersonToDb($person){
         $sql = "INSERT INTO person(id, name, email) VALUES(NULL, '$person[name]', '$person[email]')";
         $result = executeSQL($sql);
@@ -151,6 +171,21 @@
         $persons = array();
         for($i=0; $row=mysqli_fetch_assoc($result); ++$i){
             $persons[$i] = $row;
+        }
+        
+        return $persons;
+    }
+	
+	 function getAllUserEmailFromDb(){
+        $sql = "SELECT email FROM users";        
+        $result = executeSQL($sql);
+		var_dump($result);
+        
+        $persons = array();
+        for($i=0; $row=mysqli_fetch_assoc($result); ++$i){
+			
+            $persons[$i] = $row;
+			echo $person[$i];
         }
         
         return $persons;
