@@ -11,12 +11,14 @@
 		$email=$_REQUEST['email'];
 		$_SESSION['email']=$email;
 		$userName=$_REQUEST['userName'];
+		$name=$_REQUEST['name'];
 		$password=$_REQUEST['password'];
 		$retypePassword=$_REQUEST['retypePassword'];
 		$type=3;
 		$isValid=true;
 		 if($isValid==true){
 			$person['userName'] = $userName;
+			$person['name']=$name;
 			$person['email'] = $email;
 			$person['password']=$password;
 			$person['type']=2;
@@ -24,7 +26,7 @@
 			$person['joiningdate']=date("Y-m-d");
 			
 			
-	//var_dump($GLOBALS);		
+	var_dump($GLOBALS);		
 			$validEntry=true;
 			if(addPersonAsBuyer($person)==true){
 				
@@ -32,13 +34,14 @@
 					$person['language']=$language;
 					if(addLanguage($person)==false){
 						echo "<script>
-						alert('InternalError');
+						alert('InternalError language');
 					 </script>";
 						$validEntry=false;
 						break;
 					}
 				}
 				if($validEntry=true && count(($_REQUEST['languages']))!=0){
+						$_SESSION['username']=$userName;
 					//session_unset();
 					 echo "<script>
 						alert('Record Added');
@@ -50,7 +53,7 @@
 			}
 			else{
 				 echo "<script>
-						alert('InternalError');
+						alert('InternalError buyerEntry');
 					 </script>";
 			}
 		}
@@ -122,6 +125,63 @@
 		return validUser;
 		
 	}
+	function nameCheck(){
+		var validName=true;
+		var startWithLetter=true;
+		
+		var nameTextBox = document.getElementById("name");
+		var nameErrorBox = document.getElementById("nameError");
+		nameErrorBox.style.color = "RED";
+		var name = nameTextBox.value;
+		
+		if(name=="")
+		{
+			nameErrorBox.innerHTML= "Name cannot be empty";
+			validName=false;
+			//return false;
+		}
+		else{
+			var a=name.substr(0,1);
+			if((a<="z" && a>="a") || (a<="Z" && a>="A"))
+			{
+				nameErrorBox.innerHTML= "";
+				
+			}
+			else{
+				nameErrorBox.innerHTML= "Must start with a letter";
+				startWithLetter=false;
+				//validUser=false;
+			}
+			if(startWithLetter)
+			{
+				//alert(name.split(" ").length);
+				if(name.split(" ").length<2)
+				{
+					nameErrorBox.innerHTML= "*Name must contain at least two words";
+					validName=false;
+				}else{
+					var len=name.length;
+					for(var i=0;i<len;i++)
+					{
+						if((name[i]<="z" && name[i]>="a") || (name[i]<="Z" && name[i]>="A")|| name[i]==" ")
+						{
+							//alert("TANIM");
+							nameErrorBox.innerHTML= "";
+						}
+						else{
+							nameErrorBox.innerHTML= "*Name Can contain character only";
+							validName=false;
+							break;
+						}
+						
+					}
+				}
+			}
+			return validName;
+			
+		}
+	}
+	
 	function passwordCheck(){
 		var validPassword=true;
 		
@@ -196,6 +256,11 @@
 			isValid=false;
 			//alert("userNameCheck");
 		}
+		if(!nameCheck())
+		{
+			isValid=false;
+			//alert("nameCheck");
+		}
 		if(!retypepasswordCheck()){
 			isValid=false;
 			//alert("retypepasswordCheck");
@@ -263,7 +328,10 @@
 					<legend><h3>Join HireFire</h3></legend>
 					<br/>
 					User Name<br/>
-					<input type="text" placeholder="Choose a userName" name="userName" id="userName" onchange="userNameCheck()"/><span id="userNameError"></span>
+					<input type="text" placeholder="Choose a username" name="userName" id="userName" onchange="userNameCheck()"/><span id="userNameError"></span>
+					<br/><br/>
+					Name<br/>
+					<input type="text" placeholder="Give your full Name" name="name" id="name" onchange="nameCheck()"/><span id="nameError"></span>
 					<br/><br/>
 					Password<br/>
 					<input type="text" placeholder="Choose a Password" name="password" id="password" onchange="passwordCheck()" /><span id="passwordError"></span>
