@@ -1,6 +1,7 @@
 <?php   session_start(); 
 //var_dump($GLOBALS);
         require_once "../../data/person_data_access(reza).php";
+		require_once "../../service/validation_service(tanim).php";
         //require_once "../../service/person_service.php";
 ?>
 <?php 
@@ -25,36 +26,11 @@
 <?php
 	//var_dump($GLOBALS);
 	if($_SERVER['REQUEST_METHOD']=="POST"){
-		$filename=$_FILES['file']['name'];//ByDefault Name of the uplpoaded file
-		$tmp_name=$_FILES['file']['tmp_name'];//ByDefault where the image saved
-		$size=$_FILES['file']['size'];
-		if(isset($filename))
+		if(imgUpdatedLocation($username,$imageLocationWithImageName)!=$filename)
 		{
-			if($size<5000000){
-				if($filename!=""){
-					$fileExt=explode(".",$filename);
-					if(count($fileExt>=2)){
-						if(($fileExt[1]=='jpg')||($fileExt[1]=='png')||($fileExt[1]=='jpeg')||($fileExt[1]=='JPG')||($fileExt[1]=='PNG')||($fileExt[1]=='JPEG')){
-							$location="../uploads/";
-							if(move_uploaded_file($tmp_name,$location.$username.".jpg")){
-								$imageLocationWithImageName="../uploads/".$username.".jpg";
-								echo "<script>alert('Uploaded')</script>";
-							}
-							
-						}
-						else{
-							echo "<script>alert('Please check your image format')</script>";
-						}
-					}
-					//var_dump($fileExt);
-				}
-			}
-			else{
-				echo "<script>alert('Your File size is too large')</script>";
-			}
-			
+			$imageLocationWithImageName=imgUpdatedLocation($user,$imageLocationWithImageName);
+			//echo "<script>alert('Plea";
 		}
-		
 	}
 ?>
 <form action="buyer_only.php" method="POST" enctype="multipart/form-data">
