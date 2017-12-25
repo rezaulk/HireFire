@@ -58,7 +58,7 @@
 	}
 ?>
 
-<form action="profile.php" method="POST" enctype="multipart/form-data">
+<form action="buyer.php" method="POST" enctype="multipart/form-data">
 <table>
 	<tr>
 		<td colspan="4">
