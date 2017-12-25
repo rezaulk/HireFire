@@ -108,7 +108,7 @@
 						alert('database');
 					 </script>";*/
 		$sql = "INSERT INTO users(uName,name, password, email,type,joiningDate,imageExt) VALUES('$person[userName]',
-	'$person[name]','$person[email]','$person[password]',$person[type],'$person[joiningdate]','$person[imageExt]')";
+	'$person[name]','$person[password]','$person[email]',$person[type],'$person[joiningdate]','$person[imageExt]')";
 		$result = executeSQL($sql);
 		return $result;
 	}
