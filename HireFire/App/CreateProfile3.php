@@ -1,3 +1,72 @@
+<?php
+	session_start();
+?>
+<?php require_once "../service/validation_service(robi).php"; ?>
+<?php
+	
+	if($_SERVER['REQUEST_METHOD']=="POST")
+	{
+		$isValid=true;
+		$workingHour=$_POST['workingHour'];
+		$country=$_POST['country'];
+		$address=$_POST['address'];
+		$postalCode=$_POST['postalCode'];
+		$number=$_POST['number'];
+		//var_dump($_REQUEST['skill']);
+		
+		if($workingHour=="Please select")
+		{
+		echo "<script>alert('work');</script>"; 
+			$isValid=false;
+		}
+		else if($country=="Please select")
+		{
+			echo "<script>alert('country');</script>"; 
+			$isValid=false;
+		}
+        else if(empty($address))
+		{
+			echo "<script>alert('address');</script>"; 
+            $isValid = false;
+        }
+		else if(empty($postalCode))
+		{
+			echo "<script>alert('postalCode');</script>"; 
+            $isValid = false;
+        }
+        else if(isValidPostalCode($postalCode)==false){
+			echo "<script>alert('acc1');</script>"; 
+            $isValid = false;
+        }
+		else if(empty($number))
+		{
+			echo "<script>alert('postalCode');</script>"; 
+            $isValid = false;
+        }
+		else if(isValidNumber($number)==false){
+			echo "<script>alert('acc1');</script>"; 
+            $isValid = false;
+        }
+		
+		if($isValid==false)
+		{
+			echo "<script>alert('Maybe javascript file has been changed. Please reload you browser');</script>"; 
+		}
+		else
+		{
+			$_SESSION['workingHour']=$workingHour;
+			$_SESSION['country']=$country;
+			$_SESSION['address']=$address;
+			$_SESSION['postalCode']=$postalCode;
+			$_SESSION['number']=$number;
+			var_dump($_SESSION);
+			//header('Location: User/profile.php');
+		}
+		
+	}
+		
+?>
+
 <script>
 	
 	function validate()
@@ -155,66 +224,6 @@
 
 
 
-<?php require_once "../service/validation_service(robi).php"; ?>
-
-<?php
-	
-	if($_SERVER['REQUEST_METHOD']=="POST")
-	{
-		$isValid=true;
-		$workingHour=$_POST['workingHour'];
-		$country=$_POST['country'];
-		$address=$_POST['address'];
-		$postalCode=$_POST['postalCode'];
-		$number=$_POST['number'];
-		//var_dump($_REQUEST['skill']);
-		
-		if($workingHour=="Please select")
-		{
-		echo "<script>alert('work');</script>"; 
-			$isValid=false;
-		}
-		else if($country=="Please select")
-		{
-			echo "<script>alert('country');</script>"; 
-			$isValid=false;
-		}
-        else if(empty($address))
-		{
-			echo "<script>alert('address');</script>"; 
-            $isValid = false;
-        }
-		else if(empty($postalCode))
-		{
-			echo "<script>alert('postalCode');</script>"; 
-            $isValid = false;
-        }
-        else if(isValidPostalCode($postalCode)==false){
-			echo "<script>alert('acc1');</script>"; 
-            $isValid = false;
-        }
-		else if(empty($number))
-		{
-			echo "<script>alert('postalCode');</script>"; 
-            $isValid = false;
-        }
-		else if(isValidNumber($number)==false){
-			echo "<script>alert('acc1');</script>"; 
-            $isValid = false;
-        }
-		
-		if($isValid==false)
-		{
-			echo "<script>alert('Maybe javascript file has been changed. Please reload you browser');</script>"; 
-		}
-		else
-		{
-			header('Location: User/profile.php');
-		}
-		
-	}
-		
-?>
 
 
 <table  width="100%" border="0">

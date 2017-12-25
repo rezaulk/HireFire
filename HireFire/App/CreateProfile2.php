@@ -1,5 +1,7 @@
+<?php
+	session_start();
+?>
 <?php require_once "../service/validation_service(robi).php"; ?>
-
 <?php
 	
 	if($_SERVER['REQUEST_METHOD']=="POST")
@@ -46,6 +48,12 @@
 		}
 		else
 		{
+			$_SESSION['school']=$school;
+			$_SESSION['from']=$from;
+			$_SESSION['to']=$to;
+			$_SESSION['degree']=$degree;
+			$_SESSION['areaOfStudy']=$_REQUEST['areaOfStudy'];
+			//var_dump($_SESSION);
 			header('Location: CreateProfile3.php');
 		}
 		
@@ -227,7 +235,7 @@
 					<input name="degree" size="50"/ onchange="degreeValidate()" id="degree"><br/>&nbsp;&nbsp;<span id="degreeErrorMassage"></span>
 					</br>
 					<b>Area of Study(optional)</b><br/><br/>
-					<input name="AoS" size="50"/><br/>
+					<input name="areaOfStudy" size="50"/><br/>
 					</br>
 					<hr>
 		

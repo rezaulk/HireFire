@@ -40,7 +40,7 @@
 			$_SESSION['accountNo']=$accountNo;
 			$_SESSION['skill']=$_REQUEST['skill'];
 			$_SESSION['description']=$_REQUEST['description'];
-			
+			//var_dump($_SESSION);
 			header('Location: CreateProfile2.php');
 		}
 		
