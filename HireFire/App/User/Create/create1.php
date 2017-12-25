@@ -1,3 +1,32 @@
+<?php
+	session_start();
+	 include("../../../service/person_service(reza).php");
+?>
+
+<?php
+	
+	if($_SERVER['REQUEST_METHOD']=="POST")
+	{
+		if(!isValid==true)
+		{
+			
+		}
+		else
+		{
+			
+		}
+		
+	}
+		
+	
+?>
+
+
+
+
+
+
+
 <script>
 
 function validate()
@@ -189,7 +218,7 @@ function validateGigTitle()
 			<tr height="65%">
 				<td width="25%"></td>
 				<td>
-				<form action="../profile.html">
+				<form action="../profile.php">
 					<table width="100%" cellspacing="15" border="0">
 						<tr>
 							<td width="10%">Gig Title: </td>
