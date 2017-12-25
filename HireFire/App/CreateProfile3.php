@@ -1,3 +1,4 @@
+
 <script>
 	
 	function validate()
@@ -151,12 +152,7 @@
 	
 </script>
 
-
-
-
-
 <?php require_once "../service/validation_service.php"; ?>
-
 <?php
 	
 	if($_SERVER['REQUEST_METHOD']=="POST")

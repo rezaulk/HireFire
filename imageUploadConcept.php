@@ -1,5 +1,5 @@
 <?php 
-	//$name=$_FILES['file']['name'];//ByDefault Name of the uplpoaded file
+	$name=$_FILES['file']['name'];//ByDefault Name of the uplpoaded file
 	$tmp_name=$_FILES['file']['tmp_name'];//ByDefault where the image saved
 	$userName=$_REQUEST['userName'];
 	//$size=$_FILES['file']['size'];
@@ -10,7 +10,7 @@
 		{
 			echo $userName;
 			$location="uploads/";
-			if(move_uploaded_file($tmp_name,$location.$userName.".jpg")){
+			if(move_uploaded_file($tmp_name,$location.$userName.$name)){
 				echo "Uploaded";
 			}
 		}
