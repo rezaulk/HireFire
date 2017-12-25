@@ -104,8 +104,11 @@
 //<<<<<<< HEAD
 	function addPersonBuyerToDb($person)
 	{
-		$sql = "INSERT INTO users(uName, password, email,type,joiningDate,imageExt) VALUES('$person[userName]', 
-		'$person[password]','$person[email]',$person[type],'$person[joiningdate]','$person[imageExt]')";
+		/*echo "<script>
+						alert('database');
+					 </script>";*/
+		$sql = "INSERT INTO users(uName,name, password, email,type,joiningDate,imageExt) VALUES('$person[userName]',
+	'$person[name]','$person[password]','$person[email]',$person[type],'$person[joiningdate]','$person[imageExt]')";
 		$result = executeSQL($sql);
 		return $result;
 	}

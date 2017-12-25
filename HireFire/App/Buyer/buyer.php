@@ -4,16 +4,61 @@
 ?>
 <?php 
      
-     $name = $_SESSION['username'];
-	 $persons=accessProfileBuyer($name);
+     $username = $_SESSION['username'];
+	 $persons=accessProfileBuyer($username);
 	 //var_dump($persons);
-	 $day=getJoiningDateFromDb($name);
+	 $day=getJoiningDateFromDb($username);
 	 //var_dump($day);
-	 $languages=(getLanguageByBuyerFromDb($name));
+	 $languages=(getLanguageByBuyerFromDb($username));
 	 //var_dump($languages[1]['language']);
 ?>
+<?php
+	$imageLocationWithImageName="../uploads/".$username.".jpg";
+	$filename = $imageLocationWithImageName;
 
+	if (file_exists($filename)) {
+		//echo "<script>alert('The file exists')</script>";
+	} else {
+		$imageLocationWithImageName="../uploads/default.jpg";
+	}
+?>
+<?php
+	//var_dump($GLOBALS);
+	if($_SERVER['REQUEST_METHOD']=="POST"){
+		$filename=$_FILES['file']['name'];//ByDefault Name of the uplpoaded file
+		$tmp_name=$_FILES['file']['tmp_name'];//ByDefault where the image saved
+		$size=$_FILES['file']['size'];
+		if(isset($filename))
+		{
+			if($size<5000000){
+				if($filename!=""){
+					$fileExt=explode(".",$filename);
+					if(count($fileExt>=2)){
+						if(($fileExt[1]=='jpg')||($fileExt[1]=='png')||($fileExt[1]=='jpeg')||($fileExt[1]=='JPG')||($fileExt[1]=='PNG')||($fileExt[1]=='JPEG')){
+							$location="../uploads/";
+							if(move_uploaded_file($tmp_name,$location.$username.".jpg")){
+								$imageLocationWithImageName="../uploads/".$username.".jpg";
+								echo "<script>alert('Uploaded')</script>";
+							}
+							
+						}
+						else{
+							echo "<script>alert('Please check your image format')</script>";
+						}
+					}
+					//var_dump($fileExt);
+				}
+			}
+			else{
+				echo "<script>alert('Your File size is too large')</script>";
+			}
+			
+		}
+		
+	}
+?>
 
+<form action="buyer.php" method="POST" enctype="multipart/form-data">
 <table>
 	<tr>
 		<td colspan="4">
@@ -37,8 +82,10 @@
 	<tr height="600">
 		<td width="1%"></td>
 		<td valign="top" align="center" width="20%">
-			<img src="../image/b.png" width="30%" alt="TANIM"/>
-			<br/><?php echo $name?><br/>Buyer<hr/>
+			<img src="<?=$imageLocationWithImageName?>" width="30%" alt="profilepic"/>
+			<br/><?php echo $username?><br/>Buyer<br/>
+			<input type="file" name="file" value="imageUpload"/>
+			<input type="submit" value="Upload"/><hr/>
 			<table width="100%">
 			
 			<tr align="center">
@@ -107,3 +154,4 @@
 		<td colspan="4"><iframe src="footer.html" width="100%" height="200%" frameborder="0"  scrolling="yes"></iframe></td>
 	</tr>
 </table>
+</form>

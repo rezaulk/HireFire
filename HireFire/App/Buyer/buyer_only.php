@@ -1,19 +1,39 @@
 <?php   session_start(); 
+//var_dump($GLOBALS);
         require_once "../../data/person_data_access(reza).php";
+		require_once "../../service/validation_service(tanim).php";
         //require_once "../../service/person_service.php";
 ?>
 <?php 
      
-     $name = $_SESSION['username'];
-	 $persons=accessProfileBuyer($name);
-	 $day=getJoiningDateFromDb($name);
+     $username = $_SESSION['username'];
+	 $persons=accessProfileBuyer($username);
+	 $day=getJoiningDateFromDb($username);
 	 //var_dump($day);
-	 $languages=(getLanguageByBuyerFromDb($name));
+	 $languages=(getLanguageByBuyerFromDb($username));
 	 //var_dump($languages[1]['language']);
 ?>
+<?php
+	$imageLocationWithImageName="../uploads/".$username.".jpg";
+	$filename = $imageLocationWithImageName;
 
-
-
+	if (file_exists($filename)) {
+		//echo "<script>alert('The file exists')</script>";
+	} else {
+		$imageLocationWithImageName="../uploads/default.jpg";
+	}
+?>
+<?php
+	//var_dump($GLOBALS);
+	if($_SERVER['REQUEST_METHOD']=="POST"){
+		if(imgUpdatedLocation($username,$imageLocationWithImageName)!=$filename)
+		{
+			$imageLocationWithImageName=imgUpdatedLocation($user,$imageLocationWithImageName);
+			//echo "<script>alert('Plea";
+		}
+	}
+?>
+<form action="buyer_only.php" method="POST" enctype="multipart/form-data">
 <table>
 	<tr>
 		<td colspan="4">
@@ -38,15 +58,20 @@
 	<tr height="600">
 		<td width="1%"></td>
 		<td valign="top" align="center" width="20%">
-			<img src="../image/b.png" width="30%" alt="TANIM"/>
-			<br/><?php echo $name?>
-			<br/>Buyer<hr/>
+			<img src="<?=$imageLocationWithImageName?>" width="30%" alt="profilepic"/>
+			<br/><?php echo $username;?>
+			<br/>Buyer<br/>
+			
+			<input type="file" name="file" value="imageUpload"/>
+			<input type="submit" value="Upload"/>
+			
+			<hr/>
 			
 			<table width="100%">
 			
 			<tr align="center">
 				<td colspan="3">
-					<button><font size="3"><a href="../CreateProfile1.html">Create Profile As Seller</a></font></button>
+					<button><font size="3"><a href="../CreateProfile1.php">Create Profile As Seller</a></font></button>
 				</td>
 			</tr>
 			
@@ -72,8 +97,11 @@
 			</tr>
 			<tr>
 				<td colspan="2"><font size="4"><b>Languages</font></b>
-				<br/><?php for($i=0;$i<count($languages);$i++)
-				    echo $languages[$i]['language']."<br/>";
+				<br/><?php 
+					echo "<ul>";
+					for($i=0;$i<count($languages);$i++)
+				    echo"<li>". $languages[$i]['language']."</li>";
+					echo "</ul>";
 				?></td>
 				<td valign="top" align="right">Add new</td>
 			</tr>
@@ -109,3 +137,4 @@
 		<td colspan="4"><iframe src="footer.html" width="100%" height="200%" frameborder="0"  scrolling="yes"></iframe></td>
 	</tr>
 </table>
+</form>

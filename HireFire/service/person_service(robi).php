@@ -1,6 +1,4 @@
-<?php require_once "../data/person_data_access.php"; ?>
-    
-
+<?php include("../data/person_data_access(robi).php");?>
 <?php
     
 	function login($user){
@@ -86,4 +84,21 @@
         }
         return $isValid;
     }
+	
+	function addSeller()
+	{
+		return addSellerToDb();
+		//var_dump($_SESSION);
+	}
+	function addSkills()
+	{
+		return addSkillsToDb();
+	}
+	function addEducation()
+	{
+		return addEducationToDb();
+	}
+	
+
+	
 ?>

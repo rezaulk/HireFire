@@ -1,7 +1,10 @@
 <?php
 	session_start();
 ?>
-<?php require_once "../service/validation_service(robi).php"; ?>
+<?php 
+	include("../service/validation_service(robi).php");
+	include("../service/person_service(robi).php");
+?>
 <?php
 	
 	if($_SERVER['REQUEST_METHOD']=="POST")
@@ -59,8 +62,11 @@
 			$_SESSION['address']=$address;
 			$_SESSION['postalCode']=$postalCode;
 			$_SESSION['number']=$number;
-			var_dump($_SESSION);
-			//header('Location: User/profile.php');
+			if(addSeller()&&addSkills()&&addEducation())
+			{
+				//var_dump($_SESSION);
+				header('Location: User/profile.php');
+			}
 		}
 		
 	}

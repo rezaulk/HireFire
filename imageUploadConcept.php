@@ -1,5 +1,12 @@
 <?php 
-	//$name=$_FILES['file']['name'];//ByDefault Name of the uplpoaded file
+	$filename = 'uploads/tani.jpg';
+
+	if (file_exists($filename)) {
+		echo "The file $filename exists";
+	} else {
+		echo "The file $filename does not exist";
+	}
+	$name=$_FILES['file']['name'];//ByDefault Name of the uplpoaded file
 	$tmp_name=$_FILES['file']['tmp_name'];//ByDefault where the image saved
 	$userName=$_REQUEST['userName'];
 	//$size=$_FILES['file']['size'];
