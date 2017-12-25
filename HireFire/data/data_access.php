@@ -13,6 +13,8 @@
 		
         $result = mysqli_query($link,$sql);
 		
+		
+		
         mysqli_close($link);
 		
         return $result;

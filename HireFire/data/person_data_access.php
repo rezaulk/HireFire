@@ -1,6 +1,39 @@
 <?php require_once "data_access.php";?>
 <?php
-
+    
+	//print all user
+	/*<?php foreach($Users as $user) {?>
+               <li><?php echo $user; ?></li>
+            <?php } ?>
+	
+	*/
+	function accessProfileBuyer($key)
+	{
+		$name=$key;
+		$sql = "SELECT * FROM users WHERE uName LIKE '$name' ";
+		$result = executeSQL($sql);
+		$persons = array();
+			for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+				$persons[$i] = $row;
+				//var_dump($persons[$i]['type']);
+			}
+			//var_dump($persons);
+		return $persons;  
+    }
+	function accessProfileSeller($key)
+	{
+		$name=$key;
+		$sql = "SELECT * FROM sellers WHERE uName LIKE '$name' ";
+		$result = executeSQL($sql);
+		//var_dump($result);
+		$persons = array();
+			for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+				$persons[$i] = $row;
+				//var_dump($persons[$i]['type']);
+			}
+			//var_dump($persons);
+		return $persons;  
+    }
     function logindb($key)
 	{
 		$name=$key['name'];
@@ -14,7 +47,9 @@
 		$persons = array();
 			for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
 				$persons[$i] = $row;
+				//var_dump($persons[$i]['type']);
 			}
+			//var_dump($persons);
 		return $persons;  
     }
 	
@@ -50,6 +85,7 @@
     } 
 	
 	
+	
 	function getJoiningDateFromDb($key)
 	 {
 		$name=$key;
@@ -65,13 +101,31 @@
     } 
 	
 	
-	function addPersonBuyerToDb($person)
-	{
-		$sql = "INSERT INTO users(uName, password, email,type,joiningDate,imageExt) VALUES('$person[userName]', 
-		'$person[password]','$person[email]',$person[type],'$person[joiningDate]','$person[imageExt]')";
-		$result = executeSQL($sql);
-		return $result;
-	}
+	function getLanguageByBuyerFromDb($uName){
+        $sql = "SELECT * FROM buyers WHERE uName LIKE '$uName'";        
+        $result = executeSQL($sql);
+        
+        $persons = array();
+        for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+            $persons[$i] = $row;
+        }
+        
+        return $persons;
+    } 
+	function getSkillsBySellerFromDb($uName){
+        $sql = "SELECT * FROM skills WHERE uName LIKE '$uName'";        
+        $result = executeSQL($sql);
+        $persons = array();
+        for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+            $persons[$i] = $row;
+        }
+        var_dump($persons);
+        return $persons;
+    } 
+	
+	
+	
+	
     function addPersonToDb($person){
         $sql = "INSERT INTO person(id, name, email) VALUES(NULL, '$person[name]', '$person[email]')";
         $result = executeSQL($sql);

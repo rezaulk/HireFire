@@ -1,4 +1,6 @@
-<?php require_once "../../data/person_data_access.php"; ?>
+<?php require_once "../data/person_data_access.php"; ?>
+    
+
 <?php
     
 	function login($user){
@@ -10,16 +12,9 @@
 	function getUserEmail($key){
         return getUserEmailFromDb($key);
     }
-<<<<<<< HEAD
 	function getJoiningDate($key){
         return getJoiningDateFromDb($key);
     }
-=======
-	function addPersonAsBuyer($person){
-        return addPersonBuyerToDb($person);
-    }
-	
->>>>>>> 43ae3e3dec58a02690385c5881fa037ff2f7ae12
 	
 	
 	

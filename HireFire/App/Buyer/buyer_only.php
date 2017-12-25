@@ -1,3 +1,19 @@
+<?php   session_start(); 
+        require_once "../../data/person_data_access.php";
+        //require_once "../../service/person_service.php";
+?>
+<?php 
+     
+     $name = $_SESSION['username'];
+	 $persons=accessProfileBuyer($name);
+	 $day=getJoiningDateFromDb($name);
+	 //var_dump($day);
+	 $languages=(getLanguageByBuyerFromDb($name));
+	 //var_dump($languages[1]['language']);
+?>
+
+
+
 <table>
 	<tr>
 		<td colspan="4">
@@ -23,7 +39,7 @@
 		<td width="1%"></td>
 		<td valign="top" align="center" width="20%">
 			<img src="../image/b.png" width="30%" alt="TANIM"/>
-			<br/>Ibrahim Khalil
+			<br/><?php echo $name?>
 			<br/>Buyer<hr/>
 			
 			<table width="100%">
@@ -35,14 +51,14 @@
 			</tr>
 			
 			<tr>
-				<td width="5%"><img src="../image/location.png"/></td>
-				<td width="60%">Form</td>
-				<td align="right">Bangladesh</td>
+				<td width="5%"></td>
+				<td width="60%"></td>
+				<td align="right"></td>
 			</tr>
 			<tr>
 				<td width="5%"><img src="../image/member1.png"/></td>
 				<td>Member since</td>
-				<td align="right">April 2017</td>
+				<td align="right">April <?php echo "$day"?></td>
 			</tr>
 			
 			<tr>
@@ -56,7 +72,9 @@
 			</tr>
 			<tr>
 				<td colspan="2"><font size="4"><b>Languages</font></b>
-				<br/>English</td>
+				<br/><?php for($i=0;$i<count($languages);$i++)
+				    echo $languages[$i]['language']."<br/>";
+				?></td>
 				<td valign="top" align="right">Add new</td>
 			</tr>
 			<tr height="10">

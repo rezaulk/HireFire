@@ -1,14 +1,20 @@
 <?php   session_start(); 
-        require_once "../../service/validation_service.php";
-        require_once "../../service/person_service.php"; ?>
+        require_once "../../data/person_data_access.php";
+        //require_once "../../service/person_service.php";
+?>
 <?php 
      
      $name = $_SESSION['username'];
+	 $persons=accessProfileSeller($name);
+	 //var_dump($persons);
+	 $day=getJoiningDateFromDb($name);
+	 //var_dump($day);
+	 $languages=(getLanguageByBuyerFromDb($name));
 	 
-     
-	 $day=getJoiningDate($name);
-	 var_dump($day);
+	 $skills=(getSkillsBySellerFromDb($name));
 	 
+	 
+	 //var_dump($languages[1]['language']);
 ?>
 
 
@@ -45,14 +51,14 @@
 			
 			<tr align="center">
 				<td colspan="3">
-					<button><font size="3"><a href="buyer.html">View as Buyer</a></font></button>
+					<button><font size="3"><a href="../Buyer/buyer.php">View as Buyer</a></font></button>
 				</td>
 			</tr>
 			
 			<tr>
-				<td width="5%"></td>
-				<td width="60%"></td>
-				<td align="right"></td>
+				<td width="5%"><img src="../image/location.png"/></td>
+				<td width="60%">From</td>
+				<td align="right"> <?php echo $persons[0]['country']?></td>
 			</tr>
 			<tr>
 				<td width="5%"><img src="../image/member1.png"/></td>
@@ -84,12 +90,16 @@
 				<td colspan="3"><hr/></td>
 			</tr>
 			<tr>
-				<td colspan="2"><font size="4"><b>Languages</font></b>
-				<br/>English</td>
+				<td colspan="2"><font size="4"><b>Languages</font></b><br/>
+				 <?php for($i=0;$i<count($languages);$i++)
+				    echo $languages[$i]['language']."<br/>";
+				 ?>
+				
+				</td>
 				<td valign="top" align="right">Add new</td>
 			</tr>
 			<tr height="10">
-				<td colspan="3"><</td>
+				<td colspan="3"></td>
 			</tr>
 			<tr>
 				<td colspan="2"><font size="4"><b></b></font></td>
