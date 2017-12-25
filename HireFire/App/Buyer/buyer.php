@@ -58,6 +58,7 @@
 	}
 ?>
 
+<form action="profile.php" method="POST" enctype="multipart/form-data">
 <table>
 	<tr>
 		<td colspan="4">
@@ -153,3 +154,4 @@
 		<td colspan="4"><iframe src="footer.html" width="100%" height="200%" frameborder="0"  scrolling="yes"></iframe></td>
 	</tr>
 </table>
+</form>
