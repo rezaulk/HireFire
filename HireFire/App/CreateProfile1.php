@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <script>
 	//isFormValid=true;
 	function validate()
@@ -119,6 +122,11 @@
 		}
 		else
 		{
+			$_SESSION['bankName']=$bankName;
+			$_SESSION['accountNo']=$accountNo;
+			$_SESSION['skill']=$_REQUEST['skill'];
+			$_SESSION['description']=$_REQUEST['description'];
+			
 			header('Location: CreateProfile2.php');
 		}
 		
