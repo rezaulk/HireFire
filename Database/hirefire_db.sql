@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2017 at 08:29 AM
+-- Generation Time: Dec 25, 2017 at 11:57 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -46,7 +46,8 @@ INSERT INTO `buyers` (`uName`, `language`, `Name`, `buyerId`) VALUES
 ('tamin', 'english', 'tanim ullah', 6),
 ('admin', 'Bangla', '', 7),
 ('reza', 'Urdu', '', 8),
-('robi', 'French', '', 9);
+('robi', 'French', '', 9),
+('dsds', 'bangla', '', 10);
 
 -- --------------------------------------------------------
 
@@ -259,8 +260,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`uName`, `password`, `email`, `type`, `joiningDate`, `imageExt`) VALUES
 ('admin', '1', 'admin@gmail.com', 1, '2017-12-24', 'admin.jpg'),
-('reza', '1', 'reza@gmail.com', 2, '2017-12-05', 'reza.jpg'),
-('robi', '1', 'robi@gmail.com', 3, '2017-12-05', 'robi.jpg'),
+('dsds', '123@', 'rezaaaaaa@gmail.com', 2, '2017-12-25', 'dsds.jpg'),
+('reza', 'reza@', 'reza@gmail.com', 2, '2017-12-05', 'reza.jpg'),
+('robi', 'robi@', 'robi@gmail.com', 3, '2017-12-05', 'robi.jpg'),
 ('tamin', '2', 'tanim@gmail.com', 1, '2017-12-04', 'tanim.jpg');
 
 --
@@ -331,7 +333,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `buyers`
 --
 ALTER TABLE `buyers`
-  MODIFY `buyerId` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `buyerId` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `education`
@@ -344,6 +346,12 @@ ALTER TABLE `education`
 --
 ALTER TABLE `gigrequirements`
   MODIFY `requirementId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `gigs`
+--
+ALTER TABLE `gigs`
+  MODIFY `gigId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sellers`
@@ -368,12 +376,6 @@ ALTER TABLE `education`
   ADD CONSTRAINT `education_ibfk_1` FOREIGN KEY (`uName`) REFERENCES `users` (`uName`);
 
 --
--- Constraints for table `gigrequirements`
---
-ALTER TABLE `gigrequirements`
-  ADD CONSTRAINT `gigrequirements_ibfk_1` FOREIGN KEY (`gigId`) REFERENCES `gigs` (`gigId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Constraints for table `gigs`
 --
 ALTER TABLE `gigs`
@@ -384,8 +386,7 @@ ALTER TABLE `gigs`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`bId`) REFERENCES `buyers` (`buyerId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`sId`) REFERENCES `sellers` (`sellerId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`gId`) REFERENCES `gigs` (`gigId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`sId`) REFERENCES `sellers` (`sellerId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `sellers`
