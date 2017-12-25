@@ -40,9 +40,9 @@
 		$password=$key['password'];
 		//$name=$key->name;
 		//$pass=$key->password;
-		$password=(int)$password;
-			
-		$sql = "SELECT * FROM users WHERE uName LIKE '$name' and password LIKE $password";
+		//$password=(int)$password;
+		//var_dump($password);	
+		$sql = "SELECT * FROM users WHERE uName LIKE '$name' and password LIKE '$password'";
 		$result = executeSQL($sql);
 		$persons = array();
 			for($i=0; $row = mysqli_fetch_assoc($result); ++$i){

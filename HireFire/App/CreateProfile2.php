@@ -1,3 +1,58 @@
+<?php require_once "../service/validation_service(robi).php"; ?>
+
+<?php
+	
+	if($_SERVER['REQUEST_METHOD']=="POST")
+	{
+		
+		$isValid=true;
+		$school=$_POST['school'];
+		$from=$_POST['from'];
+		$to=$_POST['to'];
+		$degree=$_POST['degree'];
+		//var_dump($_REQUEST['skill']);
+		
+		
+        if(empty($school))
+		{
+			echo "<script>alert('school');</script>"; 
+            $isValid = false;
+        }
+        else if(isValidSchool($school)==false){
+			echo "<script>alert('acc1');</script>"; 
+            $isValid = false;
+        }
+		else if(empty($from))
+		{
+			echo "<script>alert('from');</script>"; 
+            $isValid = false;
+        }
+        
+		else if(empty($to))
+		{
+			echo "<script>alert('to');</script>"; 
+            $isValid = false;
+        }
+		
+		 if(empty($degree))
+		{
+			echo "<script>alert('degree');</script>"; 
+            $isValid = false;
+        }
+		
+		if($isValid==false)
+		{
+			echo "<script>alert('Maybe javascript file has been changed. Please reload you browser');</script>"; 
+		}
+		else
+		{
+			header('Location: CreateProfile3.php');
+		}
+		
+	}
+		
+?>
+
 <script>
 	//isFormValid=true;
 	function validate()
@@ -135,67 +190,6 @@
 		return isValid;
 	}
 </script>
-
-
-
-<?php require_once "../service/validation_service(robi).php"; ?>
-
-<?php
-	
-	if($_SERVER['REQUEST_METHOD']=="POST")
-	{
-		
-		$isValid=true;
-		$school=$_POST['school'];
-		$from=$_POST['from'];
-		$to=$_POST['to'];
-		$degree=$_POST['degree'];
-		//var_dump($_REQUEST['skill']);
-		
-		
-        if(empty($school))
-		{
-			echo "<script>alert('school');</script>"; 
-            $isValid = false;
-        }
-        else if(isValidSchool($school)==false){
-			echo "<script>alert('acc1');</script>"; 
-            $isValid = false;
-        }
-		else if(empty($from))
-		{
-			echo "<script>alert('from');</script>"; 
-            $isValid = false;
-        }
-        
-		else if(empty($to))
-		{
-			echo "<script>alert('to');</script>"; 
-            $isValid = false;
-        }
-		
-		 if(empty($degree))
-		{
-			echo "<script>alert('degree');</script>"; 
-            $isValid = false;
-        }
-		
-		if($isValid==false)
-		{
-			echo "<script>alert('Maybe javascript file has been changed. Please reload you browser');</script>"; 
-		}
-		else
-		{
-			header('Location: CreateProfile3.php');
-		}
-		
-	}
-		
-
-?>
-
-
-
 
 <table  width="100%" border="0">
 	<tr>
