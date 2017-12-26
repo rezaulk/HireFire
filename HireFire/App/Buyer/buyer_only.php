@@ -109,7 +109,7 @@
 				    echo"<li>". $languages[$i]['language']."</li>";
 					echo "</ul>";
 				?></td>
-				<td valign="top" align="right"><input type="button" onclick='' value='ADD NEW'></td>
+				<td valign="top" align="right"><!--ADD NEW--></td>
 			</tr>
 			<tr height="10">
 				<td colspan="3"><hr/></td>
