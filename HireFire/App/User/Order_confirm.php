@@ -1,3 +1,74 @@
+<?php 
+	include("../../service/gig_service(robi).php");
+?>
+
+
+
+<script>
+	
+	function validateOrderRequirements()
+	{
+		var isValid=true;
+		var requirements = document.getElementById("requirements").value;
+		
+		var orderRequirementsErrorMassage=document.getElementById("orderRequirementsErrorMassage");
+		orderRequirementsErrorMassage.style.color="red";
+		
+		var j=0;
+		for(var i=0;i<requirements.length;i++)
+		{	
+			if(requirements[i]==" ")
+			{
+				j++;
+			}
+		}
+		if(requirements=="")
+		{
+			orderRequirementsErrorMassage.innerHTML="*Requirements can not be empty";
+			isValid=false;
+		}
+		else if(requirements=="Enter text here...")
+		{
+			orderRequirementsErrorMassage.innerHTML="*Requirements can not be empty";
+			isValid=false;
+		}
+		else if(i==j)
+		{
+			orderRequirementsErrorMassage.innerHTML="*Requirements can not contains only space";
+			isValid=false;
+		}
+		else
+		{
+			orderRequirementsErrorMassage.innerHTML="";
+		}
+	}
+	
+	function validateDate()
+	{
+		
+		var isValid=true;
+		var deadline = document.getElementById("deadline").value;
+		var deadlineErrorMassage=document.getElementById("deadlineErrorMassage");
+		deadlineErrorMassage.style.color="red";
+		if(deadline=="")
+		{
+			deadlineErrorMassage.innerHTML="*Please Set a Deadline";
+			isValid=false;
+		}
+		else if(Date.parse(deadline) < Date.parse(Date()))
+		{
+			deadlineErrorMassage.innerHTML="*Please Set a appropiate Deadline";
+			isValid=false;
+		}
+		else
+		{
+			deadlineErrorMassage.innerHTML="";
+		}
+	}
+	
+</script>
+
+
 <html>
 	<head>
 		<title>HireFire</title>
@@ -10,7 +81,6 @@
 				<table  width="100%" border="0">
 					<tr>
 						<td width="30" ><a href="PublicHome.html"><img src="../image/image.png" width="150"/></a></td>
-						<td><input type="text" name="search" placeholder="Search.." size="70" height="20"><button>Search</button></td>
 						<td align="right">
 							<font size="4"><a href="inbox.html">Messages&nbsp;</a>
 							<a href="Orders.html">Orders&nbsp</a>
@@ -18,7 +88,7 @@
 							<a href="dashboard.html">Dashboard&nbsp;</a>
 							<a href="../PublicHome.html">LogOut</a></font>
 						</td>
-						<td><a href="profile.html"><img src="../image/b.png" width="50"></a></td>
+						<td width="5"><a href="profile.html"><img src="../image/b.png" width="50"></a></td>
 					</tr>
 				</table>		
 			</td>	
@@ -33,9 +103,11 @@
 			 <fieldset>
                 <legend>Order Details</legend>
 					<h3>Order Requirements</h3>
-					<textarea rows="8" cols="50">Enter text here...</textarea>
+					<textarea rows="8" cols="50" id="requirements" name="requirements" onchange="validateOrderRequirements()">Enter text here...</textarea><br/>
+					<span id="orderRequirementsErrorMassage"></span>
 					<h3>Deadline</h3>
-					<label for="Deadline">Date : </label><input id="deadline" type="date" value="2017-12-24"/>
+					<label for="Deadline">Date : </label><input id="deadline" type="date" name="deadline" onchange="validateDate()"/>
+					&nbsp;&nbsp;<span id="deadlineErrorMassage"></span>
 					<hr/>
 					<a href="Place_order.html"><input type="submit" value="Save And Continue"/></a>
                 

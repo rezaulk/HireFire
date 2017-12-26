@@ -23,6 +23,22 @@
 		$gigOrderCount=$programmingAndTechGig[$i]['orderCount'];
 		$gigDescription=$programmingAndTechGig[$i]['gDescription'];
 		//$gigId=$programmingAndTechGig[$i]['gigId'];
+		$names= retreiveName($username);	
+		for($j=0; $row = mysqli_fetch_assoc($names); ++$j)
+		{	
+			$name=$row['name'];
+		}
+		$sellerDescriptions= retreiveSellerDescription($username);	
+		for($j=0; $row = mysqli_fetch_assoc($sellerDescriptions); ++$j)
+		{	
+			$sellerDescription=$row['description'];
+		}	
+			
+		$userImageResult= retreiveUserImage($username);	
+		for($j=0; $row = mysqli_fetch_assoc($userImageResult); ++$j)
+		{	
+			$userImage=$row['imageExt'];
+		}
 	}
 ?>
 
@@ -64,23 +80,23 @@
 									
 									    <td>
 										  
-										  <a><?php echo $gigTitle; ?></a><hr>
+										  <a><b><?php echo $gigTitle; ?></b></a><hr>
 										  <br/>
 										   <a ><img src="../gigImage/<?php echo $imgExt;?>" height="300" width="500" ></a>
 										   
 										  <br/>
 										  <hr>
 										  
-										  <a>About this gig</a>
+										  <a><b>About this gig</b></a>
 										  <br/>
 										  <br/>
 										  <a><?php echo $gigDescription ?>
-										  
-										  <a>Reviews</a>
+										  <br/><br/><br/>
+										  <a><b>Reviews</b></a>
 										</td>							
 									</tr>
 									<tr>
-									   <td>
+									   <td><br/>
 									    <a href="profile.html"><img src="../image/user-avatar.jpg" width="50">Jon kin</a></br>
 									   <a>The whole experience was great. I liked the sellers work. He listened to my requests 
 									   and gave me a logo that I love. It was easy and very quickly.</a>
@@ -102,41 +118,25 @@
 							    <table border="0" height="100%" width="100%" cellspacing="20">							
 									<tr height="70%">
 										<td>
-										   <a align="center"><button type="submit"><a href="../User/Order_details.html">Proceed To Order($20)</a></button></a>
-										   <br/>
-										   <br/>
-										   <a>$10 Delivery<br/>Theme install
-										   I will install your theme<br/>
-										   Wordpress Installation<br/>
-										   Theme Installation<br/>
-										   2 Plugins/Extensions<br/></a>
+										   <a align="center"><button type="submit"><a href="../User/Order_confirm.php?gigId=<?php echo $gigId;?>">Proceed To Order ( TK. <?php echo $gigPrice;?>)</a></button></a>
+										   
 										</td>
 									</tr>
 								    <tr height="20%"><td height="20%"></td></tr>
 								    <tr height="20%">
 									  <td align="center">
-										<a><img src="../image/b.png" height="150" ></a>
+										<a><img src="../uploads/<?php echo $userImage;?>" height="150" ></a>
 										<br/>
-										<a>&nbsp;&nbsp;rezaul7784<br/>
-										To live a creative life, we must lose our fear of being wrong<br/></a>
+										<a>&nbsp;&nbsp;<?php echo $name; ?></a>
 										<hr>
 										<button><font size="3"><a href="../User/contact_seller.html">Contact Me</a></font></button>
 									   </td>
 								    </tr>
 								    <tr height="20%">
-									   <td>
-											 <br/>
-											 <a>
-											From Bangladesh<br/>
-											Member since &nbsp;&nbsp; &nbsp; &nbsp;  &nbsp; May 2016<br/>
-											Avg. Response Time<br/>
-											</a>
+									   <td>								 
 											<hr>
 											<br/>
-											<a>I’m currently pursuing a degree of bachelors in Computer Science <br/>
-											and have a sound knowledge of programming in C, C++ computer Languages.<br/>
-											I can help you to complete University Assignments, Projects .<br/>
-											Message me before placing order. Thank you!<br/>
+											<?php echo "<b>Seller Description</b> <br/><br/>".$gigDescription; ?>
 											<hr>
 									    </td>
 								    </tr>

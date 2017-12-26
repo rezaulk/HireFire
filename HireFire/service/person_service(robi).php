@@ -1,4 +1,6 @@
-<?php include("../data/person_data_access(robi).php");?>
+<?php
+$path=__DIR__."/../data/person_data_access(robi).php";
+	include($path);?>
 <?php
     
 	function login($user){
@@ -106,6 +108,6 @@
 		echo "<script>alert('modifyType')</script>";
 		return modifyTypeToUserDb();
 	}
-	
+	//retreiveName
 	
 ?>

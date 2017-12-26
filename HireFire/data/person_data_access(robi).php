@@ -348,6 +348,24 @@
 		
 	}
 	
-	
+	function retreiveNameFromDb($username)
+	{
+		$sql = "SELECT * FROM users where '$username' like uName";
+		//var_dump($sql);
+		$result =executeSQL($sql);
+		//var_dump($result);
+		//echo "<script>alert('retreiveProgrammingAndTechGigFromDb')</script>";
+		return $result;
+		
+	}
+	function retreiveSellerDescriptionFromDb($username)
+	{
+		$sql = "SELECT * FROM sellers where '$username' like uName";
+		//var_dump($sql);
+		$result =executeSQL($sql);
+		//var_dump($result);
+		//echo "<script>alert('retreiveProgrammingAndTechGigFromDb')</script>";
+		return $result;
+	}
 	
 ?>

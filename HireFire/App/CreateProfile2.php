@@ -129,10 +129,22 @@
 		var isValid=true;
 		var fromErrorMassage=document.getElementById("fromErrorMassage");
 		fromErrorMassage.style.color="red";
-		if(document.getElementById("from").value == "")
+		var from = document.getElementById("from").value;
+		//document.write("dfdg");
+		if(from == "")
 		{
 			fromErrorMassage.innerHTML="*Must be select Date";
 			isValid=false;
+		}
+		else if(Date.parse(from) > Date.parse(Date()))
+		{
+			//document.write("dfdg");
+			fromErrorMassage.innerHTML="*Please Set a appropiate Deadline";
+			isValid=false;
+		}
+		else
+		{
+			fromErrorMassage.innerHTML="";
 		}
 		
 		return isValid;
@@ -144,40 +156,33 @@
 		var isValid=true;
 		var toErrorMassage=document.getElementById("toErrorMassage");
 		toErrorMassage.style.color="red";
-		if(document.getElementById("to").value == "")
+		var from=document.getElementById("from").value;
+		var to = document.getElementById("to").value;
+		
+		if(to == "")
 		{
 			toErrorMassage.innerHTML="*Must be select Date";
 			isValid=false;
+		}
+		else if(Date.parse(to) < Date.parse(from))
+		{
+			toErrorMassage.innerHTML="*Please Set a appropiate Date";
+			isValid=false;
+		}
+		else
+		{
+			toErrorMassage.innerHTML="";
 		}
 		
 		return isValid;
 		
 	}	
 	
-	function emptyFromErrorMassage()
-	{
-		var fromErrorMassage= document.getElementById("fromErrorMassage");
-		if(document.getElementById("from").value != "")
-		{
-			fromErrorMassage.innerHTML="";
-		}
-		else
-		{
-			fromErrorMassage.innerHTML="*Must be select Date";
-		}
-	}
+
 	
 	function emptyToErrorMassage()
 	{
-		var toErrorMassage= document.getElementById("toErrorMassage");
-		if(document.getElementById("to").value != "")
-		{
-			toErrorMassage.innerHTML="";
-		}
-		else
-		{
-			toErrorMassage.innerHTML="*Must be select Date";
-		}
+		
 	}
 	
 	function degreeValidate()
@@ -226,10 +231,10 @@
 					</br></br>
 					<b>Date Attended</b></br></br>
 					From
-					<input type="date" placeholder="From" name="from" id="from" onchange="emptyFromErrorMassage()"/>&nbsp;&nbsp;<span id="fromErrorMassage"></span>
+					<input type="date" placeholder="From" name="from" id="from" onchange="fromValidate()"/><br/><span id="fromErrorMassage"></span>
 					<br/><br/>
 					To&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="date" placeholder="To" name="to" id="to" onchange="emptyToErrorMassage()"/>&nbsp;&nbsp;<span id="toErrorMassage"></span>
+					<input type="date" placeholder="To" name="to" id="to" onchange="toValidate()"/><br/><span id="toErrorMassage"></span>
 					</br></br>
 					<b>Degree</b><br/><br/>
 					<input name="degree" size="50"/ onchange="degreeValidate()" id="degree"><br/>&nbsp;&nbsp;<span id="degreeErrorMassage"></span>

@@ -123,6 +123,15 @@
 		return retreiveProgrammingAndTechSingleGigFromDb($gigId);
 		
 	}
-	
+	function retreiveName($username)
+	{
+		//echo "<script> alert('retreiveProgrammingAndTechSingleGig');</script>";
+		return retreiveNameFromDb($username);		
+	}
+	function retreiveSellerDescription($username)
+	{
+		//echo "<script> alert('retreiveProgrammingAndTechSingleGig');</script>";
+		return retreiveSellerDescriptionFromDb($username);		
+	}
 	
 ?>
