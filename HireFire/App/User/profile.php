@@ -5,6 +5,14 @@
 <?php 
      
      $username = $_SESSION['username'];
+	 $buyer=accessProfileBuyer($username);///For checking if the user is not seller
+	 if($buyer[0]['type']==2){
+		header("location:../Buyer/buyer_only.php");
+		/*echo "<script>
+					alert('You can not access this page');
+					document.location='../Buyer/buyer_only.php';
+				 </script>";*/
+	  }
 	 $persons=accessProfileSeller($username);
 	 //var_dump($persons);
 	 $day=getJoiningDateFromDb($username);

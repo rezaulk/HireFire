@@ -7,6 +7,13 @@
      $username = $_SESSION['username'];
 	 $persons=accessProfileBuyer($username);
 	 //var_dump($persons);
+	  if($persons[0]['type']==2){
+		  header("location:buyer_only.php");
+		  /*echo "<script>
+						alert('You can not access this page');
+						document.location='buyer_only.php';
+					 </script>";*/
+	  }
 	 $day=getJoiningDateFromDb($username);
 	 //var_dump($day);
 	 $languages=(getLanguageByBuyerFromDb($username));
