@@ -1,3 +1,105 @@
+<?php
+	session_start();
+?>
+<?php 
+	include("../../service/gig_service(robi).php");
+	$gigId=$_SESSION['gigId'];
+?>
+
+<?php
+	
+	
+	
+?>
+
+<script>
+
+	function validate()
+	{
+		var isValid=true;
+		if(!validateAccountNo())
+		{
+			isValid=false;
+		}
+		if(!validatePin())
+		{
+			isValid=false;
+		}
+		return isValid;
+	}
+
+	function validateAccountNo()
+	{	
+		var isValid=true;
+		var accountNo = document.getElementById("accountNo").value;
+		//alert(accountNo[0]);
+		var accountErrorMassage=document.getElementById("accountErrorMassage");
+		accountErrorMassage.style.color="red";
+		for(var i=0;i<accountNo.length;i++)
+		{
+			if(accountNo[i]==' ')
+			{
+				//alert(typeof(accountNo));
+				accountErrorMassage.innerHTML="*Account Number Cannot contains space";
+				isValid=false;
+				break;
+			}
+		}
+		
+		if(accountNo=="")
+		{
+			accountErrorMassage.innerHTML="*Account Number Cannot be empty";
+			isValid=false;
+		}
+		else if(isNaN(accountNo))
+		{
+			accountErrorMassage.innerHTML="*Account Number only contains digit";
+			isValid=false;
+		}
+		if(isValid==true)
+		{
+			accountErrorMassage.innerHTML="";
+		}
+		return isValid;
+		
+	}
+	
+	
+	function validatePin()
+	{	
+		var isValid=true;
+		var pin = document.getElementById("pin").value;
+		//alert(pin[0]);
+		var pinErrorMassage=document.getElementById("pinErrorMassage");
+		pinErrorMassage.style.color="red";
+		for(var i=0;i<pin.length;i++)
+		{
+			if(pin[i]==' ')
+			{
+				//alert(typeof(pin));
+				pinErrorMassage.innerHTML="*Pin format invalid";
+				isValid=false;
+				break;
+			}
+		}
+		
+		if(pin=="")
+		{
+			pinErrorMassage.innerHTML="*Insert your Pin";
+			isValid=false;
+		}
+		
+		if(isValid==true)
+		{
+			pinErrorMassage.innerHTML="";
+		}
+		return isValid;
+		
+	}
+	
+</script>
+
+<form action="Place_order.php?" method="POST" onsubmit="return validate()">
 <html>
 	<head>
 		<title>HireFire</title>
@@ -10,7 +112,6 @@
 				<table  width="100%" border="0">
 					<tr>
 						<td width="30" ><a href="PublicHome.html"><img src="../image/image.png" width="150"/></a></td>
-						<td><input type="text" name="search" placeholder="Search.." size="70" height="20"><button>Search</button></td>
 						<td align="right">
 							<font size="4"><a href="inbox.html">Messages&nbsp;</a>
 							<a href="Orders.html">Orders&nbsp</a>
@@ -18,7 +119,7 @@
 							<a href="dashboard.html">Dashboard&nbsp;</a>
 							<a href="../PublicHome.html">LogOut</a></font>
 						</td>
-						<td><a href="profile.html"><img src="../image/b.png" width="50"></a></td>
+						<td width="5"><a href="profile.html"><img src="../image/b.png" width="50"></a></td>
 					</tr>
 				</table>		
 			</td>	
@@ -71,14 +172,15 @@
 				<img src="../image/b.jpg" width="150"/></a>
 				<br/>
 				<b>Account Number</b>
-					<input/>
-					</br></br>
+					<input onchange="validateAccountNo()" id="accountNo" name="accountNo"/>
+					</br><span id="accountErrorMassage"></span></br>
 					<b>Pin</b>
 					&nbsp;
-					<input type="password" title="password" name="pass"/>
+					<input type="password" title="password" name="pin" onchange="validatePin()" id="pin"/>
+					<br/></br><span id="pinErrorMassage"></span></br>
 					<hr>
 					</br>
-					<a href="Place_order_confirmation.html"><input type="submit"/></a>
+					<input type="submit"/>
                 
            </fieldset>	
 			</td>
@@ -157,4 +259,4 @@
 				
 	</body>
 	
-</html>
+</html></form>

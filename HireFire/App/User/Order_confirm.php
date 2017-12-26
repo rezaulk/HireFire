@@ -1,11 +1,32 @@
+<?php
+	session_start();
+?>
 <?php 
 	include("../../service/gig_service(robi).php");
+	$gigId=$_REQUEST['gigId'];
+	$_SESSION['gigId']=$gigId;
+	var_dump($_SESSION);
 ?>
 
 
 
 <script>
 	
+	
+	function validate()
+	{
+		isValid=true;
+		if(!validateOrderRequirements())
+		{
+			isValid=false;
+		}
+		
+		if(!validateDate())
+		{
+			isValid=false;
+		}
+		return isValid;
+	}
 	function validateOrderRequirements()
 	{
 		var isValid=true;
@@ -41,6 +62,7 @@
 		{
 			orderRequirementsErrorMassage.innerHTML="";
 		}
+		return isValid;
 	}
 	
 	function validateDate()
@@ -64,11 +86,12 @@
 		{
 			deadlineErrorMassage.innerHTML="";
 		}
+		return isValid;
 	}
 	
 </script>
 
-
+<form action="Place_order.php?" onsubmit="return validate()">
 <html>
 	<head>
 		<title>HireFire</title>
@@ -109,7 +132,7 @@
 					<label for="Deadline">Date : </label><input id="deadline" type="date" name="deadline" onchange="validateDate()"/>
 					&nbsp;&nbsp;<span id="deadlineErrorMassage"></span>
 					<hr/>
-					<a href="Place_order.html"><input type="submit" value="Save And Continue"/></a>
+					<input type="submit" value="Save And Continue"/>
                 
            </fieldset>	
 			</td>
@@ -189,4 +212,4 @@
 				
 	</body>
 	
-</html>
+</html></form>
