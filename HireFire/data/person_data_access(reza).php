@@ -7,6 +7,15 @@
             <?php } ?>
 	
 	*/
+	function getMaxGigId(){
+
+		$sql = "SELECT MAX(gigId) FROM gigs";        
+        $result = executeSQL($sql);
+        //var_dump($result);
+        $maxGigId = mysqli_fetch_assoc($result);
+        //var_dump($person);
+       return $maxGigId;
+	}
 	function addGigToDb($person)
 	{
 		$gigtitle=$person["gigtitle"];

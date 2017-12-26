@@ -1,10 +1,12 @@
 <?php
 	session_start();
 	 include("../../../service/person_service(reza).php");
+	 //require_once "../../../service/TANIM_service.php"
 ?>
 
 <?php
-	
+	$maxID=maxGigId();
+	var_dump($maxID);
 	if($_SERVER['REQUEST_METHOD']=="POST")
 	{
 		$gigtitle=$_POST['gigtitle'];
@@ -15,18 +17,22 @@
 		$isValid=true;
 		if($gigdescription=="")
 		{
+			///echo "<script>alert('gigdescription');</script>";
 			$isValid=false;
 		}
 		if($gigprice=="")
 		{
+			//echo "<script>alert('price');</script>";
 			$isValid=false;
 		}
 		if($category=="notSelected")
 		{
+			//echo "<script>alert('category');</script>";
 			$isValid=false;
 		}
 		if($gigtitle=="")
 		{
+			//echo "<script>alert('gigTitle');</script>";
 			$isValid=false;
 		}
 		
@@ -44,8 +50,8 @@
 			if(addGig($person))
 			{
 				//var_dump(addGig($person));
-				echo "<script>alert('sdsfdf');document.location='../profile.php'";
-				 //header("location:../profile.php");	
+				//echo "<script>alert('sdsfdf');document.location='../profile.php'";
+				 header("location: ../profile.php");	
 			}
            		
 			
@@ -64,15 +70,15 @@ function validate()
 		{
 		   isValid=false;
 		}
-		else if(!validateGigDescription())
+		if(!validateGigDescription())
 		{
 		   isValid=false;
 		}
-		else if(!validateGigPrice())
+		if(!validateGigPrice())
 		{
 		   isValid=false;
 		}
-		else if(!categoryValidate())
+		 if(!validateCategory())
 		{ 
 		   isValid=false;
 		}
@@ -116,10 +122,11 @@ function validate()
 		var category = document.getElementById("category").value;
 		var categoryErrorMassage = document.getElementById("categoryErrorMassage");
 		categoryErrorMassage.style.color="red";
-		if(category=="notSelected")
+		if(category=="Please select")
 		{
-			isValid=false;
+			
 			categoryErrorMassage.innerHTML="*Must be select one";
+			isValid=false;
 		}
 		else
 		{
@@ -261,8 +268,8 @@ function validateGigTitle()
 								Category:
 							</td>
 							<td>
-								<select name="category" id="category" onchange="validateCategory()" >
-									<option value="notSelected">Please select</option>
+								<select name="category" id="category" onclick="validateCategory()" >
+									<option value="Please select">Please select</option>
 									<option value="Graphics & Design">Graphics & Design</option>
 									<option value="Digital Marketing">Digital Marketing</option>
 									<option value="Writing & Translation">Writing & Translation</option>
@@ -275,11 +282,11 @@ function validateGigTitle()
 						</tr>
 						<tr>
 							<td>Price:</td>	
-							<td><table ><tr><td><input placeholder="Enter Gig Price " name="gigprice" id="gigprice"  onchange="validateGigPrice()"/></td><td><img src="../../image/bdtk.jpg" width="50">&nbsp;&nbsp;<span id="gigpriceErrorMassage"></span></td></tr></table></td>
+							<td><table ><tr><td><input placeholder="Enter Gig Price " name="gigprice" id="gigprice"  onchange="validateGigPrice()"/></td><td><img src="../../image/bdtk.jpg" width="50"><br/><span id="gigpriceErrorMassage"></span></td></tr></table></td>
 						</tr>	
 						<tr>
 							<td>Description:</td>
-							<td><textarea rows="10" cols="35" name="gigdescription" placeholder="Enter Gig Description max 120 character " id="gigdescription"  onchange="validateGigDescription()"></textarea> &nbsp; <img src="../../image/hint.png" height="13" title="Separate by comma"/> Separate by comma&nbsp;&nbsp;<span id="gigdescriptionErrorMassage"></span></td>
+							<td><textarea rows="10" cols="35" name="gigdescription" placeholder="Enter Gig Description max 120 character " id="gigdescription"  onchange="validateGigDescription()"></textarea><br/><span id="gigdescriptionErrorMassage"></span></td>
 						</tr>
 						<tr>
 							<td>Image:</td> 
