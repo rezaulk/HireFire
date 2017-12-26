@@ -12,23 +12,47 @@
 		$gigdescription=$_POST['gigdescription'];
 		$category=$_POST['category'];
 		
+		$isValid=true;
+		if($gigdescription=="")
+		{
+			$isValid=false;
+		}
+		if($gigprice=="")
+		{
+			$isValid=false;
+		}
+		if($category=="notSelected")
+		{
+			$isValid=false;
+		}
+		if($gigtitle=="")
+		{
+			$isValid=false;
+		}
 		
+		
+		if($isValid==false)
+		{
+			echo "<script>alert('Maybe javascript file has been changed. Please reload you browser');</script>"; 
+		}
+		else
+		{
 			$person['gigtitle']=$gigtitle;
 			$person['gigprice']=$gigprice;
 			$person['gigdescription']=$gigdescription;
 			$person['category']=$category;
-			addGig($person);
+			if(addGig($person))
+			{
+				//var_dump(addGig($person));
+				echo "<script>alert('sdsfdf');document.location='../profile.php'";
+				 //header("location:../profile.php");	
+			}
+           		
 			
-		
+		}	
 	}
 		
-	
 ?>
-
-
-
-
-
 
 
 <script>
@@ -71,6 +95,15 @@ function validate()
 		{
 			gigpriceErrorMassage.innerHTML="*gigprice Cannot be empty";
 			isValid=false;
+		}
+		else if(isNaN(gigprice))
+		{
+			gigpriceErrorMassage.innerHTML="*gigprice inValid";
+			isValid=false;
+		}
+		else
+		{
+			gigpriceErrorMassage.innerHTML="";
 		}
 		return isValid;
 		
@@ -117,24 +150,16 @@ function validateGigTitle()
 		}
 		else if(stringCheck()==false)
 		{
-			gigTitleErrorMassage.innerHTML="*Gig title  only contains character";
+			gigTitleErrorMassage.innerHTML="*Gig title only contains character";
 			isValid=false;
 		}
 		
-	
 		else
 		{
 			if(gigtitle.match(/^\s+$/) === null) 
 			{
-			   if(gigtitle.length>10)
-				{
 				  gigTitleErrorMassage.innerHTML="";
-				}
-				else
-				{
-				  gigTitleErrorMassage.innerHTML="*Gigtitle Title Length atleast 10 character.";
-				}
-				
+			
 			}
 			else 
 			{
@@ -163,18 +188,22 @@ function validateGigTitle()
 			isValid=false;
 		}
 		
-	
 		else
 		{
 			if(gigdescription.match(/^\s+$/) === null) 
 			{
-			   if(gigdescription.length>10)
+			   if(gigdescription.length<20)
 				{
-				  gigdescriptionErrorMassage.innerHTML="";
+					gigdescriptionErrorMassage.innerHTML="*Gig Description Title Length atleast 20 character.";
+				 
+				}
+				else if(gigdescription.length>150)
+				{
+					gigdescriptionErrorMassage.innerHTML="*Gig Description Title Length max 150 character.";
 				}
 				else
 				{
-				  gigdescriptionErrorMassage.innerHTML="*Gig Description Title Length atleast 10 character.";
+				   gigdescriptionErrorMassage.innerHTML="";
 				}
 				
 			}
@@ -197,12 +226,11 @@ function validateGigTitle()
 	<body>
 		<table border="0"  height="100%" width="100%">
 			<tr  height="10%">
-			    <td  width="40%" colspan="2">		   
+			    <td  width="50%" colspan="2">		   
 					<table  width="100%" border="0">
-						<tr>
+						<tr width="100%">
 							<td><a href="../main.html"><img src="../../image/image.png" width="150"></a></td>
-							<td><input type="text" name="search" placeholder="Search.." size="70" height="20">
-							<button>Search</button></td>
+							<td></td>
 							<td align="right">
 							<font size="4"><a href="../inbox.html">Messages&nbsp;</a>
 								<a href="../Orders.html">Orders&nbsp</a>
@@ -211,7 +239,7 @@ function validateGigTitle()
 								<a href="../../PublicHome.html">LogOut</a>
 							</font>
 							</td>
-							<td><a href="../profile.html"><img src="../../image/b.png" width="50"></a></td>
+							<td align="center" width="5%"><a href="../profile.html"><img src="../../image/b.png" width="50"></a></td>
 						</tr>
 					</table>
 				</td>
@@ -226,7 +254,7 @@ function validateGigTitle()
 					<table width="100%" cellspacing="15" border="0">
 						<tr>
 							<td width="10%">Gig Title: </td>
-							<td width="90%"><input name="gigtitle" placeholder="Enter Gig Title max 120 character " id="gigtitle"  onchange="validateGigTitle()" size="50"/>&nbsp;&nbsp;<span id="gigTitleErrorMassage"></span></td>
+							<td width="90%"><input name="gigtitle" placeholder="Enter Gig Title  " id="gigtitle"  onchange="validateGigTitle()" size="50"/>&nbsp;&nbsp;<span id="gigTitleErrorMassage"></span></td>
 						</tr>
 						<tr>
 							<td>
@@ -251,7 +279,7 @@ function validateGigTitle()
 						</tr>	
 						<tr>
 							<td>Description:</td>
-							<td><textarea rows="10" cols="35" name="gigdescription" placeholder="Enter Gig Requirement max 120 character " id="gigdescription"  onchange="validateGigDescription()"></textarea> &nbsp; <img src="../../image/hint.png" height="13" title="Separate by comma"/> Separate by comma&nbsp;&nbsp;<span id="gigdescriptionErrorMassage"></span></td>
+							<td><textarea rows="10" cols="35" name="gigdescription" placeholder="Enter Gig Description max 120 character " id="gigdescription"  onchange="validateGigDescription()"></textarea> &nbsp; <img src="../../image/hint.png" height="13" title="Separate by comma"/> Separate by comma&nbsp;&nbsp;<span id="gigdescriptionErrorMassage"></span></td>
 						</tr>
 						<tr>
 							<td>Image:</td> 

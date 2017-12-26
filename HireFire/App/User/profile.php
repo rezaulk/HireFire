@@ -202,7 +202,7 @@
 			</td>
 			<td>	
 				<img src="../image/addgig.png"/><br/><br/>
-				<button><a href="Create/create1.php">Create a new gig</a></button>
+				<button><a href="Create/creategig.php">Create a new gig</a></button>
 			</td>
 			
 		</tr>

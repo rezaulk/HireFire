@@ -18,7 +18,7 @@
 		$sql = "INSERT INTO gigs VALUES('reza','$gigtitle','null','$category','$gigprice','$gigdescription' ,'null','$date','0')";
        
 	    $result = executeSQL($sql);
-		 var_dump($result);
+		// var_dump($result);
         return $result;
 	}
 	
