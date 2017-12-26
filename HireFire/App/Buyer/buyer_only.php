@@ -2,10 +2,14 @@
 //var_dump($GLOBALS);
         require_once "../../data/person_data_access(reza).php";
 		require_once "../../service/validation_service(tanim).php";
+		if(empty($_SESSION['username']))
+		{
+			//echo "<script>alert('Please Login first');document.location='../SignUp1.php'</script>";
+			header("location:../SignUp1.php");
+		}
         //require_once "../../service/person_service.php";
 ?>
 <?php 
-     
      $username = $_SESSION['username'];
 	 $persons=accessProfileBuyer($username);
 	 //var_dump($persons);
@@ -105,7 +109,7 @@
 				    echo"<li>". $languages[$i]['language']."</li>";
 					echo "</ul>";
 				?></td>
-				<td valign="top" align="right"><a href="">Add new</a></td>
+				<td valign="top" align="right"><input type="button" onclick='' value='ADD NEW'></td>
 			</tr>
 			<tr height="10">
 				<td colspan="3"><hr/></td>

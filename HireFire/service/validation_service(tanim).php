@@ -20,7 +20,7 @@
 							
 						}
 						else{
-							echo "<script>alert('Please check your image format')</script>";
+							echo "<script>alert('Check your image format jpg or png')</script>";
 							return $imageLocationWithImageName;
 						}
 					}
