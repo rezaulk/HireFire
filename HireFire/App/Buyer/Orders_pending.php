@@ -12,6 +12,7 @@
 
 
 
+
 <html>
     <head>
 	    <title>HireFire</title>
@@ -26,8 +27,6 @@
 							<td><input type="text" name="search" placeholder="Search.." size="70" height="20"><button>Search</button></td>
 							<td align="right">
 								<font size="4"><a href="inbox.html">Messages&nbsp;</a>
-									<a href="Orders_pending.html">Orders&nbsp</a>
-									<a href="Postrequest.html">Postrequest&nbsp;</a>
 									<a href="dashboard.html">Dashboard&nbsp;</a>
 									<a href="../PublicHome.html">LogOut</a>
 								</font>
@@ -49,7 +48,7 @@
 						   <td width="70%"></td>
 						</tr>
 						<tr height="9%">
-						   <td width="30%">&nbsp;<a href="Orders_pending.php">Pending</a>&nbsp;|&nbsp;<a href="Orders_active.php">Active</a>&nbsp;|&nbsp;Completed&nbsp;<hr></td>
+						   <td width="30%">&nbsp;<a href="Orders_active.php">Active</a>&nbsp;|&nbsp;Pending&nbsp;|&nbsp;<a href="Orders_completed.php">Completed</a>&nbsp;<hr></td>
 						   <td width="70%"></td>
 						</tr>
 						<tr  height="10%">
@@ -67,14 +66,14 @@
 										<td>
 											<table border="1" height="100%" width="100%" cellspacing="0">
 												<tr height="10%">
-													<td width="10%">Buyer</td>
-												   <td width="10%">Gig</td>
-												  
-												   <td width="10%">Deadline</td>
-												   <td width="10%">Amount</td>
+													<th>Buyer</th>
+													<th>Gig</th>
+													<th>Deadline</th>
+													<th>Amount</th>
+													<th></th>
 												</tr>
 												<?php
-                                                     $persons=sellercompleteorderaccess($username);
+                                                     $persons=buyerpendingorderaccess($username);
 
 													//echo "<script>alert('Programming1')</script>";
 													$i=0;
@@ -84,13 +83,13 @@
 													{
 														
                                                       //var_dump($value);
-													   $bName=$value['bName'];
+													   $bName=$value['sName'];
 													   $gId=$value['gId'];
 													   $date=$value['deadline'];
 													   $title=gigTitleaccess($gId);
 														echo "<tr>";
 														
-														echo "<td >$bName</td><td>$title[gigTitle]</td><td>$date</td><td>$title[price]</td>";
+														echo "<td >$bName</td><td>$title[gigTitle]</td><td><a href='Orders_progress.php'>View</a></td><td>$date</td><td>$title[price]</td>";
 														echo "</tr>";
                                                         $i++; 
 

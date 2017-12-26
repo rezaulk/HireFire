@@ -5,7 +5,7 @@
      
      $username = $_SESSION['username'];
 	 //var_dump($username);
-	 $sellerid=selleridaccess($username);
+	 //$sellerid=selleridaccess($username);
  
 	 //var_dump($languages[1]['language']);
 ?>
@@ -72,7 +72,7 @@
 												   <td width="10%">Amount</td>
 												 </tr>
 												<?php
-                                                     $persons=sellerorderaccess($sellerid);
+                                                     $persons=selleractiveorderaccess($username);
 
 													//echo "<script>alert('Programming1')</script>";
 													$i=0;

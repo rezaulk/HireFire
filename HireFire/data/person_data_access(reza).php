@@ -38,11 +38,14 @@
 		
 	}
 	
-	function sellerorderaccessToDb($key)
+	
+	//seller view :::::::::::
+	//for complete order 
+	function sellercompleteorderaccessToDb($key)
 	{
-		$sid=$key;
+		$username=$key;
 		//echo "$name";
-		$sql = "SELECT * FROM orders WHERE sId LIKE '$sid' ";
+		$sql = "SELECT * FROM orders WHERE sName LIKE '$username' and status like 'completed' ";
 		$result = executeSQL($sql);
 		//var_dump($result);
 		$persons = array();
@@ -54,6 +57,104 @@
 		return $persons;
 		
 	}
+	
+	//for pending order 
+	function sellerpendingorderaccessToDb($key)
+	{
+		$username=$key;
+		//echo "$name";
+		$sql = "SELECT * FROM orders WHERE sName LIKE '$username' and status like 'pending' ";
+		$result = executeSQL($sql);
+		//var_dump($result);
+		$persons = array();
+			for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+				$persons[$i] = $row;
+				//var_dump($persons[$i]['type']);
+			}
+		
+		return $persons;
+		
+	}
+	
+	//for active order 
+	function selleractiveorderaccessToDb($key)
+	{
+		$username=$key;
+		//echo "$name";
+		$sql = "SELECT * FROM orders WHERE sName LIKE '$username' and status like 'active' ";
+		$result = executeSQL($sql);
+		//var_dump($result);
+		$persons = array();
+			for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+				$persons[$i] = $row;
+				//var_dump($persons[$i]['type']);
+			}
+		
+		return $persons;
+		
+	}
+	
+	
+	
+	//buyer view :::::::::::
+	//for complete order 
+	function buyercompleteorderaccessToDb($key)
+	{
+		$username=$key;
+		//echo "$name";
+		$sql = "SELECT * FROM orders WHERE bName LIKE '$username' and status like 'completed' ";
+		$result = executeSQL($sql);
+		//var_dump($result);
+		$persons = array();
+			for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+				$persons[$i] = $row;
+				//var_dump($persons[$i]['type']);
+			}
+		
+		return $persons;
+		
+	}
+	
+	//for pending order 
+	function buyerpendingorderaccessToDb($key)
+	{
+		$username=$key;
+		//echo "$name";
+		$sql = "SELECT * FROM orders WHERE bName LIKE '$username' and status like 'pending' ";
+		$result = executeSQL($sql);
+		//var_dump($result);
+		$persons = array();
+			for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+				$persons[$i] = $row;
+				//var_dump($persons[$i]['type']);
+			}
+		
+		return $persons;
+		
+	}
+	
+	//for active order 
+	function buyeractiveorderaccessToDb($key)
+	{
+		$username=$key;
+		//echo "$name";
+		$sql = "SELECT * FROM orders WHERE bName LIKE '$username' and status like 'active' ";
+		$result = executeSQL($sql);
+		//var_dump($result);
+		$persons = array();
+			for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+				$persons[$i] = $row;
+				//var_dump($persons[$i]['type']);
+			}
+		
+		return $persons;
+		
+	}
+	
+	
+	
+	
+	
 	
 	
 	function selleridaccessToDb($key)
@@ -91,8 +192,8 @@
 		$category=$person["category"];
 		$imgExt=$person['imgExt'];
 		$date= date("Y-m-d");
-		
-		$sql = "INSERT INTO gigs VALUES('reza','$gigtitle','null','$category','$gigprice','$gigdescription' ,'$imgExt','$date','0')";
+		 $username = $_SESSION['username'];
+		$sql = "INSERT INTO gigs VALUES('$username','$gigtitle','null','$category','$gigprice','$gigdescription' ,'$imgExt','$date','0')";
        
 	    $result = executeSQL($sql);
 		// var_dump($result);

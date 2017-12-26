@@ -31,10 +31,24 @@
 		return selleridaccessToDb($key);
 	}
 	
-	function sellerorderaccess($key)
+	
+	//orderlist seller view
+	
+	function sellercompleteorderaccess($key)
 	{
-		return sellerorderaccessToDb($key);
+		return sellercompleteorderaccessToDb($key);
 	}
+	
+	function sellerpendingorderaccess($key)
+	{
+		return sellerpendingorderaccessToDb($key);
+	}
+	
+	function selleractiveorderaccess($key)
+	{
+		return selleractiveorderaccessToDb($key);
+	}
+	
 	
 	function buyernameaccess($key)
 	{
@@ -44,6 +58,33 @@
 	{
 		return gigTitleaccessToDb($key);
 	}
+	
+	
+	
+	//orderlist seller view
+	
+	function buyercompleteorderaccess($key)
+	{
+		return buyercompleteorderaccessToDb($key);
+	}
+	
+	function buyerpendingorderaccess($key)
+	{
+		return buyerpendingorderaccessToDb($key);
+	}
+	
+	function buyeractiveorderaccess($key)
+	{
+		return buyeractiveorderaccessToDb($key);
+	}
+	
+	
+	function sellernameaccess($key)
+	{
+		return sellernameaccessToDb($key);
+	}
+	
+	
 	
 	
 	
