@@ -233,11 +233,13 @@ function validateGigTitle()
 			   if(gigdescription.length<20)
 				{
 					gigdescriptionErrorMassage.innerHTML="*Gig Description Title Length atleast 20 character.";
+					isValid=false;
 				 
 				}
 				else if(gigdescription.length>150)
 				{
 					gigdescriptionErrorMassage.innerHTML="*Gig Description Title Length max 150 character.";
+					isValid=false;
 				}
 				else
 				{
@@ -248,6 +250,7 @@ function validateGigTitle()
 			else 
 			{
 					gigdescriptionErrorMassage.innerHTML="*Gig Description can,t contains Only space";
+					isValid=false;
 			}
 		}
 		return isValid;
