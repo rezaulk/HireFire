@@ -34,5 +34,57 @@
 			
 		}
 	}
+	function monthReturn($date){
+		$dateDivide=explode("-",$date);
+		//var_dump($dateDivide);
+		if($dateDivide[1]==1)
+		{
+			return "January";
+		}
+		if($dateDivide[1]==2)
+		{
+			return "February";
+		}
+		if($dateDivide[1]==3)
+		{
+			return "March";
+		}
+		if($dateDivide[1]==4)
+		{
+			return "April";
+		}
+		if($dateDivide[1]==5)
+		{
+			return "May";
+		}
+		if($dateDivide[1]==6)
+		{
+			return "June";
+		}
+		if($dateDivide[1]==7)
+		{
+			return "July";
+		}
+		if($dateDivide[1]==8)
+		{
+			return "August";
+		}
+		if($dateDivide[1]==9)
+		{
+			return "September";
+		}
+		if($dateDivide[1]==10)
+		{
+			return "October ";
+		}
+		if($dateDivide[1]==11)
+		{
+			return "November";
+		}
+		else{
+			return "December";
+		}
+		
+	}
 	
 ?>

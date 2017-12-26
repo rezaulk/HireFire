@@ -8,6 +8,8 @@
      
      $username = $_SESSION['username'];
 	 $persons=accessProfileBuyer($username);
+	 //var_dump($persons);
+	 $month=monthReturn($persons[0]['joiningDate']);
 	 $day=getJoiningDateFromDb($username);
 	 //var_dump($day);
 	 $languages=(getLanguageByBuyerFromDb($username));
@@ -83,7 +85,7 @@
 			<tr>
 				<td width="5%"><img src="../image/member1.png"/></td>
 				<td>Member since</td>
-				<td align="right">April <?php echo "$day"?></td>
+				<td align="right"><?=$month?> <?php echo "$day"?></td>
 			</tr>
 			
 			<tr>
@@ -103,7 +105,7 @@
 				    echo"<li>". $languages[$i]['language']."</li>";
 					echo "</ul>";
 				?></td>
-				<td valign="top" align="right">Add new</td>
+				<td valign="top" align="right"><a href="">Add new</a></td>
 			</tr>
 			<tr height="10">
 				<td colspan="3"><hr/></td>
