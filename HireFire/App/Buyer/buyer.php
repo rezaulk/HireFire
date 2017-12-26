@@ -1,5 +1,11 @@
 <?php   session_start(); 
         require_once "../../data/person_data_access(reza).php";
+		require_once "../../service/validation_service(tanim).php";
+		if(empty($_SESSION['username']))
+		{
+			//echo "<script>alert('Please Login first');document.location='../SignIn.php'</script>";
+			header("location:../SignUp1.php");
+		}
         //require_once "../../service/person_service.php";
 ?>
 <?php 
@@ -14,6 +20,7 @@
 						document.location='buyer_only.php';
 					 </script>";*/
 	  }
+	  	 $month=monthReturn($persons[0]['joiningDate']);
 	 $day=getJoiningDateFromDb($username);
 	 //var_dump($day);
 	 $languages=(getLanguageByBuyerFromDb($username));
@@ -109,7 +116,7 @@
 			<tr>
 				<td width="5%"><img src="../image/member1.png"/></td>
 				<td>Member since</td>
-				<td align="right">April <?php echo "$day"?></td>
+				<td align="right"><?=$month?> <?php echo "$day"?></td>
 			</tr>
 			
 			<tr>
@@ -123,11 +130,14 @@
 			</tr>
 			<tr>
 				<td colspan="2"><font size="4"><b>Languages</font></b><br/>
-				<?php for($i=0;$i<count($languages);$i++)
-				    echo $languages[$i]['language']."<br/>";
+				<?php 
+					echo "<ul>";
+					for($i=0;$i<count($languages);$i++)
+				    echo"<li>". $languages[$i]['language']."</li>";
+					echo "</ul>";
 				?>
 				</td>
-				<td valign="top" align="right">Add new</td>
+				<td valign="top" align="right"><!--Add new--></td>
 			</tr>
 			<tr height="10">
 				<td colspan="3"><hr/></td>
