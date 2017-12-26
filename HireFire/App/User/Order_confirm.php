@@ -5,7 +5,7 @@
 	include("../../service/gig_service(robi).php");
 	$gigId=$_REQUEST['gigId'];
 	$_SESSION['gigId']=$gigId;
-	var_dump($_SESSION);
+	//var_dump($_SESSION);
 ?>
 
 

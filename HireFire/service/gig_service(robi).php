@@ -122,7 +122,7 @@
 		//echo "<script> alert('retreiveProgrammingAndTechSingleGig');</script>";
 		return retreiveProgrammingAndTechSingleGigFromDb($gigId);
 		
-	}
+	}        
 	function retreiveName($username)
 	{
 		//echo "<script> alert('retreiveProgrammingAndTechSingleGig');</script>";
@@ -132,6 +132,16 @@
 	{
 		//echo "<script> alert('retreiveProgrammingAndTechSingleGig');</script>";
 		return retreiveSellerDescriptionFromDb($username);		
+	}
+	function addToOrder()
+	{
+		//echo "<script> alert('retreiveProgrammingAndTechSingleGig');</script>";
+		return addToOrderToDb();		
+	}
+	function retreiveSellerName($gigId)
+	{
+		//echo "<script> alert('retreiveProgrammingAndTechSingleGig');</script>";
+		return retreiveSellerNameFromDb($gigId);		
 	}
 	
 ?>

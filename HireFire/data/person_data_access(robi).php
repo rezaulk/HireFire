@@ -367,5 +367,28 @@
 		//echo "<script>alert('retreiveProgrammingAndTechGigFromDb')</script>";
 		return $result;
 	}
+	function retreiveSellerNameFromDb($gigId)
+	{
+		$sql = "SELECT * FROM gigs where '$gigId' like gigId";
+		//var_dump($sql);
+		$result =executeSQL($sql);
+		//var_dump($result);
+		//echo "<script>alert('retreiveProgrammingAndTechGigFromDb')</script>";
+		return $result;
+	}
+	
+	function addToOrderToDb()
+	{
+		$buyerName=$_SESSION['username'];
+		$buyerName=$_SESSION['username'];
+		$buyerName=$_SESSION['username'];
+		//var_dump ($_SESSION);
+		//$sql = "INSERT INTO education VALUES('null', '$from', '$to' , '$degree', '$areaOfStudy', 'null')";
+		//var_dump($sql);
+		//$result =executeSQL($sql);
+		//var_dump($result);
+		//echo "<script>alert('retreiveProgrammingAndTechGigFromDb')</script>";
+		//return $result;
+	}
 	
 ?>

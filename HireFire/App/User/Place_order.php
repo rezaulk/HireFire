@@ -3,12 +3,27 @@
 ?>
 <?php 
 	include("../../service/gig_service(robi).php");
-	$gigId=$_SESSION['gigId'];
+	
 ?>
 
 <?php
-	
-	
+	if($_SERVER['REQUEST_METHOD']=="GET")
+	{
+		
+		$_SESSION['requirements']=$_REQUEST['requirements'];
+		$_SESSION['deadline']=$_REQUEST['deadline'];
+		var_dump($_SESSION);
+	}
+	if($_SERVER['REQUEST_METHOD']=="POST")
+	{	
+		$_SESSION['accountNo']=$_REQUEST['accountNo'];
+		$seller=retreiveSellerName($_SESSION['gigId']);
+		var_dump($seller);
+		if(addToOrder())
+		{
+			
+		}
+	}
 	
 ?>
 
