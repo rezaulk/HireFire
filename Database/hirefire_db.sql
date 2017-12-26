@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2017 at 11:57 PM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 7.1.11
+-- Generation Time: Dec 26, 2017 at 08:10 AM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -113,7 +113,7 @@ CREATE TABLE `gigs` (
 --
 
 INSERT INTO `gigs` (`uName`, `gigTitle`, `gigId`, `category`, `price`, `gDescription`, `imgExt`, `date`, `orderCount`) VALUES
-('reza', 'wordpress', 1, 'wordpress', 250, 'i want to create wordpress', 'reza.jpg', '2017-12-12', 1);
+('reza', 'wordpress', 1, 'wordpress', 250, 'i want to create wordpress', '1.jpg', '2017-12-12', 1);
 
 -- --------------------------------------------------------
 
@@ -247,6 +247,7 @@ INSERT INTO `spending` (`uName`, `totalSpend`, `lastmonthSpend`) VALUES
 
 CREATE TABLE `users` (
   `uName` varchar(20) NOT NULL,
+  `name` varchar(40) NOT NULL,
   `password` varchar(20) NOT NULL,
   `email` varchar(20) NOT NULL,
   `type` int(11) NOT NULL,
@@ -258,12 +259,12 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`uName`, `password`, `email`, `type`, `joiningDate`, `imageExt`) VALUES
-('admin', '1', 'admin@gmail.com', 1, '2017-12-24', 'admin.jpg'),
-('dsds', '123@', 'rezaaaaaa@gmail.com', 2, '2017-12-25', 'dsds.jpg'),
-('reza', 'reza@', 'reza@gmail.com', 2, '2017-12-05', 'reza.jpg'),
-('robi', 'robi@', 'robi@gmail.com', 3, '2017-12-05', 'robi.jpg'),
-('tamin', '2', 'tanim@gmail.com', 1, '2017-12-04', 'tanim.jpg');
+INSERT INTO `users` (`uName`, `name`, `password`, `email`, `type`, `joiningDate`, `imageExt`) VALUES
+('admin', 'Robi', '1', 'admin@gmail.com', 1, '2017-12-24', 'admin.jpg'),
+('dsds', 'szcsdd csdc s', '123@', 'rezaaaaaa@gmail.com', 2, '2017-12-25', 'dsds.jpg'),
+('reza', 'zc sd ', 'reza@', 'reza@gmail.com', 2, '2017-12-05', 'reza.jpg'),
+('robi', 'robi ullah', 'robi@', 'robi@gmail.com', 3, '2017-12-05', 'robi.jpg'),
+('tamin', 'ik tanim ', '2', 'tanim@gmail.com', 1, '2017-12-04', 'tanim.jpg');
 
 --
 -- Indexes for dumped tables
@@ -334,31 +335,26 @@ ALTER TABLE `users`
 --
 ALTER TABLE `buyers`
   MODIFY `buyerId` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
 --
 -- AUTO_INCREMENT for table `education`
 --
 ALTER TABLE `education`
   MODIFY `educationId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `gigrequirements`
 --
 ALTER TABLE `gigrequirements`
   MODIFY `requirementId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `gigs`
 --
 ALTER TABLE `gigs`
   MODIFY `gigId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `sellers`
 --
 ALTER TABLE `sellers`
   MODIFY `sellerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- Constraints for dumped tables
 --
