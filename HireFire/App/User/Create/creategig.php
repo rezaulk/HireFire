@@ -1,71 +1,88 @@
 <?php
 	session_start();
 	 include("../../../service/person_service(reza).php");
+	 require_once "../../../service/validation_service(tanim).php";
 	 //require_once "../../../service/TANIM_service.php"
 ?>
 
 <?php
 	$maxID=maxGigId();
-	var_dump($maxID);
+	$checkIfImageUpload= checkIfImageUpload();
+	//if($checkIfImageUpload==false)
+	//var_dump($checkIfImageUpload);
+	//var_dump($maxID);
 	if($_SERVER['REQUEST_METHOD']=="POST")
 	{
-		$gigtitle=$_POST['gigtitle'];
-		$gigprice=$_POST['gigprice'];
-		$gigdescription=$_POST['gigdescription'];
-		$category=$_POST['category'];
-		
-		$isValid=true;
-		if($gigdescription=="")
-		{
-			///echo "<script>alert('gigdescription');</script>";
-			$isValid=false;
-		}
-		if($gigprice=="")
-		{
-			//echo "<script>alert('price');</script>";
-			$isValid=false;
-		}
-		if($category=="notSelected")
-		{
-			//echo "<script>alert('category');</script>";
-			$isValid=false;
-		}
-		if($gigtitle=="")
-		{
-			//echo "<script>alert('gigTitle');</script>";
-			$isValid=false;
-		}
-		
-		
-		if($isValid==false)
-		{
-			echo "<script>alert('Maybe javascript file has been changed. Please reload you browser');</script>"; 
-		}
-		else
-		{
-			$person['gigtitle']=$gigtitle;
-			$person['gigprice']=$gigprice;
-			$person['gigdescription']=$gigdescription;
-			$person['category']=$category;
-			if(addGig($person))
-			{
-				//var_dump(addGig($person));
-				//echo "<script>alert('sdsfdf');document.location='../profile.php'";
-				 header("location: ../profile.php");	
-			}
-           		
+		$x=imgGigAdd($maxID['MAX(gigId)']+1);
+		if($x==true){
+			$gigtitle=$_POST['gigtitle'];
+			$gigprice=$_POST['gigprice'];
+			$gigdescription=$_POST['gigdescription'];
+			$category=$_POST['category'];
 			
-		}	
+			
+			$isValid=true;
+			if($gigdescription=="")
+			{
+				///echo "<script>alert('gigdescription');</script>";
+				$isValid=false;
+			}
+			if($gigprice=="")
+			{
+				//echo "<script>alert('price');</script>";
+				$isValid=false;
+			}
+			if($category=="notSelected")
+			{
+				//echo "<script>alert('category');</script>";
+				$isValid=false;
+			}
+			if($gigtitle=="")
+			{
+				//echo "<script>alert('gigTitle');</script>";
+				$isValid=false;
+			}
+			
+			
+			if($isValid==false)
+			{
+				echo "<script>alert('Maybe javascript file has been changed. Please reload you browser');</script>"; 
+			}
+			else
+			{
+				$person['gigtitle']=$gigtitle;
+				$person['gigprice']=$gigprice;
+				$person['gigdescription']=$gigdescription;
+				$person['category']=$category;
+				$gitID=$maxID['MAX(gigId)']+1;
+				$person['imgExt']=$gitID.".jpg";
+				if(addGig($person))
+				{
+					//var_dump(addGig($person));
+					//echo "<script>alert('sdsfdf');document.location='../profile.php'";
+					 header("location: ../profile.php");	
+				}
+					
+				
+			}	
+		}
+		//var_dump($maxID);
+		//echo "<script>alert('gigdescription');</script>";
+		
 	}
 		
 ?>
 
 
 <script>
-
+	
 function validate()
 	{
 		var isValid=true;
+		if(!ImageUploadCheck())
+		{
+			isValid=false;
+		}
 		if(!validateGigTitle())
 		{
 		   isValid=false;
@@ -89,7 +106,21 @@ function validate()
 		
 		return isValid;
 	}
-	
+	function ImageUploadCheck(){
+		//var x=<?php echo json_encode($checkIfImageUpload); ?>;
+		var fileCheck = document.getElementById("gigImage").value;
+		var fileCheckErrorMassage=document.getElementById("fileCheckErrorMassage");
+		fileCheckErrorMassage.style.color="red";
+		if(fileCheck==""){
+			//alert("as");
+			fileCheckErrorMassage.innerHTML="*Please upload a gig image";
+			return false;
+		}
+		else{
+			fileCheckErrorMassage.innerHTML="";
+			return true;
+		}
+	}
 	function validateGigPrice()
 	{	
 		var isValid=true;
@@ -257,7 +288,7 @@ function validateGigTitle()
 			<tr height="65%">
 				<td width="25%"></td>
 				<td>
-				<form method="POST" onsubmit="return validate()">
+				<form action="" method="POST" enctype="multipart/form-data" onsubmit="return validate()">
 					<table width="100%" cellspacing="15" border="0">
 						<tr>
 							<td width="10%">Gig Title: </td>
@@ -290,7 +321,7 @@ function validateGigTitle()
 						</tr>
 						<tr>
 							<td>Image:</td> 
-							<td><input type="file"/></td>
+							<td><input type="file" id="gigImage" name="gigImage" value=""/><br/><span id="fileCheckErrorMassage"></span></td>
 						</tr>
 						<tr>
 							<td></td>

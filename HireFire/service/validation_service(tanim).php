@@ -34,6 +34,17 @@
 			
 		}
 	}
+	
+	
+	function checkIfImageUpload(){
+		if(count($_FILES)==0){
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+	
 	function monthReturn($date){
 		$dateDivide=explode("-",$date);
 		//var_dump($dateDivide);
@@ -85,6 +96,48 @@
 			return "December";
 		}
 		
+	}
+	function imgGigAdd($gigId)
+	{
+		$filename=$_FILES['gigImage']['name'];//ByDefault Name of the uplpoaded file
+		$tmp_name=$_FILES['gigImage']['tmp_name'];//ByDefault where the image saved
+		//var_dump($GLOBALS);
+		$size=$_FILES['gigImage']['size'];
+		if(isset($filename))
+		{
+			if($size<5000000){
+				if($filename!=""){
+					$fileExt=explode(".",$filename);
+					if(count($fileExt>=2)){
+						if(($fileExt[1]=='jpg')||($fileExt[1]=='JPG')){
+							$add="../../GigImage/";
+							var_dump($gigId);
+							echo "<script>alert('TANIM')</script>";
+							
+							//var_dump(move_uploaded_file($tmp_name,$location."100.jpg"));
+							if(move_uploaded_file($tmp_name,$add.$gigId.".jpg")){
+								//echo "<script>alert('Uploaded')</script>";
+								return true;
+								
+								
+							}
+							
+						}
+						else{
+							echo "<script>alert('Supported image format jpg')</script>";
+							return false;
+							//return $gigImageLocation;
+						}
+					}
+					//var_dump($fileExt);
+				}
+			}
+			else{
+				echo "<script>alert('Your File size is too large')</script>";
+				return false;
+				//return $imageLocationWithImageName;
+			}
+		}
 	}
 	
 ?>

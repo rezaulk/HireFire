@@ -89,9 +89,10 @@
 		$gigprice=$person["gigprice"];
 		$gigdescription=$person["gigdescription"];
 		$category=$person["category"];
+		$imgExt=$person['imgExt'];
 		$date= date("Y-m-d");
 		
-		$sql = "INSERT INTO gigs VALUES('reza','$gigtitle','null','$category','$gigprice','$gigdescription' ,'null','$date','0')";
+		$sql = "INSERT INTO gigs VALUES('reza','$gigtitle','null','$category','$gigprice','$gigdescription' ,'$imgExt','$date','0')";
        
 	    $result = executeSQL($sql);
 		// var_dump($result);
