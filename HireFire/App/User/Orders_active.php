@@ -12,7 +12,7 @@
 							<td><input type="text" name="search" placeholder="Search.." size="70" height="20"><button>Search</button></td>
 							<td align="right">
 								<font size="4"><a href="inbox.html">Messages&nbsp;</a>
-									<a href="Orders.html">Orders&nbsp</a>
+									<a href="Orders_pending.html">Orders&nbsp</a>
 									<a href="Postrequest.html">Postrequest&nbsp;</a>
 									<a href="dashboard.html">Dashboard&nbsp;</a>
 									<a href="../PublicHome.html">LogOut</a>
@@ -35,7 +35,7 @@
 						   <td width="70%"></td>
 						</tr>
 						<tr height="9%">
-						   <td width="30%">&nbsp;Active&nbsp;|&nbsp;<a href="Orders_completed.html">Completed</a>&nbsp;<hr></td>
+						   <td width="30%">&nbsp;<a href="Orders_pending.php">Pending</a>&nbsp;|&nbsp;Active&nbsp;|&nbsp;<a href="Orders_completed.php">Completed</a>&nbsp;<hr></td>
 						   <td width="70%"></td>
 						</tr>
 						<tr  height="10%">

@@ -88,7 +88,7 @@
 					<td></td>
 					<td align="right">
 						<font size="4"><a href="inbox.html">Messages&nbsp;</a>
-						<a href="Orders.html">Orders&nbsp</a>
+						<a href="Orders_pending.php">Orders&nbsp</a>
 						<a href="Postrequest.html">Postrequest&nbsp;</a>
 						<a href="dashboard.html">Dashboard&nbsp;</a>
 						<a href="../PublicHome.html">LogOut</a></font>
