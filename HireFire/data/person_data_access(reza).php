@@ -15,11 +15,10 @@
 		$category=$person["category"];
 		$date= date("Y-m-d");
 		
-		$sql = "INSERT INTO gigs VALUES('$uName''$gigTitle','null','$category', '$price', '$gDescription' ,'null', ,'$date', '0')";
-		
-		
-        //var_dump($sql);
+		$sql = "INSERT INTO gigs VALUES('reza','$gigtitle','null','$category','$gigprice','$gigdescription' ,'null','$date','0')";
+       
 	    $result = executeSQL($sql);
+		 var_dump($result);
         return $result;
 	}
 	
