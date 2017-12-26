@@ -239,7 +239,7 @@ function validateGigTitle()
 									<option value="Digital Marketing">Digital Marketing</option>
 									<option value="Writing & Translation">Writing & Translation</option>
 									<option value="Music & Audio">Music & Audio</option>
-									<option value=" Programming & Tech"> Programming & Tech</option>
+									<option value="Programming & Tech">Programming & Tech</option>
 									<option value="Business">Business</option>
 									<option value="Video & Animation">Video & Animation</option>
 								</select>&nbsp;&nbsp;<span id="categoryErrorMassage"></span>
