@@ -7,6 +7,73 @@
             <?php } ?>
 	
 	*/
+	function gigTitleaccessToDb($key)
+	{
+		$gId=$key;
+		//echo "$name";
+		$sql = "SELECT * FROM gigs WHERE gigId LIKE '$gId' ";
+		$result = executeSQL($sql);
+		//var_dump($result);
+		$person = mysqli_fetch_assoc($result);
+         //var_dump($person);
+		return $person;
+	}
+	
+	
+	function buyernameaccessToDb($key)
+	{
+		$bid=$key;
+		//echo "$name";
+		$sql = "SELECT * FROM users WHERE uName LIKE '$bid' ";
+		$result = executeSQL($sql);
+		//var_dump($result);
+		$persons = array();
+			for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+				$persons[$i] = $row;
+				//var_dump($persons[$i]['type']);
+			}
+		
+		return $persons;
+		
+		
+	}
+	
+	function sellerorderaccessToDb($key)
+	{
+		$sid=$key;
+		//echo "$name";
+		$sql = "SELECT * FROM orders WHERE sId LIKE '$sid' ";
+		$result = executeSQL($sql);
+		//var_dump($result);
+		$persons = array();
+			for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+				$persons[$i] = $row;
+				//var_dump($persons[$i]['type']);
+			}
+		
+		return $persons;
+		
+	}
+	
+	
+	function selleridaccessToDb($key)
+	{
+		$name=$key;
+		//echo "$name";
+		$sql = "SELECT * FROM sellers WHERE uName LIKE '$name' ";
+		$result = executeSQL($sql);
+		//var_dump($result);
+		$persons = array();
+			for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+				$persons[$i] = $row;
+				//var_dump($persons[$i]['type']);
+			}
+		$id=$persons['0']['sellerId'];
+		return $id; 
+	}
+	
+	
+	
 	function getMaxGigId(){
 
 		$sql = "SELECT MAX(gigId) FROM gigs";        

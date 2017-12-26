@@ -1,3 +1,15 @@
+<?php   session_start(); 
+		require_once "../../service/person_service(reza).php";
+?>
+<?php 
+     
+     $username = $_SESSION['username'];
+	 //var_dump($username);
+	 $sellerid=selleridaccess($username);
+ 
+	 //var_dump($languages[1]['language']);
+?>
+
 <html>
     <head>
 	    <title>HireFire</title>
@@ -48,34 +60,43 @@
 						</tr>
 						<tr height="80%">
 							<td colspan="2">
-								<table height="100%" width="50%" >
-									<tr height="35%" >
+								<table height="100%" width="50%" border="0" >
+									<tr>
 										<td>
-											<table border="1" height="100%" width="100%" cellspacing="0">
-												<tr height="10%">
-													<th>Buyer</th>
-													<th>Gig</th>
-													<th>Prgress</th>
-													<th>Deadline</th>
-													<th>Amount</th>
-												</tr>
-												<tr height="10%" align="center">
-													<td>raz</td>
-													<td>I will create a professional wordpress design</td>
-													<td><a href="Orders_progress.html">view</a></td>
-													<td>12-1-18</td>
-													<td>$120</td>
-											
-												</tr>
-												<tr height="10%" align="center">
-													<td>reza</td>
-													<td>I will create a professional website design</td>
-													<td><a href="Orders_progress.html">view</a></td>
-													<td>12-1-18</td>
-													<td>$320</td>
-												
-												</tr>
+											<table border=1 cellspacing=0 width="100%" height="100%">
+											    <tr>
+												   <td width="10%">Buyer</td>
+												   <td width="10%">Gig</td>
+												   <td width="10%">Process</td>
+												   <td width="10%">Deadline</td>
+												   <td width="10%">Amount</td>
+												 </tr>
+												<?php
+                                                     $persons=sellerorderaccess($sellerid);
+
+													//echo "<script>alert('Programming1')</script>";
+													$i=0;
+													//var_dump($persons);
+													
+													foreach ($persons as $value) 
+													{
+														
+                                                      //var_dump($value);
+													   $bName=$value['bName'];
+													   $gId=$value['gId'];
+													   $date=$value['deadline'];
+													   $title=gigTitleaccess($gId);
+														echo "<tr>";
+														
+														echo "<td >$bName</td><td>$title[gigTitle]</td><td><a href='Orders_progress.php'>View</a></td><td>$date</td><td>$title[price]</td>";
+														echo "</tr>";
+                                                        $i++; 
+
+
+													}
+												?>
 											</table>
+												
 										</td>
 									</tr>
 									<tr height="65%"><td></td>

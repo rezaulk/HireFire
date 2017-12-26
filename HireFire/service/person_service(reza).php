@@ -26,6 +26,28 @@
 		return addGigToDb($key);
 	}
 	
+	function selleridaccess($key)
+	{
+		return selleridaccessToDb($key);
+	}
+	
+	function sellerorderaccess($key)
+	{
+		return sellerorderaccessToDb($key);
+	}
+	
+	function buyernameaccess($key)
+	{
+		return buyernameaccessToDb($key);
+	}
+	function gigTitleaccess($key)
+	{
+		return gigTitleaccessToDb($key);
+	}
+	
+	
+	
+	
 	
 	
 	
