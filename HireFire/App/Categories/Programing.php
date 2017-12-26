@@ -1,3 +1,11 @@
+<?php
+	session_start();
+?>
+<?php 
+	include("../../service/gig_service(robi).php");
+?>
+<?php
+?>
 <html>
 	<head>
 		<title>HireFire</title>
@@ -44,56 +52,66 @@
 		</div>
 		
 		<table align="center">
-			<tr>
-				<td width="300">
-				  <a href="../gig/buyer_programing.html"><img src="../image/prog1.jpg" height="150"  width="300"></a></br>
-				  <a href="../gig/buyer_programing.html"><img src="../image/user-avatar.jpg" width="50"></a><br/>
-				shahadatraaz<br/>Level 2 Seller<br/>I will create a professional website design
-				</td>
-				<td width="300">
-				  <a href="../gig/buyer_programing.html"><img src="../image/prog2.jpg" height="150" width="300"></a></br>
-				  <a href="../gig/buyer_programing.html"><img src="../image/user-avatar.jpg" width="50"></a><br/>
-				   rezabd<br/>Level 2 Seller<br/>I will redesign your wordpress site
-				</td>
-				<td width="300">
-				  <a href="../gig/buyer_programing.html"><img src="../image/prog8.jpg" height="150" width="300"></a></br>
-				  <a href="../gig/buyer_programing.html"><img src="../image/user-avatar.jpg" width="50"></a><br/>
-				  teczium</br>Level 1 Seller<br/>I will do desktop applications in c,c++
-				</td>
-				<td>
-				  <a href="../gig/buyer_programing.html"><img src="../image/prog4.jpg" height="150"  width="300"></a></br>
-                  <a href="../gig/buyer_programing.html"><img src="../image/user-avatar.jpg" width="50"></a><br/>
-				  tanimcml<br/>Level 2 Seller<br/>I will redesign your wordpress site
-				</td>
 				
-			</tr>
-		</table>
-		<table align="center">
-			<tr>
-				<td width="300">
-				  <a href="../gig/buyer_programing.html"><img src="../image/prog5.jpg" height="150" width="300"></a></br>
-				  <a href="../gig/buyer_programing.html"><img src="../image/user-avatar.jpg" width="50"></a><br/>
-					shahadatraaz<br/>Level 2 Seller<br/>I will write c, c sharp, and winforms apps for you
-				</td>
-				<td width="300">
-				  <a href="../gig/buyer_programing.html"><img src="../image/prog6.jpg" height="150" width="300"></a> </br>
-				  <a href="../gig/buyer_programing.html"><img src="../image/user-avatar.jpg" width="50"></a><br/>
-				rezabd<br/>New Seller</br>I will provide you with awesome and responsive asp	
-				</td>
-				<td width="300">
-				  <a href="../gig/buyer_programing.html"><img src="../image/prog7.jpg" height="150" width="300"></a></br>
-				  <a href="buyer_programing.html"><img src="../image/user-avatar.jpg" width="50"></a><br/>
-				robiullah<br/>Level 2 Seller<br/>I will redesign your wordpress site
-				</td>
+			<?php
 				
-				<td width="300">
-				  <a href="../gig/buyer_programing.html"><img src="../image/prog3.jpg" height="150" width="300"></a></br>
-				  <a href="../gig/buyer_programing.html"><img src="../image/user-avatar.jpg" width="50"></a><br/>
-				  varuna10<br/>Level 2 Seller<br/>I will design a layout for your website
-				</td>	
-			</tr>
-		</table>
-		
+				$result = retreiveProgrammingAndTechGig();
+				
+				//var_dump($result);
+				//echo "<script>alert('Programming')</script>";
+				$programmingAndTechGig = array();
+				//echo "<script>alert('Programming1')</script>";
+				for($i=0; $row = mysqli_fetch_assoc($result); ++$i)
+				{
+					$countGigs=0;
+					
+					//echo "<script>alert('Programming2')</script>";
+					$programmingAndTechGig[$i] = $row;
+					$imgExt=$programmingAndTechGig[$i]['imgExt'];
+					$username=$programmingAndTechGig[$i]['uName'];	
+					$gigTitle=$programmingAndTechGig[$i]['gigTitle'];
+					$gigPrice=$programmingAndTechGig[$i]['price'];
+					$gigOrderCount=$programmingAndTechGig[$i]['orderCount'];
+					
+					
+					echo "<br/>";
+					
+					//userImage
+					
+					$userImageResult= retreiveUserImage($username);	
+					for($j=0; $row = mysqli_fetch_assoc($userImageResult); ++$j)
+					{	
+						$userImage=$row['imageExt'];
+					}
+					
+					//Level
+					
+					$userLevelResult= retreiveUserLevel($username);
+					for($j=0; $row = mysqli_fetch_assoc($userLevelResult); ++$j)
+					{	
+						$userLevel=$row['expertLevel'];
+					}
+					
+					
+					if($i%4==0)
+					{   
+						$elementCountInSingleRow=1;
+						echo "<tr>";
+					}
+					
+					echo    "<td width='300'><a href='../gig/buyer_programing.html'><img src='../GigImage/".$imgExt."' height='150'  width='300'></a></br>
+							<a href='../User/profileForAccessingBuyer.php?username=".$username."'><img src='../uploads/".$userImage."' width='50' height='50'></a><br/>".
+							$username."<br/>Level ".$userLevel." Seller<br/>".$gigTitle."<br/><b>Total Ordered: ".$gigOrderCount."</b><br/>Price: ".$gigPrice."<br/><br/></td>";
+							
+					if($elementCountInSingleRow==4)
+					{
+						echo "</tr>";
+					}	
+					$elementCountInSingleRow++;
+					$countGigs++;
+				}
+			?>
+
 		<table>
 			<tr colspan="3" height="20%">
 				<table border="0" width="100%">

@@ -296,4 +296,35 @@
 	    $result = executeSQL($sql);
         return $result;
 	}
+	
+	function retreiveProgrammingAndTechGigFromDb()
+	{
+		$sql = "SELECT * FROM gigs";  
+		$result =executeSQL($sql);
+		//echo "<script>alert('retreiveProgrammingAndTechGigFromDb')</script>";
+		return $result;
+		
+	}
+	function retreiveUserImageFromDb($username)
+	{
+		$sql = "SELECT imageExt FROM users where '$username' like uName";
+		//var_dump($sql);
+		$result =executeSQL($sql);
+		//var_dump($result);
+		//echo "<script>alert('retreiveProgrammingAndTechGigFromDb')</script>";
+		return $result;
+		
+	}
+	function retreiveUserLevelFromDb($username)
+	{
+		$sql = "SELECT expertLevel FROM sellers where '$username' like uName";
+		//var_dump($sql);
+		$result =executeSQL($sql);
+		//var_dump($result);
+		//echo "<script>alert('retreiveProgrammingAndTechGigFromDb')</script>";
+		return $result;
+		
+	}
+	
+	
 ?>
