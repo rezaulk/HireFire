@@ -57,15 +57,21 @@
 		}
 		else
 		{
+			echo "<script>alert('3')</script>";
 			$_SESSION['workingHour']=$workingHour;
 			$_SESSION['country']=$country;
 			$_SESSION['address']=$address;
 			$_SESSION['postalCode']=$postalCode;
 			$_SESSION['number']=$number;
-			if(addSeller()&&addSkills()&&addEducation())
+			var_dump($_SESSION);
+			if(addSeller()&&addSkills()&&addEducation()&&modifyType())
 			{
 				//var_dump($_SESSION);
 				header('Location: User/profile.php');
+			}
+			else
+			{
+				echo "<script>alert('else')</script>";
 			}
 		}
 		

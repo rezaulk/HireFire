@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2017 at 08:10 AM
+-- Generation Time: Dec 26, 2017 at 03:24 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -69,7 +69,12 @@ CREATE TABLE `education` (
 --
 
 INSERT INTO `education` (`uName`, `attendFrom`, `attendTo`, `degree`, `area`, `educationId`) VALUES
-('reza', '2017-12-03', '2017-12-12', 'Bsc', 'Cse', 1);
+('reza', '2017-12-03', '2017-12-12', 'Bsc', 'Cse', 1),
+('dsds', '2017-12-13', '2017-12-06', 'ghnfds', 'nhbfgvdx', 2),
+('dsds', '2017-12-13', '2017-12-06', 'ghnfds', 'nhbfgvdx', 3),
+('dsds', '2017-12-13', '2017-12-06', 'ghnfds', 'nhbfgvdx', 4),
+('dsds', '2017-12-13', '2017-12-06', 'ghnfds', 'nhbfgvdx', 5),
+('dsds', '2017-12-13', '2017-12-06', 'ghnfds', 'nhbfgvdx', 6);
 
 -- --------------------------------------------------------
 
@@ -113,7 +118,11 @@ CREATE TABLE `gigs` (
 --
 
 INSERT INTO `gigs` (`uName`, `gigTitle`, `gigId`, `category`, `price`, `gDescription`, `imgExt`, `date`, `orderCount`) VALUES
-('reza', 'wordpress', 1, 'wordpress', 250, 'i want to create wordpress', '1.jpg', '2017-12-12', 1);
+('reza', 'wordpress', 1, 'wordpress', 250, 'i want to create wordpress', '1.jpg', '2017-12-12', 1),
+('robi', 'i can do c++ project', 2, 'Programming & Tech', 12000, 'hjxbjhcbmcbc c', '2.jpg', '2017-12-13', 2),
+('robi', 'i can do c++ project', 3, 'Programming & Tech', 12000, 'hjxbjhcbmcbc c', '3.jpg', '2017-12-13', 2),
+('tamin', 'Tanim', 4, 'Programming & Tech', 3000, 'sdfsdv', '4.jpg', '2017-12-07', 5),
+('dsds', 'asxacds csdv ', 5, 'Programming & Tech', 343535, 'sfcvxscdscsdcdcd', '5.jpg', '2017-12-20', 5);
 
 -- --------------------------------------------------------
 
@@ -122,6 +131,7 @@ INSERT INTO `gigs` (`uName`, `gigTitle`, `gigId`, `category`, `price`, `gDescrip
 --
 
 CREATE TABLE `last active time` (
+  `id` int(30) NOT NULL,
   `uName` varchar(20) NOT NULL,
   `activeDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -130,8 +140,8 @@ CREATE TABLE `last active time` (
 -- Dumping data for table `last active time`
 --
 
-INSERT INTO `last active time` (`uName`, `activeDate`) VALUES
-('reza', '2017-12-11');
+INSERT INTO `last active time` (`id`, `uName`, `activeDate`) VALUES
+(1, 'reza', '2017-12-11');
 
 -- --------------------------------------------------------
 
@@ -140,6 +150,7 @@ INSERT INTO `last active time` (`uName`, `activeDate`) VALUES
 --
 
 CREATE TABLE `ordercomment` (
+  `orderCommentId` int(30) NOT NULL,
   `orderId` int(11) NOT NULL,
   `comment` varchar(200) DEFAULT NULL,
   `reply` varchar(200) DEFAULT NULL
@@ -149,9 +160,9 @@ CREATE TABLE `ordercomment` (
 -- Dumping data for table `ordercomment`
 --
 
-INSERT INTO `ordercomment` (`orderId`, `comment`, `reply`) VALUES
-(1, 'hi', NULL),
-(1, NULL, 'kitare ki hoise bol');
+INSERT INTO `ordercomment` (`orderCommentId`, `orderId`, `comment`, `reply`) VALUES
+(1, 1, 'hi', NULL),
+(2, 1, NULL, 'kitare ki hoise bol');
 
 -- --------------------------------------------------------
 
@@ -189,17 +200,22 @@ CREATE TABLE `sellers` (
   `expertLevel` int(2) NOT NULL,
   `address` varchar(20) NOT NULL,
   `sellerId` int(11) NOT NULL,
+  `country` varchar(40) NOT NULL,
   `bankName` varchar(30) NOT NULL,
-  `country` varchar(15) NOT NULL
+  `postalCode` int(20) NOT NULL,
+  `number` int(30) NOT NULL,
+  `workingHour` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sellers`
 --
 
-INSERT INTO `sellers` (`uName`, `accountNo`, `joiningDate`, `description`, `expertLevel`, `address`, `sellerId`, `bankName`, `country`) VALUES
-('reza', 1674086295, '2017-12-08', 'hi i am reza ul karim .', 0, 'khilgaon', 1, 'bkash', 'bangladesh'),
-('robi', 43242344, '2017-12-05', 'sfrseewrrwe', 2, 'safdf', 2, 'sdfsd', 'Japan');
+INSERT INTO `sellers` (`uName`, `accountNo`, `joiningDate`, `description`, `expertLevel`, `address`, `sellerId`, `country`, `bankName`, `postalCode`, `number`, `workingHour`) VALUES
+('reza', 1674086295, '2017-12-08', 'hi i am reza ul karim .', 0, 'khilgaon', 1, '', 'bkash', 0, 0, 0),
+('robi', 43242344, '2017-12-05', 'sfrseewrrwe', 2, 'safdf', 2, '', 'sdfsd', 0, 0, 0),
+('dsds', 654321, '2017-12-26', '4321', 0, 'dcsc', 3, 'bangladesh', 'rocket', 2323, 2147483647, 0),
+('dsds', 654321, '2017-12-26', '4321', 0, 'dcsc', 4, 'bangladesh', 'rocket', 2323, 2147483647, 0);
 
 -- --------------------------------------------------------
 
@@ -209,16 +225,32 @@ INSERT INTO `sellers` (`uName`, `accountNo`, `joiningDate`, `description`, `expe
 
 CREATE TABLE `skills` (
   `uName` varchar(20) NOT NULL,
-  `skill` varchar(20) NOT NULL
+  `skill` varchar(20) NOT NULL,
+  `skillId` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `skills`
 --
 
-INSERT INTO `skills` (`uName`, `skill`) VALUES
-('reza', 'wordpress'),
-('robi', 'wordpress');
+INSERT INTO `skills` (`uName`, `skill`, `skillId`) VALUES
+('reza', 'wordpress', 1),
+('robi', 'wordpress', 2),
+('dsds', 'Desktop Softwere Dev', 3),
+('dsds', 'Mobile Development', 4),
+('dsds', 'Script and Utilities', 5),
+('dsds', 'Desktop Softwere Dev', 6),
+('dsds', 'Mobile Development', 7),
+('dsds', 'Script and Utilities', 8),
+('dsds', 'Desktop Softwere Dev', 9),
+('dsds', 'Mobile Development', 10),
+('dsds', 'Script and Utilities', 11),
+('dsds', 'Desktop Softwere Dev', 12),
+('dsds', 'Mobile Development', 13),
+('dsds', 'Script and Utilities', 14),
+('dsds', 'Desktop Softwere Dev', 15),
+('dsds', 'Mobile Development', 16),
+('dsds', 'Script and Utilities', 17);
 
 -- --------------------------------------------------------
 
@@ -227,6 +259,7 @@ INSERT INTO `skills` (`uName`, `skill`) VALUES
 --
 
 CREATE TABLE `spending` (
+  `spendingId` int(30) NOT NULL,
   `uName` varchar(20) NOT NULL,
   `totalSpend` int(11) NOT NULL,
   `lastmonthSpend` int(11) NOT NULL
@@ -236,8 +269,8 @@ CREATE TABLE `spending` (
 -- Dumping data for table `spending`
 --
 
-INSERT INTO `spending` (`uName`, `totalSpend`, `lastmonthSpend`) VALUES
-('reza', 1200, 100);
+INSERT INTO `spending` (`spendingId`, `uName`, `totalSpend`, `lastmonthSpend`) VALUES
+(1, 'reza', 1200, 100);
 
 -- --------------------------------------------------------
 
@@ -261,8 +294,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`uName`, `name`, `password`, `email`, `type`, `joiningDate`, `imageExt`) VALUES
 ('admin', 'Robi', '1', 'admin@gmail.com', 1, '2017-12-24', 'admin.jpg'),
-('dsds', 'szcsdd csdc s', '123@', 'rezaaaaaa@gmail.com', 2, '2017-12-25', 'dsds.jpg'),
-('reza', 'zc sd ', 'reza@', 'reza@gmail.com', 2, '2017-12-05', 'reza.jpg'),
+('dsds', 'szcsdd csdc s', '123@', 'rezaaaaaa@gmail.com', 3, '2017-12-25', 'dsds.jpg'),
+('reza', 'zc sd ', 'reza@', 'reza@gmail.com', 3, '2017-12-05', 'reza.jpg'),
 ('robi', 'robi ullah', 'robi@', 'robi@gmail.com', 3, '2017-12-05', 'robi.jpg'),
 ('tamin', 'ik tanim ', '2', 'tanim@gmail.com', 1, '2017-12-04', 'tanim.jpg');
 
@@ -299,6 +332,18 @@ ALTER TABLE `gigs`
   ADD KEY `uName` (`uName`);
 
 --
+-- Indexes for table `last active time`
+--
+ALTER TABLE `last active time`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ordercomment`
+--
+ALTER TABLE `ordercomment`
+  ADD PRIMARY KEY (`orderCommentId`);
+
+--
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
@@ -318,7 +363,14 @@ ALTER TABLE `sellers`
 -- Indexes for table `skills`
 --
 ALTER TABLE `skills`
+  ADD PRIMARY KEY (`skillId`),
   ADD KEY `uName` (`uName`);
+
+--
+-- Indexes for table `spending`
+--
+ALTER TABLE `spending`
+  ADD PRIMARY KEY (`spendingId`);
 
 --
 -- Indexes for table `users`
@@ -339,7 +391,7 @@ ALTER TABLE `buyers`
 -- AUTO_INCREMENT for table `education`
 --
 ALTER TABLE `education`
-  MODIFY `educationId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `educationId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `gigrequirements`
 --
@@ -349,12 +401,32 @@ ALTER TABLE `gigrequirements`
 -- AUTO_INCREMENT for table `gigs`
 --
 ALTER TABLE `gigs`
-  MODIFY `gigId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `gigId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `last active time`
+--
+ALTER TABLE `last active time`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `ordercomment`
+--
+ALTER TABLE `ordercomment`
+  MODIFY `orderCommentId` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `sellers`
 --
 ALTER TABLE `sellers`
-  MODIFY `sellerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `sellerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `skills`
+--
+ALTER TABLE `skills`
+  MODIFY `skillId` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT for table `spending`
+--
+ALTER TABLE `spending`
+  MODIFY `spendingId` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --

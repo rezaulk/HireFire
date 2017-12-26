@@ -257,7 +257,7 @@
 		
 		
 		$sql = "INSERT INTO sellers VALUES('$uName', '$accountNo', '$joiningDate', '$description' , '$expertLevel', '$address' ,'null', '$country' , '$bankName', '$postalCode', '$number', '$workingHour')";
-        //var_dump($sql);
+        var_dump($sql);
 	    $result = executeSQL($sql);
         return $result;
 	}
@@ -269,7 +269,7 @@
 		$i=0;
 		foreach($skills as $skill)
 		{
-			$sql = "INSERT INTO skills VALUES('$uName', '$skill')";
+			$sql = "INSERT INTO skills VALUES('$uName', '$skill', 'null')";
 			$result = executeSQL($sql);
 			$i++;
 			//var_dump($sql);
@@ -296,6 +296,18 @@
 	    $result = executeSQL($sql);
         return $result;
 	}
+	
+	function modifyTypeToUserDb()
+	{
+		$uName=$_SESSION['username'];
+		echo "<script>alert('modifyTypeToUserDb')</script>";
+		$sql = "UPDATE users SET type='3' WHERE uName='$uName'"; 
+        var_dump($sql);
+	    $result = executeSQL($sql);
+        return $result;
+	}
+	
+	
 	
 	function retreiveProgrammingAndTechGigFromDb()
 	{
@@ -325,6 +337,17 @@
 		return $result;
 		
 	}
+	function retreiveProgrammingAndTechSingleGigFromDb($username)
+	{
+		$sql = "SELECT * FROM gigs where '$username' like uName";
+		//var_dump($sql);
+		$result =executeSQL($sql);
+		//var_dump($result);
+		//echo "<script>alert('retreiveProgrammingAndTechGigFromDb')</script>";
+		return $result;
+		
+	}
+	
 	
 	
 ?>

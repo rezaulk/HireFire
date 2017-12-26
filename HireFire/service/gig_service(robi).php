@@ -117,5 +117,11 @@
 		return retreiveUserLevelFromDb($username);
 		
 	}
+	function retreiveProgrammingAndTechSingleGig($username)
+	{
+		return retreiveProgrammingAndTechSingleGigFromDb($username);
+		
+	}
+	
 	
 ?>

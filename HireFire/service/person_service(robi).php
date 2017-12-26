@@ -87,18 +87,25 @@
 	
 	function addSeller()
 	{
+		echo "<script>alert('addSeller')</script>";
 		return addSellerToDb();
 		//var_dump($_SESSION);
 	}
 	function addSkills()
 	{
+		echo "<script>alert('addSkills')</script>";
 		return addSkillsToDb();
 	}
 	function addEducation()
 	{
+		echo "<script>alert('addEducation')</script>";
 		return addEducationToDb();
 	}
+	function modifyType()
+	{
+		echo "<script>alert('modifyType')</script>";
+		return modifyTypeToUserDb();
+	}
 	
-
 	
 ?>
