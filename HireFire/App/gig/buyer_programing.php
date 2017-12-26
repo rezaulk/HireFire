@@ -1,3 +1,31 @@
+<?php 
+	include("../../service/gig_service(robi).php");
+?>
+<?php
+	$gigId=$_REQUEST['gigId'];
+	//echo "<script> alert('out1');</script>";
+	$result = retreiveProgrammingAndTechSingleGig($gigId);
+
+	$programmingAndTechGig = array();
+	//echo "<script> alert('out');</script>";
+	//var_dump($result);
+	for($i=0; $row = mysqli_fetch_assoc($result); ++$i)
+	{
+		
+		$programmingAndTechGig[$i] = $row;
+		$imgExt=$programmingAndTechGig[$i]['imgExt'];
+		//echo "<br/><br/>";
+		//echo "<script> alert('in');</script>";
+		//var_dump($imgExt);
+		$username=$programmingAndTechGig[$i]['uName'];	
+		$gigTitle=$programmingAndTechGig[$i]['gigTitle'];
+		$gigPrice=$programmingAndTechGig[$i]['price'];
+		$gigOrderCount=$programmingAndTechGig[$i]['orderCount'];
+		$gigDescription=$programmingAndTechGig[$i]['gDescription'];
+		//$gigId=$programmingAndTechGig[$i]['gigId'];
+	}
+?>
+
 <html>
     <head>
 	    <title>HireFire</title>
@@ -9,8 +37,6 @@
 					<table  width="100%" border="0">
 						<tr>
 							<td><a href="../User/main.html"><img src="../image/image.png" width="150"></a></td>
-							<td><input type="text" name="search" placeholder="Search.." size="70" height="20">
-							<button>Search</button></td>
 							<td align="right">
 							<font size="4"><a href="../User/inbox.html">Messages&nbsp;</a>
 							<a href="../User/Orders.html">Orders&nbsp</a>
@@ -18,7 +44,7 @@
 							<a href="../User/dashboard.html">Dashboard&nbsp;</a>
 							<a href="PublicHome.html">LogOut</a></font>
 							</td>
-							<td><a href="../User/profile.html"><img src="../image/b.png" width="50"></a></td>
+							<td width="5"><a href="../User/profile.html"><img src="../image/b.png" width="50"></a></td>
 						</tr>
 					</table>
 				</td>
@@ -37,10 +63,10 @@
 									<tr>
 									
 									    <td>
+										  
+										  <a><?php echo $gigTitle; ?></a><hr>
 										  <br/>
-										  <a>I Will Install Wordpress, Customize Wordpress Theme<a><hr>
-										  <br/>
-										   <a ><img src="../image/prog1.jpg" height="300" width="500" ></a>
+										   <a ><img src="../gigImage/<?php echo $imgExt;?>" height="300" width="500" ></a>
 										   
 										  <br/>
 										  <hr>
@@ -48,31 +74,8 @@
 										  <a>About this gig</a>
 										  <br/>
 										  <br/>
-										  <a>I will create a wordpress site, customize, fix up, install WordPress theme.
-										  <br/>What you will get from my Service:<br/>
-										  <ul>
-										   <li>create a full blog or site.</li>
-										  <li>Install any theme.</li>
-										  <li>Wordpress Installation.</li>
-										  <li>Create pages, navigation, widgets.</li>
-										  <li>add or remove theme template</li>
-										  <li>install plugin and widgets</li>
-										  <li>ThemeForest theme install</li>
-										  <li>customize content.</li>
-										  </ul>
-										  You have to provide me<br/>
-										  <ul><li>Complete Theme Package with all required files and demo content </li>
-										  <li>Cpanel, hosting login</li>
-										  <li>WordPress Admin Access</li></ul>
-										  24/7 available<br/>
-
-
-										  ** I always believe quality work**<br/><br/>
-
-
-										  If you have any doubt before buying, then feel free to contact me via message, <br/><br/><br/>
-
-										  I will discuss all things properly with you.</a> <br/><br/><br/>
+										  <a><?php echo $gigDescription ?>
+										  
 										  <a>Reviews</a>
 										</td>							
 									</tr>

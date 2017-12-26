@@ -337,9 +337,9 @@
 		return $result;
 		
 	}
-	function retreiveProgrammingAndTechSingleGigFromDb($username)
+	function retreiveProgrammingAndTechSingleGigFromDb($gigId)
 	{
-		$sql = "SELECT * FROM gigs where '$username' like uName";
+		$sql = "SELECT * FROM gigs where '$gigId' like gigId";
 		//var_dump($sql);
 		$result =executeSQL($sql);
 		//var_dump($result);

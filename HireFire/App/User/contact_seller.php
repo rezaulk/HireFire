@@ -1,3 +1,29 @@
+<?php
+	session_start();
+?>
+<?php 
+	require_once "../../data/person_data_access(reza).php";
+		require_once "../../service/validation_service(tanim).php";
+?>
+<?php
+?>
+
+<?php 
+     $username = $_REQUEST['username'];
+	$buyer=accessProfileBuyer($username);
+	  $month=monthReturn($buyer[0]['joiningDate']);
+	 $persons=accessProfileSeller($username);
+	 var_dump($persons);
+	 $day=getJoiningDateFromDb($username);
+	 //var_dump($day);
+	 $languages=(getLanguageByBuyerFromDb($username));
+	 
+	 $skills=(getSkillsBySellerFromDb($username));
+	 
+	 
+	 //var_dump($languages[1]['language']);
+?>
+
 <table>
 	<tr>
 		<td colspan="4">

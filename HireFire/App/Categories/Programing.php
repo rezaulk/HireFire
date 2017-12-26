@@ -53,64 +53,63 @@
 		
 		<table align="center">
 				
-			<?php
+		<?php
+			
+			$result = retreiveProgrammingAndTechGig();
+			
+			//var_dump($result);
+			//echo "<script>alert('Programming')</script>";
+			$programmingAndTechGig = array();
+			//echo "<script>alert('Programming1')</script>";
+			for($i=0; $row = mysqli_fetch_assoc($result); ++$i)
+			{
+				$countGigs=0;
 				
-				$result = retreiveProgrammingAndTechGig();
+				//echo "<script>alert('Programming2')</script>";
+				$programmingAndTechGig[$i] = $row;
+				$imgExt=$programmingAndTechGig[$i]['imgExt'];
+				$username=$programmingAndTechGig[$i]['uName'];	
+				$gigTitle=$programmingAndTechGig[$i]['gigTitle'];
+				$gigPrice=$programmingAndTechGig[$i]['price'];
+				$gigOrderCount=$programmingAndTechGig[$i]['orderCount'];
+				$gigId=$programmingAndTechGig[$i]['gigId'];
 				
-				//var_dump($result);
-				//echo "<script>alert('Programming')</script>";
-				$programmingAndTechGig = array();
-				//echo "<script>alert('Programming1')</script>";
-				for($i=0; $row = mysqli_fetch_assoc($result); ++$i)
-				{
-					$countGigs=0;
-					
-					//echo "<script>alert('Programming2')</script>";
-					$programmingAndTechGig[$i] = $row;
-					$imgExt=$programmingAndTechGig[$i]['imgExt'];
-					$username=$programmingAndTechGig[$i]['uName'];	
-					$gigTitle=$programmingAndTechGig[$i]['gigTitle'];
-					$gigPrice=$programmingAndTechGig[$i]['price'];
-					$gigOrderCount=$programmingAndTechGig[$i]['orderCount'];
-					
-					
-					echo "<br/>";
-					
-					//userImage
-					
-					$userImageResult= retreiveUserImage($username);	
-					for($j=0; $row = mysqli_fetch_assoc($userImageResult); ++$j)
-					{	
-						$userImage=$row['imageExt'];
-					}
-					
-					//Level
-					
-					$userLevelResult= retreiveUserLevel($username);
-					for($j=0; $row = mysqli_fetch_assoc($userLevelResult); ++$j)
-					{	
-						$userLevel=$row['expertLevel'];
-					}
-					
-					
-					if($i%4==0)
-					{   
-						$elementCountInSingleRow=1;
-						echo "<tr>";
-					}
-					
-					echo    "<td width='300'><a href='../gig/buyer_programing.html'><img src='../GigImage/".$imgExt."' height='150'  width='300'></a></br>
-							<a href='../User/profileForAccessingBuyer.php?username=".$username."'><img src='../uploads/".$userImage."' width='50' height='50'></a><br/>".
-							$username."<br/>Level ".$userLevel." Seller<br/>".$gigTitle."<br/><b>Total Ordered: ".$gigOrderCount."</b><br/>Price: ".$gigPrice."<br/><br/></td>";
-							
-					if($elementCountInSingleRow==4)
-					{
-						echo "</tr>";
-					}	
-					$elementCountInSingleRow++;
-					$countGigs++;
+				//userImage
+				
+				$userImageResult= retreiveUserImage($username);	
+				for($j=0; $row = mysqli_fetch_assoc($userImageResult); ++$j)
+				{	
+					$userImage=$row['imageExt'];
 				}
-			?>
+				
+				//Level
+				
+				$userLevelResult= retreiveUserLevel($username);
+				for($j=0; $row = mysqli_fetch_assoc($userLevelResult); ++$j)
+				{	
+					$userLevel=$row['expertLevel'];
+				}
+				
+				
+				if($i%4==0)
+				{   
+					$elementCountInSingleRow=1;
+					echo "<tr>";
+				}
+				
+				echo    "<td width='300'><a href='../gig/buyer_programing.php?gigId=".$gigId."'><img src='../GigImage/".$imgExt."' height='150'  width='300'></a></br>
+						<a href='../User/contact_seller.php?username=".$username."'><img src='../uploads/".$userImage."' width='50' height='50'></a><br/>".
+						$username."<br/>Level ".$userLevel." Seller<br/>".$gigTitle."<br/><b>Total Ordered: ".$gigOrderCount."</b><br/>Price: ".$gigPrice."<br/><br/></td>";
+						
+				if($elementCountInSingleRow==4)
+				{
+					echo "</tr>";
+				}	
+				$elementCountInSingleRow++;
+				$countGigs++;
+			}
+		?>
+		</table>
 
 		<table>
 			<tr colspan="3" height="20%">
