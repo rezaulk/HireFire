@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2017 at 03:24 PM
--- Server version: 10.1.25-MariaDB
--- PHP Version: 7.1.7
+-- Generation Time: Dec 26, 2017 at 11:18 PM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -172,19 +172,27 @@ INSERT INTO `ordercomment` (`orderCommentId`, `orderId`, `comment`, `reply`) VAL
 
 CREATE TABLE `orders` (
   `orderId` int(11) NOT NULL,
-  `bId` int(11) NOT NULL,
-  `sId` int(11) NOT NULL,
+  `bName` varchar(11) NOT NULL,
+  `sName` varchar(11) NOT NULL,
   `gId` int(11) NOT NULL,
   `date` date NOT NULL,
-  `accountNumber` int(15) NOT NULL
+  `accountNumber` int(15) NOT NULL,
+  `deadline` date NOT NULL,
+  `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`orderId`, `bId`, `sId`, `gId`, `date`, `accountNumber`) VALUES
-(1, 2, 1, 1, '2017-12-11', 1675428256);
+INSERT INTO `orders` (`orderId`, `bName`, `sName`, `gId`, `date`, `accountNumber`, `deadline`, `status`) VALUES
+(1, 'robi', 'robi', 2, '2017-12-05', 0, '2017-12-05', ''),
+(2, 'reza', 'robi', 1, '2017-12-12', 1675428256, '0000-00-00', ''),
+(3, 'ik tanim', 'robi', 1, '2017-12-05', 0, '2017-12-13', ''),
+(4, 'efti', 'reza', 1, '2017-12-04', 0, '0000-00-00', 'active'),
+(5, 'rajesh', 'reza', 2, '2017-12-13', 2222, '0000-00-00', 'active'),
+(6, 'rajesh', 'reza', 4, '2017-12-13', 33333, '0000-00-00', 'pending'),
+(7, 'rajesh', 'reza', 5, '2017-12-12', 2232323, '2017-12-11', 'pending');
 
 -- --------------------------------------------------------
 
@@ -295,6 +303,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`uName`, `name`, `password`, `email`, `type`, `joiningDate`, `imageExt`) VALUES
 ('admin', 'Robi', '1', 'admin@gmail.com', 1, '2017-12-24', 'admin.jpg'),
 ('dsds', 'szcsdd csdc s', '123@', 'rezaaaaaa@gmail.com', 3, '2017-12-25', 'dsds.jpg'),
+('efti', 'efti', 'efti@', 'wwee@gmail.com', 2, '2017-12-05', ''),
+('rajesh', 'rajesh', 'rajesh@', 'wwee@gmail.com', 2, '2017-12-06', ''),
 ('reza', 'zc sd ', 'reza@', 'reza@gmail.com', 3, '2017-12-05', 'reza.jpg'),
 ('robi', 'robi ullah', 'robi@', 'robi@gmail.com', 3, '2017-12-05', 'robi.jpg'),
 ('tamin', 'ik tanim ', '2', 'tanim@gmail.com', 1, '2017-12-04', 'tanim.jpg');
@@ -348,8 +358,7 @@ ALTER TABLE `ordercomment`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`orderId`),
-  ADD KEY `bId` (`bId`),
-  ADD KEY `orders_ibfk_2` (`sId`),
+  ADD KEY `orders_ibfk_2` (`sName`),
   ADD KEY `gId` (`gId`);
 
 --
@@ -387,46 +396,61 @@ ALTER TABLE `users`
 --
 ALTER TABLE `buyers`
   MODIFY `buyerId` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `education`
 --
 ALTER TABLE `education`
   MODIFY `educationId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `gigrequirements`
 --
 ALTER TABLE `gigrequirements`
   MODIFY `requirementId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `gigs`
 --
 ALTER TABLE `gigs`
   MODIFY `gigId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `last active time`
 --
 ALTER TABLE `last active time`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `ordercomment`
 --
 ALTER TABLE `ordercomment`
   MODIFY `orderCommentId` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `sellers`
 --
 ALTER TABLE `sellers`
   MODIFY `sellerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
   MODIFY `skillId` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 --
 -- AUTO_INCREMENT for table `spending`
 --
 ALTER TABLE `spending`
   MODIFY `spendingId` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- Constraints for dumped tables
 --
@@ -448,13 +472,6 @@ ALTER TABLE `education`
 --
 ALTER TABLE `gigs`
   ADD CONSTRAINT `gigs_ibfk_1` FOREIGN KEY (`uName`) REFERENCES `users` (`uName`);
-
---
--- Constraints for table `orders`
---
-ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`bId`) REFERENCES `buyers` (`buyerId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`sId`) REFERENCES `sellers` (`sellerId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `sellers`
