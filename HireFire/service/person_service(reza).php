@@ -2,6 +2,23 @@
 	$path=__DIR__."/../data/person_data_access(reza).php";
 	include($path); ?>
 <?php
+
+    function getsellerName($personId){
+        return getsellerFromDb($personId);
+    }
+	function getallgig($personId)
+	{
+		return getallgigFromDb($personId);
+		
+	}
+	function getactivegig($personId)
+	{
+		return getactivegigToDb($personId);
+	}
+	
+
+
+
      function maxGigId(){
 		return getMaxGigId();
 	}

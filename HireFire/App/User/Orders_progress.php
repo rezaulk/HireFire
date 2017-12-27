@@ -1,5 +1,29 @@
-
-
+<script>
+   function validate()
+	{
+		var isValid=true;
+		if(!FileUploadCheck())
+		{
+			isValid=false;
+		}
+		return isValid;
+	}
+	function FileUploadCheck(){
+		alert("as");
+		var fileCheck = document.getElementById("sfile").value;
+		var fileCheckErrorMassage=document.getElementById("fileCheckErrorMassage");
+		fileCheckErrorMassage.style.color="red";
+		if(fileCheck==""){
+			alert("as");
+			fileCheckErrorMassage.innerHTML="*Please upload a your file";
+			return false;
+		}
+		else{
+			fileCheckErrorMassage.innerHTML="";
+			return true;
+		}
+	}
+</script>
 
 
 
@@ -36,7 +60,8 @@
 				<td width="30%">	
 				</td>
 				<td width="45%"></td>
-            </tr>					
+            </tr>
+             <form  action="Orders_active.php" onsubmit="return validate()">			
 			<tr height="50%">	
                 <td width="10%" height="100%">
 				</td>			
@@ -76,7 +101,7 @@
 					
 										</tr>
 										<tr>
-										   <td colspan="2"><input type="file"><input type="submit"></td>
+										   <td colspan="2"><input type="file" id="sfile" name="sfile" value=""/><br/><span id="fileCheckErrorMassage"></span><br/><input type="submit"/></td>
 										</tr>
 									 </table>
 										
@@ -98,6 +123,7 @@
 				<td width="40%">
 				</td>
 			</tr>
+			</form>
 			<tr colspan="3" height="20%">
 			    <table border="0" width="100%">
 				      <hr>

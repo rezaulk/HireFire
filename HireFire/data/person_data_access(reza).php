@@ -7,6 +7,168 @@
             <?php } ?>
 	
 	*/
+	
+	function allgigaccessToDb()
+	{
+		
+		//echo "$name";
+		$sql = "SELECT * FROM gigs";
+		$result = executeSQL($sql);
+		$persons = array();
+        for($i=0; $row=mysqli_fetch_assoc($result); ++$i){
+            $persons[$i] = $row;
+        }
+        
+        return $persons;
+	}
+	
+	
+	
+	function buyTotalGig($sName)
+	{
+		$sql = "SELECT * FROM spending WHERE uName LIKE '$sName'";
+		 $result = executeSQL($sql);
+		 $count=0;
+		for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+				$persons[$i] = $row;
+				//var_dump($row);
+                $count++;				
+			}
+		return $count;
+		
+	}
+	
+	function spendingTodb($sName)
+	{
+		$sql = "SELECT * FROM spending WHERE uName LIKE '$sName'";
+		 $result = executeSQL($sql);
+		 $person = mysqli_fetch_assoc($result);
+         //var_dump($person);
+		return $person;
+		
+	}
+	
+	function earnTodb($sName)
+	{
+		$sql = "SELECT * FROM earning WHERE uName LIKE '$sName'";
+		 $result = executeSQL($sql);
+		 $person = mysqli_fetch_assoc($result);
+         //var_dump($person);
+		return $person;
+		
+	}
+	
+	function getlastactiveToDb($sName)
+	{
+		 $sql = "SELECT * FROM lastActiveTime WHERE uName LIKE '$sName'";
+		 $result = executeSQL($sql);
+		 $person = mysqli_fetch_assoc($result);
+         //var_dump($person);
+		return $person;
+		
+	}
+	
+	
+	function activetimeToDb($username)
+	{
+       	$y=date("Y-m-d");
+        echo "$y";
+        var_dump($y);
+        $sql = "SELECT * FROM lastActiveTime WHERE uName LIKE '$username'";
+		 $result = executeSQL($sql);
+		 $count=0;
+	     for($i=0; $row = mysqli_fetch_assoc($result); ++$i)
+		{
+				$persons[$i] = $row;
+				$count++;	
+		}
+		if($count==0)
+		{
+			$sql = "INSERT INTO lastActiveTime VALUES (NULL,'$username','$y')";
+            $result = executeSQL($sql);
+			
+		}
+		else
+		{
+			$sql = "UPDATE lastActiveTime SET activeDate='$y' WHERE uName LIKE '$username'";
+		     $result = executeSQL($sql);
+		}
+		
+		/*$sql = "INSERT INTO lastActiveTime VALUES (NULL,'$username','$y')";
+        $result = executeSQL($sql);
+		var_dump($sql);*/
+        return $result;
+		
+		
+	}
+	
+	
+	function getactivegigToDb($key)
+	{
+		$uname=$key;
+		//echo "$uname";
+		$sql = "SELECT * FROM orders WHERE sName LIKE '$uname' and status LIKE 'active' ";
+		$result = executeSQL($sql);
+		//var_dump($result);
+		$persons = array();
+			for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+				$persons[$i] = $row;
+				//var_dump($row);	
+			}
+		return ++$i;	
+	}
+	
+	
+	function getsellerFromDb($personId)
+	{
+		 $sql = "SELECT * FROM sellers";        
+        $result = executeSQL($sql);
+        
+        $persons = array();
+        for($i=0; $row=mysqli_fetch_assoc($result); ++$i){
+            $persons[$i] = $row;
+        }
+        
+        return $persons;
+		
+	}
+	
+	
+	function getBuyerName($username)
+	{
+		$sql = "SELECT * FROM buyers";        
+        $result = executeSQL($sql);
+        
+        $persons = array();
+        for($i=0; $row=mysqli_fetch_assoc($result); ++$i){
+            $persons[$i] = $row;
+        }
+        
+        return $persons;
+		
+	}
+	
+	
+	
+	function getallgigFromDb($key)
+	{
+		$uname=$key;
+		//echo "$name";
+		$sql = "SELECT * FROM gigs WHERE uName LIKE '$uname' ";
+		$result = executeSQL($sql);
+		//var_dump($result);
+		$persons = array();
+			for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+				$persons[$i] = $row;
+				//var_dump($row);	
+			}
+		
+		return ++$i;
+	}
+	
+	
+	
+	
 	function gigTitleaccessToDb($key)
 	{
 		$gId=$key;
