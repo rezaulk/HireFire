@@ -1,3 +1,107 @@
+<?php 
+	session_start();
+	var_dump($GLOBALS);
+	
+?>
+<?php
+	$host="localhost";
+    $user="root";
+    $pass="";
+    $dbname="hirefire_db";
+    $port=3306;
+	function conversationIdReturnIfpreviouslyConversionOccurred($fromUser,$toUser){
+		global $host, $user, $pass, $dbname, $port;
+		$conn=mysqli_connect($host, $user, $pass, $dbname, $port);
+		//$name=$key;
+		$sql = "select * from tomessage where (fromUser='$fromUser' AND toUser='$toUser') or (fromUser='$toUser' AND toUser='$fromUser') ORDER BY messageId ASC";
+		$result = mysqli_query($conn, $sql);
+		//var_dump($result);
+		//$result = executeSQL($sql);
+		$persons = array();
+		for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+			$persons[$i] = $row;
+			//var_dump($persons[$i]['type']);
+		}
+		//var_dump($persons);
+		return $persons;
+		
+		mysqli_close($conn);
+	}
+	function nextConversionNumber(){
+		global $host, $user, $pass, $dbname, $port;
+		$conn=mysqli_connect($host, $user, $pass, $dbname, $port);
+		//$name=$key;
+		$sql = "SELECT MAX(conversionNumber) FROM tomessage";
+		$result = mysqli_query($conn, $sql);
+		//var_dump($result);
+		//$result = executeSQL($sql);
+		$persons = array();
+		for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+			$persons[$i] = $row;
+			//var_dump($persons[$i]['type']);
+		}
+		//var_dump($persons);
+		$nextConversionNo=$persons[0]['MAX(conversionNumber)'];
+		return $nextConversionNo+1;
+		
+		mysqli_close($conn);
+	}
+	function insertReplyToDB($nextConversionNo,$Reply,$fromUser,$toUser){
+		global $host, $user, $pass, $dbname, $port;
+		$conn=mysqli_connect($host, $user, $pass, $dbname, $port);
+		$sql="INSERT INTO tomessage (messageId, conversionNumber, fromUser, toUser, allmessage)
+		VALUES (NULL,$nextConversionNo, '$fromUser', '$toUser', '$Reply')";
+		//var_dump($sql);
+		$result = mysqli_query($conn, $sql);
+		mysqli_close($conn);
+		return($result);
+		
+	}
+	$fromUserFromSession=$_SESSION['username'];
+	//var_dump($fromUserFromSession);
+	$toUserFromSession=$_REQUEST['to'];
+	$_SESSION['to']=$toUserFromSession;
+	var_dump($toUserFromSession);
+	$tomessage=conversationIdReturnIfpreviouslyConversionOccurred($fromUserFromSession,$toUserFromSession);
+	//var_dump($tomessage);
+	
+	
+	
+	$ConversionNumber=0;
+	if(count($tomessage)==0){//previous conversation not happened
+		$ConversionNumber= nextConversionNumber();
+		
+	}
+	else{
+		//$ConversionNumber
+		$ConversionNumber=trim($tomessage[0]['conversionNumber']);
+	}
+	if($_SERVER['REQUEST_METHOD']=="POST")
+	{
+		$reply=$_REQUEST['reply'];
+		if($reply==""){
+			
+		}
+		else{
+			var_dump($reply);
+			var_dump($ConversionNumber);
+			if(insertReplyToDB($ConversionNumber,$reply,$fromUserFromSession,$toUserFromSession)){
+				echo "<script>alert('data inserted');document.location='indoxdetails.php';</script>";
+				//header("location: inboxdetails.php");
+			}
+			else{
+				echo "<script>alert('Error');</script>";
+			}
+			
+		}
+	}
+	
+	//var_dump($ConversionNumber);
+	
+	
+	
+?>
+<form action="inboxdetails.php" >
 <html>
 	<head>
 		<title>HireFire</title>
@@ -40,12 +144,12 @@
 							<tr height="30%">
 								<td >
 									<br/><h3>Send a Message To</h3>
-									<h4>rezabd7784</h4>
+									<h4><?=$toUserFromSession?></h4>
 									
 									<textarea rows="8" cols="50">
 											Enter text here...</textarea>
-									<button><font size="3"><a href="contact_seller.html">Send</a></font></button>
-										
+									<!--<button><font size="3"><a href="inboxdetails.php?to=<?=$toUserFromSession?>">Send</a></font></button>-->
+										<input type='submit' value='Send'/>
 								</td>
 							</tr>
 							<tr height="70%">
@@ -131,3 +235,4 @@
 		</table>
 	</body>	
 </html>
+</form>

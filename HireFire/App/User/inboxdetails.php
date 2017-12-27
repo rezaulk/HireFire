@@ -1,7 +1,8 @@
 <?php
 	//require_once __DIR__."/../../service/TANIM_service.php";
-	
-	//var_dump($GLOBALS);
+	session_start();
+	ob_start();
+	var_dump($GLOBALS);
 	$host="localhost";
     $user="root";
     $pass="";
@@ -55,8 +56,10 @@
 		return($result);
 		
 	}
-	$fromUserFromSession='efti';
-	$toUserFromSession='robi';
+	$fromUserFromSession=$_SESSION['username'];
+	var_dump($fromUserFromSession);
+	$toUserFromSession=$_SESSION['to'];
+	var_dump($toUserFromSession);
 	$tomessage=conversationIdReturnIfpreviouslyConversionOccurred($fromUserFromSession,$toUserFromSession);
 	//var_dump($tomessage);
 	
