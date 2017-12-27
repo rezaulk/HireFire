@@ -43,7 +43,8 @@
 		{
 			//if((($persons[0]['gigTitle'])!=$gigtitle)&& (($persons[0]['price'])!=$gigprice)&&(($persons[0]['gDescription'])!=$gigdescription)){
 			$person['gigtitle']=$gigtitle;
-			$person['gigid']=$persons[0]['gigId'];
+			//$person['gigid']=$persons[0]['gigId'];
+			$person['gigid']=$_SESSION['gigId'];
 			$person['gigprice']=$gigprice;
 			$person['gigdescription']=$gigdescription;
 			if(editGig($person))
@@ -128,12 +129,6 @@ function validateGigTitle()
 			gigTitleErrorMassage.innerHTML="*GigTitle Cannot be empty";
 			isValid=false;
 		}
-		else if(stringCheck()==false)
-		{
-			gigTitleErrorMassage.innerHTML="*Gig title only contains character";
-			isValid=false;
-		}
-		
 		else
 		{
 			if(gigtitle.match(/^\s+$/) === null) 
@@ -143,7 +138,7 @@ function validateGigTitle()
 			}
 			else 
 			{
-					gigTitleErrorMassage.innerHTML="*GigTitle can,t contains Only space";
+					gigTitleErrorMassage.innerHTML="*GigTitle cannot contains Only space";
 			}
 		}
 		return isValid;

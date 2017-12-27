@@ -99,10 +99,6 @@ function validate()
 		{ 
 		   isValid=false;
 		}
-		else
-		{
-		   isValid=true;
-		}
 		
 		return isValid;
 	}
@@ -186,11 +182,12 @@ function validateGigTitle()
 			gigTitleErrorMassage.innerHTML="*GigTitle Cannot be empty";
 			isValid=false;
 		}
+		/*
 		else if(stringCheck()==false)
 		{
 			gigTitleErrorMassage.innerHTML="*Gig title only contains character";
 			isValid=false;
-		}
+		}*/
 		
 		else
 		{
@@ -220,11 +217,11 @@ function validateGigTitle()
 			gigdescriptionErrorMassage.innerHTML="*Gig Description Cannot be empty";
 			isValid=false;
 		}
-		else if(stringCheck()==false)
+		/*else if(stringCheck()==false)
 		{
 			gigdescriptionErrorMassage.innerHTML="*Gig Description  only contains character";
 			isValid=false;
-		}
+		}*/
 		
 		else
 		{
@@ -291,7 +288,7 @@ function validateGigTitle()
 			<tr height="65%">
 				<td width="25%"></td>
 				<td>
-				<form action="" method="POST" enctype="multipart/form-data" onsubmit="return validate()">
+				<form action="creategig.php" method="POST" enctype="multipart/form-data" onsubmit="return validate()">
 					<table width="100%" cellspacing="15" border="0">
 						<tr>
 							<td width="10%">Gig Title: </td>
