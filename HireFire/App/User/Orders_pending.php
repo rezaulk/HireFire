@@ -11,9 +11,6 @@
 ?>
 
 
-
-
-
 <html>
     <head>
 	    <title>HireFire</title>
@@ -71,10 +68,11 @@
 												<tr height="10%">
 													<td width="10%">Buyer</td>
 												   <td width="10%">Gig</td>
-												   <td width="10%">Process</td>
 												   <td width="10%">Deadline</td>
 												   <td width="10%">Amount</td>
+												   <td width="10%">Action</td>
 												</tr>
+												<form  action="Orders_pending_handler.php">
 												<?php
                                                      $persons=sellerpendingorderaccess($username);
 
@@ -92,13 +90,14 @@
 													   $title=gigTitleaccess($gId);
 														echo "<tr>";
 														
-														echo "<td >$bName</td><td>$title[gigTitle]</td><td><a href='Orders_progress.php'>View</a></td><td>$date</td><td>$title[price]</td>";
+														echo "<td >$bName</td><td>$title[gigTitle]</td><td>$date</td><td>$title[price]</td><td>&nbsp;&nbsp;<a href='Orders_pending_handler.php?buttonName=accept & gId=".$gId."'<button >Accept</button>&nbsp;&nbsp;<a href='Orders_pending_handler.php?buttonName=reject & gId=".$gId."'<button >reject</button></a></td>";
 														echo "</tr>";
                                                         $i++; 
 
 
 													}
 												?>
+												</form>
 											</table>
 										</td>
 									</tr>

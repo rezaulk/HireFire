@@ -70,8 +70,9 @@
 													<th>Gig</th>
 													<th>Deadline</th>
 													<th>Amount</th>
-													<th></th>
+													<th>Action</th>
 												</tr>
+												<form  action="Orders_pending_handler.php">
 												<?php
                                                      $persons=buyerpendingorderaccess($username);
 
@@ -83,19 +84,21 @@
 													{
 														
                                                       //var_dump($value);
-													   $bName=$value['sName'];
+													   echo "sdsasdd";
+													   $sName=$value['sName'];
 													   $gId=$value['gId'];
 													   $date=$value['deadline'];
 													   $title=gigTitleaccess($gId);
 														echo "<tr>";
 														
-														echo "<td >$bName</td><td>$title[gigTitle]</td><td><a href='Orders_progress.php'>View</a></td><td>$date</td><td>$title[price]</td>";
+														echo "<td >$sName</td><td>$title[gigTitle]</td><td>$date</td><td>$title[price]</td><td>&nbsp;&nbsp;<a href='Orders_pending_handler.php?buttonName=accept & gId=".$gId."'<button >Accept</button>&nbsp;&nbsp;&nbsp;<a href='Orders_pending_handler.php?buttonName=reject & gId=".$gId."'<button >reject</button>&nbsp;</a></td>";
 														echo "</tr>";
                                                         $i++; 
 
 
 													}
 												?>
+												</form>
 											</table>
 										</td>
 									</tr>

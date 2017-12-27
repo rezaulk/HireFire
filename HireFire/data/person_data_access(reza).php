@@ -20,6 +20,28 @@
 	}
 	
 	
+	
+	function orderRejectToDb($key)
+	{
+		$gid=$key;
+		//echo "$gid";
+		 $sql = "DELETE FROM orders WHERE gId=$gid";      
+        $result = executeSQL($sql);
+		return $result;
+	}
+	
+	function orderAcceptToDb($key)
+	{
+		$gid=$key;
+		//echo "$gid";
+		$sql = "UPDATE orders SET status='active' WHERE gId=$gid";
+		$result = executeSQL($sql);
+		//var_dump($result);
+		return $result;
+	}
+	
+	
+	
 	function buyernameaccessToDb($key)
 	{
 		$bid=$key;
@@ -118,11 +140,10 @@
 	//for pending order 
 	function buyerpendingorderaccessToDb($key)
 	{
-		$username=$key;
-		//echo "$name";
+		$username=trim($key);
+		echo "$username";
 		$sql = "SELECT * FROM orders WHERE bName LIKE '$username' and status like 'pending' ";
 		$result = executeSQL($sql);
-		//var_dump($result);
 		$persons = array();
 			for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
 				$persons[$i] = $row;

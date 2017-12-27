@@ -25,10 +25,19 @@
 	{
 		return addGigToDb($key);
 	}
-	
 	function selleridaccess($key)
 	{
 		return selleridaccessToDb($key);
+	}
+	
+	function orderReject($key)
+	{
+		return orderRejectToDb($key);
+	}
+	
+	function orderAccept($key)
+	{
+		return orderAcceptToDb($key);
 	}
 	
 	
@@ -61,7 +70,7 @@
 	
 	
 	
-	//orderlist seller view
+	//orderlist buyer view
 	
 	function buyercompleteorderaccess($key)
 	{
