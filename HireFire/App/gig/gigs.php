@@ -1,3 +1,19 @@
+<?php   session_start(); 
+		require_once "../../service/person_service(reza).php";
+?>
+<?php 
+     
+     $username = $_SESSION['username'];
+	 //var_dump($username);
+	 //$sellerid=selleridaccess($username);
+ 
+	 //var_dump($languages[1]['language']);
+?>
+
+
+
+
+
 <html>
 	<head>
 		<title>HireFire</title>
@@ -52,38 +68,28 @@
 					            <td>
 									<table width="100%" height="100" border="1" cellspacing="0">
 											<tr height="5%">
-											   <td><input type="checkbox"/></td>
 											   <td>Gigs</td>
 											   <td>Order</td>
 											</tr>
-											<tr height="5%">
-											 <td><input type="checkbox"/></td>
-											  
-											   <td>I will do c++ projects</td>
-												<td>2</td>
-											  
-											</tr>
-											 <tr height="5%">
-											 <td><input type="checkbox"/></td>
-											  
-											   <td>I will create your website</td>
-												<td>1</td>
-											  
-											</tr>
-											 <tr height="5%">
-											 <td height="5%"><input type="checkbox"/></td>
-											  
-											   <td>I will create your website</td>
-												<td>3</td>
-											 
-											</tr>
-											<tr>
-											 <td height="5%"><input type="checkbox"/></td>
-											   
-											   <td>I will create your website</td>
-											   <td>2</td>
-											  
-											</tr>
+											<form >
+												<?php
+                                                     $persons=gigaccess($username);
+
+													//echo "<script>alert('Programming1')</script>";
+													$i=0;
+													//var_dump($persons);
+													
+													foreach ($persons as $value) 
+													{
+														echo "<tr>";
+														echo "<td>$value[gigTitle]</td><td>$value[orderCount]</td>";
+														echo "</tr>";
+                                                        $i++; 
+
+
+													}
+												?>
+											
 									</table>
 					            </td>
 						</tr>

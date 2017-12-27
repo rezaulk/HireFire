@@ -94,8 +94,11 @@
 	}
 	
 	
-	
-	
+	// seller gig list show
+	function gigaccess($key)
+	{
+		return gigaccessToDb($key);
+	}
 	
 	
 	

@@ -19,6 +19,31 @@
 		return $person;
 	}
 	
+	///show gigs a user
+	
+	function gigaccessToDb($key)
+	{
+		$bid=$key;
+		//echo "$name";
+		$sql = "SELECT * FROM gigs WHERE uName LIKE '$bid' ";
+		$result = executeSQL($sql);
+		//var_dump($result);
+		$persons = array();
+			for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+				$persons[$i] = $row;
+				//var_dump($persons[$i]['type']);
+			}
+		
+		return $persons;
+		
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	function orderRejectToDb($key)
