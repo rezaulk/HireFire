@@ -1,5 +1,5 @@
 <?php   session_start(); 
-		$path=__DIR__."/../data/person_data_access(reza).php";
+		$path=__DIR__."/../../data/person_data_access(reza).php";
 	include($path); 
 ?>
 
@@ -8,5 +8,5 @@
 		 //echo "<script>document.location='Orders_pending.php'</script>";
 		 activetimeToDb($username);
 		 unset($_SESSION);
-		 echo "<script>document.location='PublicHome.html'</script>";
+		 echo "<script>document.location='../PublicHome.php'</script>";
 ?>

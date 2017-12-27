@@ -3,10 +3,10 @@
 		<td>
 			<table  width="100%" border="0">
 				<tr>
-					<td width="30" ><a href="PublicHome.html"><img src="image/image.png" width="150"/></a></td>
+					<td width="30" ><a href="PublicHome.php"><img src="image/image.png" width="150"/></a></td>
 					<td><input size="60" name="search" placeholder="Search.."/>&nbsp;<input type="submit" value="search"/></td>
 					<td align="right">
-					 <font size="4"><a href="SignIn.php">Sign In</a>&nbsp;<a href="SignUp1.html">Sign Up</a>
+					 <font size="4"><a href="SignIn.php">Sign In</a>&nbsp;<a href="SignUp1.php">Sign Up</a>
 					  </font>
 					 </td>
 				</tr>

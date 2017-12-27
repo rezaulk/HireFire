@@ -21,6 +21,7 @@
 		$sellerName=$row['uName'];
 	}
 	$sellerName=trim($sellerName);
+	$_SESSION['to']=$sellerName;
 	
 	$sellerDetails=accessSellerDetails($sellerName);
 	for($i=0; $row = mysqli_fetch_assoc($sellerDetails); ++$i)
@@ -87,7 +88,7 @@
 			
 			<tr align="center">
 				<td colspan="3">
-					<button><font size="3"><a href="send_message.php?to=<?php echo $sellerName;?>">Contact Me</a></font></button>
+					<button><font size="3"><a href="inboxdetails.php?to=<?php echo $sellerName;?>">Contact Me</a></font></button>
 				</td>
 			</tr>
 			

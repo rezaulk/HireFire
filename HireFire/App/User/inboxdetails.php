@@ -1,6 +1,7 @@
 <?php
 	//require_once __DIR__."/../../service/TANIM_service.php";
-	
+	session_start();
+	ob_start();
 	//var_dump($GLOBALS);
 	$host="localhost";
     $user="root";
@@ -55,8 +56,10 @@
 		return($result);
 		
 	}
-	$fromUserFromSession='efti';
-	$toUserFromSession='robi';
+	$fromUserFromSession=$_SESSION['username'];
+	//var_dump($fromUserFromSession);
+	$toUserFromSession=$_SESSION['to'];
+	//var_dump($toUserFromSession);
 	$tomessage=conversationIdReturnIfpreviouslyConversionOccurred($fromUserFromSession,$toUserFromSession);
 	//var_dump($tomessage);
 	
@@ -78,11 +81,12 @@
 			
 		}
 		else{
-			var_dump($reply);
-			var_dump($ConversionNumber);
+			//var_dump($reply);
+			//var_dump($ConversionNumber);
 			if(insertReplyToDB($ConversionNumber,$reply,$fromUserFromSession,$toUserFromSession)){
 				//echo "<script>alert('data inserted');document.location='indoxdetails.php';</script>";
 				header("location: inboxdetails.php");
+				ob_end_flush();
 			}
 			else{
 				echo "<script>alert('Error');</script>";

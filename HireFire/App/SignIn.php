@@ -28,7 +28,7 @@
             if(($persons=(login($person)))==true){
 				
                 $_SESSION['username']=$name;
-				var_dump($_SESSION);
+				//var_dump($_SESSION);
 			   if($persons[0]['type']==1)
 			   {
 				    echo "<script>
@@ -77,7 +77,7 @@
 
 <table  height="10%" width="100%" border="1" >
 	<tr>
-		<td><a href="PublicHome.html"><img src="image/image.png" width="150"/></a></td>
+		<td><a href="PublicHome.php"><img src="image/image.png" width="150"/></a></td>
 		<td></td>
 		<td align="right"></td>
 		<td></td>
