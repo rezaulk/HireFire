@@ -1,3 +1,46 @@
+<?php
+	session_start();
+	ob_start();
+	//var_dump($GLOBALS);
+	$host="localhost";
+    $user="root";
+    $pass="";
+    $dbname="hirefire_db";
+    $port=3306;
+	function getSenderFromDB($fromUser){
+		global $host, $user, $pass, $dbname, $port;
+		$conn=mysqli_connect($host, $user, $pass, $dbname, $port);
+		//$name=$key;
+		$sql = "select * from tomessage where (fromUser='$fromUser' or toUser='$fromUser') order by messageId DESC";
+		$result = mysqli_query($conn, $sql);
+		$persons = array();
+		$conversionNum=-1;
+		$j=0;
+		for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+			if($conversionNum!=$row['conversionNumber']){
+				//var_dump($row['conversionNumber']);
+				$persons[$j++] = $row;
+				$conversionNum=$row['conversionNumber'];
+				
+			}
+		}
+		return $persons;
+		
+		mysqli_close($conn);
+	}
+	
+	$fromUserFromSession=$_SESSION['username'];
+	$sender=getSenderFromDB($fromUserFromSession);
+	//var_dump($sender);
+	
+	
+	
+	
+	
+	
+?>
+
+<form action="" method="POST">
 <html>
 	<head>
 		<title>HireFire</title>
@@ -11,9 +54,9 @@
 							<td><a href="main.html"><img src="../image/image.png" width="150"></a></td>
 							<td><input type="text" name="search" placeholder="Search.." size="70" height="20"><button>Search</button></td>
 							<td align="right">
-								<font size="4"><a href="inbox.html">Messages&nbsp;</a>
-								<a href="Orders.html">Orders&nbsp</a>
-								<a href="Postrequest.html">Postrequest&nbsp;</a>
+								<font size="4"><a href="inbox.php">Messages&nbsp;</a>
+								<a href="Orders.php">Orders&nbsp</a>
+								<!--<a href="Postrequest.html">Postrequest&nbsp;</a>-->
 								<a href="dashboard.html">Dashboard&nbsp;</a>
 								<a href="../PublicHome.html">LogOut</a></font>
 							</td>
@@ -29,9 +72,9 @@
 			<tr height="5%">  
 			    <td width="25%"></td>
 				<td width="30%">	
-						  <a href="dashboard.html">Dashboard&nbsp;</a>
-						   <a href="../gig/gigs.html">Gigs</a>
-						  <a href="earnings.html">Earning&nbsp;</a>
+						  <a href="dashboard.php">Dashboard&nbsp;</a>
+						   <a href="../gig/gigs.php">Gigs</a>
+						  <a href="earnings.php">Earning&nbsp;</a>
 						  <a>Inbox&nbsp;<a>
 						   <a href="setting.html">Settings&nbsp;</a> 
 				</td>
@@ -47,11 +90,44 @@
 								<td >
 									<table width="100%" height="100%" border="1" cellspacing="0">
 										<tr height="5%">
-										   <td><input type="checkbox"/></td>
+										   <!--<td><input type="checkbox"/></td>-->
 										   <th>Sender</th>
 										   <th>Last Message</th>
 										   <th>Updated</th>
 										</tr>
+										<?php
+											if(count($sender)!=0)
+											{
+												for($i=0;$i<count($sender);$i++)
+												{
+													$fromUser=$sender[$i]['fromUser'];
+													$toUser=$sender[$i]['toUser'];
+													$allmessage=$sender[$i]['allmessage'];
+													if($fromUserFromSession!=$fromUser)//check for only sender is added to the table
+													{
+														echo "
+														 <tr height='5%' align='center'>
+														   <td>$fromUser</td>
+														   <td>$allmessage &nbsp;<a href='../User/inboxdetails.php?to=$fromUser'>view</a></td>
+														   <td>dec 28,2017</td>
+														</tr>";
+													}
+													else if($fromUserFromSession!=$toUser){//check for only sender is added to the table
+														echo "
+														 <tr height='5%' align='center'>
+														   <td>$toUser</td>
+														   <td>$allmessage &nbsp;<a href='../User/inboxdetails.php?to=$toUser'>view</a></td>
+														   <td>dec 28,2017</td>
+														</tr>";
+													}
+												}
+												
+												
+											}
+											
+											
+										?>
+										<!--
 										 <tr height="5%">
 										 <td><input type="checkbox"/></td>
 										   <td>Masraf</td>
@@ -75,7 +151,7 @@
 										   <td>Mizbah</td>
 										   <td>Did you complete if&nbsp;<a href="inboxdetails.html">view</a></td>
 										   <td>nov 19,2017</td>
-										</tr>
+										</tr>-->
 									
 									 </table>
 										
@@ -164,3 +240,4 @@
 		</table>
 	</body>	
 </html>
+</form>
