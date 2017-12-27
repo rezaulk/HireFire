@@ -11,7 +11,7 @@
 <?php 
      
      $name = $_SESSION['username'];
-	 $persons=accessGig($name);
+	 $persons=accessGig($_SESSION['gigId']);
 	 //var_dump($persons);
 	 //var_dump($persons[0]['price']);
 	if($_SERVER['REQUEST_METHOD']=="POST")

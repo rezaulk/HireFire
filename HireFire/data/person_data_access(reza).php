@@ -250,7 +250,7 @@
 	function accessGigToDb($key)
 	{
 		$name=$key;
-		$sql = "SELECT * FROM gigs WHERE uName LIKE '$name' ";
+		$sql = "SELECT * FROM gigs WHERE gigId='$name' ";
 		$result = executeSQL($sql);
 		//var_dump($result);
 		$persons = array();
