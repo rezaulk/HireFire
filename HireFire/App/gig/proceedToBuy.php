@@ -146,7 +146,7 @@
 										<br/>
 										<a>&nbsp;&nbsp;<?php echo $name; ?></a>
 										<hr>
-										<button><font size="3"><a href="../User/contact_seller.html">Contact Me</a></font></button>
+										<button><font size="3"><a href="../User/contact_seller.php?gigId=<?php echo $gigId; ?>">Contact Me</a></font></button>
 									   </td>
 								    </tr>
 								    <tr height="20%">

@@ -109,5 +109,22 @@ $path=__DIR__."/../data/person_data_access(robi).php";
 		return modifyTypeToUserDb();
 	}
 	//retreiveName
+	function accessUser($gigId)
+	{
+		//echo "<script>alert('modifyType')</script>";
+		return accessFromUserDb($gigId);
+	}
+	function accessSellerDetails($uName)
+	{
+		//echo "<script>alert('modifyType')</script>";
+		return accessSellerDetailsFromDb($uName);
+	}
+	function accessAllGigs($sellerName)
+	{
+		//echo "<script>alert('modifyType')</script>";
+		return accessAllGigsDetailsFromDb($sellerName);
+	}
+	
+	
 	
 ?>

@@ -398,5 +398,32 @@
 		//echo "<script>alert('addOrderToDb')</script>";
 		return $result;
 	}
+	function accessFromUserDb($gigId)
+	{
+		$sql = "SELECT * FROM gigs where '$gigId' like gigId";
+		//var_dump($sql);
+		$result =executeSQL($sql);
+		//var_dump($result);
+		//echo "<script>alert('retreiveSellerDescriptionFromDb')</script>";
+		return $result;
+	}
+	function accessSellerDetailsFromDb($uName)
+	{
+		$sql = "SELECT * FROM sellers where '$uName' like uName";
+		//var_dump($sql);
+		$result =executeSQL($sql);
+		//var_dump($result);
+		//echo "<script>alert('retreiveSellerDescriptionFromDb')</script>";
+		return $result;
+	}
+	function accessAllGigsDetailsFromDb($sellerName)
+	{
+		$sql = "SELECT * FROM gigs where '$sellerName' like uName";
+		//var_dump($sql);
+		$result =executeSQL($sql);
+		//var_dump($result);
+		//echo "<script>alert('retreiveSellerDescriptionFromDb')</script>";
+		return $result;
+	}
 	
 ?>
