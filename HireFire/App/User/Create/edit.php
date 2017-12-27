@@ -129,12 +129,6 @@ function validateGigTitle()
 			gigTitleErrorMassage.innerHTML="*GigTitle Cannot be empty";
 			isValid=false;
 		}
-		else if(stringCheck()==false)
-		{
-			gigTitleErrorMassage.innerHTML="*Gig title only contains character";
-			isValid=false;
-		}
-		
 		else
 		{
 			if(gigtitle.match(/^\s+$/) === null) 
@@ -144,7 +138,7 @@ function validateGigTitle()
 			}
 			else 
 			{
-					gigTitleErrorMassage.innerHTML="*GigTitle can,t contains Only space";
+					gigTitleErrorMassage.innerHTML="*GigTitle cannot contains Only space";
 			}
 		}
 		return isValid;

@@ -22,7 +22,7 @@
 	  }
 	  //var_dump($username);
 	  $allGig=allGig($username);
-	  //var_dump($allGig);
+	 // var_dump($allGig);
 	  $month=monthReturn($buyer[0]['joiningDate']);
 	 $persons=accessProfileSeller($username);
 	 //var_dump($persons);
@@ -209,10 +209,10 @@
 			}
 			$imgName=$allGig[$i]['gigId'];
 			$gigId=$imgName;
-			$gDescription=$allGig[$i]['gDescription'];			
+			$gigTitle=$allGig[$i]['gigTitle'];			
 			echo "<td width='20%'>
 				<img src='../GigImage/$imgName.jpg' width='200' hight='200'/><br/><br/>
-				<a href='../gig/details.php?gigId=".$gigId."'>$gDescription</a>
+				<a href='../gig/details.php?gigId=".$gigId."'>$gigTitle</a>
 			</td>";
 			$count++;
 			if($count==4)
