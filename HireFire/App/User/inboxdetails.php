@@ -1,3 +1,99 @@
+<?php
+	//require_once __DIR__."/../../service/TANIM_service.php";
+	
+	//var_dump($GLOBALS);
+	$host="localhost";
+    $user="root";
+    $pass="";
+    $dbname="hirefire_db";
+    $port=3306;
+	function conversationIdReturnIfpreviouslyConversionOccurred($fromUser,$toUser){
+		global $host, $user, $pass, $dbname, $port;
+		$conn=mysqli_connect($host, $user, $pass, $dbname, $port);
+		//$name=$key;
+		$sql = "select * from tomessage where (fromUser='$fromUser' AND toUser='$toUser') or (fromUser='$toUser' AND toUser='$fromUser') ORDER BY messageId ASC";
+		$result = mysqli_query($conn, $sql);
+		//var_dump($result);
+		//$result = executeSQL($sql);
+		$persons = array();
+		for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+			$persons[$i] = $row;
+			//var_dump($persons[$i]['type']);
+		}
+		//var_dump($persons);
+		return $persons;
+		
+		mysqli_close($conn);
+	}
+	function nextConversionNumber(){
+		global $host, $user, $pass, $dbname, $port;
+		$conn=mysqli_connect($host, $user, $pass, $dbname, $port);
+		//$name=$key;
+		$sql = "SELECT MAX(conversionNumber) FROM tomessage";
+		$result = mysqli_query($conn, $sql);
+		//var_dump($result);
+		//$result = executeSQL($sql);
+		$persons = array();
+		for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+			$persons[$i] = $row;
+			//var_dump($persons[$i]['type']);
+		}
+		//var_dump($persons);
+		$nextConversionNo=$persons[0]['MAX(conversionNumber)'];
+		return $nextConversionNo+1;
+		
+		mysqli_close($conn);
+	}
+	function insertReplyToDB($nextConversionNo,$Reply){
+		global $host, $user, $pass, $dbname, $port;
+		$conn=mysqli_connect($host, $user, $pass, $dbname, $port);
+		$sql="INSERT INTO tomessage (messageId, conversionNumber, fromUser, toUser, allmessage)
+		VALUES (NULL,$nextConversionNo, 'robi', 'efti', '$Reply')";
+		//var_dump($sql);
+		$result = mysqli_query($conn, $sql);
+		mysqli_close($conn);
+		return($result);
+		
+	}
+	$tomessage=conversationIdReturnIfpreviouslyConversionOccurred("robi","efti");
+	//var_dump($tomessage);
+	
+	
+	
+	$ConversionNumber=0;
+	if(count($tomessage)==0){//previous conversation not happened
+		$ConversionNumber= nextConversionNumber();
+		
+	}
+	else{
+		//$ConversionNumber
+		$ConversionNumber=trim($tomessage[0]['conversionNumber']);
+	}
+	if($_SERVER['REQUEST_METHOD']=="POST")
+	{
+		$reply=$_REQUEST['reply'];
+		if($reply==""){
+			
+		}
+		else{
+			var_dump($reply);
+			var_dump($ConversionNumber);
+			if(insertReplyToDB($ConversionNumber,$reply)){
+				echo "<script>alert('data inserted');document.location='indoxdetails.php';</script>";
+			}
+			else{
+				echo "<script>alert('Error');</script>";
+			}
+			
+		}
+	}
+	
+	//var_dump($ConversionNumber);
+	
+	
+	
+?>
+<form method='POST'/>
 <html>
 	<head>
 		<title>HireFire</title>
@@ -38,12 +134,35 @@
 				<td width="50%">
 				        <br/><a>Inbox</a>
 						<table border="0" width="100%" height="100%">
-							<tr>
-								<td >
-								<img src="../image/b.png" title="Bob" width="30">Hi there. What's up?<br/><br/>
-										
-								</td>
-							</tr>
+						<?php
+						//$totalmessage= count($tomessage);
+						if(count($tomessage)!=0){
+							$totalmessage= count($tomessage);
+							for($i=0;$i<$totalmessage;$i++)
+							{
+								$fromUser=trim($tomessage[$i]['fromUser']);
+								$toUser=trim($tomessage[$i]['toUser']);
+								$message=trim($tomessage[$i]['allmessage']);
+								if($fromUser=='robi'){
+									echo "<tr>
+									<td >
+									<img src='../uploads/robi.jpg' title=robi width='30'>$message<br/><br/>
+									</td>
+									</tr>";
+								}
+								else{
+									echo "<tr>
+									<td >
+									<img src='../uploads/efti.jpg' title=efti width='30'>$message<br/><br/>
+									</td>
+									</tr>";
+								}
+								
+							}
+							
+						}
+						?>
+							<!--
 							<tr>
 								<td >
 								<img src="../image/b.png" width="30" title="Hensen" >Fine. What's about you?<br/><br/>
@@ -56,10 +175,11 @@
 										
 								</td>
 							</tr>
+							-->
 							<tr>
 								<td>
 									<textarea rows="2" cols="30" name="reply"></textarea>
-									<br/><button>Reply</button>
+									<br/><input type='submit' value='Reply'/>
 								</td>
 							</tr>
 							<tr height="70%">
