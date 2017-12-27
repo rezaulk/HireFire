@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2017 at 11:18 PM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 7.1.11
+-- Generation Time: Dec 27, 2017 at 07:36 AM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -192,7 +192,17 @@ INSERT INTO `orders` (`orderId`, `bName`, `sName`, `gId`, `date`, `accountNumber
 (4, 'efti', 'reza', 1, '2017-12-04', 0, '0000-00-00', 'active'),
 (5, 'rajesh', 'reza', 2, '2017-12-13', 2222, '0000-00-00', 'active'),
 (6, 'rajesh', 'reza', 4, '2017-12-13', 33333, '0000-00-00', 'pending'),
-(7, 'rajesh', 'reza', 5, '2017-12-12', 2232323, '2017-12-11', 'pending');
+(7, 'rajesh', 'reza', 5, '2017-12-12', 2232323, '2017-12-11', 'pending'),
+(8, 'robi', 'robi', 2, '2017-12-27', 534, '2018-01-02', 'pending'),
+(9, 'robi', 'robi', 3, '2017-12-27', 2147483647, '2018-01-03', 'pending'),
+(10, 'robi', 'tamin', 4, '2017-12-27', 3443, '2018-01-04', 'pending'),
+(11, 'robi', 'dsds', 5, '2017-12-27', 4, '2018-01-04', 'pending'),
+(12, 'robi', 'tamin', 4, '2017-12-27', 353534, '2018-01-03', 'pending'),
+(13, 'robi', 'reza', 1, '2017-12-27', 2435, '2018-01-05', 'pending'),
+(14, 'robi', 'robi', 2, '2017-12-27', 3534, '2018-01-03', 'pending'),
+(15, 'robi', 'robi', 2, '2017-12-27', 35, '2018-01-03', 'pending'),
+(16, 'robi', 'reza', 1, '2017-12-27', 43, '2018-01-02', 'pending'),
+(17, 'robi', 'robi', 2, '2017-12-27', 232, '2018-01-03', 'pending');
 
 -- --------------------------------------------------------
 
@@ -396,61 +406,51 @@ ALTER TABLE `users`
 --
 ALTER TABLE `buyers`
   MODIFY `buyerId` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
 --
 -- AUTO_INCREMENT for table `education`
 --
 ALTER TABLE `education`
-  MODIFY `educationId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
+  MODIFY `educationId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `gigrequirements`
 --
 ALTER TABLE `gigrequirements`
   MODIFY `requirementId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `gigs`
 --
 ALTER TABLE `gigs`
   MODIFY `gigId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `last active time`
 --
 ALTER TABLE `last active time`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `ordercomment`
 --
 ALTER TABLE `ordercomment`
   MODIFY `orderCommentId` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `sellers`
 --
 ALTER TABLE `sellers`
   MODIFY `sellerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
   MODIFY `skillId` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
 --
 -- AUTO_INCREMENT for table `spending`
 --
 ALTER TABLE `spending`
   MODIFY `spendingId` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- Constraints for dumped tables
 --
