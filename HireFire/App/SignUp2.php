@@ -26,7 +26,7 @@
 			$person['joiningdate']=date("Y-m-d");
 			
 			
-	var_dump($GLOBALS);		
+	//var_dump($GLOBALS);		
 			$validEntry=true;
 			if(addPersonAsBuyer($person)==true){
 				
@@ -309,7 +309,7 @@
 <table  height="10%"  width="100%" border="0">
 	<tr>
 
-		<td><a href="PublicHome.html"><img src="image/image.png" width="150"/></a></td>
+		<td><a href="PublicHome.php"><img src="image/image.png" width="150"/></a></td>
 		<td>
 		</td>
 		<td align="right">
@@ -350,7 +350,7 @@
 					</fieldset><span id="languageErrorMassage"></span>	<br/><br/>
 					<input type="submit" value="Join"/>
 					<br/><br/>
-					Already a member? <a href="SignIn.html">Sign in</a>
+					Already a member? <a href="SignIn.php">Sign in</a>
 					</fieldset>
 				
 			</form>

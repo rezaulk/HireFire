@@ -78,12 +78,12 @@
 		<td colspan="4">
 			<table  width="100%" border="0">
 				<tr>
-					<td><a href="main.html"><img src="../image/image.png" width="150"/></a></td>
+					<td><a href="../Categories/Programing.php"><img src="../image/image.png" width="150"/></a></td>
 						
 					<td align="right">
-						<font size="4"><a href="inbox.html">Messages&nbsp;</a>
+						<font size="4"><a href="inbox.php">Messages&nbsp;</a>
 						<a href="Orders_active.php">Dashboard&nbsp;</a>
-						<a href="../PublicHome.html">LogOut</a></font>
+						<a href="../PublicHome.php">LogOut</a></font>
 					</td>
 					<td width="5%"><img src="../image/b.png" width="50"></td>
 				</tr>		

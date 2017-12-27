@@ -46,6 +46,7 @@
 	} else {
 		$imageLocationWithImageName="../uploads/default.jpg";
 	}
+	//var_dump($imageLocationWithImageName);
 ?>
 <?php
 	//var_dump($GLOBALS);
