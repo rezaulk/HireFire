@@ -1,3 +1,13 @@
+<?php   session_start(); 
+        require_once "../../data/person_data_access(reza).php";
+?>
+<?php 
+     
+     $username = $_SESSION['username']; 
+	 $person=getNameFromDb($username);
+?>
+
+
 <table width="100%">
 	<tr>
 		<td colspan="4">
@@ -5,15 +15,13 @@
 				<tr>
 
 					<td><a href="admin.html"><img src="../image/image.png" width="150"/></a></td>
-					<td><input type="text" name="search" placeholder="Search.." size="70" height="20">
-						<button>Search</button>
-					</td>
+					
 					<td align="right">
 						<font size="4"><a href="inbox.html">Messages&nbsp;</a>
-						<a href="admin.html">Dashboard&nbsp;</a>
+						<a href="admin.php">Dashboard&nbsp;</a>
 						<a href="../PublicHome.html">LogOut</a></font>
 					</td>
-					<td><img src="../image/b.png" width="50"></td>
+					<td width="4%"><img src="../image/b.png" width="50"></td>
 				</tr>		
 			</table>
 		</td>
@@ -25,7 +33,7 @@
 		<td width="1%"></td>
 		<td valign="top" align="center" width="20%">
 			<img src="../image/b.png" width="30%" alt="TANIM"/>
-			<br/>Ibrahim Khalil<hr/>
+			<br/><?php echo $person['name']?><hr/>
 			
 			<table width="100%">
 			

@@ -92,7 +92,6 @@
 					<td align="right">
 						<font size="4"><a href="inbox.html">Messages&nbsp;</a>
 						<a href="Orders_pending.php">Orders&nbsp</a>
-						<a href="Postrequest.html">Postrequest&nbsp;</a>
 						<a href="dashboard.php">Dashboard&nbsp;</a>
 						<a href="../PublicHome.html">LogOut</a></font>
 					</td>
@@ -113,9 +112,6 @@
 			
 			<input type="file" name="file" value="imageUpload"/>
 			<input type="submit" value="Upload"/>
-			
-			
-			
 			<hr/>
 			
 			<table width="100%">

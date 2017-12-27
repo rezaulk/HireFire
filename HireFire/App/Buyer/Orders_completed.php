@@ -21,7 +21,7 @@
 					<table  width="100%" border="0">
 						 <tr>
 							<td><a href="main.html"><img src="../image/image.png" width="150"></a></td>
-							<td><input type="text" name="search" placeholder="Search.." size="70" height="20"><button>Search</button></td>
+							<td></td>
 							<td align="right">
 								<font size="4"><a href="inbox.html">Messages&nbsp;</a>
 									<a href="dashboard.html">Dashboard&nbsp;</a>
