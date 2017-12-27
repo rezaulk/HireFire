@@ -1,3 +1,11 @@
+<?php
+	session_start();
+?>
+<?php 
+	include("../../service/gig_service(robi).php");
+?>
+<?php
+?>
 <html>
 	<head>
 		<title>HireFire</title>
@@ -11,16 +19,16 @@
 					<tr>
 						<tr>
 						<td width="30" ><a href="../User/main.html"><img src="../image/image.png" width="150"/></a></td>
-					<td><input type="text" name="search" placeholder="Search.." size="70" height="20"><button>Search</button></td>
+						<td><input type="text" name="search" placeholder="Search.." size="70" height="20"><button>Search</button></td>
 						<td align="right">
-							<font size="4"><a href="inbox.html">Messages&nbsp;</a>
-								<a href="Orders.html">Orders&nbsp</a>
-								<a href="Postrequest.html">Postrequest&nbsp;</a>
-								<a href="dashboard.html">Dashboard&nbsp;</a>
-								<a href="PublicHome.html">LogOut</a>
+							<font size="4"><a href="../User/inbox.html">Messages&nbsp;</a>
+								<a href="../User/Orders.html">Orders&nbsp</a>
+								<a href="../User/Postrequest.html">Postrequest&nbsp;</a>
+								<a href="../User/dashboard.html">Dashboard&nbsp;</a>
+								<a href="../PublicHome.html">LogOut</a>
 							</font>
 						</td>
-						<td><a href="profile.html"><img src="../image/b.png" width="50"></a></td>
+						<td><a href="../User/profile.html"><img src="../image/b.png" width="50"></a></td>
 					</tr>
 					</tr>
 				</table>		
@@ -43,58 +51,65 @@
 		</div>
 		
 		<table align="center">
-			<tr>
-				<td width="300">
-				 <a href="../gig/buyer_fun.html"><img src="../image/Capture1.JPG" height="150"  width="300"></br></a>
-				<img src="../image/user-avatar.jpg" width="50"><br/>
-				shahadatraaz<br/>Level 2 Seller<br/>I will create a professional website design
 				
-				</td>
-				<td width="300">
-				<a href="../gig/buyer_fun.html"><img src="../image/01.JPG" height="150" width="300"></br></a>
-				<img src="../image/user-avatar.jpg" width="50"><br/>
-				rezabd<br/>Level 2 Seller<br/>I will redesign your wordpress site
-				</td>
-				<td width="300">
-				<a href="../gig/buyer_fun.html"><img src="../image/02.jpg" height="150" width="300"></br></a>
-				<img src="../image/user-avatar.jpg" width="50"><br/>
-				teczium</br>Level 1 Seller<br/>I will do desktop applications in c,c++
-				</td>
-				<td>
-				<a href="../gig/buyer_fun.html"><img src="../image/Capture2.JPG" height="150"  width="300"></br></a>
-				<img src="../image/user-avatar.jpg" width="50"><br/>
-				tanimcml<br/>Level 2 Seller<br/>I will redesign your wordpress site
-				</td>
-			</tr>
+		<?php
+			
+			$result = retreiveProgrammingAndTechGig('Fun $ Lifestyle');
+			
+			//var_dump($result);
+			//echo "<script>alert('Programming')</script>";
+			$programmingAndTechGig = array();
+			//echo "<script>alert('Programming1')</script>";
+			for($i=0; $row = mysqli_fetch_assoc($result); ++$i)
+			{
+				$countGigs=0;
+				
+				//echo "<script>alert('Programming2')</script>";
+				$programmingAndTechGig[$i] = $row;
+				$imgExt=$programmingAndTechGig[$i]['imgExt'];
+				$username=$programmingAndTechGig[$i]['uName'];	
+				$gigTitle=$programmingAndTechGig[$i]['gigTitle'];
+				$gigPrice=$programmingAndTechGig[$i]['price'];
+				$gigOrderCount=$programmingAndTechGig[$i]['orderCount'];
+				$gigId=$programmingAndTechGig[$i]['gigId'];
+				
+				//userImage
+				
+				$userImageResult= retreiveUserImage($username);	
+				for($j=0; $row = mysqli_fetch_assoc($userImageResult); ++$j)
+				{	
+					$userImage=$row['imageExt'];
+				}
+				
+				//Level
+				
+				$userLevelResult= retreiveUserLevel($username);
+				for($j=0; $row = mysqli_fetch_assoc($userLevelResult); ++$j)
+				{	
+					$userLevel=$row['expertLevel'];
+				}
+				
+				
+				if($i%4==0)
+				{   
+					$elementCountInSingleRow=1;
+					echo "<tr>";
+				}
+				
+				echo    "<td width='300'><a href='../gig/proceedToBuy.php?gigId=".$gigId."'><img src='../GigImage/".$imgExt."' height='150'  width='300'></a></br>
+						<img src='../uploads/".$userImage."' width='50' height='50'><br/>".
+						$username."<br/>Level ".$userLevel." Seller<br/>".$gigTitle."<br/><b>Total Ordered: ".$gigOrderCount."</b><br/>Price: ".$gigPrice."<br/><br/></td>";
+						
+				if($elementCountInSingleRow==4)
+				{
+					echo "</tr>";
+				}	
+				$elementCountInSingleRow++;
+				$countGigs++;
+			}
+		?>
 		</table>
-		<table align="center">
-			<tr>
-				<td width="300">
-				<a href="../gig/buyer_fun.html"><img src="../image/03.png" height="150" width="300"></br></a>
-			    <img src="../image/user-avatar.jpg" width="50"><br/>
-				shahadatraaz<br/>Level 2 Seller<br/>I will write c, c sharp, and winforms apps for you	
-				</td>
-				<td width="300">
-				<a href="../gig/buyer_fun.html"><img src="../image/04.png" height="150" width="300"></br></a>
-				<img src="../image/user-avatar.jpg" width="50"><br/>
-				rezabd<br/>New Seller</br>I will provide you with awesome and responsive asp	
-				</td>
-				<td width="300">
-				<a href="../gig/buyer_fun.html"><img src="../image/06.png" height="150" width="300"> </br></a>
-				<img src="../image/user-avatar.jpg" width="50"><br/>
-				robiullah<br/>Level 2 Seller<br/>I will redesign your wordpress site
-				</td>
-				
-				<td width="300">
-				<a href="../gig/buyer_fun.html"><img src="../image/05.JPG" height="150" width="300"> </br></a>
-				<img src="../image/user-avatar.jpg" width="50"><br/>
-				varuna10<br/>	Level 2 Seller<br/>I will design a layout for your website
-				</td>
-				
-				
-			</tr>
-		</table>
-		
+
 		<table>
 			<tr colspan="3" height="20%">
 				<table border="0" width="100%">

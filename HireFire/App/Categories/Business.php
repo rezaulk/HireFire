@@ -98,7 +98,7 @@
 				}
 				
 				echo    "<td width='300'><a href='../gig/proceedToBuy.php?gigId=".$gigId."'><img src='../GigImage/".$imgExt."' height='150'  width='300'></a></br>
-						<a href='../User/contact_seller.php?username=".$username."'><img src='../uploads/".$userImage."' width='50' height='50'></a><br/>".
+						<img src='../uploads/".$userImage."' width='50' height='50'><br/>".
 						$username."<br/>Level ".$userLevel." Seller<br/>".$gigTitle."<br/><b>Total Ordered: ".$gigOrderCount."</b><br/>Price: ".$gigPrice."<br/><br/></td>";
 						
 				if($elementCountInSingleRow==4)
@@ -116,7 +116,7 @@
 				<table border="0" width="100%">
 				  <hr>
 					<tr>
-					   <th align="left">CATEGORIES</th>
+					    <th align="left">CATEGORIES</th>
 					   <th align="left">ABOUT</th>
 					   <th align="left">COMMUNITY</th>
 					   <th align="left">SUPPORT</th>
@@ -124,14 +124,14 @@
 					</tr>
 				  
 					<tr>
-						<td> <a href="Graphics.html">Graphics & Design</a></td>
+						<td> <a href="Graphics.php">Graphics & Design</a></td>
 						<td>Careers</td>
 						<td>Blog</td>
 						<td>Contact Support</td>
 						<td> <a href="www.google.com">Google</a></td>
 					</tr>
 					<tr>
-						<td><a href="digital.html">Digital Marketing</a></td>
+						<td><a href="Digital.php">Digital Marketing</a></td>
 						<td>Press & News</td>
 						<td>Forum</td>
 						<td>Help & Education</td>
@@ -139,7 +139,7 @@
 					
 					</tr>
 					<tr>
-						<td><a href="writing.html">Writing & Translation</a></td>
+						<td><a href="Writing.php">Writing & Translation</a></td>
 						<td>Partnerships</td>
 						<td>Podcast</td>
 						<td>Trust & Safety</td>
@@ -147,7 +147,7 @@
 					
 					</tr>
 					<tr>
-						<td><a href="video.html"> Video & Animation</a></td>
+						<td><a href="Video.php"> Video & Animation</a></td>
 						<td>Privacy Policy</td>
 						<td>Affiliates</td>
 						<td>Selling on Freelance</td>
@@ -155,21 +155,21 @@
 					
 					</tr>
 					<tr>
-						<td><a href="music.html"> Music & Audio</a></td>
+						<td><a href="Music.php"> Music & Audio</a></td>
 						<td>Terms of Service</td>
 						<td></td>
 						<td>Buying on freelance</td>
 						<td></td>
 					</tr>
 					<tr>
-						<td> <a href="programing.html">Programming & Tech</a></td>
+						<td> <a href="Programing.php">Programming & Tech</a></td>
 						<td></td>
 						<td></td>
 						<td></td>
 						<td></td>
 					</tr>
 					<tr>
-						<td><a href="business.html">Business</a></td>
+						<td><a href="Business.php">Business</a></td>
 						<td></td>
 						<td></td>
 						<td></td>
