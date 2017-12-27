@@ -1,3 +1,44 @@
+<?php
+	session_start();
+	ob_start();
+	//var_dump($GLOBALS);
+	$host="localhost";
+    $user="root";
+    $pass="";
+    $dbname="hirefire_db";
+    $port=3306;
+	function getSenderFromDB($fromUser){
+		global $host, $user, $pass, $dbname, $port;
+		$conn=mysqli_connect($host, $user, $pass, $dbname, $port);
+		//$name=$key;
+		$sql = "select * from tomessage where (fromUser='$fromUser' or toUser='$fromUser') order by messageId DESC";
+		$result = mysqli_query($conn, $sql);
+		$persons = array();
+		$conversionNum=-1;
+		$j=0;
+		for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+			if($conversionNum!=$row['conversionNumber']){
+				//var_dump($row['conversionNumber']);
+				$persons[$j++] = $row;
+				$conversionNum=$row['conversionNumber'];
+				
+			}
+		}
+		return $persons;
+		
+		mysqli_close($conn);
+	}
+	
+	$fromUserFromSession=$_SESSION['username'];
+	$sender=getSenderFromDB('robi');
+	var_dump($sender);
+	
+	
+	
+	
+	
+	
+?>
 <html>
 	<head>
 		<title>HireFire</title>
