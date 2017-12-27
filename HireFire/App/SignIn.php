@@ -1,4 +1,3 @@
-
 <?php   session_start(); require_once "../service/validation_service(reza).php"; ?>
 <?php require_once "../service/person_service(reza).php"; ?>
 
