@@ -34,6 +34,7 @@
 				//var_dump($row);
                 $count++;				
 			}
+			//var_dump($count);
 		return $count;
 		
 	}
@@ -119,7 +120,7 @@
 	}
 	
 	
-	function getsellerFromDb($personId)
+	function getsellerFromDb()
 	{
 		 $sql = "SELECT * FROM sellers";        
         $result = executeSQL($sql);
@@ -134,7 +135,7 @@
 	}
 	
 	
-	function getBuyerName($username)
+	function getBuyerName()
 	{
 		$sql = "SELECT * FROM buyers";        
         $result = executeSQL($sql);
@@ -143,7 +144,7 @@
         for($i=0; $row=mysqli_fetch_assoc($result); ++$i){
             $persons[$i] = $row;
         }
-        
+        //var_dump($persons);
         return $persons;
 		
 	}

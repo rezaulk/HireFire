@@ -1,20 +1,31 @@
+<?php   session_start(); 
+		require_once "../../service/person_service(reza).php";
+?>
+<?php 
+     
+     $username = $_SESSION['username'];
+	 //var_dump($username);
+	 //$sellerid=selleridaccess($username);
+ 
+	 //var_dump($languages[1]['language']);
+?>
+
 <html>
 	<head>
 		<title>HireFire</title>
 	</head>
 	<body>
-	    <table border="0" width="100%" height="100%" cellspacing="0">
+	    <table border="1" width="100%" height="100%" cellspacing="0">
 		    <tr height="10%">
 			    <td colspan="3">
 				    <table  border="0" width="100%" border="1">
 				        <tr>
 							<td><a href="admin.html"><img src="../image/image.png" width="150"></a></td>
-							<td><input type="text" name="search" placeholder="Search.." size="70" height="20">
-								<button>Search</button>
+							<td>
 							</td>
 							<td align="right">
 								<font size="4"><a href="inbox.html">Messages&nbsp;</a>
-								<a href="admin.html">Dashboard&nbsp;</a>
+								<a href="admin.php">Dashboard&nbsp;</a>
 								<a href="../PublicHome.html">LogOut</a></font>
 							</td>
 							<td><a href="profile.html"><img src="../image/b.png" width="50"></a></td>
@@ -26,19 +37,19 @@
 				<td colspan="3"><hr/></td>
 			</tr>
 			<tr height="5%">  
-			    <td width="25%"></td>
-				<td width="30%">	
+			    <td width="20%"></td>
+				<td width="20%">	
 					<a>Dashboard&nbsp;|</a>
-					<a href="gigs_admin.html">Gigs|</a>
-					<a href="earnings_admin.html">Earning&nbsp;|</a>
+					<a href="gigs_admin.php">Gigs|</a>
+					<a href="earnings_admin.php">Earning&nbsp;|</a>
 					<a href="inbox.html">Inbox&nbsp;|</a>
 					<a href="setting.html">Settings&nbsp;</a> 
 				</td>
-				<td width="45%"></td>
+				<td width="60%"></td>
             </tr>					
 			<tr height="50%">	
-                <td width="25%" height="100%"></td>			
-				<td width="30%" height="100%">
+                <td width="15%" height="100%"></td>			
+				<td width="15%" height="100%">
 					<table width="100%" height="100%" border="0">
 						<tr width="40%">
 							<td width="30%" align="center"><img src="../image/user-avatar.jpg" width="100"><br/><a>Faysal Ahmed</a></td>
@@ -57,46 +68,78 @@
 						</tr>
 					</table>
 				</td>
-				<td width="45%" height="100%">
-					<table>
+				<td width="70%" height="100%">
+					<table border="1"  width="100%" height="100%">
 						<tr>
-							<td>
+							<td width="50%" >
+							    <a>Seller</a>
 								<table border="1" cellspacing="0" width="100%" height="40%">
 									<tr>
-										<th>User</th>
+									     
+										<th>Seller</th>
 										 <th>Gigs</th>
-										 <th>Open Purchases</th>
-										 <th>Balance</th>
-										 <th>Earned in November</th>
+										 <th>active Gig</th>
+										 <th>LastActive Time</th>
 									</tr>
-									<tr align="center">
-										 <td>robi</td>
-										 <td>4</td>
-										 <td>3</td>
-										 <td>$400</td>
-										 <td>$300</td>
+									<?php
+										 $persons=getsellerFromDb();
+
+										//echo "<script>alert('Programming1')</script>";
+										$i=0;
+										//var_dump($persons);
+										
+										foreach ($persons as $value) 
+										{
+											
+										  //var_dump($value);
+										   $seller=$value['uName'];
+										   $totalgig=getallgigFromDb($seller);
+										   $activegig=getactivegigToDb($seller);
+										   $lastactivetime=getlastactiveToDb($username);
+										   $date=$lastactivetime['activeDate'];
+											echo "<tr>";
+											
+											echo "<td >$seller</td><td>$totalgig</td><td>$activegig</td><td>$date</td>";
+											echo "</tr>";
+											$i++; 
+										}
+									?>
+								</table>
+							</td>
+							<td >
+							    <a>Buyer</a>
+								<table border="1" cellspacing="0" width="100%" height="40%">
+									<tr>
+										<th>Seller</th>
+										 <th>Buy GIg</th>
+										 <th>Total spending</th>
+										 <th>LastActive Time</th>
 									</tr>
-									<tr align="center">
-										 <td>toni</td>
-										 <td>5</td>
-										 <td>2</td>
-										 <td>$400</td>
-										 <td>$300</td>
-									</tr>
-									<tr align="center">
-										 <td>tanim</td>
-										 <td>5</td>
-										 <td>4</td>
-										 <td>$400</td>
-										 <td>$300</td>
-									</tr>
-									<tr align="center">
-										 <td>raz</td>
-										 <td>3</td>
-										 <td>2</td>
-										 <td>$400</td>
-										 <td>$200</td>
-									</tr>
+									<?php
+										 $persons=getBuyerName();
+										 
+										//echo "<script>alert('Programming1')</script>";
+										$i=0;
+										foreach ($persons as $value) 
+										{
+											$buyer=$value['uName'];
+											$gig=buyTotalGig($buyer);
+											$spending=spendingTodb($buyer);
+											$spend=(int)$spending['totalSpend'];
+										  //var_dump($spend);
+										   $lastactivetime=getlastactiveToDb($buyer);
+										   $date=$lastactivetime['activeDate'];
+										  
+										   //var_dump($gig);
+											echo "<tr>";
+											
+											echo "<td>$buyer</td><td>$gig</td><td>$spend</td><td>$date</td>";
+											echo "</tr>";
+											$i++; 
+
+
+										}
+									?>
 								</table>
 							</td>
 						</tr>
