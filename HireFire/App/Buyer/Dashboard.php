@@ -29,11 +29,11 @@
 				<td>
 					<table border="0" width="100%" height="100%">
 						<tr height="9%">
-						   <td width="30%">Orders<hr align="left" width="50"/><!--&nbsp;<a href="dashboard.html">DashBoard</a>&nbsp;|&nbsp;Orders&nbsp;|&nbsp;<a href="gigs.html">Gigs</a>&nbsp;|&nbsp;<a href="earnings.html">Earning</a>&nbsp;|&nbsp;<a href="inbox.html">Inbox</a>&nbsp;|&nbsp;<a href="setting.html">setting</a><hr></td>-->
+						   <td width="30%">Orders<hr align="left" width="50"/><!--&nbsp;<a href="dashboard.html">DashBoard</a>&nbsp;|&nbsp;Orders&nbsp;|&nbsp;<a href="gigs.php">Gigs</a>&nbsp;|&nbsp;<a href="earnings.php">Earning</a>&nbsp;|&nbsp;<a href="inbox.php">Inbox</a>&nbsp;|&nbsp;<a href="setting.php">setting</a><hr></td>-->
 						   <td width="70%"></td>
 						</tr>
 						<tr height="9%">
-						   <td width="30%">&nbsp;Active&nbsp;|&nbsp;<a href="Orders_pending.html">Pending</a>&nbsp;|&nbsp;<a href="Orders_completed.html">Completed</a>&nbsp;<hr></td>
+						   <td width="30%">&nbsp;Active&nbsp;|&nbsp;<a href="Orders_pending.php">Pending</a>&nbsp;|&nbsp;<a href="Orders_completed.php">Completed</a>&nbsp;<hr></td>
 						   <td width="70%"></td>
 						</tr>
 						<tr  height="10%">
@@ -60,7 +60,7 @@
 												<tr height="10%" align="center">
 													<td>raz</td>
 													<td>I will create a professional wordpress design</td>
-													<td><a href="Orders_progress.html">view</a></td>
+													<td><a href="Orders_progress.php">view</a></td>
 													<td>12-1-18</td>
 													<td>$120</td>
 											
@@ -68,7 +68,7 @@
 												<tr height="10%" align="center">
 													<td>reza</td>
 													<td>I will create a professional website design</td>
-													<td><a href="Orders_progress.html">view</a></td>
+													<td><a href="Orders_progress.php">view</a></td>
 													<td>12-1-18</td>
 													<td>$320</td>
 												
@@ -98,14 +98,14 @@
 				   </tr>
 				  
 				   <<tr>
-						<td> <a href="Graphics.html">Graphics & Design</a></td>
+						<td> <a href="Graphics.php">Graphics & Design</a></td>
 						<td>Careers</td>
 						<td>Blog</td>
 						<td>Contact Support</td>
 						<td> <a href="www.google.com">Google</a></td>
 					</tr>
 					<tr>
-						<td><a href="digital.html">Digital Marketing</a></td>
+						<td><a href="digital.php">Digital Marketing</a></td>
 						<td>Press & News</td>
 						<td>Forum</td>
 						<td>Help & Education</td>
@@ -113,7 +113,7 @@
 					
 					</tr>
 					<tr>
-						<td><a href="writing.html">Writing & Translation</a></td>
+						<td><a href="writing.php">Writing & Translation</a></td>
 						<td>Partnerships</td>
 						<td>Podcast</td>
 						<td>Trust & Safety</td>
@@ -121,7 +121,7 @@
 					
 					</tr>
 					<tr>
-						<td><a href="video.html"> Video & Animation</a></td>
+						<td><a href="video.php"> Video & Animation</a></td>
 						<td>Privacy Policy</td>
 						<td>Affiliates</td>
 						<td>Selling on Freelance</td>
@@ -129,21 +129,21 @@
 					
 					</tr>
 					<tr>
-						<td><a href="music.html"> Music & Audio</a></td>
+						<td><a href="music.php"> Music & Audio</a></td>
 						<td>Terms of Service</td>
 						<td></td>
 						<td>Buying on freelance</td>
 						<td></td>
 					</tr>
 					<tr>
-						<td> <a href="programing.html">Programming & Tech</a></td>
+						<td> <a href="programing.php">Programming & Tech</a></td>
 						<td></td>
 						<td></td>
 						<td></td>
 						<td></td>
 					</tr>
 					<tr>
-						<td><a href="business.html">Business</a></td>
+						<td><a href="business.php">Business</a></td>
 						<td></td>
 						<td></td>
 						<td></td>

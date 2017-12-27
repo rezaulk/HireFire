@@ -25,10 +25,7 @@
 			</tr>
 			<tr height="5%">  
 			    <td width="25%"></td>
-				<td width="30%">	
-						  <a href="dashboard.php">Dashboard&nbsp;</a>
-						  <a>Inbox&nbsp;<a>
-						   <a href="setting.php">Settings&nbsp;</a> 
+				
 				</td>
 				<td width="45%"></td>
             </tr>					

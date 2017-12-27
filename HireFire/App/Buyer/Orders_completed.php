@@ -20,15 +20,15 @@
 				<td>
 					<table  width="100%" border="0">
 						 <tr>
-							<td><a href="main.html"><img src="../image/image.png" width="150"></a></td>
+							<td><a href="../Categories/programing.php"><img src="../image/image.png" width="150"></a></td>
 							<td></td>
 							<td align="right">
 								<font size="4"><a href="inbox.html">Messages&nbsp;</a>
 									<a href="dashboard.html">Dashboard&nbsp;</a>
-									<a href="../PublicHome.html">LogOut</a>
+									<a href="logout_handler.php">LogOut</a>
 								</font>
 							</td>
-							<td><img src="../image/b.png" width="30"></td>
+							<td width="5"><img src="../image/b.png" width="50"></td>
 						</tr>
 					</table>
 				</td>	
@@ -117,14 +117,14 @@
 				   </tr>
 				  
 				   <<tr>
-						<td> <a href="Graphics.html">Graphics & Design</a></td>
+						<td> <a href="Graphics.php">Graphics & Design</a></td>
 						<td>Careers</td>
 						<td>Blog</td>
 						<td>Contact Support</td>
 						<td> <a href="www.google.com">Google</a></td>
 					</tr>
 					<tr>
-						<td><a href="digital.html">Digital Marketing</a></td>
+						<td><a href="digital.php">Digital Marketing</a></td>
 						<td>Press & News</td>
 						<td>Forum</td>
 						<td>Help & Education</td>
@@ -132,7 +132,7 @@
 					
 					</tr>
 					<tr>
-						<td><a href="writing.html">Writing & Translation</a></td>
+						<td><a href="writing.php">Writing & Translation</a></td>
 						<td>Partnerships</td>
 						<td>Podcast</td>
 						<td>Trust & Safety</td>
@@ -140,7 +140,7 @@
 					
 					</tr>
 					<tr>
-						<td><a href="video.html"> Video & Animation</a></td>
+						<td><a href="video.php"> Video & Animation</a></td>
 						<td>Privacy Policy</td>
 						<td>Affiliates</td>
 						<td>Selling on Freelance</td>
@@ -148,21 +148,21 @@
 					
 					</tr>
 					<tr>
-						<td><a href="music.html"> Music & Audio</a></td>
+						<td><a href="music.php"> Music & Audio</a></td>
 						<td>Terms of Service</td>
 						<td></td>
 						<td>Buying on freelance</td>
 						<td></td>
 					</tr>
 					<tr>
-						<td> <a href="programing.html">Programming & Tech</a></td>
+						<td> <a href="programing.php">Programming & Tech</a></td>
 						<td></td>
 						<td></td>
 						<td></td>
 						<td></td>
 					</tr>
 					<tr>
-						<td><a href="business.html">Business</a></td>
+						<td><a href="business.php">Business</a></td>
 						<td></td>
 						<td></td>
 						<td></td>
