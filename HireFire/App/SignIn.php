@@ -1,3 +1,4 @@
+
 <?php   session_start(); require_once "../service/validation_service(reza).php"; ?>
 <?php require_once "../service/person_service(reza).php"; ?>
 
@@ -28,6 +29,7 @@
             if(($persons=(login($person)))==true){
 				
                 $_SESSION['username']=$name;
+				var_dump($_SESSION);
 			   if($persons[0]['type']==1)
 			   {
 				    echo "<script>
@@ -39,6 +41,13 @@
 			   }
 			   else if($persons[0]['type']==3)
 			   {
+				   if(isset($_REQUEST['gigId']))
+				   {
+					   $gigId=$_REQUEST['gigId'];
+					   echo "<script> 
+						document.location='gig/proceedToBuy.php?gigId=$gigId';
+                     </script>";
+				   }
 				    echo "<script>
                         //alert('Record Added');
 						document.location='Buyer/buyer.php';

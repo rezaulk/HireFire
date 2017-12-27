@@ -1,12 +1,25 @@
+<?php
+	session_start();
+?>
 <?php 
-	include("../../service/gig_service(robi).php");
-	if(!isset($_SESSION['username']))
-	{
-		header("location: ../SignIn.php");
-	}		
+	include("../../service/gig_service(robi).php");		
 ?>
 <?php
 	$gigId=$_REQUEST['gigId'];
+	//var_dump($GLOBALS);
+	if(!isset($_SESSION['username']))
+	{
+		var_dump($_SESSION);
+		//header("location: ../SignIn.php?gigId=$gigId");
+		
+		echo "<script>
+                        //alert('Record Added');
+						document.location='../SignIn.php?gigId=$gigId';
+                    </script>";
+		
+	
+	}
+	
 	//echo "<script> alert('out1');</script>";
 	$result = retreiveProgrammingAndTechSingleGig($gigId);
 
