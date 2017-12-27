@@ -377,18 +377,25 @@
 		return $result;
 	}
 	
-	function addToOrderToDb()
+	function addOrderToDb($seller)
 	{
-		$buyerName=$_SESSION['username'];
-		$buyerName=$_SESSION['username'];
-		$buyerName=$_SESSION['username'];
+		$buyerUserName=$_SESSION['username'];
+		$sellerUserName=$seller;
+		$date=Date("Y-m-d");
+		//var_dump($date);
+		$accountNo=$_SESSION['accountNo'];
+		$status="pending";
+		$deadline=$_SESSION['deadline'];
+		$gigId=$_SESSION['gigId'];
+		//var_dump($deadline);
+		
 		//var_dump ($_SESSION);
-		//$sql = "INSERT INTO education VALUES('null', '$from', '$to' , '$degree', '$areaOfStudy', 'null')";
+		$sql = "INSERT INTO orders VALUES('null', '$buyerUserName', '$sellerUserName' , '$gigId', '$date', '$accountNo' , '$deadline' , '$status')";
 		//var_dump($sql);
-		//$result =executeSQL($sql);
+		$result =executeSQL($sql);
 		//var_dump($result);
 		//echo "<script>alert('retreiveProgrammingAndTechGigFromDb')</script>";
-		//return $result;
+		return $result;
 	}
 	
 ?>

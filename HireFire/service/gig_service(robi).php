@@ -133,15 +133,16 @@
 		//echo "<script> alert('retreiveProgrammingAndTechSingleGig');</script>";
 		return retreiveSellerDescriptionFromDb($username);		
 	}
-	function addToOrder()
-	{
-		//echo "<script> alert('retreiveProgrammingAndTechSingleGig');</script>";
-		return addToOrderToDb();		
-	}
+	
 	function retreiveSellerName($gigId)
 	{
 		//echo "<script> alert('retreiveProgrammingAndTechSingleGig');</script>";
 		return retreiveSellerNameFromDb($gigId);		
+	}
+	function addOrder($seller)
+	{
+		//echo "<script> alert('retreiveProgrammingAndTechSingleGig');</script>";
+		return addOrderToDb($seller);		
 	}
 	
 ?>

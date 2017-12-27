@@ -12,16 +12,28 @@
 		
 		$_SESSION['requirements']=$_REQUEST['requirements'];
 		$_SESSION['deadline']=$_REQUEST['deadline'];
-		var_dump($_SESSION);
+		//var_dump($_SESSION);
 	}
 	if($_SERVER['REQUEST_METHOD']=="POST")
 	{	
 		$_SESSION['accountNo']=$_REQUEST['accountNo'];
-		$seller=retreiveSellerName($_SESSION['gigId']);
+		$sellers=retreiveSellerName($_SESSION['gigId']);
+		//var_dump($sellers);
+		//echo "<script> alert('Order sfvsdvf Placed');</script>";
+		for($j=0; $row = mysqli_fetch_assoc($sellers); ++$j)
+		{	
+			$seller=$row['uName'];
+		}
 		var_dump($seller);
-		if(addToOrder())
+		if(addOrder($seller))
 		{
-			
+			echo "<script>
+					alert('Order successfully Placed');
+					document.location='../Categories/Programing.php';
+				</script>";
+		}
+		else{
+			echo "<script> alert('Error Ocurred'>;</script>";
 		}
 	}
 	
