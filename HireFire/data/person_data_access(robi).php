@@ -309,9 +309,10 @@
 	
 	
 	
-	function retreiveProgrammingAndTechGigFromDb()
+	function retreiveProgrammingAndTechGigFromDb($category)
 	{
-		$sql = "SELECT * FROM gigs";  
+		$category=trim($category);
+		$sql = "SELECT * FROM gigs where '$category' like category";  
 		$result =executeSQL($sql);
 		//echo "<script>alert('retreiveProgrammingAndTechGigFromDb')</script>";
 		return $result;
@@ -323,7 +324,7 @@
 		//var_dump($sql);
 		$result =executeSQL($sql);
 		//var_dump($result);
-		//echo "<script>alert('retreiveProgrammingAndTechGigFromDb')</script>";
+		//echo "<script>alert('retreiveUserImageFromDb')</script>";
 		return $result;
 		
 	}
@@ -333,7 +334,7 @@
 		//var_dump($sql);
 		$result =executeSQL($sql);
 		//var_dump($result);
-		//echo "<script>alert('retreiveProgrammingAndTechGigFromDb')</script>";
+		//echo "<script>alert('retreiveUserLevelFromDb')</script>";
 		return $result;
 		
 	}
@@ -343,7 +344,7 @@
 		//var_dump($sql);
 		$result =executeSQL($sql);
 		//var_dump($result);
-		//echo "<script>alert('retreiveProgrammingAndTechGigFromDb')</script>";
+		//echo "<script>alert('retreiveProgrammingAndTechSingleGigFromDb')</script>";
 		return $result;
 		
 	}
@@ -354,7 +355,7 @@
 		//var_dump($sql);
 		$result =executeSQL($sql);
 		//var_dump($result);
-		//echo "<script>alert('retreiveProgrammingAndTechGigFromDb')</script>";
+		//echo "<script>alert('retreiveNameFromDb')</script>";
 		return $result;
 		
 	}
@@ -364,7 +365,7 @@
 		//var_dump($sql);
 		$result =executeSQL($sql);
 		//var_dump($result);
-		//echo "<script>alert('retreiveProgrammingAndTechGigFromDb')</script>";
+		//echo "<script>alert('retreiveSellerDescriptionFromDb')</script>";
 		return $result;
 	}
 	function retreiveSellerNameFromDb($gigId)
@@ -373,7 +374,7 @@
 		//var_dump($sql);
 		$result =executeSQL($sql);
 		//var_dump($result);
-		//echo "<script>alert('retreiveProgrammingAndTechGigFromDb')</script>";
+		//echo "<script>alert('retreiveSellerNameFromDb')</script>";
 		return $result;
 	}
 	
@@ -394,7 +395,7 @@
 		//var_dump($sql);
 		$result =executeSQL($sql);
 		//var_dump($result);
-		//echo "<script>alert('retreiveProgrammingAndTechGigFromDb')</script>";
+		//echo "<script>alert('addOrderToDb')</script>";
 		return $result;
 	}
 	

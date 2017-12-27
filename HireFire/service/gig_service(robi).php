@@ -102,9 +102,9 @@
 	}
 	
 
-	function retreiveProgrammingAndTechGig()
+	function retreiveProgrammingAndTechGig($category)
 	{
-		return retreiveProgrammingAndTechGigFromDb();
+		return retreiveProgrammingAndTechGigFromDb($category);
 		
 	}
 	function retreiveUserImage($username)

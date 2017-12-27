@@ -32,15 +32,13 @@
 	</table>
 		
 		<div class="topnav" id="myTopnav" align="center">
-		  <a href="Graphics.html">Graphics & Design&nbsp;</a>
-		  <a href="Digital.html">Digital Marketing&nbsp;</a>
-		  <a href="Writing.html">Writing & Translation&nbsp;</a>
-		  <a href="Video.html">Video & Animation&nbsp;</a>
-		  <a href="Programing.html">Programming & Tech</a>
-		  <a href="Business.html">Business</a>
-		  
-		  <a href="Music.html">Music</a>
-		  <a>Fun</a>
+		  <a href="Graphics.php">Graphics & Design&nbsp;</a>
+		  <a href="Digital.php">Digital Marketing&nbsp;</a>
+		  <a href="Writing.php">Writing & Translation&nbsp;</a>
+		  <a href="Video.php">Video & Animation&nbsp;</a>
+		  <a href="Business.php">Business</a>
+		  <a href="Programing.php">Programming & Tech</a>
+		  <a href="Music.php">Music</a>
 		  <br/> <br/>
 		</div>
 		

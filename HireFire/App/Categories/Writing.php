@@ -54,7 +54,7 @@
 				
 		<?php
 			
-			$result = retreiveProgrammingAndTechGig('Programming & Tech');
+			$result = retreiveProgrammingAndTechGig('Writing & Translation');
 			
 			//var_dump($result);
 			//echo "<script>alert('Programming')</script>";

@@ -49,12 +49,13 @@
 		  <a href="Music.php">Music</a>
 		  <br/> <br/>
 		</div>
+		</div>
 		
 		<table align="center">
 				
 		<?php
 			
-			$result = retreiveProgrammingAndTechGig('Programming & Tech');
+			$result = retreiveProgrammingAndTechGig('Business');
 			
 			//var_dump($result);
 			//echo "<script>alert('Programming')</script>";
@@ -96,7 +97,7 @@
 					echo "<tr>";
 				}
 				
-				echo    "<td width='300'><a href='../gig/proceedToBuy.php?gigId=".$gigId."'><img src='../GigImage/".$imgExt."' height='150'  width='300'></a></br>
+				echo    "<td width='300'><a href='../gig/buyer_programing.php?gigId=".$gigId."'><img src='../GigImage/".$imgExt."' height='150'  width='300'></a></br>
 						<a href='../User/contact_seller.php?username=".$username."'><img src='../uploads/".$userImage."' width='50' height='50'></a><br/>".
 						$username."<br/>Level ".$userLevel." Seller<br/>".$gigTitle."<br/><b>Total Ordered: ".$gigOrderCount."</b><br/>Price: ".$gigPrice."<br/><br/></td>";
 						

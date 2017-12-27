@@ -1,5 +1,9 @@
 <?php 
 	include("../../service/gig_service(robi).php");
+	if(!isset($_SESSION['username']))
+	{
+		header("location: ../SignIn.php");
+	}		
 ?>
 <?php
 	$gigId=$_REQUEST['gigId'];
