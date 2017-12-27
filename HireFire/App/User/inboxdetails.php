@@ -44,18 +44,20 @@
 		
 		mysqli_close($conn);
 	}
-	function insertReplyToDB($nextConversionNo,$Reply){
+	function insertReplyToDB($nextConversionNo,$Reply,$fromUser,$toUser){
 		global $host, $user, $pass, $dbname, $port;
 		$conn=mysqli_connect($host, $user, $pass, $dbname, $port);
 		$sql="INSERT INTO tomessage (messageId, conversionNumber, fromUser, toUser, allmessage)
-		VALUES (NULL,$nextConversionNo, 'robi', 'efti', '$Reply')";
+		VALUES (NULL,$nextConversionNo, '$fromUser', '$toUser', '$Reply')";
 		//var_dump($sql);
 		$result = mysqli_query($conn, $sql);
 		mysqli_close($conn);
 		return($result);
 		
 	}
-	$tomessage=conversationIdReturnIfpreviouslyConversionOccurred("robi","efti");
+	$fromUserFromSession='efti';
+	$toUserFromSession='robi';
+	$tomessage=conversationIdReturnIfpreviouslyConversionOccurred($fromUserFromSession,$toUserFromSession);
 	//var_dump($tomessage);
 	
 	
@@ -78,8 +80,9 @@
 		else{
 			var_dump($reply);
 			var_dump($ConversionNumber);
-			if(insertReplyToDB($ConversionNumber,$reply)){
-				echo "<script>alert('data inserted');document.location='indoxdetails.php';</script>";
+			if(insertReplyToDB($ConversionNumber,$reply,$fromUserFromSession,$toUserFromSession)){
+				//echo "<script>alert('data inserted');document.location='indoxdetails.php';</script>";
+				header("location: inboxdetails.php");
 			}
 			else{
 				echo "<script>alert('Error');</script>";
@@ -143,17 +146,17 @@
 								$fromUser=trim($tomessage[$i]['fromUser']);
 								$toUser=trim($tomessage[$i]['toUser']);
 								$message=trim($tomessage[$i]['allmessage']);
-								if($fromUser=='robi'){
+								if($fromUser==$fromUserFromSession){
 									echo "<tr>
 									<td >
-									<img src='../uploads/robi.jpg' title=robi width='30'>$message<br/><br/>
+									<img src='../uploads/$fromUserFromSession.jpg' title=$fromUserFromSession width='30'>$message<br/><br/>
 									</td>
 									</tr>";
 								}
 								else{
 									echo "<tr>
 									<td >
-									<img src='../uploads/efti.jpg' title=efti width='30'>$message<br/><br/>
+									<img src='../uploads/$toUserFromSession.jpg' title=$toUserFromSession width='30'>$message<br/><br/>
 									</td>
 									</tr>";
 								}
