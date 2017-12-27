@@ -212,7 +212,7 @@
 			$gDescription=$allGig[$i]['gDescription'];			
 			echo "<td width='20%'>
 				<img src='../GigImage/$imgName.jpg' width='200' hight='200'/><br/><br/>
-				<a href='../gig/proceedToBuy.php?gigId=".$gigId."'>$gDescription</a>
+				<a href='../gig/details.php?gigId=".$gigId."'>$gDescription</a>
 			</td>";
 			$count++;
 			if($count==4)

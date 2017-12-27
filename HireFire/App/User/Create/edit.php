@@ -43,7 +43,8 @@
 		{
 			//if((($persons[0]['gigTitle'])!=$gigtitle)&& (($persons[0]['price'])!=$gigprice)&&(($persons[0]['gDescription'])!=$gigdescription)){
 			$person['gigtitle']=$gigtitle;
-			$person['gigid']=$persons[0]['gigId'];
+			//$person['gigid']=$persons[0]['gigId'];
+			$person['gigid']=$_SESSION['gigId'];
 			$person['gigprice']=$gigprice;
 			$person['gigdescription']=$gigdescription;
 			if(editGig($person))
