@@ -20,6 +20,7 @@
 		//$programmingAndTechGig[$i] = $row;
 		$sellerName=$row['uName'];
 	}
+	$sellerName=trim($sellerName);
 	
 	$sellerDetails=accessSellerDetails($sellerName);
 	for($i=0; $row = mysqli_fetch_assoc($sellerDetails); ++$i)
@@ -80,14 +81,14 @@
 	<tr height="600">
 		<td width="1%"></td>
 		<td valign="top" align="center" width="20%">
-			<img src="../image/b.png" width="30%" alt="TANIM"/>
+			<img src="../uploads/<?php echo $sellerName; ?>.jpg" width="30%" alt="TANIM"/>
 			<br/><?php echo $sellerName; ?><hr/>
 			
 			<table width="100%">
 			
 			<tr align="center">
 				<td colspan="3">
-					<button><font size="3"><a href="send_message.html">Contact Me</a></font></button>
+					<button><font size="3"><a href="send_message.php?to=<?php echo $sellerName;?>">Contact Me</a></font></button>
 				</td>
 			</tr>
 			
