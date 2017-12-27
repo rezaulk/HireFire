@@ -1,6 +1,7 @@
 <?php   session_start(); 
         require_once "../../data/person_data_access(reza).php";
 		require_once "../../service/validation_service(tanim).php";
+		require_once __DIR__."/../../service/Update_service(tanim).php";
 		if(empty($_SESSION['username']))
 		{
 			//echo "<script>alert('Please Login first');document.location='../SignUp1.php'</script>";
@@ -19,6 +20,9 @@
 					document.location='../Buyer/buyer_only.php';
 				 </script>";*/
 	  }
+	  //var_dump($username);
+	  $allGig=allGig($username);
+	  //var_dump($allGig);
 	  $month=monthReturn($buyer[0]['joiningDate']);
 	 $persons=accessProfileSeller($username);
 	 //var_dump($persons);
@@ -196,14 +200,49 @@
 		<h1>Active Gigs	</h1><br/><br/>
 		<table cellspacing="40">
 		<tr>
-			<td width="20%">	
-				<img src="../image/project1.jpg" width="100%"/><br/><br/>
-				<a href="../gig/details.html">I will do c or c++ project for you.</a>
-			</td>
-			<td>	
-				<img src="../image/addgig.png"/><br/><br/>
-				<button><a href="Create/creategig.php">Create a new gig</a></button>
-			</td>
+		<?php 
+		$count=0;
+		for($i=0;$i<count($allGig);$i++)
+		{
+			if($i%4==0){
+				echo "<tr>";
+			}
+			$imgName=$allGig[$i]['gigId'];
+			$gigId=$imgName;
+			$gDescription=$allGig[$i]['gDescription'];			
+			echo "<td width='20%'>
+				<img src='../GigImage/$imgName.jpg' width='200' hight='200'/><br/><br/>
+				<a href='../gig/proceedToBuy.php?gigId=".$gigId."'>$gDescription</a>
+			</td>";
+			$count++;
+			if($count==4)
+			{
+				echo "</tr>";
+				$count=0;
+				//$count=3;
+			}
+			
+			
+		}
+		if($count<4){
+			echo "<td>	
+				<img src='../image/addgig.png' width='100'/><br/><br/>
+				<button><a href='Create/creategig.php'>Create a new gig</a></button>
+			</td><tr/>";
+		}
+		else{
+			echo "<tr>";
+			echo "<td>	
+				<img src='../image/addgig.png' width='100'/><br/><br/>
+				<button><a href='Create/creategig.php'>Create a new gig</a></button>
+			</td></tr>";
+						
+		}
+			
+		
+		?>
+			
+			
 			
 		</tr>
 		</table>

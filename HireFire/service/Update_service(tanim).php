@@ -5,6 +5,9 @@
     function editGig($person){
         return editGigToDb($person);
     }
+	function allGig($username){
+        return allGigFromDb($username);
+    }
     
     
 ?>
