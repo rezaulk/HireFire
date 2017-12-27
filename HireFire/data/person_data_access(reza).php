@@ -340,6 +340,17 @@
         return $person;
     } 
 	
+	function getNameFromDb($key)
+	 {
+		$name=$key;
+        $sql = "SELECT * FROM users WHERE uName LIKE '$name'";        
+        $result = executeSQL($sql);
+        
+        $person = mysqli_fetch_assoc($result);
+        
+        return $person;
+    } 
+	
 	
 	
 	function getJoiningDateFromDb($key)
@@ -377,7 +388,11 @@
         }
         //var_dump($persons);
         return $persons;
-    } 
+    }
+
+  
+  
+    
 	
 	
 	

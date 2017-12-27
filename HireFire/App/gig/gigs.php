@@ -10,10 +10,6 @@
 	 //var_dump($languages[1]['language']);
 ?>
 
-
-
-
-
 <html>
 	<head>
 		<title>HireFire</title>
@@ -25,14 +21,12 @@
 				    <table  border="0" width="100%" border="1">
 				        <tr>
 							<td><a href="main.html"><img src="../image/image.png" width="150"></a></td>
-							<td><input type="text" name="search" placeholder="Search.." size="70" height="20">
-									<button>Search</button>
+							<td>
 							</td>
 							<td align="right">
 								<font size="4"><a href="../User/inbox.html">Messages&nbsp;</a>
-								<a href="../User/Orders.html">Orders&nbsp</a>
-								<a href="../User/Postrequest.html">Postrequest&nbsp;</a>
-								<a href="../User/dashboard.html">Dashboard&nbsp;</a>
+								<a href="../User/Orders.php">Orders&nbsp</a>
+								<a href="../User/dashboard.php">Dashboard&nbsp;</a>
 								<a href="../PublicHome.html">LogOut</a></font>
 							</td>
 							<td><a href="../User/profile.html"><img src="../image/b.png" width="50"></a></td>
@@ -49,9 +43,9 @@
 			<tr height="5%"> 	
 			    <td width="25%"></td>
 				<td width="30%">	
-						  <a href="../User/dashboard.html">Dashboard&nbsp;</a>
+						  <a href="../User/dashboard.php">Dashboard&nbsp;</a>
 						    <a>Gigs</a>
-						  <a href="../User/earnings.html">Earning&nbsp;</a>
+						  <a href="../User/earnings.php">Earning&nbsp;</a>
 						  <a href="../User/inbox.html">Inbox&nbsp;<a>
 						   <a href="../User/setting.html">Settings&nbsp;</a> 
 				</td>

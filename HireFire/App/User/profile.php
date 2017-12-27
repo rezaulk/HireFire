@@ -31,6 +31,8 @@
 	 $languages=(getLanguageByBuyerFromDb($username));
 	 
 	 $skills=(getSkillsBySellerFromDb($username));
+	 //var_dump($skills);
+	 
 	 
 	 
 	 //var_dump($languages[1]['language']);
@@ -62,8 +64,7 @@
 							if(move_uploaded_file($tmp_name,$location.$username.".jpg")){
 								$imageLocationWithImageName="../uploads/".$username.".jpg";
 								echo "<script>alert('Uploaded')</script>";
-							}
-							
+							}	
 						}
 						else{
 							echo "<script>alert('Please check your image format')</script>";
@@ -74,10 +75,8 @@
 			}
 			else{
 				echo "<script>alert('Your File size is too large')</script>";
-			}
-			
+			}	
 		}
-		
 	}
 ?>
 
@@ -94,7 +93,7 @@
 						<font size="4"><a href="inbox.html">Messages&nbsp;</a>
 						<a href="Orders_pending.php">Orders&nbsp</a>
 						<a href="Postrequest.html">Postrequest&nbsp;</a>
-						<a href="dashboard.html">Dashboard&nbsp;</a>
+						<a href="dashboard.php">Dashboard&nbsp;</a>
 						<a href="../PublicHome.html">LogOut</a></font>
 					</td>
 					<td><img src="../image/b.png" width="50"></td>
@@ -174,7 +173,16 @@
 				<td valign="top" align="right"><!--Add new--></td>
 			</tr>
 			<tr height="10">
-				<td colspan="3"></td>
+				<td colspan="3"><font size="4"><b>Skills</font></b><br/>
+				  <?php 
+					echo "<ul>";
+					for($i=0;$i<count($skills);$i++)
+				    echo"<li>". $skills[$i]['skill']."</li>";
+					echo "</ul>";
+				?>
+				
+				
+				</td>
 			</tr>
 			<tr>
 				<td colspan="2"><font size="4"><b></b></font></td>

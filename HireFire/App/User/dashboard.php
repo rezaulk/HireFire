@@ -1,3 +1,22 @@
+<?php   session_start(); 
+		require_once "../../service/person_service(reza).php";
+		require_once "../../data/person_data_access(reza).php";
+?>
+<?php 
+     
+     $username = $_SESSION['username'];
+	 //var_dump($username);
+	 //$sellerid=selleridaccess($username);
+      $person=getNameFromDb($username);
+	 //var_dump($languages[1]['language']);
+?>
+
+
+
+
+
+
+
 <html>
 	<head>
 		<title>HireFire</title>
@@ -9,14 +28,12 @@
 				    <table  border="0" width="100%" border="1">
 				        <tr>
 							<td><a href="main.html"><img src="../image/image.png" width="150"></a></td>
-							<td><input type="text" name="search" placeholder="Search.." size="70" height="20">
-									<button>Search</button>
+							<td>
 							</td>
 							<td align="right">
 								<font size="4"><a href="inbox.html">Messages&nbsp;</a>
 								<a href="Orders.html">Orders&nbsp</a>
-								<a href="Postrequest.html">Postrequest&nbsp;</a>
-								<a href="dashboard.html">Dashboard&nbsp;</a>
+								<a href="dashboard.php">Dashboard&nbsp;</a>
 								<a href="../PublicHome.html">LogOut</a></font>
 							</td>
 							<td><a href="profile.html"><img src="../image/b.png" width="50"></a></td>
@@ -33,7 +50,7 @@
 				<td width="30%">	
 						  <a>Dashboard&nbsp;</a>
 						  <a href="../gig/gigs.php">Gigs</a>
-						  <a href="earnings.html">Earning&nbsp;</a>
+						  <a href="earnings.php">Earning&nbsp;</a>
 						  <a href="inbox.html">Inbox&nbsp;<a>
 						   <a href="setting.html">Settings&nbsp;</a> 
 				</td>
@@ -44,7 +61,7 @@
 				<td width="30%" height="100%">
 					<table width="100%" height="100%" border="0">
 						<tr width="40%">
-							<td width="30%" align="center"><img src="../image/user-avatar.jpg" width="100"><br/><a>Faysal Ahmed</a></td>
+							<td width="30%" align="center"><img src="../image/user-avatar.jpg" width="100"><br/><a><?php echo $person['name']?></a></td>
 							<td width="70%">
 								    Positive Rating<br/>0%<br/>Response Time <br/>1 Hr.	
 							</td>
