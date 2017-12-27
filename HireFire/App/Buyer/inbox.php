@@ -30,8 +30,8 @@
 	}
 	
 	$fromUserFromSession=$_SESSION['username'];
-	$sender=getSenderFromDB('robi');
-	var_dump($sender);
+	$sender=getSenderFromDB($fromUserFromSession);
+	//var_dump($sender);
 	
 	
 	
@@ -39,6 +39,7 @@
 	
 	
 ?>
+<form action="" method="POST">
 <html>
 	<head>
 		<title>HireFire</title>
@@ -85,12 +86,39 @@
 										   <th>Last Message</th>
 										   <th>Updated</th>
 										</tr>
-										 <tr height="5%">
-										 
-										   <td>Masraf</td>
-										   <td>Hello ,i want to &nbsp;<a href="inboxdetails.php">view</a></td>
-										   <td>nov 29,2017</td>
-										</tr>
+										<?php
+											if(count($sender)!=0)
+											{
+												for($i=0;$i<count($sender);$i++)
+												{
+													$fromUser=$sender[$i]['fromUser'];
+													$toUser=$sender[$i]['toUser'];
+													$allmessage=$sender[$i]['allmessage'];
+													if($fromUserFromSession!=$fromUser)//check for only sender is added to the table
+													{
+														echo "
+														 <tr height='5%' align='center'>
+														   <td>$fromUser</td>
+														   <td>$allmessage &nbsp;<a href='../User/inboxdetails.php?to=$fromUser'>view</a></td>
+														   <td>dec 28,2017</td>
+														</tr>";
+													}
+													else if($fromUserFromSession!=$toUser){//check for only sender is added to the table
+														echo "
+														 <tr height='5%' align='center'>
+														   <td>$toUser</td>
+														   <td>$allmessage &nbsp;<a href='../User/inboxdetails.php?to=$toUser'>view</a></td>
+														   <td>dec 28,2017</td>
+														</tr>";
+													}
+												}
+												
+												
+											}
+											
+											
+										?>
+										<!--
 										 <tr height="5%">
 										
 										   <td>Musfiq</td>
@@ -108,7 +136,7 @@
 										   <td>Mizbah</td>
 										   <td>Did you complete if&nbsp;<a href="inboxdetails.php">view</a></td>
 										   <td>nov 19,2017</td>
-										</tr>
+										</tr>-->
 									
 									 </table>
 										
@@ -197,3 +225,4 @@
 		</table>
 	</body>	
 </html>
+</form>

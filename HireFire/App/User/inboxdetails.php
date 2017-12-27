@@ -58,7 +58,18 @@
 	}
 	$fromUserFromSession=$_SESSION['username'];
 	//var_dump($fromUserFromSession);
-	$toUserFromSession=$_SESSION['to'];
+	$toUserFromSession="";
+	if(empty($_REQUEST['to']))
+	{
+		$toUserFromSession=$_SESSION['to'];
+	}
+	else{
+		$_SESSION['to']=$_REQUEST['to'];
+		$toUserFromSession=$_SESSION['to'];
+	}
+	//$toUserFromSession=$_SESSION['to'];
+	
+	
 	//var_dump($toUserFromSession);
 	$tomessage=conversationIdReturnIfpreviouslyConversionOccurred($fromUserFromSession,$toUserFromSession);
 	//var_dump($tomessage);
