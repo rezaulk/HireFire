@@ -59,8 +59,8 @@
 	}
 	$fromUserFromSession=$_SESSION['username'];
 	//var_dump($fromUserFromSession);
-	$toUserFromSession=$_REQUEST['to'];
-	$_SESSION['to']=$toUserFromSession;
+	$toUserFromSession=$_SESSION['to'];
+	//=$toUserFromSession;
 	var_dump($toUserFromSession);
 	$tomessage=conversationIdReturnIfpreviouslyConversionOccurred($fromUserFromSession,$toUserFromSession);
 	//var_dump($tomessage);
@@ -79,6 +79,7 @@
 	if($_SERVER['REQUEST_METHOD']=="POST")
 	{
 		$reply=$_REQUEST['reply'];
+		echo "<script>alert('data inserted')</script>";
 		if($reply==""){
 			
 		}
@@ -86,8 +87,8 @@
 			var_dump($reply);
 			var_dump($ConversionNumber);
 			if(insertReplyToDB($ConversionNumber,$reply,$fromUserFromSession,$toUserFromSession)){
-				echo "<script>alert('data inserted');document.location='indoxdetails.php';</script>";
-				//header("location: inboxdetails.php");
+				//echo "<script>alert('data inserted');document.location='indoxdetails.php';</script>";
+				header("location: inboxdetails.php");
 			}
 			else{
 				echo "<script>alert('Error');</script>";
@@ -101,7 +102,7 @@
 	
 	
 ?>
-<form action="inboxdetails.php" >
+<form action="" >
 <html>
 	<head>
 		<title>HireFire</title>
@@ -146,7 +147,7 @@
 									<br/><h3>Send a Message To</h3>
 									<h4><?=$toUserFromSession?></h4>
 									
-									<textarea rows="8" cols="50">
+									<textarea rows="8" cols="50" name='reply'>
 											Enter text here...</textarea>
 									<!--<button><font size="3"><a href="inboxdetails.php?to=<?=$toUserFromSession?>">Send</a></font></button>-->
 										<input type='submit' value='Send'/>
