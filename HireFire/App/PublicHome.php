@@ -22,18 +22,18 @@
 		<th height="130" colspan="4"><font size="6">Explore The Marketplace</font></th>
 	</tr>
 	<tr>
-		<td><center><a href="Categories/Graphics.php"><img height="150" width="200" src="image/Graphics&Design.png" /></a></center></td>
-		<td><center><a href="Categories/Digital.php"><img height="150" width="200" src="image/DigitalMarketing.png" /></center></td>
-		<td><center><a href="Categories/Writing.php"><img height="150" width="200" src="image/Writing&Translation.png" /></center></td>
-		<td><center><a href="Categories/Video.php"><img height="150" width="200" src="image/Video&Animation.png" /></center></td>
+		<td><center><a href="Categories/Graphics_guest.php"><img height="150" width="200" src="image/Graphics&Design.png" /></a></center></td>
+		<td><center><a href="Categories/Digital_guest.php"><img height="150" width="200" src="image/DigitalMarketing.png" /></center></td>
+		<td><center><a href="Categories/Writing_guest.php"><img height="150" width="200" src="image/Writing&Translation.png" /></center></td>
+		<td><center><a href="Categories/Video_guest.php"><img height="150" width="200" src="image/Video&Animation.png" /></center></td>
 	</tr>
 	<tr>
 		<td height="80" colspan="4"></td>
 	</tr>
 	<tr>
-		<td><center><a href="Categories/Music.php"><img height="150" width="200" src="image/Music&Audio.png" /></center></td>
-		<td><center><a href="Categories/Programing.php"><img height="150" width="200" src="image/Programming&Tech.png" /></center></td>
-		<td><center><a href="Categories/Business.php"><img height="150" width="200" src="image/Business.png" /></center></td>
+		<td><center><a href="Categories/Music_guest.php"><img height="150" width="200" src="image/Music&Audio.png" /></center></td>
+		<td><center><a href="Categories/Programing_guest.php"><img height="150" width="200" src="image/Programming&Tech.png" /></center></td>
+		<td><center><a href="Categories/Business_guest.php"><img height="150" width="200" src="image/Business.png" /></center></td>
 		<td><center><a ><img height="150" width="200" src="image/Fun&LifeStyle.png" /></center></td>
 	</tr>
 </table>
@@ -50,14 +50,14 @@
 	    </tr>
 	  
 	  <tr>
-						<td> <a href="Categories/Graphics.php">Graphics & Design</a></td>
+						<td> <a href="Categories/Graphics_guest.php">Graphics & Design</a></td>
 						<td>Careers</td>
 						<td>Blog</td>
 						<td>Contact Support</td>
 						<td> <a href="www.google.com">Google</a></td>
 					</tr>
 					<tr>
-						<td><a href="Categories/Digital.php">Digital Marketing</a></td>
+						<td><a href="Categories/Digital_guest.php">Digital Marketing</a></td>
 						<td>Press & News</td>
 						<td>Forum</td>
 						<td>Help & Education</td>
@@ -65,7 +65,7 @@
 					
 					</tr>
 					<tr>
-						<td><a href="Categories/Writing.php">Writing & Translation</a></td>
+						<td><a href="Categories/Writing_guest.php">Writing & Translation</a></td>
 						<td>Partnerships</td>
 						<td>Podcast</td>
 						<td>Trust & Safety</td>
@@ -73,7 +73,7 @@
 					
 					</tr>
 					<tr>
-						<td><a href="Categories/Video.php"> Video & Animation</a></td>
+						<td><a href="Categories/Video_guest.php"> Video & Animation</a></td>
 						<td>Privacy Policy</td>
 						<td>Affiliates</td>
 						<td>Selling on Freelance</td>
@@ -81,21 +81,21 @@
 					
 					</tr>
 					<tr>
-						<td><a href="Categories/Music.php"> Music & Audio</a></td>
+						<td><a href="Categories/Music_guest.php"> Music & Audio</a></td>
 						<td>Terms of Service</td>
 						<td></td>
 						<td>Buying on freelance</td>
 						<td></td>
 					</tr>
 					<tr>
-						<td> <a href="Categories/Programing.php">Programming & Tech</a></td>
+						<td> <a href="Categories/Programing_guest.php">Programming & Tech</a></td>
 						<td></td>
 						<td></td>
 						<td></td>
 						<td></td>
 					</tr>
 					<tr>
-						<td><a href="Categories/Business.php">Business</a></td>
+						<td><a href="Categories/Business_guest.php">Business</a></td>
 						<td></td>
 						<td></td>
 						<td></td>
