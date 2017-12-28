@@ -42,11 +42,7 @@
 				</td>
 			</tr>
 			
-			<tr>
-				<td width="5%"><img src="../image/location.png"/></td>
-				<td width="60%">Form</td>
-				<td align="right">Bangladesh</td>
-			</tr>
+			
 			<tr>
 				<td width="5%"><img src="../image/member1.png"/></td>
 				<td>Member since</td>
