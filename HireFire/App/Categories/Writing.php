@@ -20,12 +20,25 @@
 						<tr>
 						<td width="30" ><a href="../Categories/programing.php"><img src="../image/image.png" width="150"/></a></td>
 						<td><input type="text" name="search" placeholder="Search.." size="70" height="20"><button>Search</button></td>
-						<td align="right">
+						<?php
+							if(isset($_SESSION['username']))
+							{
+								echo "<td align='right'>
+								<a href='logout_handler.php'>LogOut</a>
+								</font>
+								</td>
+								<td width='5'><a href='../User/profile.php'><img src='../image/b.png' width='50'></a></td>";
+							}
 							
-								<a href="logout_handler.php">LogOut</a>
-							</font>
-						</td>
-						<td width="5"><a href="../User/profile.php"><img src="../image/b.png" width="50"></a></td>
+							else
+							{
+								echo "<td align='right>
+								 <font size='4'><a href='../SignIn.php'>Sign In</a>&nbsp;<a href='../SignUp1.php'>Sign Up</a>
+								 </font>
+								 </td>";
+							}
+					 
+					 ?>
 					</tr>
 					</tr>
 				</table>		

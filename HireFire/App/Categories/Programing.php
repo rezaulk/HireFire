@@ -30,6 +30,13 @@
 								</td>
 								<td width='5'><a href='../User/profile.php'><img src='../image/b.png' width='50'></a></td>";
 							}
+							else
+							{
+								echo "<td align='right>
+								 <font size='4'><a href='../SignIn.php'>Sign In</a>&nbsp;<a href='../SignUp1.php'>Sign Up</a>
+								 </font>
+								 </td>";
+							}
 							?>
 								
 					</tr>
