@@ -48,15 +48,7 @@
 			
 			
 			
-			<tr>
-				<td colspan="2"><font size="4"><b>Linked accounts</font></b>
-				<ul>
-					<li>Google</li>
-					<li>Facebook</li>
-					<li>Linkedin</li>
-				</ul>				
-				</td>
-			</tr>
+			
 			</table>
 			
 		</td>
