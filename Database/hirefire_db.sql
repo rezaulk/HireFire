@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2017 at 11:57 AM
+-- Generation Time: Dec 28, 2017 at 08:34 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -55,6 +55,25 @@ INSERT INTO `buyers` (`uName`, `language`, `Name`, `buyerId`) VALUES
 ('raj', 'hindi', '', 15),
 ('faysal', 'bangla', '', 16),
 ('faysal', 'english', '', 17);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `companyprofit`
+--
+
+CREATE TABLE `companyprofit` (
+  `pId` int(11) NOT NULL,
+  `gId` int(11) NOT NULL,
+  `profit` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `companyprofit`
+--
+
+INSERT INTO `companyprofit` (`pId`, `gId`, `profit`) VALUES
+(1, 2, 12);
 
 -- --------------------------------------------------------
 
@@ -179,7 +198,8 @@ INSERT INTO `lastactivetime` (`id`, `uName`, `activeDate`) VALUES
 (9, 'robi', '2017-12-28'),
 (11, '', '2017-12-28'),
 (12, 'rakib', '2017-12-28'),
-(13, 'raj', '2017-12-28');
+(13, 'raj', '2017-12-28'),
+(14, 'admin', '2017-12-28');
 
 -- --------------------------------------------------------
 
@@ -225,23 +245,23 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`orderId`, `bName`, `sName`, `gId`, `date`, `accountNumber`, `deadline`, `status`, `fileExt`) VALUES
-(1, 'robi', 'robi', 2, '2017-12-05', 0, '2017-12-05', '', ''),
-(2, 'reza', 'robi', 1, '2017-12-12', 1675428256, '0000-00-00', '', ''),
-(3, 'ik tanim', 'robi', 1, '2017-12-05', 0, '2017-12-13', '', ''),
-(4, 'efti', 'reza', 1, '2017-12-04', 0, '0000-00-00', 'complete', '1.jpg'),
-(5, 'rajesh', 'reza', 2, '2017-12-13', 2222, '0000-00-00', 'complete', '2.jpg'),
+(1, 'robi', 'robi', 2, '2017-12-05', 0, '2017-12-05', 'complete', '2.txt'),
+(2, 'reza', 'robi', 1, '2017-12-12', 1675428256, '0000-00-00', 'active', ''),
+(3, 'ik tanim', 'robi', 1, '2017-12-05', 0, '2017-12-13', 'active', ''),
+(4, 'efti', 'reza', 1, '2017-12-04', 0, '0000-00-00', 'complete', '1.txt'),
+(5, 'rajesh', 'reza', 2, '2017-12-13', 2222, '0000-00-00', 'complete', '2.txt'),
 (6, 'rajesh', 'reza', 4, '2017-12-13', 33333, '0000-00-00', 'complete', '4.docx'),
 (7, 'rajesh', 'reza', 5, '2017-12-12', 2232323, '2017-12-11', 'complete', '5.JPG'),
-(8, 'robi', 'robi', 2, '2017-12-27', 534, '2018-01-02', 'pending', ''),
-(9, 'robi', 'robi', 3, '2017-12-27', 2147483647, '2018-01-03', 'pending', ''),
+(8, 'robi', 'robi', 2, '2017-12-27', 534, '2018-01-02', 'complete', '2.txt'),
+(9, 'robi', 'robi', 3, '2017-12-27', 2147483647, '2018-01-03', 'active', ''),
 (10, 'robi', 'tamin', 4, '2017-12-27', 3443, '2018-01-04', 'active', ''),
 (11, 'robi', 'dsds', 5, '2017-12-27', 4, '2018-01-04', 'active', ''),
 (12, 'robi', 'tamin', 4, '2017-12-27', 353534, '2018-01-03', 'active', ''),
-(13, 'robi', 'reza', 1, '2017-12-27', 2435, '2018-01-05', 'pending', ''),
-(14, 'robi', 'robi', 2, '2017-12-27', 3534, '2018-01-03', 'pending', ''),
-(15, 'robi', 'robi', 2, '2017-12-27', 35, '2018-01-03', 'pending', ''),
-(16, 'robi', 'reza', 1, '2017-12-27', 43, '2018-01-02', 'pending', ''),
-(17, 'robi', 'robi', 2, '2017-12-27', 232, '2018-01-03', 'pending', '');
+(13, 'robi', 'reza', 1, '2017-12-27', 2435, '2018-01-05', 'active', ''),
+(14, 'robi', 'robi', 2, '2017-12-27', 3534, '2018-01-03', 'complete', '2.txt'),
+(15, 'robi', 'robi', 2, '2017-12-27', 35, '2018-01-03', 'complete', '2.txt'),
+(16, 'robi', 'reza', 1, '2017-12-27', 43, '2018-01-02', 'active', ''),
+(17, 'robi', 'robi', 2, '2017-12-27', 232, '2018-01-03', 'complete', '2.txt');
 
 -- --------------------------------------------------------
 
@@ -413,6 +433,13 @@ ALTER TABLE `buyers`
   ADD KEY `uName` (`uName`);
 
 --
+-- Indexes for table `companyprofit`
+--
+ALTER TABLE `companyprofit`
+  ADD PRIMARY KEY (`pId`),
+  ADD KEY `gId` (`gId`);
+
+--
 -- Indexes for table `earning`
 --
 ALTER TABLE `earning`
@@ -504,6 +531,12 @@ ALTER TABLE `buyers`
   MODIFY `buyerId` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
+-- AUTO_INCREMENT for table `companyprofit`
+--
+ALTER TABLE `companyprofit`
+  MODIFY `pId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `earning`
 --
 ALTER TABLE `earning`
@@ -531,7 +564,7 @@ ALTER TABLE `gigs`
 -- AUTO_INCREMENT for table `lastactivetime`
 --
 ALTER TABLE `lastactivetime`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `ordercomment`
@@ -578,6 +611,12 @@ ALTER TABLE `tomessage`
 --
 ALTER TABLE `buyers`
   ADD CONSTRAINT `buyers_ibfk_1` FOREIGN KEY (`uName`) REFERENCES `users` (`uName`);
+
+--
+-- Constraints for table `companyprofit`
+--
+ALTER TABLE `companyprofit`
+  ADD CONSTRAINT `companyprofit_ibfk_1` FOREIGN KEY (`gId`) REFERENCES `orders` (`gId`);
 
 --
 -- Constraints for table `education`
