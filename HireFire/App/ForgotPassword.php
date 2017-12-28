@@ -36,7 +36,7 @@
 <table  height="10%" width="100%" border="0">
 	<tr>
 
-		<td><a href="PublicHome.html"><img src="image/image.png" width="150"/></a></td>
+		<td><a href="PublicHome.php"><img src="image/image.png" width="150"/></a></td>
 		<td></td>
 		<td align="right">	</td>
 		<td></td>

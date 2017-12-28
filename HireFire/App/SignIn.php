@@ -102,7 +102,7 @@
 					<input type="checkbox" name="check">Remember Me</input>
 					</br></br>
 					<input type="submit"/> <a href="ForgotPassword.php">Forgot Password</a><br/><br/>
-					You don't have any account? <a href="ForgotPassword.html">Create an account</a>	
+					You don't have any account? <a href="SignUp1.php">Create an account</a>	
 				</fieldset>
 			</form>
 		</td>
