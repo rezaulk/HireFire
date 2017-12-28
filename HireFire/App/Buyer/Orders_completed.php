@@ -68,7 +68,7 @@
 										<td>
 											<table border="1" height="100%" width="100%" cellspacing="0">
 												<tr height="10%">
-													<th>Buyer</th>
+													<th>Seller</th>
 													<th>Gig</th>
 													<th>Deadline</th>
 													<th>Amount</th>
@@ -84,14 +84,14 @@
 													{
 														
                                                       //var_dump($value);
-													   $bName=$value['sName'];
+													   $bName=$value['bName'];
 													   $gId=$value['gId'];
 													   $date=$value['deadline'];
 													   $title=gigTitleaccess($gId);
-													   $_SESSION['fileName']=$value['fileExt'];
+													   $fileName=$value['fileExt'];
 														echo "<tr>";
 														
-														echo "<td >$bName</td><td>$title[gigTitle]</td><td>$date</td><td>$title[price]</td><td><a href='Orders_progress.php'>View</a></td>";
+														echo "<td >$bName</td><td>$title[gigTitle]</td><td>$date</td><td>$title[price]</td><td><a href='Orders_progress.php?fileName=$fileName'>View</a></td>";
 														echo "</tr>";
                                                         $i++; 
 

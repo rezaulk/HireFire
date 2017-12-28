@@ -1,6 +1,6 @@
 <?php 
 	session_start(); 
-	//var_dump($_SESSION);
+	var_dump($_SESSION);
 	if(empty($_SESSION['username']))
 		{
 			//echo "<script>alert('Please Login first');document.location='../SignUp1.php'</script>";
@@ -19,7 +19,6 @@
 				    <table  border="0" width="100%" border="1">
 				        <tr>
 							<td><a href="main.html"><img src="../image/image.png" width="150"></a></td>
-							<td><input type="text" name="search" placeholder="Search.." size="70" height="20"><button>Search</button></td>
 							<td align="right">
 								<font size="4"><a href="inbox.html">Messages&nbsp;</a>
 								<a href="dashboard.html">Dashboard&nbsp;</a>
@@ -92,7 +91,7 @@
 							
 							<tr >
 								<td colspan="3">
-								<a href="../OrderFile/<?php echo $_SESSION['fileName']; ?>" download>Click here to download</a>
+								<a href="../OrderFile/<?php echo $_REQUEST['fileName']; ?>" download>Click here to download</a>
 							</tr>
 							</tr>
 							<tr height="70%">

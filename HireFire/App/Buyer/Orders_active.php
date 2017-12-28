@@ -70,7 +70,7 @@
 										<td>
 											<table border="1" height="100%" width="100%" cellspacing="0">
 												<tr height="10%">
-													<th>Buyer</th>
+													<th>Seller</th>
 													<th>Gig</th>
 													
 													<th>Deadline</th>
@@ -87,13 +87,13 @@
 													{
 														
                                                       //var_dump($value);
-													   $bName=$value['sName'];
+													   $sName=$value['sName'];
 													   $gId=$value['gId'];
 													   $date=$value['deadline'];
 													   $title=gigTitleaccess($gId);
 														echo "<tr>";
 														
-														echo "<td >$bName</td><td>$title[gigTitle]</td><td>$date</td><td>$title[price]</td>";
+														echo "<td >$sName</td><td>$title[gigTitle]</td><td>$date</td><td>$title[price]</td>";
 														echo "</tr>";
                                                         $i++; 
 
