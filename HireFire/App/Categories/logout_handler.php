@@ -7,6 +7,6 @@
 	     $username = $_SESSION['username'];
 		 //echo "<script>document.location='Orders_pending.php'</script>";
 		 activetimeToDb($username);
-		 unset($_SESSION);
+		 session_destroy();
 		 echo "<script>document.location='../PublicHome.php'</script>";
 ?>
