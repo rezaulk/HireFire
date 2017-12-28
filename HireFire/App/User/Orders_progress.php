@@ -1,3 +1,16 @@
+<?php   session_start(); 
+		require_once "../../service/person_service(reza).php";
+?>
+<?php 
+     
+     $username = $_SESSION['username'];
+	 //var_dump($username);
+	 //$sellerid=selleridaccess($username);
+ 
+	 //var_dump($languages[1]['language']);
+?>
+
+
 <script>
    function validate()
 	{
@@ -9,12 +22,12 @@
 		return isValid;
 	}
 	function FileUploadCheck(){
-		alert("as");
+		//alert("as");
 		var fileCheck = document.getElementById("sfile").value;
 		var fileCheckErrorMassage=document.getElementById("fileCheckErrorMassage");
 		fileCheckErrorMassage.style.color="red";
 		if(fileCheck==""){
-			alert("as");
+			//alert("as");
 			fileCheckErrorMassage.innerHTML="*Please upload a your file";
 			return false;
 		}
@@ -61,7 +74,8 @@
 				</td>
 				<td width="45%"></td>
             </tr>
-             <form  action="Orders_active.php" onsubmit="return validate()">			
+			<form action="Orders_pending_handler.php" method="POST" enctype="multipart/form-data" onsubmit="return validate()">
+             <!--<form  action="Orders_pending_handler.php" method=""onsubmit="return validate()">	-->		
 			<tr height="50%">	
                 <td width="10%" height="100%">
 				</td>			

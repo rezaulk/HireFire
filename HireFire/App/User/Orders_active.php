@@ -87,9 +87,10 @@
 													   $title=gigTitleaccess($gId);
 														echo "<tr>";
 														
-														echo "<td >$bName</td><td>$title[gigTitle]</td><td><a href='Orders_progress.php'>View</a></td><td>$date</td><td>$title[price]</td>";
+														echo "<td >$bName</td><td>$title[gigTitle]</td><td><a href='Orders_progress.php?gId=".$gId."'>View</a></td><td>$date</td><td>$title[price]</td>";
 														echo "</tr>";
                                                         $i++; 
+														//<a href='Orders_pending_handler.php?buttonName=accept & gId=".$gId."'
 
 
 													}

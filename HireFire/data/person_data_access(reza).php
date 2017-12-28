@@ -8,6 +8,20 @@
 	
 	*/
 	
+	function addGigFile($person)
+	{
+		$gigid=$person["gId"];
+		$imgExt=$person['fileExt'];
+		 $username = $_SESSION['username'];
+		 $sql = "UPDATE gigs SET fileExt='$imgExt' WHERE gigId LIKE '$gigid'";
+       
+	    $result = executeSQL($sql);
+		var_dump($result);
+        return $result;
+		
+	}
+	
+	
 	function allgigaccessToDb()
 	{
 		
