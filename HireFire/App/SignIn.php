@@ -33,7 +33,7 @@
 			   {
 				    echo "<script>
                         //alert('Record Added');
-						document.location='Admin/profile.php';
+						document.location='Admin/admin.php';
                      </script>";
 					 
                     die();

@@ -64,7 +64,7 @@
 								<a href="admin.php">Dashboard&nbsp;</a>
 								<a href="logout_handler.php">LogOut</a></font>
 							</td>
-							<td width="5"><a href="../User/profile.php"><img src="../image/b.png" width="50"></a></td>
+							<td width="5"><a href="admin.php"><img src="../image/b.png" width="50"></a></td>
 				        </tr>		
 				    </table>
 							
