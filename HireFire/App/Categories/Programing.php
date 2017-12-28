@@ -2,10 +2,27 @@
 	session_start();
 ?>
 <?php 
+    
 	include("../../service/gig_service(robi).php");
 ?>
-<?php
-?>
+
+
+
+
+
+<script>
+	//isFormValid=true;
+	function searchvalue()
+	{
+		var searchValue = document.getElementById("search");
+		alert("searchValue");
+	}
+		
+		
+
+	
+	
+</script>
 <html>
 	<head>
 		<title>HireFire</title>
@@ -17,9 +34,10 @@
 			<td>
 				<table  width="100%" border="0">
 					<tr>
+					<form method="POST"><center>
 						<tr>
 						<td width="30" ><a href="../Categories/programing.php"><img src="../image/image.png" width="150"/></a></td>
-						<td><input type="text" name="search" placeholder="Search.." size="70" height="20"><button>Search</button></td>
+						<td><input type="text" name="search" placeholder="Search.." size="70" height="20" id="search" ><input type="submit" value="Search" /></td>
 						
 						<?php
 							if(isset($_SESSION['username']))
@@ -40,6 +58,7 @@
 							?>
 								
 					</tr>
+					</form>
 					</tr>
 				</table>		
 			</td>	
@@ -63,8 +82,20 @@
 		<table align="center">
 				
 		<?php
+		
 			
 			$result = retreiveProgrammingAndTechGig('Programming & Tech');
+			if($_SERVER['REQUEST_METHOD']=="POST")
+			{
+				$value=$_POST['search'];
+				$result=searchReturnFromDb($value,'Programming & Tech');
+				echo "</br></br>";
+				 //var_dump($result);
+			}
+	
+
+			
+			
 			
 			//var_dump($result);
 			//echo "<script>alert('Programming')</script>";

@@ -8,6 +8,21 @@
 	
 	*/
 	
+	
+	function searchReturnFromDb()
+	{
+		echo "fsdfdsf";
+		$sql = "SELECT * FROM gigs";
+		$result = executeSQL($sql);
+		$persons = array();
+        for($i=0; $row=mysqli_fetch_assoc($result); ++$i)
+		{
+            $persons[$i] = $row;
+        }
+        
+        return $persons;
+	}
+	
 	function getallorderFromDb($key)
 	{
 		$uname=$key;

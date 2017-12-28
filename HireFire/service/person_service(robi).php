@@ -2,6 +2,11 @@
 $path=__DIR__."/../data/person_data_access(robi).php";
 	include($path);?>
 <?php
+
+    function searchReturn($value)
+   {
+	   return searchReturnFromDb($value);
+   }
     
 	function login($user){
         return logindb($user);
