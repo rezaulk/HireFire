@@ -43,17 +43,8 @@
 			</tr>
 			
 			
-			<tr>
-				<td width="5%"><img src="../image/member1.png"/></td>
-				<td>Member since</td>
-				<td align="right">April 2017</td>
-			</tr>
 			
-			<tr>
-				<td width="5%"><img src="../image/time.png"/></td>
-				<td>Average Response Time</td>
-				<td align="right">1Hrs.</td>
-			</tr>
+			
 			
 			<tr height="10">
 				<td colspan="3"><hr/></td>
