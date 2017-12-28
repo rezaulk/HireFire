@@ -143,15 +143,12 @@
 			<td>
 				<table  width="100%" border="0">
 					<tr>
-						<td width="30" ><a href="PublicHome.html"><img src="../image/image.png" width="150"/></a></td>
+						<td width="30" ><a href="../categories/programing.php"><img src="../image/image.png" width="150"/></a></td>
 						<td align="right">
-							<font size="4"><a href="inbox.html">Messages&nbsp;</a>
-							<a href="Orders.html">Orders&nbsp</a>
-							<a href="Postrequest.html">Postrequest&nbsp;</a>
-							<a href="dashboard.html">Dashboard&nbsp;</a>
-							<a href="../PublicHome.html">LogOut</a></font>
+							<font size="4">
+							<a href="../PublicHome.php">LogOut</a></font>
 						</td>
-						<td width="5"><a href="profile.html"><img src="../image/b.png" width="50"></a></td>
+						<td width="5"><a href="profile.php"><img src="../image/b.png" width="50"></a></td>
 					</tr>
 				</table>		
 			</td>	
