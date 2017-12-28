@@ -72,7 +72,7 @@
 												<tr height="10%">
 													<th>Buyer</th>
 													<th>Gig</th>
-													<th>Prgress</th>
+													
 													<th>Deadline</th>
 													<th>Amount</th>
 												</tr>
@@ -93,7 +93,7 @@
 													   $title=gigTitleaccess($gId);
 														echo "<tr>";
 														
-														echo "<td >$bName</td><td>$title[gigTitle]</td><td><a href='Orders_progress.php'>View</a></td><td>$date</td><td>$title[price]</td>";
+														echo "<td >$bName</td><td>$title[gigTitle]</td><td>$date</td><td>$title[price]</td>";
 														echo "</tr>";
                                                         $i++; 
 

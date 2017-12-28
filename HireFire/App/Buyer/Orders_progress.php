@@ -1,4 +1,6 @@
 <?php 
+	session_start(); 
+	var_dump($_SESSION);
 	if(empty($_SESSION['username']))
 		{
 			//echo "<script>alert('Please Login first');document.location='../SignUp1.php'</script>";
@@ -80,6 +82,18 @@
 									 </table>
 										
 								</td>
+							</tr>
+							
+							<tr height="20%"><td colspan="3"></td></tr>
+							<tr >
+								<td colspan="3">
+								<b><h3>Order is Completed</h3></b>
+							</tr>
+							
+							<tr >
+								<td colspan="3">
+								<a href="../OrderFile/<?php echo $_SESSION['fileName']; ?>" download>Click here to download</a>
+							</tr>
 							</tr>
 							<tr height="70%">
 								<td>

@@ -8,6 +8,7 @@
 			header("location:../SignIn.php");
 		}
      $username = $_SESSION['username'];
+	 //var_dump($_SESSION);
 	 //var_dump($username);
 	 //$sellerid=selleridaccess($username);
  
@@ -87,9 +88,10 @@
 													   $gId=$value['gId'];
 													   $date=$value['deadline'];
 													   $title=gigTitleaccess($gId);
+													   $_SESSION['fileName']=$value['fileExt'];
 														echo "<tr>";
 														
-														echo "<td >$bName</td><td>$title[gigTitle]</td><td>$date</td><td>$title[price]</td>";
+														echo "<td >$bName</td><td>$title[gigTitle]</td><td>$date</td><td>$title[price]</td><td><a href='Orders_progress.php'>View</a></td>";
 														echo "</tr>";
                                                         $i++; 
 
