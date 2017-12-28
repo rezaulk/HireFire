@@ -1,5 +1,10 @@
 <?php
 	session_start();
+	if(empty($_SESSION['username']))
+		{
+			//echo "<script>alert('Please Login first');document.location='../SignUp1.php'</script>";
+			header("location:SignIn.php");
+		}
 ?>
 <?php require_once "../service/validation_service(robi).php"; ?>
 <?php
@@ -97,28 +102,38 @@
 		
 		var schoolErrorMassage=document.getElementById("schoolErrorMassage");
 		schoolErrorMassage.style.color="red";
+		var count=0;
+		for(count;count<school.length;count++)
+		{
+			if(school[count]==" ")
+			{
+				
+				break;
+			}
+		}
+		if(count==school.length)
+		{
+			schoolErrorMassage.innerHTML="*School name can not contain only space";
+			isValid=false;
+		}
 		if(school=="")
 		{
 			schoolErrorMassage.innerHTML="*School name can not be empty";
 			isValid=false;
 		}
+	/*	else if(!isNaN(school))
+		{
+			schoolErrorMassage.innerHTML="*School name can not contain only number";
+			isValid=false;
+			break;
+		}
+		*/
+			
 		else
 		{
-			var i=0;
-			for(i;i<school.length;i++)
-			{	
-				if(!isNaN(school[i]))
-				{
-					schoolErrorMassage.innerHTML="*School name only contain characters";
-					isValid=false;
-					break;
-				}
-			}
-			if(i==school.length)
-			{
-				schoolErrorMassage.innerHTML="";
-			}
+			schoolErrorMassage.innerHTML="";
 		}
+		
 		return isValid;
 		
 	}
