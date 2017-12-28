@@ -14,14 +14,14 @@
 			<table  width="100%" border="1">
 				<tr>
 
-					<td><a href="admin.html"><img src="../image/image.png" width="150"/></a></td>
+					<td><a href="../Categories/Programing.php"><img src="../image/image.png" width="150"/></a></td>
 					
 					<td align="right">
-						<font size="4"><a href="inbox.html">Messages&nbsp;</a>
+						<font size="4"><a href="inbox.php">Messages&nbsp;</a>
 						<a href="admin.php">Dashboard&nbsp;</a>
-						<a href="../PublicHome.html">LogOut</a></font>
+						<a href="../PublicHome.php">LogOut</a></font>
 					</td>
-					<td width="4%"><img src="../image/b.png" width="50"></td>
+					<td width="5%"><img src="../image/b.png" width="50"></td>
 				</tr>		
 			</table>
 		</td>
