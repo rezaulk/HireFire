@@ -51,8 +51,8 @@
 			    <td width="25%"></td>
 				<td width="30%">	
 						<a href="admin.php"> <b>Dashboard|</a>&nbsp;
-						  <a ><b>Gigs|</b></a>&nbsp;
-						  <a href="earnings.php"> <b>Earnings</a>
+						  <a href="gigs_admin.php"><b>Gigs|</b></a>&nbsp;
+						  <a > <b>Earnings</a>
 						  
 				</td>
 				<td width="45%"></td>

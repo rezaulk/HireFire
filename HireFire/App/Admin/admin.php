@@ -48,7 +48,8 @@
 			    <td width="20%"></td>
 				<td width="20%">	
 					<a>Dashboard&nbsp;|</a>
-					<a href="gigs_admin.php">Gigs|</a>
+					<a href="gigs_admin.php">Gigs|</a>&nbsp;
+					 <a href="earnings.php"> <b>Earnings</a>
 					
 				</td>
 				<td width="60%"></td>
@@ -152,35 +153,43 @@
 						<tr>
 						    <td>
 								<table border="1" cellspacing="0" width="80%" >   
-									<th colspan="3">Top five Buyer</th>
+									<th colspan="3">Top five Seller</th>
 										<tr>
 											<th>User</th>
-											<th>Order Recieved</th>
+											
 											<th>Earned</th>
 										</tr>
 									<?php
-										 $persons=getsellerFromDb();
+										 $persons=getTopseller();
 
 										//echo "<script>alert('Programming1')</script>";
 										$i=0;
 										//var_dump($persons);
-										
-										foreach ($persons as $value) 
+										$j=0;
+										if(count($persons)>5)
+										{
+											$j=5;
+										}
+										else
+										{
+											$j=count($persons);
+										}
+										for($i=0;$i<$j;$i++)
 										{
 											
 										  //var_dump($value);
-										   $seller=$value['uName'];
-										   $totalorder=getallorderFromDb($seller);
+										   $seller=$persons[$i]['uName'];
+										   $totalEarninger=$persons[$i]['totalEarning'];
 										   //var_dump($totalorder);
-										  $earn=earnTodb($seller);
-										  $earning=(int)$earn['totalEarning'];
+										  //$earn=earnTodb($seller);
+										  //$earning=(int)$earn['totalEarning'];
 										
 										   //var_dump($earning);
 											echo "<tr>";
 											
-											echo "<td >$seller</td><td>$totalorder</td><td>$earning</td>";
+											echo "<td >$seller</td><td>$totalEarninger</td>";
 											echo "</tr>";
-											$i++; 
+											
 										}
 									?>
 									
@@ -193,29 +202,42 @@
 										<th colspan="3">Top five Buyer</th>
 											<tr>
 												<th>Buyer</th>
-												<th>Order Post</th>
+												
 												<th>Spend</th>
 											</tr>
 											<?php
-											 $persons=getBuyerName();
-											 
-											//echo "<script>alert('Programming1')</script>";
-											$i=0;
-											foreach ($persons as $value) 
-											{
-												$buyer=$value['uName'];
-												$gig=buyTotalGig($buyer);
-												$spending=spendingTodb($buyer);
-											    $spend=(int)$spending['totalSpend'];
-												echo "<tr>";
-												
-												echo "<td>$buyer</td><td>$gig</td><td>$spend</td>";
-												echo "</tr>";
-												$i++; 
+										 $persons=getTopbuyer();
 
-
-											}
-										?>
+										//echo "<script>alert('Programming1')</script>";
+										$i=0;
+										//var_dump($persons);
+										$j=0;
+										if(count($persons)>5)
+										{
+											$j=5;
+										}
+										else
+										{
+											$j=count($persons);
+										}
+										for($i=0;$i<$j;$i++)
+										{
+											
+										  //var_dump($value);
+										   $buyer=$persons[$i]['uName'];
+										   $totalSpend=$persons[$i]['totalSpend'];
+										   //var_dump($totalorder);
+										  //$earn=earnTodb($seller);
+										  //$earning=(int)$earn['totalEarning'];
+										
+										   //var_dump($earning);
+											echo "<tr>";
+											
+											echo "<td >$buyer</td><td>$totalSpend</td>";
+											echo "</tr>";
+											
+										}
+									?>
 									</table>
 								</td>
 						</tr>

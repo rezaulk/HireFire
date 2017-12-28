@@ -181,6 +181,35 @@
 		
 	}
 	
+	function getTopsellerFromDb()
+	{
+		 $sql = "SELECT * FROM earning order by totalEarning DESC";        
+        $result = executeSQL($sql);
+        
+        $persons = array();
+        for($i=0; $row=mysqli_fetch_assoc($result); ++$i){
+            $persons[$i] = $row;
+        }
+        
+        return $persons;
+	
+	}
+	
+	function getTopbuyerFromDb()
+	{
+		 $sql = "SELECT * FROM spending order by totalSpend DESC";        
+        $result = executeSQL($sql);
+        
+        $persons = array();
+        for($i=0; $row=mysqli_fetch_assoc($result); ++$i){
+            $persons[$i] = $row;
+        }
+        
+        return $persons;
+	
+	}
+	
+	
 	
 	function getBuyerName()
 	{
@@ -681,5 +710,7 @@
         
         return $persons;
     }
+	
+	
     
 ?>

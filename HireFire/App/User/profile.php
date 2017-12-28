@@ -20,6 +20,10 @@
 					document.location='../Buyer/buyer_only.php';
 				 </script>";*/
 	  }
+	  else if($buyer[0]['type']==1)
+	  {
+		  header("location:../admin/admin.php");
+	  }
 	  //var_dump($username);
 	  $allGig=allGig($username);
 	 // var_dump($allGig);
