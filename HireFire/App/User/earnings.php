@@ -137,16 +137,9 @@
 					   <th align="left">SUPPORT</th>
 					   <th align="left">FOLLOW US</th>
 				   </tr>
+				 
 				  
-				   <<tr>
-						 <th align="left">CATEGORIES</th>
-					   <th align="left">ABOUT</th>
-					   <th align="left">COMMUNITY</th>
-					   <th align="left">SUPPORT</th>
-					   <th align="left">FOLLOW US</th>
-				   </tr>
-				  
-				   <<tr>
+				   <tr>
 						<td> <a href="../categories/Graphics.php">Graphics & Design</a></td>
 						<td>Careers</td>
 						<td>Blog</td>

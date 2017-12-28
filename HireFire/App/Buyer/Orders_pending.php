@@ -84,14 +84,14 @@
 													{
 														
                                                       //var_dump($value);
-													   //echo "sdsasdd";
+													   echo "sdsasdd";
 													   $sName=$value['sName'];
 													   $gId=$value['gId'];
 													   $date=$value['deadline'];
 													   $title=gigTitleaccess($gId);
 														echo "<tr>";
 														
-														echo "<td >$sName</td><td>$title[gigTitle]</td><td>$date</td><td>$title[price]</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='Orders_pending_handler.php?buttonName=reject & gId=".$gId."'<button >Cancel</button>&nbsp;</a></td>";
+														echo "<td >$sName</td><td>$title[gigTitle]</td><td>$date</td><td>$title[price]</td><td>&nbsp;&nbsp;<a href='Orders_pending_handler.php?buttonName=accept & gId=".$gId."'<button >Accept</button>&nbsp;&nbsp;&nbsp;<a href='Orders_pending_handler.php?buttonName=reject & gId=".$gId."'<button >reject</button>&nbsp;</a></td>";
 														echo "</tr>";
                                                         $i++; 
 
@@ -122,16 +122,17 @@
 					   <th align="left">SUPPORT</th>
 					   <th align="left">FOLLOW US</th>
 				   </tr>
+				 
 				  
-				   <<tr>
-						<td> <a href="Graphics.php">Graphics & Design</a></td>
+				   <tr>
+						<td> <a href="../categories/Graphics.php">Graphics & Design</a></td>
 						<td>Careers</td>
 						<td>Blog</td>
 						<td>Contact Support</td>
 						<td> <a href="www.google.com">Google</a></td>
 					</tr>
 					<tr>
-						<td><a href="digital.php">Digital Marketing</a></td>
+						<td><a href="../categories/digital.php">Digital Marketing</a></td>
 						<td>Press & News</td>
 						<td>Forum</td>
 						<td>Help & Education</td>
@@ -139,7 +140,7 @@
 					
 					</tr>
 					<tr>
-						<td><a href="writing.php">Writing & Translation</a></td>
+						<td><a href="../categories/writing.php">Writing & Translation</a></td>
 						<td>Partnerships</td>
 						<td>Podcast</td>
 						<td>Trust & Safety</td>
@@ -147,7 +148,7 @@
 					
 					</tr>
 					<tr>
-						<td><a href="video.php"> Video & Animation</a></td>
+						<td><a href="../categories/video.php"> Video & Animation</a></td>
 						<td>Privacy Policy</td>
 						<td>Affiliates</td>
 						<td>Selling on Freelance</td>
@@ -155,26 +156,26 @@
 					
 					</tr>
 					<tr>
-						<td><a href="music.php"> Music & Audio</a></td>
+						<td><a href="../categories/music.php"> Music & Audio</a></td>
 						<td>Terms of Service</td>
 						<td></td>
 						<td>Buying on freelance</td>
 						<td></td>
 					</tr>
 					<tr>
-						<td> <a href="programing.php">Programming & Tech</a></td>
+						<td> <a href="../categories/programing.php">Programming & Tech</a></td>
 						<td></td>
 						<td></td>
 						<td></td>
 						<td></td>
 					</tr>
 					<tr>
-						<td><a href="business.php">Business</a></td>
+						<td><a href="../categories/business.php">Business</a></td>
 						<td></td>
 						<td></td>
 						<td></td>
 						<td></td>
-				   </tr>
+					</tr>
 				   
 				  
 			   </table
