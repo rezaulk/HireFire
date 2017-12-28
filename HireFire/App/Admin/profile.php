@@ -46,17 +46,7 @@
 			
 			
 			
-			<tr height="10">
-				<td colspan="3"><hr/></td>
-			</tr>
-			<tr>
-				<td colspan="2"><font size="4"><b>Languages</font></b>
-				<br/>English</td>
-				<td valign="top" align="right">Add new</td>
-			</tr>
-			<tr height="10">
-				<td colspan="3"><hr/></td>
-			</tr>
+			
 			
 			<tr>
 				<td colspan="2"><font size="4"><b>Linked accounts</font></b>
