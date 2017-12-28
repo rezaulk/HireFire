@@ -20,16 +20,16 @@
 			    <td colspan="3">
 				    <table  border="0" width="100%" border="1">
 				        <tr>
-							<td><a href="main.html"><img src="../image/image.png" width="150"></a></td>
+							<td><a href="../Categories/programing.php"><img src="../image/image.png" width="150"></a></td>
 							<td>
 							</td>
 							<td align="right">
-								<font size="4"><a href="../User/inbox.html">Messages&nbsp;</a>
-								<a href="../User/Orders.php">Orders&nbsp</a>
+								<font size="4"><a href="../buyer/inbox.php">Messages&nbsp;</a>
+								<a href="../User/Orders_pending.php">Orders&nbsp</a>
 								<a href="../User/dashboard.php">Dashboard&nbsp;</a>
-								<a href="../PublicHome.html">LogOut</a></font>
+								<a href="logout_handler.php">LogOut</a></font>
 							</td>
-							<td><a href="../User/profile.html"><img src="../image/b.png" width="50"></a></td>
+							<td width="5"><a href="../User/profile.php"><img src="../image/b.png" width="50"></a></td>
 							
 				        </tr>
                         <tr>
@@ -43,11 +43,11 @@
 			<tr height="5%"> 	
 			    <td width="25%"></td>
 				<td width="30%">	
-						  <a href="../User/dashboard.php">Dashboard&nbsp;</a>
+						  <a href="../User/Dashboard.php">Dashboard</a>
 						    <a>Gigs</a>
 						  <a href="../User/earnings.php">Earning&nbsp;</a>
-						  <a href="../User/inbox.html">Inbox&nbsp;<a>
-						   <a href="../User/setting.html">Settings&nbsp;</a> 
+						  
+						  
 				</td>
 				<td width="45%"></td>
             </tr>					
@@ -105,15 +105,18 @@
 						   <th align="left">SUPPORT</th>
 						   <th align="left">FOLLOW US</th>
 					    </tr>
-					    <tr>
-						<td> <a href="Graphics.html">Graphics & Design</a></td>
+					    
+				   
+				  
+				   <tr>
+						<td> <a href="../categories/Graphics.php">Graphics & Design</a></td>
 						<td>Careers</td>
 						<td>Blog</td>
 						<td>Contact Support</td>
 						<td> <a href="www.google.com">Google</a></td>
 					</tr>
 					<tr>
-						<td><a href="digital.html">Digital Marketing</a></td>
+						<td><a href="../categories/digital.php">Digital Marketing</a></td>
 						<td>Press & News</td>
 						<td>Forum</td>
 						<td>Help & Education</td>
@@ -121,7 +124,7 @@
 					
 					</tr>
 					<tr>
-						<td><a href="writing.html">Writing & Translation</a></td>
+						<td><a href="../categories/writing.php">Writing & Translation</a></td>
 						<td>Partnerships</td>
 						<td>Podcast</td>
 						<td>Trust & Safety</td>
@@ -129,7 +132,7 @@
 					
 					</tr>
 					<tr>
-						<td><a href="video.html"> Video & Animation</a></td>
+						<td><a href="../categories/video.php"> Video & Animation</a></td>
 						<td>Privacy Policy</td>
 						<td>Affiliates</td>
 						<td>Selling on Freelance</td>
@@ -137,21 +140,21 @@
 					
 					</tr>
 					<tr>
-						<td><a href="music.html"> Music & Audio</a></td>
+						<td><a href="../categories/music.php"> Music & Audio</a></td>
 						<td>Terms of Service</td>
 						<td></td>
 						<td>Buying on freelance</td>
 						<td></td>
 					</tr>
 					<tr>
-						<td> <a href="programing.html">Programming & Tech</a></td>
+						<td> <a href="../categories/programing.php">Programming & Tech</a></td>
 						<td></td>
 						<td></td>
 						<td></td>
 						<td></td>
 					</tr>
 					<tr>
-						<td><a href="business.html">Business</a></td>
+						<td><a href="../categories/business.php">Business</a></td>
 						<td></td>
 						<td></td>
 						<td></td>
