@@ -6,6 +6,13 @@
     function getsellerName($personId){
         return getsellerFromDb($personId);
     }
+	 function getTopseller(){
+        return getTopsellerFromDb();
+    }
+	function getTopbuyer(){
+        return getTopbuyerFromDb();
+    }
+	
 	function getallgig($personId)
 	{
 		return getallgigFromDb($personId);
