@@ -22,6 +22,18 @@
 		mysqli_close($conn);
 		return($result);
 	}
+	 function retrieveGigPrice($person)
+	{
+		global $host, $user, $pass, $dbname, $port;
+		$conn=mysqli_connect($host, $user, $pass, $dbname, $port);
+		$gigid=$person["gId"];
+		$sql="select price from gigs where gigId=$gigid";
+		//var_dump($sql);
+		$result = mysqli_query($conn, $sql);
+		$row=mysqli_fetch_assoc($result);
+		mysqli_close($conn);
+		return($row);
+	}
    
   
 	$filename=$_FILES['sfile']['name'];//ByDefault Name of the uplpoaded file
@@ -59,6 +71,12 @@
 							$person["bName"]=$bName;	
 							//var_dump($persons);
 							$x=addGigFile($person);
+							//retrive gig price
+							
+							
+							$price=retrieveGigPrice(2);
+							var_dump($price);
+							
 							//var_dump($x);
 							//ob_end_flush();
 							//echo "<script>alert('Uploaded')</script>";
