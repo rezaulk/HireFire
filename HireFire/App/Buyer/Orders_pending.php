@@ -84,14 +84,14 @@
 													{
 														
                                                       //var_dump($value);
-													   echo "sdsasdd";
+													   //echo "sdsasdd";
 													   $sName=$value['sName'];
 													   $gId=$value['gId'];
 													   $date=$value['deadline'];
 													   $title=gigTitleaccess($gId);
 														echo "<tr>";
 														
-														echo "<td >$sName</td><td>$title[gigTitle]</td><td>$date</td><td>$title[price]</td><td>&nbsp;&nbsp;<a href='Orders_pending_handler.php?buttonName=accept & gId=".$gId."'<button >Accept</button>&nbsp;&nbsp;&nbsp;<a href='Orders_pending_handler.php?buttonName=reject & gId=".$gId."'<button >reject</button>&nbsp;</a></td>";
+														echo "<td >$sName</td><td>$title[gigTitle]</td><td>$date</td><td>$title[price]</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='Orders_pending_handler.php?buttonName=reject & gId=".$gId."'<button >Cancel</button>&nbsp;</a></td>";
 														echo "</tr>";
                                                         $i++; 
 

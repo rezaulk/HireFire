@@ -73,8 +73,8 @@
 	function activetimeToDb($username)
 	{
        	$y=date("Y-m-d");
-        echo "$y";
-        var_dump($y);
+        //echo "$y";
+        //var_dump($y);
         $sql = "SELECT * FROM lastActiveTime WHERE uName LIKE '$username'";
 		 $result = executeSQL($sql);
 		 $count=0;
@@ -329,7 +329,7 @@
 	function buyerpendingorderaccessToDb($key)
 	{
 		$username=trim($key);
-		echo "$username";
+		//echo "$username";
 		$sql = "SELECT * FROM orders WHERE bName LIKE '$username' and status like 'pending' ";
 		$result = executeSQL($sql);
 		$persons = array();
