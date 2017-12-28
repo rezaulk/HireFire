@@ -201,18 +201,13 @@ function validateGigTitle()
 			    <td  width="40%" colspan="2">		   
 					<table  width="100%" border="0">
 						<tr>
-							<td><a href="../main.html"><img src="../../image/image.png" width="150"></a></td>
-							<td><input type="text" name="search" placeholder="Search.." size="70" height="20">
-							<button>Search</button></td>
+							<td><a href="../../Categories/programing.php"><img src="../../image/image.png" width="150"></a></td>
 							<td align="right">
-								<font size="4"><a href="../inbox.html">Messages&nbsp;</a>
-									<a href="../Orders.html">Orders&nbsp</a>
-									<a href="../Postrequest.html">Postrequest&nbsp;</a>
-									<a href="../dashboard.html">Dashboard&nbsp;</a>
-									<a href="../../PublicHome.html">LogOut</a>
+								<font size="4">
+									<a href="../logout_handler.php">LogOut</a>
 								</font>
 							</td>
-							<td><a href="../profile.html"><img src="../../image/b.png" width="50"></a></td>
+							<td width="5"><a href="../../User/profile.php"><img src="../../image/b.png" width="50"></a></td>
 						</tr>
 					</table>
 				</td>

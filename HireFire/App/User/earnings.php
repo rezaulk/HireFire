@@ -26,7 +26,7 @@
 							<td><a href="../Categories/programing.php"><img src="../image/image.png" width="150"></a></td>
 							<td></td>
 							<td align="right">
-								<font size="4"><a href="../buyer/inbox.php">Messages&nbsp;</a>
+								<font size="4"><a href="inbox.php">Messages&nbsp;</a>
 								<a href="Orders_pending.php">Orders&nbsp</a>
 								<a href="dashboard.php">Dashboard&nbsp;</a>
 								<a href="logout_handler.php">LogOut</a></font>
