@@ -344,7 +344,7 @@
 	{
 		$username=$key;
 		//echo "$name";
-		$sql = "SELECT * FROM orders WHERE bName LIKE '$username' and status like 'completed' ";
+		$sql = "SELECT * FROM orders WHERE bName LIKE '$username' and status like 'complete' ";
 		$result = executeSQL($sql);
 		//var_dump($result);
 		$persons = array();
