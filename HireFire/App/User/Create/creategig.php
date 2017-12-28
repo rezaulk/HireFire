@@ -3,6 +3,11 @@
 	 include("../../../service/person_service(reza).php");
 	 require_once "../../../service/validation_service(tanim).php";
 	 //require_once "../../../service/TANIM_service.php"
+	 if(empty($_SESSION['username']))
+	{
+		//echo "<script>alert('Please Login first');document.location='../SignUp1.php'</script>";
+		header("location: ../../SignIn.php");
+	}
 ?>
 
 <?php
@@ -267,17 +272,14 @@ function validateGigTitle()
 			    <td  width="50%" colspan="2">		   
 					<table  width="100%" border="0">
 						<tr width="100%">
-							<td><a href="../main.html"><img src="../../image/image.png" width="150"></a></td>
+							<td><a href="../../Categories/programing.php"><img src="../../image/image.png" width="150"></a></td>
 							<td></td>
 							<td align="right">
-							<font size="4"><a href="../inbox.html">Messages&nbsp;</a>
-								<a href="../Orders.html">Orders&nbsp</a>
-								<a href="../Postrequest.html">Postrequest&nbsp;</a>
-								<a href="../dashboard.html">Dashboard&nbsp;</a>
-								<a href="../../PublicHome.html">LogOut</a>
+							<font>
+								<a href="../logout_handler.php">LogOut</a>
 							</font>
 							</td>
-							<td align="center" width="5%"><a href="../profile.html"><img src="../../image/b.png" width="50"></a></td>
+							<td width="5"><a href="../../User/profile.php"><img src="../../image/b.png" width="50"></a></td>
 						</tr>
 					</table>
 				</td>

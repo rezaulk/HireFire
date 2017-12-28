@@ -4,7 +4,24 @@
 <?php 
      
      $username = $_SESSION['username'];
-	 //var_dump($username);
+	 // $bName="";
+	 //var_dump($GLOBALS);
+	 if(!empty($_REQUEST['gId']))
+	{
+		 $gid=$_REQUEST['gId'];
+		 $_SESSION['gId']=$gid;
+	}
+	else{
+		$gid=$_SESSION['gId'];
+	}
+	 if(!empty($_REQUEST['bName']))
+	{
+		 $bName=$_REQUEST['bName'];
+		$_SESSION['bName']=$bName;
+	}
+	else{
+		$bName=$_SESSION['bName'];
+	}
 	 //$sellerid=selleridaccess($username);
  
 	 //var_dump($languages[1]['language']);
@@ -74,7 +91,7 @@
 				</td>
 				<td width="45%"></td>
             </tr>
-			<form action="Orders_pending_handler.php" method="POST" enctype="multipart/form-data" onsubmit="return validate()">
+			<form action="Order_file_uploaded.php?gId=<?=$gid?>&bName=<?=$bName?>" method="POST" enctype="multipart/form-data" onsubmit="return validate()">
              <!--<form  action="Orders_pending_handler.php" method=""onsubmit="return validate()">	-->		
 			<tr height="50%">	
                 <td width="10%" height="100%">
@@ -115,7 +132,7 @@
 					
 										</tr>
 										<tr>
-										   <td colspan="2"><input type="file" id="sfile" name="sfile" value=""/><br/><span id="fileCheckErrorMassage"></span><br/><input type="submit"/></td>
+										   <td colspan="2"><input type="file" id="sfile" name="sfile" value="sfile"/><br/><span id="fileCheckErrorMassage"></span><br/><input type="submit"/></td>
 										</tr>
 									 </table>
 										
