@@ -63,6 +63,13 @@
 		<?php
 			
 			$result = retreiveProgrammingAndTechGig('Video & Animation');
+			if($_SERVER['REQUEST_METHOD']=="POST")
+			{
+				$value=$_POST['search'];
+				$result=searchReturnFromDb($value,'Video & Animation');
+				echo "</br></br>";
+				 //var_dump($result);
+			}
 			
 			//var_dump($result);
 			//echo "<script>alert('Programming')</script>";

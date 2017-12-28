@@ -65,6 +65,13 @@
 		<?php
 			
 			$result = retreiveProgrammingAndTechGig('Writing & Translation');
+			if($_SERVER['REQUEST_METHOD']=="POST")
+			{
+				$value=$_POST['search'];
+				$result=searchReturnFromDb($value,'Writing & Translation');
+				echo "</br></br>";
+				 //var_dump($result);
+			}
 			
 			//var_dump($result);
 			//echo "<script>alert('Programming')</script>";

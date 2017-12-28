@@ -64,6 +64,13 @@
 		<?php
 			
 			$result = retreiveProgrammingAndTechGig('Digital Marketing');
+			if($_SERVER['REQUEST_METHOD']=="POST")
+			{
+				$value=$_POST['search'];
+				$result=searchReturnFromDb($value,'Digital Marketing');
+				echo "</br></br>";
+				 //var_dump($result);
+			}
 			
 			//var_dump($result);
 			//echo "<script>alert('Programming')</script>";
