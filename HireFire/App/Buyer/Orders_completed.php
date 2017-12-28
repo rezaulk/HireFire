@@ -23,12 +23,12 @@
 							<td><a href="../Categories/programing.php"><img src="../image/image.png" width="150"></a></td>
 							<td></td>
 							<td align="right">
-								<font size="4"><a href="inbox.html">Messages&nbsp;</a>
-									<a href="dashboard.html">Dashboard&nbsp;</a>
+								<font size="4"><a href="inbox.php">Messages&nbsp;</a>
+									<a href="dashboard.php">Dashboard&nbsp;</a>
 									<a href="logout_handler.php">LogOut</a>
 								</font>
 							</td>
-							<td width="5"><img src="../image/b.png" width="50"></td>
+							<td width="5"><a href="../User/profile.php"><img src="../image/b.png" width="50"></a></td>
 						</tr>
 					</table>
 				</td>	
@@ -181,4 +181,4 @@
 		</table>
 		</table>
 	</body>
-</html>
+</php>
