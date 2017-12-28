@@ -8,6 +8,24 @@
 	
 	*/
 	
+	function getallorderFromDb($key)
+	{
+		$uname=$key;
+		//echo "$name";
+		$sql = "SELECT * FROM gigs WHERE uName LIKE '$uname' ";
+		$result = executeSQL($sql);
+		//var_dump($result);
+		$persons = array();
+		$count=0;
+			for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
+				$persons[$i] = $row;
+				$count=$count+$persons[$i]['orderCount'];
+				//var_dump($row);	
+			}
+		
+		return $count;
+	}
+	
 	function addGigFile($person)
 	{
 		$gigid=$person["gId"];

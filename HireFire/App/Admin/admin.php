@@ -4,6 +4,9 @@
 <?php 
      
      $username = $_SESSION['username'];
+	 
+	 $uName=getNameFromDb($username);
+	 $name=$uName['name'];
 	 //var_dump($username);
 	 //$sellerid=selleridaccess($username);
  
@@ -15,7 +18,7 @@
 		<title>HireFire</title>
 	</head>
 	<body>
-	    <table border="1" width="100%" height="100%" cellspacing="0">
+	    <table border="0" width="100%" height="100%" cellspacing="0">
 		    <tr height="10%">
 			    <td colspan="3">
 				    <table  border="0" width="100%" border="1">
@@ -52,7 +55,7 @@
 				<td width="15%" height="100%">
 					<table width="100%" height="100%" border="0">
 						<tr width="40%">
-							<td width="30%" align="center"><img src="../image/user-avatar.jpg" width="100"><br/><a>Faysal Ahmed</a></td>
+							<td width="30%" align="center"><img src="../image/user-avatar.jpg" width="100"><br/><a><?php echo "$name"?> </a></td>
 							<td width="70%"></td>
 						</tr>
 						<tr  width="60%">
@@ -60,7 +63,7 @@
 								<table width="100%">
 									<tr>
 									    <td>
-											Total User 5			
+								
 										</td>	
 									</tr>	
 								</table>
@@ -69,7 +72,7 @@
 					</table>
 				</td>
 				<td width="70%" height="100%">
-					<table border="1"  width="100%" height="100%">
+					<table border="0"  width="100%" height="100%">
 						<tr>
 							<td width="50%" >
 							    <a>Seller</a>
@@ -145,88 +148,79 @@
 						</tr>
 						<tr>
 						    <td>
-							    <br/>
-								<table>
-									 <tr>
-										<td width="40%">
-											<table border="1" cellspacing="0">
-												<th colspan="3">Top five Buyer in last Month</th>
-													<tr>
-														<th>User</th>
-														<th>Order Recieved</th>
-														<th>Earned</th>
-													</tr>
-													<tr align="center">
-														<td>Raaz</td>
-														<td>32</td>
-														<td>3000$</td>
-													</tr>
-													<tr align="center">
-														<td>Shahadat</td>
-														<td>30</td>
-														<td>2900$</td>
-													</tr>
-													<tr align="center">
-														<td>Rezaul</td>
-														<td>29</td>
-														<td>2800$</td>
-													</tr>
-													<tr align="center">
-														<td>Robi</td>
-														<td>25</td>
-														<td>2500$</td>
-													</tr>
-													<tr align="center">
-														<td>Tanim</td>
-														<td>21</td>
-														<td>2000$</td>
-													</tr>
-											</table>
-									    </td>
-										<td width="20%">
+								<table border="1" cellspacing="0" width="80%" >   
+									<th colspan="3">Top five Buyer</th>
+										<tr>
+											<th>User</th>
+											<th>Order Recieved</th>
+											<th>Earned</th>
+										</tr>
+									<?php
+										 $persons=getsellerFromDb();
+
+										//echo "<script>alert('Programming1')</script>";
+										$i=0;
+										//var_dump($persons);
 										
-										</td>
-										<td width="40%">
-											<table border="1" cellspacing="0">
-												<th colspan="3">Top five Buyer in last Month</th>
-													<tr>
-														<th>User</th>
-														<th>Order Recieved</th>
-														<th>Earned</th>
-													</tr>
-													<tr align="center">
-														<td>Raaz</td>
-														<td>32</td>
-														<td>3000$</td>
-													</tr>
-													<tr align="center">
-														<td>Shahadat</td>
-														<td>30</td>
-														<td>2900$</td>
-													</tr>
-													<tr align="center">
-														<td>Rezaul</td>
-														<td>29</td>
-														<td>2800$</td>
-													</tr>
-													<tr align="center">
-														<td>Robi</td>
-														<td>25</td>
-														<td>2500$</td>
-													</tr>
-													<tr align="center">
-														<td>Tanim</td>
-														<td>21</td>
-														<td>2000$</td>
-													</tr>
-											</table>
-										</td>
-						            </tr>
+										foreach ($persons as $value) 
+										{
+											
+										  //var_dump($value);
+										   $seller=$value['uName'];
+										   $totalorder=getallorderFromDb($seller);
+										   //var_dump($totalorder);
+										  $earn=earnTodb($seller);
+										  $earning=(int)$earn['totalEarning'];
+										
+										   //var_dump($earning);
+											echo "<tr>";
+											
+											echo "<td >$seller</td><td>$totalorder</td><td>$earning</td>";
+											echo "</tr>";
+											$i++; 
+										}
+									?>
+									
 								</table>
 							</td>
+										
+								<td width="40%">
+								    <br/>
+									<table border="1" cellspacing="0" width="80%">
+										<th colspan="3">Top five Buyer</th>
+											<tr>
+												<th>Buyer</th>
+												<th>Order Post</th>
+												<th>Spend</th>
+											</tr>
+											<?php
+											 $persons=getBuyerName();
+											 
+											//echo "<script>alert('Programming1')</script>";
+											$i=0;
+											foreach ($persons as $value) 
+											{
+												$buyer=$value['uName'];
+												$gig=buyTotalGig($buyer);
+												$spending=spendingTodb($buyer);
+											    $spend=(int)$spending['totalSpend'];
+												echo "<tr>";
+												
+												echo "<td>$buyer</td><td>$gig</td><td>$spend</td>";
+												echo "</tr>";
+												$i++; 
+
+
+											}
+										?>
+									</table>
+								</td>
 						</tr>
 					</table>
 				</td>
+		    </tr>
+		</table>
+	</td>
 			</tr>
 			<tr colspan="3" height="20%">
 			    <table border="0" width="100%">
