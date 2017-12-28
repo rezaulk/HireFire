@@ -31,7 +31,7 @@
 									<a href="logout_handler.php">LogOut</a>
 								</font>
 							</td>
-							<td width="5"><img src="../image/b.png" width="50"></td>
+							<td width="5"><a href="../User/profile.php"><img src="../image/b.png" width="50"></a></td>
 						</tr>
 					</table>
 				</td>	
