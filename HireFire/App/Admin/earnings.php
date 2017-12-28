@@ -60,31 +60,36 @@
 			<tr height="50%">	
                 <td width="10%"></td>			
 				<td width="50%" height="50%">
-					<a>Active Gigs</a><br/>
+					<a><b>Profit Details</b></a><br/>&nbsp;
 					<table width="100%" height="50%" border="1" cellspacing="0">
 						    <tr >
-							   <td>User</td>
-							   <td>Gigs</td>
-							   <td>Order</td>
+							   <td><center><b>Gig Id</b></center></td>
+							   <td><center><b>Profit</b></center></td>
+								
+							   
 							</tr>
 						<?php
-							 $persons=allgigaccessToDb();
+							 $profits=profitDetailsFromDb();
 
 							$i=0;
-							
-							foreach ($persons as $value) 
+							$totalProfits=0;
+							foreach ($profits as $value) 
 							{
-							   $name=$value['uName'];
-							   $title=$value['gigTitle'];
-							   $Order=$value['orderCount'];
+							   $gigId=$value['gId'];
+							   $profit=$value['profit'];
+							   $totalProfits+=$profit;
 							  
 								echo "<tr>";
 								
-								echo "<td >$name</td><td>$title</td><td>$Order</td>";
+								echo "<td ><center>$gigId</center></td><td><center>$profit</center></td>";
 								echo "</tr>";
 								$i++; 
 							}
 						?>
+						<tr>
+							<td><center><b><h3>Total Profits</h3></b></center></td>
+							<td><center><b><h3><?php echo $totalProfits; ?></h3></b></center></td>
+						</tr>
 					</table>
 				</td>
 				<td width="40%">

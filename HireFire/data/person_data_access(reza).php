@@ -69,6 +69,20 @@
         return $persons;
 	}
 	
+	function profitDetailsFromDb()
+	{
+		
+		//echo "$name";
+		$sql = "SELECT * FROM companyprofit";
+		$result = executeSQL($sql);
+		$profits = array();
+        for($i=0; $row=mysqli_fetch_assoc($result); ++$i){
+            $profits[$i] = $row;
+        }
+        
+        return $profits;
+	}
+	
 	
 	
 	function buyTotalGig($sName)
