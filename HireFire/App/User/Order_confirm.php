@@ -6,6 +6,11 @@
 	$gigId=$_REQUEST['gigId'];
 	$_SESSION['gigId']=$gigId;
 	//var_dump($_SESSION);
+	if(empty($_SESSION['username']))
+		{
+			//echo "<script>alert('Please Login first');document.location='../SignUp1.php'</script>";
+			header("location:../SignIn.php");
+		}
 ?>
 
 

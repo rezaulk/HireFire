@@ -1,6 +1,11 @@
 <?php   session_start(); 
 		require_once "../../service/person_service(reza).php";
 		require_once "../../data/person_data_access(reza).php";
+		if(empty($_SESSION['username']))
+		{
+			//echo "<script>alert('Please Login first');document.location='../SignUp1.php'</script>";
+			header("location:../SignIn.php");
+		}
 ?>
 <?php 
      

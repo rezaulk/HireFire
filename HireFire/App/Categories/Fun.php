@@ -17,9 +17,9 @@
 			<td>
 				<table  width="100%" border="0">
 					<tr>
-						<tr>
+						<tr><form method="POST"><center>
 						<td width="30" ><a href="../Categories/programing.php"><img src="../image/image.png" width="150"/></a></td>
-						<td><input type="text" name="search" placeholder="Search.." size="70" height="20"><button>Search</button></td>
+						<td><input type="text" name="search" placeholder="Search.." size="70" height="20" id="search" ><input type="submit" value="Search" /></td>
 						<?php
 							if(isset($_SESSION['username']))
 							{
@@ -36,7 +36,7 @@
 								 </font>
 								 </td>";
 							}
-							?>
+							?></form>
 					
 					</tr>
 					</tr>

@@ -4,6 +4,11 @@
 <?php 
 	require_once "../../service/person_service(robi).php";
 		require_once "../../service/validation_service(tanim).php";
+		if(empty($_SESSION['username']))
+		{
+			//echo "<script>alert('Please Login first');document.location='../SignUp1.php'</script>";
+			header("location:../SignIn.php");
+		}
 ?>
 <?php
 ?>

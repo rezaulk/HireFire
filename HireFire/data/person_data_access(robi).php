@@ -10,7 +10,7 @@
 	
 	function searchReturnFromDb($value,$category)
 	{
-		echo "fsdfdsf";
+		//echo "fsdfdsf";
 		//select * from t1 where 'ABCDEFG' LIKE CONCAT('%',column1,'%');
 		$sql = "select * from gigs where gigTitle LIKE '%$value%' AND category LIKE '$category'";
 		//var_dump($sql);

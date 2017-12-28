@@ -3,6 +3,11 @@
 ?>
 <?php 
 	include("../../service/gig_service(robi).php");
+	if(empty($_SESSION['username']))
+		{
+			//echo "<script>alert('Please Login first');document.location='../SignUp1.php'</script>";
+			header("location:../SignIn.php");
+		}
 	
 ?>
 

@@ -4,7 +4,7 @@
 		if(empty($_SESSION['username']))
 		{
 			//echo "<script>alert('Please Login first');document.location='../SignIn.php'</script>";
-			header("location:../SignUp1.php");
+			header("location:../SignIn.php");
 		}
         //require_once "../../service/person_service.php";
 ?>
