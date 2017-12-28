@@ -1,5 +1,10 @@
 <?php
 	session_start();
+	if(empty($_SESSION['username']))
+		{
+			//echo "<script>alert('Please Login first');document.location='../SignUp1.php'</script>";
+			header("location:SignIn.php");
+		}
 ?>
 <?php require_once "../service/validation_service(robi).php";  ?>
 <?php
