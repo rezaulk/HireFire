@@ -334,10 +334,10 @@
 					<input type="text" placeholder="Give your full Name" name="name" id="name" onchange="nameCheck()"/><span id="nameError"></span>
 					<br/><br/>
 					Password<br/>
-					<input type="text" placeholder="Choose a Password" name="password" id="password" onchange="passwordCheck()" /><span id="passwordError"></span>
+					<input  placeholder="Choose a Password" name="password" type="password" id="password" onchange="passwordCheck()" /><span id="passwordError"></span>
 					<br/><br/>
 					Re-Type Password<br/>
-					<input type="text" placeholder="Re-enter Password" name="retypePassword" id="retypePassword" onchange="retypepasswordCheck()" /><span id="retypePasswordError"></span>
+					<input  placeholder="Re-enter Password" name="retypePassword" type="password" id="retypePassword" onchange="retypepasswordCheck()" /><span id="retypePasswordError"></span>
 					<br/><br/>
 					<fieldset>
 						<legend>Language</legend>

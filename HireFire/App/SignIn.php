@@ -97,7 +97,7 @@
 					</br></br>
 					<b>Password</b>
 					&nbsp;
-					<input  title="password" name="pass" value="<?=$password?>"/> <?=$passwordErr?>
+					<input  title="password" type="password" name="pass" value="<?=$password?>"/> <?=$passwordErr?>
 					<hr>
 					<input type="checkbox" name="check">Remember Me</input>
 					</br></br>
