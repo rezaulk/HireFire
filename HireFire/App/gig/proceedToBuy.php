@@ -1,5 +1,4 @@
-<?php
-	session_start();
+<?php  session_start();
 ?>
 <?php 
 	include("../../service/gig_service(robi).php");		
@@ -9,15 +8,12 @@
 	//var_dump($GLOBALS);
 	if(!isset($_SESSION['username']))
 	{
-		var_dump($_SESSION);
+		//var_dump($_SESSION);
 		//header("location: ../SignIn.php?gigId=$gigId");
-		
 		echo "<script>
                         //alert('Record Added');
 						document.location='../SignIn.php?gigId=$gigId';
                     </script>";
-		
-	
 	}
 	
 	//echo "<script> alert('out1');</script>";
@@ -89,9 +85,7 @@
 						    <td width="10%"></td>
 						    <td width="40%">
 								<table border="0" height="100%" width="100%">							
-
 									<tr>
-									
 									    <td>
 										  
 										  <a><b><?php echo $gigTitle; ?></b></a><hr>

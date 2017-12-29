@@ -4,7 +4,7 @@
 			<table  width="100%" border="0">
 				<tr>
 					<td width="30" ><a href="App/PublicHome.php"><img src="App/image/image.png" width="150"/></a></td>
-					<td><input size="60" name="search" placeholder="Search.."/>&nbsp;<input type="submit" value="search"/></td>
+					<td></td>
 					<td align="right">
 					 <font size="4"><a href="App/SignIn.php">Sign In</a>&nbsp;<a href="App/SignUp1.php">Sign Up</a>
 					  </font>

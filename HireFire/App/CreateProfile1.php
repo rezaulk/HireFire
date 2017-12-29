@@ -1,5 +1,4 @@
-<?php
-	session_start();
+<?php session_start();
 	if(empty($_SESSION['username']))
 		{
 			//echo "<script>alert('Please Login first');document.location='../SignUp1.php'</script>";
