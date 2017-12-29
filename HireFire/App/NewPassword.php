@@ -2,11 +2,7 @@
 <?php require_once "../service/person_service(reza).php"; ?>
 
 <?php
-if(empty($_SESSION['username']))
-		{
-			//echo "<script>alert('Please Login first');document.location='../SignUp1.php'</script>";
-			header("location:SignIn.php");
-		}
+
     $error= $error1="";
     if($_SERVER['REQUEST_METHOD']=="POST"){
         $email=trim($_POST['email']);

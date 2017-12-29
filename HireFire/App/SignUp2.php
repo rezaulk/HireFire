@@ -1,11 +1,7 @@
 <?php session_start();//require_once "../service/validation_service.php"; ?>
 <?php require_once "../service/TANIM_service.php"; ?>
 <?php
-if(empty($_SESSION['username']))
-		{
-			//echo "<script>alert('Please Login first');document.location='../SignUp1.php'</script>";
-			header("location:SignIn.php");
-		}
+
 	$allUser=getAllUsers();
 	//var_dump($allUser);
 ?>
