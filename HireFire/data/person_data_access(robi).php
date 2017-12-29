@@ -271,7 +271,7 @@
 		
 		
 		$sql = "INSERT INTO sellers VALUES('$uName', '$accountNo', '$joiningDate', '$description' , '$expertLevel', '$address' ,'null', '$country' , '$bankName', '$postalCode', '$number', '$workingHour')";
-        var_dump($sql);
+       // var_dump($sql);
 	    $result = executeSQL($sql);
         return $result;
 	}
@@ -316,7 +316,7 @@
 		$uName=$_SESSION['username'];
 		echo "<script>alert('modifyTypeToUserDb')</script>";
 		$sql = "UPDATE users SET type='3' WHERE uName='$uName'"; 
-        var_dump($sql);
+        //var_dump($sql);
 	    $result = executeSQL($sql);
         return $result;
 	}

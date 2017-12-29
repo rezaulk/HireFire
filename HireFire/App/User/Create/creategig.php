@@ -1,5 +1,4 @@
-<?php
-	session_start();
+<?php session_start();
 	 include("../../../service/person_service(reza).php");
 	 require_once "../../../service/validation_service(tanim).php";
 	 //require_once "../../../service/TANIM_service.php"
@@ -61,11 +60,13 @@
 				$person['category']=$category;
 				$gitID=$maxID['MAX(gigId)']+1;
 				$person['imgExt']=$gitID.".jpg";
+				//echo "<script>alert('sdsfdf')</script>";
 				if(addGig($person))
 				{
 					//var_dump(addGig($person));
-					//echo "<script>alert('sdsfdf');document.location='../profile.php'";
-					 header("location: ../profile.php");	
+					//echo "<script>alert('sdsfdf');
+					echo "<script>document.location='../profile.php'</script>";
+					 //header("location: ../profile.php");	
 				}
 					
 				
@@ -290,7 +291,7 @@ function validateGigTitle()
 			<tr height="65%">
 				<td width="25%"></td>
 				<td>
-				<form action="creategig.php" method="POST" enctype="multipart/form-data" onsubmit="return validate()">
+				<form  method="POST" enctype="multipart/form-data" onsubmit="return validate()">
 					<table width="100%" cellspacing="15" border="0">
 						<tr>
 							<td width="10%">Gig Title: </td>
