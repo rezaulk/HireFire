@@ -63,7 +63,7 @@
 					<a>Active Gigs</a><br/>
 					<table width="100%" height="50%" border="1" cellspacing="0">
 						    <tr >
-							   <td>User</td>
+							   <td>Seller</td>
 							   <td>Gigs</td>
 							   <td>Order</td>
 							</tr>

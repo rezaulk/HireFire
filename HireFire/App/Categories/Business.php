@@ -52,7 +52,7 @@
 		  <a href="Digital.php">Digital Marketing&nbsp;</a>
 		  <a href="Writing.php">Writing & Translation&nbsp;</a>
 		  <a href="Video.php">Video & Animation&nbsp;</a>
-		  <a href="Business.php">Business</a>
+		  <a>Business</a>
 		  <a href="Programing.php">Programming & Tech</a>
 		  <a href="Music.php">Music</a>
 		  <br/> <br/>

@@ -36,7 +36,7 @@
 								<a href="admin.php">Dashboard&nbsp;</a>
 								<a href="logout_handler.php">LogOut</a></font>
 							</td>
-							<td><a href="profile.php"><img src="../image/b.png" width="50"></a></td>
+							<td><a href="admin.php"><img src="../image/b.png" width="50"></a></td>
 				        </tr>		
 				    </table>		
 				</td>
@@ -117,8 +117,8 @@
 							    <a>Buyer</a>
 								<table border="1" cellspacing="0" width="100%" height="40%">
 									<tr>
-										<th>Seller</th>
-										 <th>Buy GIg</th>
+										<th>Buyer</th>
+										 <th>Buy Gig</th>
 										 <th>Total spending</th>
 										 <th>LastActive Time</th>
 									</tr>
@@ -153,9 +153,9 @@
 						<tr>
 						    <td>
 								<table border="1" cellspacing="0" width="80%" >   
-									<th colspan="3">Top five Seller</th>
+									<th colspan="3">Top Sellers</th>
 										<tr>
-											<th>User</th>
+											<th>Sellers</th>
 											
 											<th>Earned</th>
 										</tr>
@@ -199,7 +199,7 @@
 								<td width="40%">
 								    <br/>
 									<table border="1" cellspacing="0" width="80%">
-										<th colspan="3">Top five Buyer</th>
+										<th colspan="3">Top Buyers</th>
 											<tr>
 												<th>Buyer</th>
 												

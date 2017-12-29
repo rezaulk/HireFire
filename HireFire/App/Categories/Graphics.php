@@ -63,7 +63,7 @@
 	</table>
 		
 		<div class="topnav" id="myTopnav" align="center">
-		  <a href="Graphics.php">Graphics & Design&nbsp;</a>
+		  <a>Graphics & Design&nbsp;</a>
 		  <a href="Digital.php">Digital Marketing&nbsp;</a>
 		  <a href="Writing.php">Writing & Translation&nbsp;</a>
 		  <a href="Video.php">Video & Animation&nbsp;</a>
