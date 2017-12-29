@@ -11,6 +11,7 @@
 					if(count($fileExt>=2)){
 						if(($fileExt[1]=='jpg')||($fileExt[1]=='png')||($fileExt[1]=='jpeg')||($fileExt[1]=='JPG')||($fileExt[1]=='PNG')||($fileExt[1]=='JPEG')){
 							$location="../uploads/";
+							var_dump($username);
 							if(move_uploaded_file($tmp_name,$location.$username.".jpg")){
 								echo "<script>alert('Uploaded')</script>";
 								$imageLocationWithImageName="../uploads/".$username.".jpg";
@@ -111,7 +112,7 @@
 					if(count($fileExt>=2)){
 						if(($fileExt[1]=='jpg')||($fileExt[1]=='JPG')){
 							$add="../../GigImage/";
-							var_dump($gigId);
+							//var_dump($gigId);
 							echo "<script>alert('TANIM')</script>";
 							
 							//var_dump(move_uploaded_file($tmp_name,$location."100.jpg"));

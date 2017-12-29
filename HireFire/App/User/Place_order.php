@@ -29,7 +29,7 @@
 		{	
 			$seller=$row['uName'];
 		}
-		var_dump($seller);
+		//var_dump($seller);
 		if(addOrder($seller))
 		{
 			echo "<script>

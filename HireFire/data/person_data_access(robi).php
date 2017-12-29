@@ -326,6 +326,7 @@
 	function retreiveProgrammingAndTechGigFromDb($category)
 	{
 		$category=trim($category);
+		//var_dump($category);
 		$sql = "SELECT * FROM gigs where '$category' like category";  
 		$result =executeSQL($sql);
 		//echo "<script>alert('retreiveProgrammingAndTechGigFromDb')</script>";
@@ -405,7 +406,7 @@
 		//var_dump($deadline);
 		
 		//var_dump ($_SESSION);
-		$sql = "INSERT INTO orders VALUES('null', '$buyerUserName', '$sellerUserName' , '$gigId', '$date', '$accountNo' , '$deadline' , '$status')";
+		$sql = "INSERT INTO orders VALUES('null', '$buyerUserName', '$sellerUserName' , '$gigId', '$date', '$accountNo' , '$deadline' , '$status','null')";
 		//var_dump($sql);
 		$result =executeSQL($sql);
 		//var_dump($result);
