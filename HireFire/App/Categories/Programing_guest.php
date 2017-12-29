@@ -39,7 +39,7 @@
 		  <a href="Writing.php">Writing & Translation&nbsp;</a>
 		  <a href="Video.php">Video & Animation&nbsp;</a>
 		  <a href="Business.php">Business</a>
-		  <a href="Programing.php">Programming & Tech</a>
+		  <a >Programming & Tech</a>
 		  <a href="Music.php">Music</a>
 		  <br/> <br/>
 		</div>

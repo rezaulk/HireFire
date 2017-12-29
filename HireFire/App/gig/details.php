@@ -70,13 +70,12 @@
 			    <td  width="40%">		   
 					<table  width="100%" border="0">
 						<tr>
-							<td><a href="../User/main.html"><img src="../image/image.png" width="150"></a></td>
+							<td><a href="../Categories/programing.php"><img src="../image/image.png" width="150"></a></td>
 							<td align="right">
-							<font size="4"><a href="../User/inbox.html">Messages&nbsp;</a>
-							<a href="../User/Orders.html">Orders&nbsp</a>
-							<a href="../User/Postrequest.html">Postrequest&nbsp;</a>
-							<a href="../User/dashboard.html">Dashboard&nbsp;</a>
-							<a href="PublicHome.html">LogOut</a></font>
+							<font size="4"><a href="../buyer/inbox.php">Messages&nbsp;</a>
+							<a href="../User/Orders_pending.php">Orders&nbsp</a>
+							<a href="../User/dashboard.php">Dashboard&nbsp;</a>
+							<a href="logout_handler.php">LogOut</a></font>
 							</td>
 							<td width="5"><a href="../User/profile.html"><img src="../image/b.png" width="50"></a></td>
 						</tr>

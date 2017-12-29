@@ -1,4 +1,4 @@
-<?php session_start();//require_once "../service/validation_service.php"; ?>
+<?php session_start(); //require_once "../service/validation_service.php"; ?>
 <?php require_once "../service/TANIM_service.php"; ?>
 <?php
 

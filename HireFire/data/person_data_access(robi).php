@@ -271,7 +271,7 @@
 		
 		
 		$sql = "INSERT INTO sellers VALUES('$uName', '$accountNo', '$joiningDate', '$description' , '$expertLevel', '$address' ,'null', '$country' , '$bankName', '$postalCode', '$number', '$workingHour')";
-        var_dump($sql);
+       // var_dump($sql);
 	    $result = executeSQL($sql);
         return $result;
 	}
@@ -316,7 +316,7 @@
 		$uName=$_SESSION['username'];
 		echo "<script>alert('modifyTypeToUserDb')</script>";
 		$sql = "UPDATE users SET type='3' WHERE uName='$uName'"; 
-        var_dump($sql);
+        //var_dump($sql);
 	    $result = executeSQL($sql);
         return $result;
 	}
@@ -326,6 +326,7 @@
 	function retreiveProgrammingAndTechGigFromDb($category)
 	{
 		$category=trim($category);
+		//var_dump($category);
 		$sql = "SELECT * FROM gigs where '$category' like category";  
 		$result =executeSQL($sql);
 		//echo "<script>alert('retreiveProgrammingAndTechGigFromDb')</script>";
@@ -405,7 +406,7 @@
 		//var_dump($deadline);
 		
 		//var_dump ($_SESSION);
-		$sql = "INSERT INTO orders VALUES('null', '$buyerUserName', '$sellerUserName' , '$gigId', '$date', '$accountNo' , '$deadline' , '$status')";
+		$sql = "INSERT INTO orders VALUES('null', '$buyerUserName', '$sellerUserName' , '$gigId', '$date', '$accountNo' , '$deadline' , '$status','null')";
 		//var_dump($sql);
 		$result =executeSQL($sql);
 		//var_dump($result);

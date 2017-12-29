@@ -495,7 +495,7 @@
 		$sql = "INSERT INTO gigs VALUES('$username','$gigtitle','null','$category','$gigprice','$gigdescription' ,'$imgExt','$date','0')";
        
 	    $result = executeSQL($sql);
-		// var_dump($result);
+		//var_dump($result);
         return $result;
 	}
 	

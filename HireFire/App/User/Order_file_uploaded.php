@@ -1,5 +1,4 @@
-<?php
-   session_start();
+<?php  session_start();
      
    //ob_start();
    $host="localhost";
@@ -11,7 +10,7 @@
 		global $host, $user, $pass, $dbname, $port;
 		$conn=mysqli_connect($host, $user, $pass, $dbname, $port);
 		$sql="select * from companyprofit where gId=$gId";
-		var_dump($sql);
+		//var_dump($sql);
 		$result = mysqli_query($conn, $sql);
 		$j=0;
 		for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
@@ -65,9 +64,9 @@
 		global $host, $user, $pass, $dbname, $port;
 		$conn=mysqli_connect($host, $user, $pass, $dbname, $port);
 		$gigid=$person["gigId"];
-		var_dump($gigid);
+		//var_dump($gigid);
 		$sql="select * from gigs where gigId=$gigid";
-		var_dump($sql);
+		//var_dump($sql);
 		$persons=array();
 		$result = mysqli_query($conn, $sql);
 		
@@ -89,13 +88,14 @@
 		$gigid=$person["gId"];
 		$fileExt=$person['fileExt'];
 		$sql="select * from orders WHERE gId=$gigid AND status='complete'";
-		var_dump($sql);
+		//var_dump($sql);
 		$person=array();
 		$result = mysqli_query($conn, $sql);
 		$j=0;
 		for($i=0; $row = mysqli_fetch_assoc($result); ++$i){
 			$j++;
-		}var_dump($i);
+		}
+		//var_dump($i);
 		mysqli_close($conn);
 		return($j);
 	}
@@ -141,20 +141,22 @@
 							
 							$gig['gigId']=$gId;
 							$price=retrieveGigPrice($gig);
-							var_dump($price);
+							//var_dump($price);
 							$money=$price[0]['price'];
 							$order=retrieveOrderNumber($person);
-							var_dump($order);
+							//var_dump($order);
 							if($order>0){
 								if(checkIftheGigAlreadyExistInTheProfitList($gId)==0){
 									if(insertprofitToDB($gId,$order,$money)){
-										echo "Insert";
+										//echo "Insert";
+										header("location: Orders_active.php");
 									}
 									
 								}
 								else{
 									updateprofitToDB($gId,$order,$money);
-									echo "Update";
+									//echo "Update";
+									header("location: Orders_active.php");
 								}
 								
 							}
