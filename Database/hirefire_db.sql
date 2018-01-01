@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 31, 2017 at 03:59 PM
--- Server version: 10.1.25-MariaDB
--- PHP Version: 7.1.7
+-- Generation Time: Jan 01, 2018 at 07:27 AM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -47,16 +47,12 @@ INSERT INTO `buyers` (`uName`, `language`, `Name`, `buyerId`) VALUES
 ('admin', 'Bangla', '', 7),
 ('reza', 'Urdu', '', 8),
 ('robi', 'French', '', 9),
-('dsds', 'bangla', '', 10),
 ('rakib', 'bangla', '', 11),
 ('rakib', 'spanish', '', 12),
 ('raj', 'bangla', '', 13),
-('raj', 'english', '', 14),
-('raj', 'hindi', '', 15),
 ('faysal', 'bangla', '', 16),
 ('faysal', 'english', '', 17),
-('riyadhullah', 'bangla', '', 18),
-('riyadhullah', 'english', '', 19);
+('tamim', 'bangla', '', 18);
 
 -- --------------------------------------------------------
 
@@ -76,7 +72,8 @@ CREATE TABLE `companyprofit` (
 
 INSERT INTO `companyprofit` (`pId`, `gId`, `profit`) VALUES
 (1, 2, 12),
-(2, 4, 45);
+(2, 13, 24),
+(3, 1, 2500);
 
 -- --------------------------------------------------------
 
@@ -118,11 +115,6 @@ CREATE TABLE `education` (
 
 INSERT INTO `education` (`uName`, `attendFrom`, `attendTo`, `degree`, `area`, `educationId`) VALUES
 ('reza', '2017-12-03', '2017-12-12', 'Bsc', 'Cse', 1),
-('dsds', '2017-12-13', '2017-12-06', 'ghnfds', 'nhbfgvdx', 2),
-('dsds', '2017-12-13', '2017-12-06', 'ghnfds', 'nhbfgvdx', 3),
-('dsds', '2017-12-13', '2017-12-06', 'ghnfds', 'nhbfgvdx', 4),
-('dsds', '2017-12-13', '2017-12-06', 'ghnfds', 'nhbfgvdx', 5),
-('dsds', '2017-12-13', '2017-12-06', 'ghnfds', 'nhbfgvdx', 6),
 ('rakib', '2017-12-27', '2017-12-30', 'BSC', '', 7),
 ('raj', '2017-12-19', '2017-12-29', 'MS', '', 8);
 
@@ -210,12 +202,13 @@ CREATE TABLE `lastactivetime` (
 --
 
 INSERT INTO `lastactivetime` (`id`, `uName`, `activeDate`) VALUES
-(8, 'reza', '2017-12-28'),
+(8, 'reza', '2017-12-29'),
 (9, 'robi', '2017-12-29'),
-(11, '', '2017-12-28'),
-(12, 'rakib', '2017-12-28'),
-(13, 'raj', '2017-12-28'),
-(14, 'admin', '2017-12-28');
+(12, 'rakib', '2017-12-29'),
+(13, 'raj', '2017-12-29'),
+(14, 'admin', '2017-12-29'),
+(15, 'ehsan', '2017-12-29'),
+(16, 'tamim', '2017-12-29');
 
 -- --------------------------------------------------------
 
@@ -264,7 +257,7 @@ INSERT INTO `orders` (`orderId`, `bName`, `sName`, `gId`, `date`, `accountNumber
 (1, 'robi', 'robi', 2, '2017-12-05', 0, '2017-12-05', 'complete', '2.txt'),
 (2, 'reza', 'robi', 1, '2017-12-12', 1675428256, '0000-00-00', 'active', ''),
 (3, 'ik tanim', 'robi', 1, '2017-12-05', 0, '2017-12-13', 'active', ''),
-(4, 'efti', 'reza', 1, '2017-12-04', 0, '0000-00-00', 'complete', '1.txt'),
+(4, 'efti', 'reza', 1, '2017-12-04', 0, '0000-00-00', 'complete', '1.jpg'),
 (5, 'rajesh', 'reza', 2, '2017-12-13', 2222, '0000-00-00', 'complete', '2.txt'),
 (6, 'rajesh', 'reza', 4, '2017-12-13', 33333, '0000-00-00', 'complete', '4.docx'),
 (7, 'rajesh', 'reza', 5, '2017-12-12', 2232323, '2017-12-11', 'complete', '5.JPG'),
@@ -273,12 +266,13 @@ INSERT INTO `orders` (`orderId`, `bName`, `sName`, `gId`, `date`, `accountNumber
 (10, 'robi', 'tamin', 4, '2017-12-27', 3443, '2018-01-04', 'active', ''),
 (11, 'robi', 'dsds', 5, '2017-12-27', 4, '2018-01-04', 'active', ''),
 (12, 'robi', 'tamin', 4, '2017-12-27', 353534, '2018-01-03', 'active', ''),
-(13, 'robi', 'reza', 1, '2017-12-27', 2435, '2018-01-05', 'active', ''),
+(13, 'robi', 'reza', 1, '2017-12-27', 2435, '2018-01-05', 'complete', '1.jpg'),
 (14, 'robi', 'robi', 2, '2017-12-27', 3534, '2018-01-03', 'complete', '2.txt'),
 (15, 'robi', 'robi', 2, '2017-12-27', 35, '2018-01-03', 'complete', '2.txt'),
-(16, 'robi', 'reza', 1, '2017-12-27', 43, '2018-01-02', 'active', ''),
+(16, 'robi', 'reza', 1, '2017-12-27', 43, '2018-01-02', 'complete', '1.jpg'),
 (17, 'robi', 'robi', 2, '2017-12-27', 232, '2018-01-03', 'complete', '2.txt'),
-(18, 'rez', 'robi', 10, '2017-12-22', 23423, '2017-12-31', 'completed', '10.txt');
+(18, 'ehsan', 'rakib', 9, '2017-12-29', 121321, '2017-12-30', 'pending', 'null'),
+(19, 'ehsan', 'reza', 13, '2017-12-29', 2147483647, '2017-12-30', 'complete', '13.jpg');
 
 -- --------------------------------------------------------
 
@@ -307,11 +301,9 @@ CREATE TABLE `sellers` (
 
 INSERT INTO `sellers` (`uName`, `accountNo`, `joiningDate`, `description`, `expertLevel`, `address`, `sellerId`, `country`, `bankName`, `postalCode`, `number`, `workingHour`) VALUES
 ('reza', 1674086295, '2017-12-08', 'hi i am reza ul karim .', 0, 'khilgaon', 1, '', 'bkash', 0, 0, 0),
-('robi', 43242344, '2017-12-05', 'sfrseewrrwe', 2, 'safdf', 2, '', 'sdfsd', 0, 0, 0),
-('dsds', 654321, '2017-12-26', '4321', 0, 'dcsc', 3, 'bangladesh', 'rocket', 2323, 2147483647, 0),
-('dsds', 654321, '2017-12-26', '4321', 0, 'dcsc', 4, 'bangladesh', 'rocket', 2323, 2147483647, 0),
 ('rakib', 2147483647, '2017-12-28', '', 0, 'DHAKA', 5, 'bangladesh', 'bkash', 1234, 1681828399, 0),
-('raj', 111111111, '2017-12-28', '', 0, 'Comilla', 6, 'bangladesh', 'bkash', 1234, 1822992221, 0);
+('raj', 111111111, '2017-12-28', '', 0, 'Comilla', 6, 'bangladesh', 'bkash', 1234, 1822992221, 0),
+('robi', 1255455668, '2017-12-30', 'i am a good developer', 1, 'kuril', 7, 'Bangladesh', 'Bkash', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -332,21 +324,6 @@ CREATE TABLE `skills` (
 INSERT INTO `skills` (`uName`, `skill`, `skillId`) VALUES
 ('reza', 'wordpress', 1),
 ('robi', 'wordpress', 2),
-('dsds', 'Desktop Softwere Dev', 3),
-('dsds', 'Mobile Development', 4),
-('dsds', 'Script and Utilities', 5),
-('dsds', 'Desktop Softwere Dev', 6),
-('dsds', 'Mobile Development', 7),
-('dsds', 'Script and Utilities', 8),
-('dsds', 'Desktop Softwere Dev', 9),
-('dsds', 'Mobile Development', 10),
-('dsds', 'Script and Utilities', 11),
-('dsds', 'Desktop Softwere Dev', 12),
-('dsds', 'Mobile Development', 13),
-('dsds', 'Script and Utilities', 14),
-('dsds', 'Desktop Softwere Dev', 15),
-('dsds', 'Mobile Development', 16),
-('dsds', 'Script and Utilities', 17),
 ('rakib', 'Desktop Softwere Dev', 18),
 ('rakib', 'Product Management', 19),
 ('raj', 'Desktop Softwere Dev', 20),
@@ -404,8 +381,7 @@ INSERT INTO `tomessage` (`messageId`, `conversionNumber`, `fromUser`, `toUser`, 
 (69, 3, 'raj', 'robi', 'Hello robi\r\n'),
 (70, 3, 'robi', 'raj', 'How are you raj?'),
 (71, 3, 'raj', 'robi', 'I want do something.'),
-(72, 3, 'robi', 'raj', 'Yes I am free'),
-(73, 4, 'robi', 'robi', 'jkafcbsjfcbsdcjbks');
+(72, 3, 'robi', 'raj', 'Yes I am free');
 
 -- --------------------------------------------------------
 
@@ -428,17 +404,17 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`uName`, `name`, `password`, `email`, `type`, `joiningDate`, `imageExt`) VALUES
-('admin', 'Robi', '1', 'admin@gmail.com', 1, '2017-12-24', 'admin.jpg'),
-('dsds', 'szcsdd csdc s', '123@', 'rezaaaaaa@gmail.com', 3, '2017-12-25', 'dsds.jpg'),
-('efti', 'efti', 'efti@', 'wwee@gmail.com', 2, '2017-12-05', ''),
+('admin', 'Mrshal Bob', '1', 'admin@gmail.com', 1, '2017-12-24', 'admin.jpg'),
+('efti', 'Mashiul azam efti', 'efti@', 'wwee@gmail.com', 2, '2017-12-05', ''),
+('ehsan', 'Ehsan Ahmed', 'ehsan@', 'ehsan@gmail.com', 2, '0000-00-00', ''),
 ('faysal', 'Faysal Ahmed', 'faysal@', 'faysal@gmail.com', 2, '2017-12-28', 'faysal.jpg'),
 ('raj', 'Raj Simran', 'raj@', 'raj@gmail.com', 3, '2017-12-28', 'raj.jpg'),
-('rajesh', 'rajesh', 'rajesh@', 'wwee@gmail.com', 2, '2017-12-06', 'rajesh.jpg'),
+('rajesh', 'rajesh saha', 'rajesh@', 'wwee@gmail.com', 2, '2017-12-06', 'rajesh.jpg'),
 ('rakib', 'Rakibul Hossain', 'rakib@', 'rakib@gmail.com', 3, '2017-12-28', 'rakib.jpg'),
-('reza', 'zc sd ', 'reza@', 'reza@gmail.com', 3, '2017-12-05', 'reza.jpg'),
-('riyadhullah', 'Riyadh Ullah', '@@@@', 'riyadhullah2@gmail.c', 2, '2017-12-29', 'riyadhullah.jpg'),
+('reza', 'Reza UL karim', 'reza@', 'reza@gmail.com', 3, '2017-12-05', 'reza.jpg'),
 ('robi', 'robi ullah', 'robi@', 'robi@gmail.com', 3, '2017-12-05', 'robi.jpg'),
-('tamin', 'ik tanim ', '2', 'tanim@gmail.com', 1, '2017-12-04', 'tanim.jpg');
+('tamim', 'Tamim Ahmed', 'tamin2@', 'tamim21@gmail.com', 2, '2017-12-29', 'tamim.jpg'),
+('tamin', 'ik tanim ', 'tamin@', 'tanim@gmail.com', 3, '2017-12-04', 'tanim.jpg');
 
 --
 -- Indexes for dumped tables
@@ -547,67 +523,80 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `buyers`
 --
 ALTER TABLE `buyers`
-  MODIFY `buyerId` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `buyerId` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
 --
 -- AUTO_INCREMENT for table `companyprofit`
 --
 ALTER TABLE `companyprofit`
-  MODIFY `pId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `pId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `earning`
 --
 ALTER TABLE `earning`
   MODIFY `eId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `education`
 --
 ALTER TABLE `education`
   MODIFY `educationId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `gigrequirements`
 --
 ALTER TABLE `gigrequirements`
   MODIFY `requirementId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `gigs`
 --
 ALTER TABLE `gigs`
   MODIFY `gigId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+
 --
 -- AUTO_INCREMENT for table `lastactivetime`
 --
 ALTER TABLE `lastactivetime`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 --
 -- AUTO_INCREMENT for table `ordercomment`
 --
 ALTER TABLE `ordercomment`
   MODIFY `orderCommentId` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
 --
 -- AUTO_INCREMENT for table `sellers`
 --
 ALTER TABLE `sellers`
-  MODIFY `sellerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `sellerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
   MODIFY `skillId` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
 --
 -- AUTO_INCREMENT for table `spending`
 --
 ALTER TABLE `spending`
   MODIFY `spendingId` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `tomessage`
 --
 ALTER TABLE `tomessage`
-  MODIFY `messageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `messageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+
 --
 -- Constraints for dumped tables
 --
